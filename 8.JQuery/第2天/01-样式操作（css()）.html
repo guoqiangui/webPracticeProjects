@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            //css() 有三种使用方式
+            //1、css(json)   可修改多个属性的值
+            var jqBox = $("#box");
+            jqBox.css({"width": 100, "height": 100, "background": "green"});
+
+            //2、css(属性，值)   修改一个属性的值
+            jqBox.css("background", "red");
+
+            //3、css(属性)     获取该属性的值
+            console.log(jqBox.css("width"));
+
+            $(".box").css({"width": 200, "height": 200, "background": "pink"});
+
+            //如果有多个元素的话，只会获取第一个元素的属性值
+            console.log($("div").css("width"));
+        });
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</body>
+</html>

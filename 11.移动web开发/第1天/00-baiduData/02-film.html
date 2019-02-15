@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button>获取热映影片</button>
+
+    <script src="jquery.min.js" type="text/javascript"></script>
+    <script>
+        // 垃圾百度，也不能用了
+        $(function () {
+            $("button").on("click", function () {
+                $.ajax({
+                    url: " http://api.map.baidu.com/telematics/v3/movie?qt=hot_movie&location=广州&ak=v3CNmVSv7SWDtSTq2VOYiVRtXzIju7iU&output=json",
+                    dataType: "jsonp",
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

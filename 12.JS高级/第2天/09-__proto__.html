@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 访问原型的两种方式
+    // 1、通过构造函数访问
+    // 2、通过实例化的对象访问，这种方式一般用于调试
+
+    function Player() {
+
+    }
+
+    // 通过构造函数访问
+    console.log(Player.prototype);
+
+    // 通过实例化的对象访问原型：__proto__属性，注意前面和后面都是两个下划线
+    // __proto__是一个非标准的属性，为了保证通用性，不推荐使用该属性
+    var p1 = new Player();
+    console.log(p1.__proto__);
+    p1.__proto__.name = "我们都是张三";
+    console.log(p1.name);
+</script>
+</body>
+</html>

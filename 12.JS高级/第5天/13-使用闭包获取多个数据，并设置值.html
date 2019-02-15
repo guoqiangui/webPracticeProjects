@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 闭包的作用：
+    //在函数外部想要修改数据
+    //只能通过函数内部的方法
+    //我们可以在函数内部定义的这个方法里
+    //设置安全措施，校验之类的操作
+    //可以保证系统的安全性和稳定性
+
+    //闭包的作用
+    //最基本的作用：可以通过闭包返回的函数或者方法，来修改函数内部的数据
+    //创建一个私有的空间，保护数据
+    //外部想要访问数据，只能通过函数提供的方法
+    //在提供的方法中，我们可以设置一些校验逻辑，让数据变得更加安全
+
+    function foo() {
+        var name = "詹姆斯";
+        var age = 34;
+
+        return {
+            getName: function () {
+                return name;
+            },
+            setName: function (value) {
+                name = value;
+            },
+            getAge: function () {
+                return age;
+            },
+            setAge: function (value) {
+                age = value;
+            }
+        };
+    }
+
+    var obj = foo();
+    obj.setName("杜兰特");
+    obj.setAge(30);
+    console.log(obj.getName());
+    console.log(obj.getAge());
+</script>
+</body>
+</html>

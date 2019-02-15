@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            /*一定要加给父盒子*/
+            perspective: 500px;
+            /*会出现滚动条的原因：盒子变大了，但margin-top为200px不变*/
+            overflow: hidden;   /*隐藏就可以不出现滚动条了*/
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            margin: 200px auto;
+            /*transition: all 2s; !*不推荐用all，效率会降低*!*/
+            transition: transform 2s;
+        }
+        .box:hover {
+            /*沿着x轴移动*/
+            /*transform: translateX(300px);*/
+
+            /*沿着y轴移动*/
+            /*transform: translateY(300px);*/
+
+            /*沿着z轴移动*/
+            transform: translateZ(300px);
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

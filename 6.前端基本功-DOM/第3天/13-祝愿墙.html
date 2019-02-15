@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,div {
+            margin: 0;
+            padding: 0;
+            font: 400 12px "microsoft yahei";
+        }
+
+        body {
+            background-image: url(image/bg.gif);
+        }
+        .content {
+            width: 960px;
+            height: 627px;
+            background-image: url(image/content_bg.jpg);
+            margin: 0 auto;
+            position: relative;
+        }
+        .content .tip1 {
+            position: absolute;
+            left: 150px;
+            top: 85px;
+        }
+        .content .tip1_h {
+            width: 202px;
+            height: 23px;
+            background-image: url(image/tip1_h.gif);
+            padding: 45px 15px 0 10px;
+        }
+        .content .tip1_h .num {
+            float: left;
+        }
+        .content .tip1_h .close {
+            float: right;
+            cursor: pointer;
+        }
+        .content .tip1_c {
+            width: 207px;
+            height: 40px;
+            background: url(image/tip1_c.gif);
+            padding-left: 20px;
+        }
+        .content .tip1_f {
+            width: 227px;
+            height: 73px;
+            background-image: url(image/tip1_f.gif);
+        }
+        .content .tip1_f .icon {
+            float: left;
+            margin: 20px 12px 0;
+        }
+        .content .tip1_f .name {
+            line-height: 73px;
+            color: deeppink;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <!--小纸条-->
+        <div class="tip1">
+            <div class="tip1_h">
+                <div class="num">第[49568]条 2016-07-7 22:51:52</div>
+                <div class="close" title="关闭纸条">x</div>
+            </div>
+            <div class="tip1_c">普天同庆，天下大同！</div>
+            <div class="tip1_f">
+                <div class="icon"><img src="image/bpic_1.gif"></div>
+                <div class="name">不愿意透露姓名的吕先生</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //需求，克隆盒子，随机位置；点击纸条的时候压在其他纸条上面
+
+        //获取整个纸条
+        var tip1 = document.getElementsByClassName("tip1")[0];
+        var content = document.getElementsByClassName("content")[0];
+        //复制十个
+        for(var i=0;i<10;i++) {
+            var cloneTip = tip1.cloneNode(true);
+            //生成随机定位值
+            var topValue = parseInt(Math.random()*400);    //0~400
+            var leftValue = parseInt(Math.random()*700);     //0~700
+            cloneTip.style.top = topValue + "px"; //别漏了单位
+            cloneTip.style.left = leftValue + "px";
+            content.appendChild(cloneTip);
+
+            //给纸条绑定事件
+
+            cloneTip.onclick = fun1;
+        }
+
+        var zIndex = 1;
+        function fun1() {
+            this.style.zIndex = zIndex;
+            zIndex++; //保证下一次点击的层级最高
+        }
+
+        //因为第一张是不会动的，可以直接删掉
+        tip1.parentNode.removeChild(tip1);
+    </script>
+</body>
+</html>

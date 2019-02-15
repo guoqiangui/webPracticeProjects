@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="cvs" width="500" height="500"></canvas>
+
+<script>
+    var cvs = document.getElementById("cvs");
+    var ctx = cvs.getContext("2d");
+
+    ctx.moveTo(10, 10);
+
+    // 先画一个矩形
+    ctx.lineTo(110, 10);
+    ctx.lineTo(110, 110);
+    ctx.lineTo(10, 110);
+    ctx.lineTo(10, 10);
+    ctx.closePath();
+
+    // 反方向再画一个矩形，利用非零环绕原则，中间必定是不会被填充的
+    ctx.moveTo(20, 20);
+    ctx.lineTo(20, 50);
+    ctx.lineTo(50, 50);
+    ctx.lineTo(50, 20);
+    ctx.lineTo(20, 20);
+    ctx.closePath();
+
+
+
+    // 填充样式
+    ctx.fillStyle = "green";
+    /*
+        * 填充：
+        * 把当前路径环绕起来的区域进行填充。
+        * ctx.fill()
+        * */
+    ctx.fill();
+    // 要先填充再描边
+    ctx.stroke();
+
+    /*
+            * 描边的时候，会占用原图形的一部分( 线宽的一半 )。
+            * 所以，日常开发中，为了让线宽符合要求，
+            * 最好先填充，再描边，防止填充时覆盖掉线宽的一半。
+            * */
+</script>
+</body>
+</html>

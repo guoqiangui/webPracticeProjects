@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            /*
+                in关键字
+                1、最常用在for...in循环中遍历对象的键（即属性名），遍历数组也可以，但一般不遍历数组
+                2、判断属性是否存在于对象中
+                    语法：属性名 in 对象
+            */
+            // 对象的键为字符串类型
+            var obj = {
+                name: "张学友",
+                age: 18,
+                job: function () {
+                    console.log("会唱歌");
+                }
+            };
+
+            // 遍历对象的键
+            for(var key in obj) {
+                // 输出的是键名
+                console.log(key);
+                // 遍历对象
+                console.log(key + "==>" + obj[key]);
+            }
+
+        //    判断属性是否存在对象中，会有一个boolean返回值
+            var isExist = "name" in obj;
+            var isExist2 = "haha" in obj;
+            console.log(isExist);
+            console.log(isExist2);
+
+            // 其实数组是特殊的对象，in关键字也适用
+            var arr = [1,2,3,4,5];
+            var bool = 0 in arr;
+            // 会有一个隐式的类型转换
+            var bool2 = "0" in arr;
+            console.log(bool);
+            console.log(bool2);
+        };
+    </script>
+</head>
+<body>
+</body>
+</html>

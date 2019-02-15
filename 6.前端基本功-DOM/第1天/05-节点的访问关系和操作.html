@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2" id="box2"></div>
+        <div class="box3"></div>
+    </div>
+
+    <script>
+        //节点的访问关系是以属性形式存在
+
+        //得到父节点
+        // var box2 = document.getElementById("box2");
+        // console.log(box2.parentNode); //一个元素只有一个父节点
+        //
+        // //下一个兄弟节点（仅元素）
+        // console.log(box2.nextElementSibling);
+        //
+        // //上一个兄弟节点（仅元素）
+        // var box3 = document.getElementsByClassName("box3")[0];
+        // console.log(box3.previousElementSibling);
+        //
+        // //所有子节点
+        // var box1 = document.getElementsByClassName("box1")[0];
+        // console.log(box1.childNodes);
+        // //所有子节点（仅元素）
+        // console.log(box1.children);
+
+
+        //节点的操作是以函数形式存在
+
+        //1、创建节点
+        var aaa = document.createElement("li");
+        var bbb = document.createElement("hhhh");
+        console.log(aaa);
+        console.log(bbb);
+
+        //2、添加节点
+        var box1 = document.getElementsByTagName("div")[0];
+        box1.appendChild(aaa); //添加子元素到末尾
+        box1.insertBefore(bbb, aaa) //添加子元素bbb到aaa元素之前
+        console.log(box1);
+
+        //3、删除节点
+        box1.removeChild(bbb);
+        aaa.parentNode.removeChild(aaa); //删除自己
+
+        //4、克隆节点
+        var ccc = box1.cloneNode();
+        var ddd = box1.cloneNode(true); //深复制，连子元素一起复制
+        console.log(ccc);
+        console.log(ddd);
+    </script>
+</body>
+</html>

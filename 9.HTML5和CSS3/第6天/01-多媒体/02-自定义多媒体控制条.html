@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        figure figcaption {
+            line-height: 150px;
+            text-align: center;
+            font-size: 25px;
+        }
+        .player {
+            width: 720px;
+            height: 360px;
+            margin: 10px auto;
+            border: 1px solid #000;
+            background: url(images/loading.gif) center no-repeat #000;
+            background-size: auto 100%;
+            border-radius: 20px;
+            position: relative;
+        }
+        .player video {
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /*控制条*/
+        .controls {
+            width: 700px;
+            height: 40px;
+            background-color: rgba(255, 255, 0, 0.3);
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -350px;
+            border-radius: 10px;
+        }
+        /*暂停，播放按钮*/
+        .controls a.switch {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 10px;
+            top: 10px;
+            color: yellow;
+            text-align: center;
+            line-height: 20px;
+        }
+        /*进度条*/
+        .progress {
+            width: 432px;
+            height: 10px;
+            position: absolute;
+            left: 40px;
+            top: 15px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 4px;
+            overflow: hidden;   /*隐藏后，当前进度条就变圆角，不用自己设置*/
+        }
+        .curr-progress {
+            /*width: 50%;*/
+            width: 0%;
+            height: 10px;
+            background-color: #fff;
+        }
+        .time {
+            position: absolute;
+            width: 120px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            left: 510px;
+            top: 10px;
+            color: #fff;
+        }
+        .extend {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: 20px;
+            top: 10px;
+            color: yellow;
+            text-align: center;
+            line-height: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <!--多媒体-->
+    <figure>
+        <!--多媒体标题-->
+        <figcaption>我的视频</figcaption>
+        <!--播放器-->
+        <div class="player">
+            <!--视频-->
+            <video src="video/fun.mp4"></video>
+            <!--控制条-->
+            <div class="controls">
+                <!--播放暂停-->
+                <a href="javascript:;" class="switch icon-play"></a>
+                <!--进度条-->
+                <div class="progress">
+                    <!--当前进度-->
+                    <div class="curr-progress"></div>
+                </div>
+                <!--时间-->
+                <div class="time">
+                    <span class="curr-time">00:00:00</span>/<span class="total-time">00:00:00</span>
+                </div>
+                <!--全屏-->
+                <a href="javascript:;" class="extend icon-resize-full"></a>
+            </div>
+        </div>
+    </figure>
+
+    <script>
+        // 思路：
+        /*
+        * 1、点击按钮 实现播放暂停并且切换图标
+        * 2、算出视频的总时显示出出来
+        * 3、当视频播放的时候，进度条同步，当前时间同步
+        * 4、点击实现全屏
+        */
+
+        var playBtn = document.querySelector(".switch");     /*播放按钮*/
+        var video = document.querySelector("video");    /*视频*/
+        var totalTimeSpan = document.querySelector(".total-time");  /*显示总时间span*/
+        var currTimeSpan = document.querySelector(".curr-time");    /*显示当前时间span*/
+        var currProgress = document.querySelector(".curr-progress");    /*当前进度*/
+        var extend = document.querySelector(".extend");  /*全屏按钮*/
+        var totalTime = 0;  /*总时间*/
+
+        // 1、点击按钮 实现播放暂停并且切换图标
+        playBtn.onclick = function () {
+        //    如果暂停，则播放；如果播放，则暂停。并切换图标
+            if(video.paused) {
+                video.play();
+            //    切换成暂停图标
+                playBtn.classList.remove("icon-play");
+                playBtn.classList.add("icon-pause");
+            } else {
+                video.pause();
+            //    切换成播放图标
+                playBtn.classList.remove("icon-pause");
+                playBtn.classList.add("icon-play");
+            }
+        }
+
+        // 2、算出视频的总时显示出来
+        // 视频能播放时，即视频加载完成后
+        video.oncanplay = function () {
+            // 获取视频总时长
+            totalTime = video.duration;
+            // console.log(totalTime);     /*单位为秒*/
+
+            // 将秒数转换成00:00:00的格式
+            var h = Math.floor(totalTime/3600);     /*小时*/
+            var m = Math.floor(totalTime%3600/60);  /*分钟*/
+            var s = Math.floor(totalTime%60);       /*秒*/
+            // 补零
+            h = h<10 ? "0"+h : h;
+            m = m<10 ? "0"+m : m;
+            s = s<10 ? "0"+s : s;
+        //    显示总时间
+            totalTimeSpan.innerText = h + ":" + m + ":" + s;
+        }
+
+        // 3、当视频播放的时候，进度条同步，当前时间同步
+    //    当视频播放时间刷新的时候触发
+        video.ontimeupdate = function () {
+        //    获取视频当前播放时间
+            var currTime = video.currentTime;
+            // console.log(currTime);  /*也是以秒为单位*/
+
+            // 将秒数转换成00:00:00的格式
+            var h = Math.floor(currTime/3600);     /*小时*/
+            var m = Math.floor(currTime%3600/60);  /*分钟*/
+            var s = Math.floor(currTime%60);       /*秒*/
+            // 补零
+            h = h<10 ? "0"+h : h;
+            m = m<10 ? "0"+m : m;
+            s = s<10 ? "0"+s : s;
+            //    显示当前时间
+            currTimeSpan.innerText = h + ":" + m + ":" + s;
+
+        //    改变进度条的宽度：当前时间/总时间
+            var value = currTime / totalTime;
+            currProgress.style.width = value*100 + "%";
+        }
+
+        // 4、点击实现全屏
+        extend.onclick = function () {
+        //    全屏的h5代码
+            video.webkitRequestFullScreen();
+        }
+
+    </script>
+</body>
+</html>

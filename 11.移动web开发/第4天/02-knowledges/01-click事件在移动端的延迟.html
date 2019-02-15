@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: limegreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
+<script>
+    // click事件在移动端 有200ms的延迟
+    var box = document.querySelector(".box");
+    // 记录当前系统时间
+    var start = Date.now();
+    box.onclick = function () {
+        var totalTime = Date.now() - start;
+        console.log(totalTime);
+    }
+</script>

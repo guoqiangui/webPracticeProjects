@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--导入图标字体库-->
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        figcaption {
+            text-align: center;
+            line-height: 150px;
+            font-size: 25px;
+            font-family: "microsoft yahei";
+        }
+        .player {
+            width: 720px;
+            height: 360px;
+            border: 1px solid #000;
+            margin: 0 auto;
+            background: #000 url(images/loading.gif) center no-repeat;
+            border-radius: 20px;
+            background-size: auto 100%;
+            position: relative;
+        }
+        .player video {
+            height: 100%;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /*控制条*/
+        .controls {
+            width: 700px;
+            height: 40px;
+            background-color: rgba(0, 255, 0, 0.3);
+            border-radius: 10px;
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+        .switch {
+            width: 20px;
+            height: 20px;
+            color: mediumspringgreen;
+            text-align: center;
+            line-height: 20px;
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+        .progress {
+            width: 432px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+            position: absolute;
+            left: 48px;
+            top: 16px;
+            overflow: hidden;   /*隐藏子盒子多出的部分*/
+        }
+        .progress .curr-progress {
+            width: 50%;
+            height: 10px;
+            background-color: #fff;
+        }
+        .time {
+            color: #fff;
+            position: absolute;
+            right: 58px;
+            top: 10px;
+        }
+        .extend {
+            width: 20px;
+            height: 20px;
+            color: mediumspringgreen;
+            text-align: center;
+            line-height: 20px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!--多媒体-->
+    <figure>
+        <!--多媒体标题-->
+        <figcaption>我的视频</figcaption>
+        <div class="player">
+            <!--视频-->
+            <video src="video/fun.mp4"></video>
+            <!--控制条-->
+            <div class="controls">
+                <!--播放、暂停按钮-->
+                <a href="javascript:;" class="switch icon-play"></a>
+                <!--进度条-->
+                <div class="progress">
+                    <!--当前进度-->
+                    <div class="curr-progress"></div>
+                </div>
+                <!--时间-->
+                <div class="time">
+                    <span class="curr-time">00:00:00</span>/<span class="total-time">00:00:00</span>
+                </div>
+                <!--全屏按钮-->
+                <a href="javascript:;" class="extend icon-resize-full"></a>
+            </div>
+        </div>
+    </figure>
+
+    <script>
+        /*
+        思路：
+            1、点击播放按钮播放视频且切换图标
+            2、得到视频总时间，并显示
+            3、得到当前播放的时间，并显示，进度条按比例显示
+            4、点击全屏按钮全屏播放
+         */
+
+        var video = document.querySelector("video");
+        var playBtn = document.querySelector(".switch");
+        var totalTimeSpan = document.querySelector(".total-time");
+        var currTimeSpan = document.querySelector(".curr-time");
+        var currProgress = document.querySelector(".curr-progress");
+        var extend = document.querySelector(".extend");
+        var totalTime = 0;
+
+        // 1、点击播放按钮播放视频且切换图标
+        playBtn.onclick = function () {
+        //    判断是否播放，如果播放就暂停，如果暂停就播放，并切换图标
+            if(video.paused) {
+                video.play();
+            //    切换图标
+                this.classList.remove("icon-play");
+                this.classList.add("icon-pause");
+            } else {
+                video.pause();
+                this.classList.remove("icon-pause");
+                this.classList.add("icon-play");
+            }
+        }
+
+        // 2、得到视频总时间，并显示
+        //  视频可播放事件（即视频加载完成）
+        video.oncanplay = function () {
+        //    得到视频总时间（秒）
+            totalTime = video.duration;
+
+        //    转换成00:00:00格式
+            var h = Math.floor(totalTime/3600);     /*小时*/
+            var m = Math.floor(totalTime%3600/60);  /*分钟*/
+            var s = Math.floor(totalTime%60);       /*秒*/
+
+        //    补零
+            h = h<10 ? "0"+h : h;
+            m = m<10 ? "0"+m : m;
+            s = s<10 ? "0"+s : s;
+
+        //    显示时间
+            totalTimeSpan.innerText = h+":"+m+":"+s;
+        }
+
+        // 3、得到当前播放的时间，并显示
+        //  当播放时间更新时触发
+        video.ontimeupdate = function () {
+        //    得到当前播放时间
+            var currTime = video.currentTime;
+            // console.log(currTime);
+
+            //    转换成00:00:00格式
+            var h = Math.floor(currTime/3600);     /*小时*/
+            var m = Math.floor(currTime%3600/60);  /*分钟*/
+            var s = Math.floor(currTime%60);       /*秒*/
+
+            //    补零
+            h = h<10 ? "0"+h : h;
+            m = m<10 ? "0"+m : m;
+            s = s<10 ? "0"+s : s;
+
+            //    显示时间
+            currTimeSpan.innerText = h+":"+m+":"+s;
+
+        //    进度条按比例显示（当前时间/总时间）
+            var scale = currTime/totalTime;
+            currProgress.style.width = scale*100 + "%";     /*转化成百分比*/
+        }
+
+        // 4、点击全屏按钮全屏播放
+        extend.onclick = function () {
+            video.webkitRequestFullScreen();
+        }
+    </script>
+</body>
+</html>

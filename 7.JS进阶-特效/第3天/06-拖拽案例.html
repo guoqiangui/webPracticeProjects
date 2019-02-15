@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 300px;
+            border: 6px solid #eee;
+            position: absolute;
+            left: 400px;
+            top: 400px;
+        }
+        .title {
+            height: 25px;
+            background-color: cadetblue;
+            color: #fff;
+            cursor: move;
+        }
+        .title-left {
+            float: left;
+        }
+        .title span {
+            float: right;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="title">
+            <div class="title-left">注册信息（可以拖拽）</div>
+            <span>【关闭】</span>
+        </div>
+    </div>
+
+    <script src="my.js"></script>
+    <script>
+        /*
+        需求：鼠标拖拽title的时候整个对话框都要跟着移动
+        思路：
+            1、给title绑定鼠标按住事件（onmousedown）
+            2、鼠标按住事件里面再嵌套鼠标移动事件，这样就可以模拟鼠标拖拽
+            3、记录鼠标在页面中的坐标
+            4、处理坐标，让鼠标保持在title中同一位置
+            4、把坐标赋给box
+            6、鼠标弹起的时候清除onmousemove事件
+         */
+
+        var title = document.getElementsByClassName("title")[0];
+        var box = document.getElementsByClassName("box")[0];
+        // 1、给title绑定鼠标按住事件（onmousedown）
+        title.onmousedown = function (event) {
+            //记录鼠标在box中的位置，以后减去可以让鼠标固定在盒子的某个位置
+            //新五步
+            event = event || window.event;
+            var pageY = event.pageY || scroll().top + event.clientY;
+            var pageX = event.pageX || scroll().left + event.clientX;
+            var y = pageY - box.offsetTop;
+            var x = pageX - box.offsetLeft;
+            // 2、鼠标按住事件里面再嵌套鼠标移动事件，这样就可以模拟鼠标拖拽
+            document.onmousemove = function (event) {
+                // 3、记录鼠标在页面中的坐标
+                event = event || window.event;
+                var yy = event.pageY || scroll().top + event.clientY;
+                var xx = event.pageX || scroll().left + event.clientX;
+                //对坐标进行二次加工
+                yy = yy - y;
+                xx = xx - x;
+                // 4、把坐标赋给box
+                box.style.top = yy + "px";
+                box.style.left = xx + "px";
+
+                //清除拖拽时title的文字被选中
+                //可以禁止文本选中
+                window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+            }
+        }
+
+        // 6、鼠标弹起的时候清除onmousemove事件（用bar.onmouseup解绑可能有bug，因为鼠标不一定在滚动条内松开，有可能在页面某一处松开）
+        document.onmouseup = function () {
+            //清除事件
+            document.onmousemove = null;
+        }
+
+
+    </script>
+</body>
+</html>

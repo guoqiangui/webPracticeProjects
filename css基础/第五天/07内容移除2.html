@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box{
+			/* 内容移除方法2 */
+			/* 既有文字又不让用户看到 */
+			background: pink;
+			width: 500px;
+			/* height: 200px; */
+			height: 0px;
+			padding-top: 200px;/*核心*/
+			overflow: hidden;/*文字已经在盒子外，所以被隐藏*/
+		}
+	</style>
+</head>
+<body>
+	<div class="box">给搜索引擎看的</div>
+</body>
+</html>

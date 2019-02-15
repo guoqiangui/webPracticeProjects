@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            margin: 100px auto;
+            background-color: forestgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
+<!--导入封装的js-->
+<script src="event_tap.js"></script>
+<script>
+    var box = document.querySelector(".box");
+    event_tap(box, function () {
+        console.log("触发了tap事件");
+    });
+</script>

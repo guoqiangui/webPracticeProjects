@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //concat()不修改原来的字符串
+        var str1 = "abc";
+        var str2 = "123";
+        var str3 = str1.concat(str2);
+        console.log(str1);
+        console.log(str2);
+        console.log(str3);
+
+        var str = "I love my family";
+
+        //slice()不修改原来的字符串
+        // console.log(str.slice(3));  //从索引为3开始截取到末尾
+        // // console.log(str);
+        // console.log(str.slice(0, 3));   // [0, 3)
+        // console.log(str.slice(-3)); //从倒数第三个开始截取到末尾
+
+        // console.log(str.substr(3));
+        // console.log(str.substr(3, 5));  //从索引为3开始，截取5个
+        // console.log(str.substr(-3));    //从-3开始截取到末尾
+
+        console.log(str.substring(3));  //从索引为3开始，截取到末尾
+        console.log(str.substring(3, 5));   //[0, 3)
+        console.log(str.substring(-3)); //全部截取
+
+
+    </script>
+</body>
+</html>

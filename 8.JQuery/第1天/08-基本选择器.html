@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            //基本选择器的三种方式获取元素（参考css）
+            var div = $("div");
+            var cbox = $(".box");
+            var box = $("#box");
+
+            //css() 只修改一个属性的话，传入属性和值即可；修改多个属性，可以传入json
+            div.css({"width": 100, "height": 100, "background": "pink", "margin": 10});
+            cbox.css("background", "red");
+            box.css("background", "green");
+        });
+    </script>
+</head>
+<body>
+    <div></div>
+    <div class="box"></div>
+    <div id="box"></div>
+    <div class="box"></div>
+    <div></div>
+</body>
+</html>

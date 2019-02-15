@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*初始化*/
+        body, ul, li, h3 {
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+        }
+        ul {
+            list-style: none;
+        }
+
+        section {
+            width: 1000px;
+            margin: 50px auto;
+        }
+        ul {
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+        li {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 10px;
+        }
+
+        /*主轴的对齐方式：justify-content: flex-start*/
+        section:nth-child(1) ul {
+            display: flex;
+            /*主轴的对齐方式：从主轴开始的方向对齐*/
+            justify-content: flex-start;
+        }
+
+        /*主轴的对齐方式：justify-content: flex-end*/
+        section:nth-child(2) ul {
+            display: flex;
+            /*主轴的对齐方式：从主轴结束的方向对齐*/
+            justify-content: flex-end;  /*就是右对齐，与右浮动不同*/
+        }
+
+        /*主轴的对齐方式: justify-content: center*/
+        section:nth-child(3) ul {
+            display: flex;
+            /*主轴的对齐方式：居中对齐*/
+            justify-content: center;
+        }
+
+        /*主轴的对齐方式: justify-content: space-round*/
+        section:nth-child(4) ul {
+            display: flex;
+            /*主轴的对齐方式：在父盒子中平分*/
+            justify-content: space-around;
+        }
+
+    </style>
+</head>
+<body>
+    <section>
+        <h3>主轴的对齐方式：justify-content: flex-start</h3>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </section>
+    <section>
+        <h3>主轴的对齐方式：justify-content: flex-end</h3>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </section>
+    <section>
+        <h3>主轴的对齐方式：justify-content: center</h3>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </section>
+    <section>
+        <h3>主轴的对齐方式：justify-content: space-around</h3>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </section>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+       * canvas是基于状态：
+       * strokeStyle = 'red';
+       * strokeStyle = 'blue';
+       * 主要strokeStyle变化了，那么接下来所有和描边相关的绘制方法都会受到影响。
+       * */
+
+    /*
+        * 状态就是变量不同时期的值。
+        * var a = 1;
+        * a = 2;
+        * a = 3;
+        * */
+
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    Person.prototype.sayName = function () {
+        console.log(this.name);
+    };
+
+    var p1 = new Person("小明", 30);
+    p1.sayName();
+
+    // sayName这个方法就是基于name属性(状态)变化而变化。
+    p1.name = "小红";
+    p1.sayName();
+</script>
+</body>
+</html>

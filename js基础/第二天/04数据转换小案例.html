@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//1、输入一个三位数，计算每个数字的和
+		//2、输出用户输入的三个数字
+		var num = prompt("请输入一个三位数");
+		var bai = Math.floor(num/100); //获得百位
+		var shi = parseInt(num%100/10); //获得十位
+		var ge = num%10; //获得十位
+		alert("百位："+bai+"，十位："+shi+"，个位："+ge);
+		alert("他们的和是： "+(bai+shi+ge));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

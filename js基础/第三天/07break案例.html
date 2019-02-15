@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//找出1~100中的质数（1不是质数）
+		//将数字n与2到(n-1)之间的所有数相除，如果除尽，则不是质数
+		var flag = 0; //标识符，默认为0，如果为1就不是质数
+		for(var i=1;i<=100;i++) {
+			for(var j=2;j<i;j++) { //除数
+				if(i%j==0) { //除尽代表不是质数，赋值1
+					flag = 1;
+					break; //跳出循环体（即里面的for循环，但外面一层for循环不会跳出）
+				} else {
+					flag = 0; //除不尽就赋值0
+				}
+			}
+			//循环结束后如果flag还是0就为质数
+			if(flag == 0) {
+				console.log(i);
+			}
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

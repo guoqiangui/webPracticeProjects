@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flappy_bird</title>
+    <style>
+        canvas {
+            border:1px solid red;
+        }
+        img {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="cvs" width="500" height="500"></canvas>
+
+    <script src="loadImage.js"></script>
+    <script>
+        /*
+         * 绘制背景
+         * construcotor { Sky } 背景构造函数
+         * parasm { ctx: Context } 绘制环境
+         * parasm { img: Image } 背景图像
+         * parasm { speed: number } 背景速度
+         * */
+        function Sky(ctx, img, speed) {
+            this.ctx = ctx;
+            this.img = img;
+            this.speed = speed;
+
+            // 每创建一个实例，实例个数自增
+            Sky.len ++;
+
+            // 图片的原点坐标，根据实例个数改变
+            this.x = img.width * (Sky.len - 1);
+            this.y = 0;
+        }
+
+        // 背景的实例个数
+        Sky.len = 0;
+
+        Sky.prototype = {
+            constructor: Sky,
+
+            // 绘制背景
+            draw: function () {
+                this.ctx.drawImage(this.img, this.x, this.y, this.img.width, this.img.height);
+            },
+
+            // 下一次绘制图片，更新数据
+            update: function () {
+                // x轴改变
+                this.x -= this.speed;
+                // 判断是否走完一张，走完了就移动到另一张后面
+                if(this.x <= -this.img.width) {
+                    this.x = (Sky.len - 1) * this.img.width;
+                }
+            }
+        };
+
+
+        /*
+        * constructor { Bird } 鸟构造函数
+        * param { ctx: Context } 绘图环境
+        * param { img: Image } 鸟图
+        * param { widthFrame: number } 一排的帧数
+        * param { heightFrame: number } 一列的帧数
+        * param { x: number } 鸟的起始x轴坐标
+        * param { y: number } 鸟的起始y轴坐标
+        * */
+        function Bird(ctx, img, widthFrame, heightFrame, x, y) {
+            this.ctx = ctx;
+            this.img = img;
+            this.widthFrame = widthFrame;
+            this.heightFrame = heightFrame;
+            this.x = x;
+            this.y = y;
+
+            // 鸟的宽和高
+            this.width = this.img.width / this.widthFrame;
+            this.height = this.img.height / this.heightFrame;
+
+            // 当前帧
+            this.currentFrame = 0;
+
+            // 鸟的下坠速度
+            this.speed = 5;
+            // 加速度
+            this.aSpeed = 0.5;
+
+            // 绑定事件
+            this._bind();
+        }
+        Bird.prototype = {
+            constructor: Bird,
+
+            // 画一只鸟
+            draw: function () {
+                // 鸟倾斜的基础弧度（5度）
+                var baseRadian = Math.PI / 180 * 5;
+
+                // 根据速度算出鸟倾斜的弧度
+                var totalRadian = baseRadian * this.speed;
+                // 限制不超过正负45度
+                if(totalRadian> Math.PI / 4) {
+                    totalRadian = Math.PI / 4;
+                } else if(totalRadian < -Math.PI / 4) {
+                    totalRadian = -Math.PI / 4;
+                }
+
+                // 保存当前状态
+                this.ctx.save();
+
+                // 先将坐标移到小鸟的中心点
+                this.ctx.translate(this.x + this.width / 2, this.y + this.height / 2);
+                // 再旋转坐标轴
+                this.ctx.rotate(totalRadian);
+                // 小鸟的坐标在旋转后变成负的小鸟的宽度的一半和负的高度的一半
+                this.ctx.drawImage(this.img,
+                    this.currentFrame * this.width, 0, this.width, this.height,
+                    -this.width / 2, -this.height / 2, this.width, this.height
+                    );
+
+                // 画完之后，回滚，不回滚整个游戏的坐标就乱了
+                this.ctx.restore();
+            },
+
+            // 鸟的下一帧
+            update: function () {
+                this.currentFrame ++;
+                // 判断帧数是否超过总帧数，超过了就回到第一帧
+                if(this.currentFrame >= this.widthFrame) {
+                    this.currentFrame = 0;
+                }
+
+                // 鸟默认会自动下坠
+                this.y += this.speed;
+                // 加速度是加在速度上的
+                this.speed += this.aSpeed;
+            }, 
+            
+            // 绑定鼠标点击事件
+            _bind: function () {
+                // 保存this
+                var that = this;
+                // 给画布绑定
+                this.ctx.canvas.addEventListener("click", function () {
+                    // 将速度立刻变成-5，小鸟就会向上移动，由于有加速度，小鸟会逐渐变慢，停止后开始逐渐加速下降
+                    that.speed = -5;
+                });
+            }
+        };
+
+
+        /*
+        * constrcutor { Land } 大地
+        * param { ctx: Context } 绘图环境
+        * param { img: Image } 绘制的图像资源
+        * param { speed: number } 速度
+        * */
+        function Land(ctx, img, speed) {
+            this.ctx = ctx;
+            this.img = img;
+            this.speed = speed;
+
+            // 实例个数自增
+            Land.len ++;
+
+            // 绘制大地的坐标
+            this.x = this.img.width * (Land.len - 1);
+            this.y = this.ctx.canvas.height - this.img.height;
+        }
+
+        // 大地实例个数
+        Land.len = 0;
+
+        Land.prototype = {
+            constructor: Land,
+
+            draw: function () {
+                this.ctx.drawImage(this.img, this.x, this.y, this.img.width, this.img.height);
+            },
+
+            // 更新大地的下一帧数据
+            update: function () {
+                this.x -= this.speed;
+                // 如果一张大地已经完全走出画布，那么将其拼接到最后，实现重复滚动
+                if(this.x <= -this.img.width) {
+                    // this.x = this.img.width * (Land.len - 1); 这种方式如果刚好速度与宽度不成倍数的话，会在拼接后产生缝隙，直接在原来的基础上加就不会有缝隙了
+                    this.x += this.img.width * Land.len;
+                }
+            }
+        };
+
+
+        /*
+        * 管道的特点：
+        * 1、成对出现，所以x轴可以共享，但是y轴不共享
+        * 2、上下管道之间的路径固定，可以由用户指定
+        * 3、管道的高度是随机生成的，随机生成上管道的高度，下管道就可以计算了
+        * 4、当管道走出画布，从右边出来时，高度需要重新随机生成
+        * */
+
+        /*
+        * constructor { Pipe } 管道
+        * param { ctx: Context } 绘图环境
+        * param { imgDown：Image } 口朝下的管道，在画布的上面
+        * param { imgUp：Image } 口朝上的管道，在画布的下面
+        * param { space：number } 上下管道的间距
+        * param { landHeight：number } 大地的高度
+        * param { speed：number } 速度
+        * */
+        function Pipe(ctx, imgDown, imgUp, space, landHeight, speed) {
+            this.ctx = ctx;
+            this.imgDown = imgDown;
+            this.imgUp = imgUp;
+            this.space = space;
+            this.landHeight = landHeight;
+            this.speed = speed;
+
+            // 管道图片的宽高
+            this.width = this.imgDown.width;
+            this.height = this.imgDown.height;
+
+            // 实例数量自增
+            Pipe.len ++;
+
+            // 管道的x坐标
+            this.x = 300 + (this.width * 4) * (Pipe.len - 1);
+            // 上管道的y坐标
+            this.pipeDownY;
+            // 下管道的y坐标
+            this.pipeUpY;
+
+            // 初始化管道的高度数据
+            this._init();
+        }
+
+        // 实例数量
+        Pipe.len = 0;
+
+        Pipe.prototype = {
+            constructor: Pipe,
+
+            // 初始化管道的高度数据
+            _init: function () {
+                // 计算上下两根管道显示的高度的和
+                var totalHeight = this.ctx.canvas.height - this.landHeight - this.space;
+                // 每根管道显示的最小高度
+                var minHeight = 50;
+                // 上管道可显示高度的最大值（减去了上下管道最小值外的最大值）
+                var maxHeight = totalHeight - minHeight*2;
+                // 根据可显示高度的最大值随机生成上管道的显示高度，注意不能小于最小高度
+                var pipeDownHeight = Math.random() * maxHeight + minHeight;
+
+                // 上管道的y坐标
+                this.pipeDownY = pipeDownHeight - this.height;
+                // 下管道的y坐标
+                this.pipeUpY = pipeDownHeight + this.space;
+            },
+
+            draw: function () {
+                // 画上管道
+                this.ctx.drawImage(this.imgDown, this.x, this.pipeDownY, this.width, this.height);
+                // 画下管道
+                this.ctx.drawImage(this.imgUp, this.x, this.pipeUpY, this.width, this.height);
+            },
+
+            // 管道的下一帧数据
+            update: function () {
+                this.x -= this.speed;
+                // 需要无缝滚动，当管道过了画布的时候拼接到最后
+                if(this.x <= -this.width) {
+                    this.x += (this.width * 4) * Pipe.len;
+                    // 拼接后需要重新生成管道的高度
+                    this._init();
+                }
+            }
+        };
+
+
+
+
+        var cvs = document.getElementById("cvs");
+        var ctx = cvs.getContext("2d");
+
+        var imgUrl = {
+            bird: "img/bird.png",
+            land: "img/land.png",
+            pipeDown: "img/pipeDown.png",
+            pipeUp: "img/pipeUp.png",
+            sky: "img/sky.png"
+        };
+
+        loadImage(imgUrl, function (imgObj) {
+            // 绘制背景
+            // 背景有多大，画布就多大
+            ctx.canvas.width = imgObj.sky.width;
+            ctx.canvas.height = imgObj.sky.height;
+            var sky = new Sky(ctx, imgObj.sky, 5);
+            sky.draw();
+            // 为了达到无缝滚动，需要2张背景
+            var sky2 = new Sky(ctx, imgObj.sky, 5);
+            sky2.draw();
+
+            // 绘制鸟
+            var bird = new Bird(ctx, imgObj.bird, 3, 1, 20, 20);
+            bird.draw();
+
+            // 绘制管道
+            var pipe = new Pipe(ctx, imgObj.pipeDown, imgObj.pipeUp, 150, imgObj.land.height, 5);
+            var pipe2 = new Pipe(ctx, imgObj.pipeDown, imgObj.pipeUp, 150, imgObj.land.height, 5);
+            var pipe3 = new Pipe(ctx, imgObj.pipeDown, imgObj.pipeUp, 150, imgObj.land.height, 5);
+            var pipe4 = new Pipe(ctx, imgObj.pipeDown, imgObj.pipeUp, 150, imgObj.land.height, 5);
+            pipe.draw();
+            pipe2.draw();
+            pipe3.draw();
+            pipe4.draw();
+
+            // 绘制大地，需要3张才能填满画布，需要4张才能无缝滚动
+            var land = new Land(ctx, imgObj.land, 5);
+            var land2 = new Land(ctx, imgObj.land, 5);
+            var land3 = new Land(ctx, imgObj.land, 5);
+            var land4 = new Land(ctx, imgObj.land, 5);
+            land.draw();
+            land2.draw();
+            land3.draw();
+            land4.draw();
+
+            // 鸟的中心坐标
+            var birdX;
+            var birdY;
+
+
+
+            var timer = setInterval(function () {
+                // 让背景动起来
+                sky.update();
+                sky.draw();
+
+                sky2.update();
+                sky2.draw();
+
+                // 让管道动起来
+                pipe.update();
+                pipe.draw();
+
+                pipe2.update();
+                pipe2.draw();
+
+                pipe3.update();
+                pipe3.draw();
+
+                pipe4.update();
+                pipe4.draw();
+
+                // 让大地动起来
+                land.update();
+                land.draw();
+
+                land2.update();
+                land2.draw();
+
+                land3.update();
+                land3.draw();
+
+                land4.update();
+                land4.draw();
+
+                // 让鸟动起来
+                bird.update();
+                bird.draw();
+
+
+                // 判断鸟的中心坐标是否与管道接触，接触了游戏结束
+                // 获取鸟的中心坐标
+                birdX = bird.x + bird.width / 2;
+                birdY = bird.y + bird.height / 2;
+
+                // 清除之前的路径
+                ctx.beginPath();
+
+                // 给管道的外面画上路径
+                ctx.rect(pipe.x, pipe.pipeDownY, pipe.width, pipe.height);
+                ctx.rect(pipe.x, pipe.pipeUpY, pipe.width, pipe.height);
+
+                ctx.rect(pipe2.x, pipe2.pipeDownY, pipe2.width, pipe2.height);
+                ctx.rect(pipe2.x, pipe2.pipeUpY, pipe2.width, pipe2.height);
+
+                ctx.rect(pipe3.x, pipe3.pipeDownY, pipe3.width, pipe3.height);
+                ctx.rect(pipe3.x, pipe3.pipeUpY, pipe3.width, pipe3.height);
+
+                ctx.rect(pipe4.x, pipe4.pipeDownY, pipe4.width, pipe4.height);
+                ctx.rect(pipe4.x, pipe4.pipeUpY, pipe4.width, pipe4.height);
+
+                // ctx.stroke();
+
+                // 判断坐标是否在路径内、判断鸟是否撞到画布顶部或大地
+                if(ctx.isPointInPath(birdX, birdY) || birdY <= 0 || birdY >= ctx.canvas.height - imgObj.land.height) {
+                    // 接触到了或撞到了就清除定时器
+                    clearInterval(timer);
+
+                    // 并显示游戏结束
+                    // 画一个半透明幕布
+                    ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+                    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+                    // 画Game Over文字
+                    ctx.font = "50px 微软雅黑";
+                    ctx.fillStyle = "red";
+                    // 文字居中
+                    ctx.textAlign = "center";
+                    ctx.textBaseline = "middle";
+                    ctx.fillText("Game Over!!!", ctx.canvas.width / 2, ctx.canvas.height / 2);
+                }
+
+
+            }, 50);
+
+
+        });
+    </script>
+</body>
+</html>

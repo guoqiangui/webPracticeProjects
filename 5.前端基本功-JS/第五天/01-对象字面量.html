@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //类比数组[]，实际上数组是特殊的对象
+
+    var obj = new Object();
+    console.log(obj); //{}
+
+    //对象的字面量就是一个{}，里面的属性和方法是以键值对的形式出现的
+    var obj2 = {};
+    console.log(obj2); //也是{}
+
+    var obj3 = {name: "张三", age: 25, study: function () {
+            alert(this.name+"在好好学习");
+        }};     //属性可加""也可以不加
+    console.log(obj3.name);
+    console.log(obj3.age);
+    obj3.study();
+</script>
+</body>
+</html>

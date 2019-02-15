@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //死循环求和
+    // var sum = 0;
+    // var i = 1;
+    // while(true) {
+    //     sum += i;
+    //     i++;
+    //     if(i>100) {
+    //         break;
+    //     }
+    // }
+    // console.log(sum);
+
+    //需求：点击取消一直弹窗下去。如果点击确定，立马结婚。
+    var bool = true;
+    do {
+        bool = confirm("我帅不帅？");
+        if(bool) {
+            alert("哈哈又被你发现了！");
+        }
+    } while(!bool)
+</script>
+</body>
+</html>

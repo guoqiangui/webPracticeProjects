@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 用来储存歌曲对象的数组
+    var songList = [
+        {
+            songName: "New Divide",
+            singer: "Linkin Park"
+        }, {
+            songName: "演员",
+            singer: "薛之谦"
+        }, {
+            songName: "死了都要爱",
+            singer: "信乐团"
+        }
+    ];
+
+    // 封装一遍发现，查找歌曲在删、改操作中也会用到，可以在删、改中调用查找函数
+    /**
+     * 添加歌曲
+     * @param song 歌曲对象
+     */
+    function addSong(song) {
+        songList.push(song);
+    }
+
+    // addSong({
+    //     songName: "Numb",
+    //     singer: "Linkin Park"
+    // });
+    // console.log(songList);
+
+    /**
+     * 根据歌名来删除歌曲
+     * @param songName
+     */
+    function removeSong(songName) {
+        // 先按歌名查找
+        // for(var i=0; i<songList.length; i++) {
+        //     if(songList[i].songName == songName) {
+        //         songList.splice(i, 1);
+        //     }
+        // }
+        var song = selectSong(songName);
+        // 获取查找到的歌曲的索引
+        var index = songList.indexOf(song);
+        songList.splice(index, 1);
+    }
+
+    // removeSong("死了都要爱");
+    // console.log(songList);
+
+    /**
+     * 修改歌曲的歌手名
+     * @param songName
+     * @param singer
+     */
+    function updateSong(songName, singer) {
+        // 先按歌名查找
+        // for(var i=0; i<songList.length; i++) {
+        //     if(songList[i].songName == songName) {
+        //         songList[i].singer = singer;
+        //     }
+        // }
+        var song = selectSong(songName);
+        song.singer = singer;
+    }
+
+    // updateSong("演员", "人渣谦");
+    // console.log(songList);
+
+    /**
+     * 根据歌名查找歌曲，返回查找到的歌曲对象
+     * @param songName
+     */
+    function selectSong(songName) {
+        for(var i=0; i<songList.length; i++) {
+            if(songList[i].songName == songName) {
+                return songList[i];
+            }
+        }
+    }
+
+    // console.log(selectSong("演员"));
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            margin: 5px;
+            border: 6px solid gray;
+        }
+        p {
+            width: 200px;
+            height: 200px;
+            border: 6px solid yellow;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <p></p>
+    <p></p>
+    <p></p>
+
+<script>
+    //案例：求一个数组中的最大值，用上下文调用模式
+    var arr = [9, 1, 4, 10, 7, 22, 8];
+
+    // Math.max方法调用形式
+    // Math.max(9, 1, 4, 10);
+    // 利用apply，因为apply传参数形式刚好为数组
+    var max = Math.max.apply(null, arr);  // 传null或undefined代表this默认为window
+    console.log(max);
+
+
+    //案例：将传入的参数打印，参数之间用-相互连接
+    // join的调用形式
+    // 数组.join("-")
+    function foo() {
+        // console.log(arguments);
+        // 伪数组没有join方法，但是可以利用上下文调用方式借用数组的join方法
+        // return [].join.call(arguments, "-");
+        return Array.prototype.join.call(arguments, "-");
+    }
+    var str = foo(1, 3, 5, 7, 9);
+    console.log(str);
+
+
+    //案例：给页面上所有的 div 和 p 标签添加背景色
+    var divs = document.querySelectorAll("div");
+    var ps = document.querySelectorAll("p");
+
+    // for (var i = 0; i < divs.length; i++) {
+    //     var div = divs[i];
+    //     div.style.backgroundColor = "green";
+    // }
+    //
+    // for (var j = 0; j < ps.length; j++) {
+    //     var p = ps[j];
+    //     p.style.backgroundColor = "pink";
+    // }
+
+    // 将所有的div和p放到一个数组中，就不用遍历两遍了
+    // 数组.push() 方法是可以一次加入多个参数的
+    // 数组.push(参数1, 参数2, ...)
+    var arr = [];
+    Array.prototype.push.apply(arr, divs);
+    Array.prototype.push.apply(arr, ps);
+    // console.log(arr);
+    for(var i=0; i<arr.length; i++) {
+        arr[i].style.backgroundColor = "green";
+    }
+
+    //如果使用arr.push()直接把divs传进来
+    //那么相当于在arr中的第一个元素中存储了一个divs数组
+    //但是我们需要把divs中的每一个元素单独的存入arr中
+    //所以需要调用push方法的如下形式  push(1,2,4,4,5)
+    //要实现这个形式的调用，就用到了apply方法的第二个参数的特性
+    //在调用的时候，会第二个参数的数组，拆成每一个元素以（a,b,c,d,e,f,g） 传入函数
+</script>
+</body>
+</html>

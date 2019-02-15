@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas id="cvs" width="500" height="500"></canvas>
+
+<script>
+    var cvs = document.getElementById("cvs");
+    var ctx = cvs.getContext("2d");
+
+    /*
+        * 旋转坐标轴：
+        * ctx.rotate( 旋转的弧度 )
+        * 备注：已绘制的图形不会受到影响，旋转会累加。
+        * */
+    ctx.fillStyle = "green";
+    ctx.fillRect(100, 100, 100, 100);
+
+    ctx.rotate(Math.PI / 4);
+
+    ctx.fillStyle = "red";
+    ctx.fillRect(100, 100, 100, 100);
+</script>
+</body>
+</html>

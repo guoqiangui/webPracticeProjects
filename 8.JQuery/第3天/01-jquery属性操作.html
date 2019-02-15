@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            //点击绑定按钮给checkbox添加checked属性
+            var checkbox = $("input:checkbox"); //这种方式可以获取type为checkbox的input标签
+            var btn = $("button");
+            // console.log(checkbox);
+            btn.click(function () {
+                // checkbox.aaa = 111;  //这种方式只是绑在了对象上，并没有绑在标签上
+                // console.log(checkbox.aaa);
+
+                //attr()    可以绑定属性，也可以获取属性值
+                checkbox.attr("aaa", 111);  //绑定属性
+                console.log(checkbox.attr("aaa"));  //获取属性值
+
+                //对于表单中的特殊属性, 如checked、selected等, 用prop()方法，不用attr()
+                checkbox.prop("checked", true);
+                console.log(checkbox.prop("checked"));
+
+                //移除属性, removeAttr()
+                checkbox.removeAttr("aaa");
+
+            });
+            
+        });
+    </script>
+</head>
+<body>
+    <button>绑定</button>
+    <input type="text">
+    <input type="checkbox">
+</body>
+</html>

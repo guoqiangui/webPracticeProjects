@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body, ul, li, h3 {
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+        }
+        ul {
+            list-style: none;
+        }
+
+        body {
+            background-color: #eee;
+        }
+        section {
+            width: 1000px;
+            margin: 50px auto;
+        }
+        ul {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            height: 500px;
+        }
+        li {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 10px;
+        }
+
+        /*前提；给了ul高度*/
+        /*侧轴的对齐方式: align-items: flex-start*/
+        section:nth-child(1) ul {
+            display: flex;
+            /*侧轴对齐方向：从侧轴开始的地方开始对齐*/
+            align-items: flex-start;
+        }
+
+        /*侧轴的对齐方式: align-items: flex-end*/
+        section:nth-child(2) ul {
+            display: flex;
+            /*侧轴对齐方向：从侧轴结束的地方开始对齐*/
+            align-items: flex-end;
+        }
+
+        /*侧轴的对齐方式: align-items: center*/
+        section:nth-child(3) ul {
+            display: flex;
+            /*侧轴对齐方向：居中*/
+            align-items: center;
+        }
+
+        /*侧轴的对齐方式: align-items: baseline*/
+        section:nth-child(4) ul {
+            display: flex;
+            /*侧轴的对齐方式：基线（默认同flex-start）*/
+            align-items: baseline;
+        }
+
+        /*侧轴的对齐方式: align-items: stretch*/
+        section:nth-child(5) ul {
+            display: flex;
+            /*侧轴对齐方式：拉伸*/
+            align-items: stretch;
+        }
+        section:nth-child(5) ul>li {
+            height: auto;   /*需要释放li的高度才能看到效果*/
+        }
+
+
+    </style>
+</head>
+<body>
+    <section>
+        <h3>侧轴的对齐方式: align-items: flex-start</h3>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </section>
+    <section>
+        <h3>侧轴的对齐方式: align-items: flex-end</h3>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </section>
+    <section>
+        <h3>侧轴的对齐方式: align-items: center</h3>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </section>
+    <section>
+        <h3>侧轴的对齐方式: align-items: baseline</h3>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </section>
+    <section>
+        <h3>侧轴的对齐方式: align-items: stretch</h3>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </section>
+</body>
+</html>

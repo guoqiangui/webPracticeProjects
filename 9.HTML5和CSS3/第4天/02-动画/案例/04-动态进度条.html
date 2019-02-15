@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .progress {
+            width: 800px;
+            height: 50px;
+            border: 1px solid #000;
+            margin: 150px auto;
+
+            background: linear-gradient(
+                135deg,
+                #000 0%,
+                #000 25%,
+                #fff 25%,
+                #fff 50%,
+                #000 50%,
+                #000 75%,
+                #fff 75%,
+                #fff 100%
+            );
+            background-size: 50px 50px;
+            animation: move 1s infinite linear;
+        }
+
+        @keyframes move {
+            from {
+                background-position: -50px 0;
+            }
+            to {
+                background-position: 0 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress"></div>
+</body>
+</html>

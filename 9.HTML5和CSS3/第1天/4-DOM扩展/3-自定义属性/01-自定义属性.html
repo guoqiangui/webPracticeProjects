@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <!--在标签中添加自定义属性，必须以data-开头-->
+    <div class="box" data-index="222" data-my-name="小明">div</div>
+
+    <script>
+        var box = document.querySelector(".box");
+        //js里面的自定义属性（并没有加在标签上）
+        // box.index = 111;
+        // console.log(box.index);
+
+        //要获取标签中的自定义属性，需要用dataset['data-后面的部分']
+        console.log(box.dataset["index"]);
+        //data-my-name这样的形式的自定义属性，获取时要改成驼峰形式
+        console.log(box.dataset["myName"]);
+
+    </script>
+</body>
+</html>

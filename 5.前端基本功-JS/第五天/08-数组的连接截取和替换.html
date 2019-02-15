@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // var arr1 = ["a","b","c"];
+    // var arr2 = [1,2,3];
+    // //将两个数组连接起来，返回连接后的新数组，不修改元素组
+    // var arr3 = arr1.concat(arr2);
+    // console.log(arr3);
+    // console.log(arr1);
+
+    //slice 截取数组，返回截取的新数组，不修改原数组，取负数表示倒数第几个
+    // var arr1 = [1, 2, 3, 4, 5, 6, 7];
+    // // var arr2 = arr1.slice(3); //从索引为n的元素一致截取到末尾
+    // // var arr2 = arr1.slice(-3); //从倒数第n个一直截取到末尾
+    // var arr2 = arr1.slice(2,4); //从索引为2截取到索引为4，但不包含4（左闭右开）
+    // console.log(arr1);
+    // console.log(arr2);
+    // // console.log(arr1.slice(-2)); //截取前n个元素
+    // // console.log(arr3);
+
+    //splice 操作和截取原数组（修改原数组），返回被删除元素组成的数组
+    var arr1 = ["a", "b", "c", "d", "e", "f"];
+    console.log(arr1);
+    // arr1.splice(1, 0, "x"); //在索引为1处开始，删除0个元素，插入"x"元素
+    // arr1.splice(1, 1, "B"); //在索引为1处开始，删除1个元素，插入"B"元素
+    arr1.splice(2); //从索引为2处开始删除所有元素
+    console.log(arr1);
+</script>
+</body>
+</html>

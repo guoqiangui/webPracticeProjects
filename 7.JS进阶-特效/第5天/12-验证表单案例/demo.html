@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #ccc;
+        }
+        .box {
+            width: 450px;
+            height: 330px;
+            border: 1px solid #aaa;
+            background-color: #eee;
+            margin: 150px auto;
+            padding-left: 50px;
+            padding-top: 50px;
+        }
+        label {
+            margin-right: 10px;
+        }
+        span {
+            margin-left: 20px;
+            color: #aaa;
+            /*background: url(images/right.png) no-repeat left;*/
+            padding: 0 20px;
+        }
+        /*错误的样式*/
+        .wrong {
+            color: red;
+            background: url(images/error.png) no-repeat left;
+        }
+        /*正确的样式*/
+        .right {
+            color: green;
+            background: url(images/right.png) no-repeat left;
+        }
+        .estimate {
+            width: 220px;
+            height: 20px;
+            background: url(images/strong.jpg);
+            margin-top: 10px;
+        }
+
+        /* 极佳 */
+        .best {
+            background-position: 0 -80px;
+        }
+        /* 很好 */
+        .good {
+            background-position: 0 -60px;
+        }
+        /* 一般 */
+        .normal {
+            background-position: 0 -40px;
+        }
+        /* 弱 */
+        .weak {
+            background-position: 0 -20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <label for="inp1">QQ </label><input type="text" id="inp1"><span>输入正确的QQ号码</span><br><br>
+        <label for="inp2">手机</label><input type="text" id="inp2"><span>输入11位手机号码</span><br><br>
+        <label for="inp3">邮箱</label><input type="text" id="inp3"><span>输入正确邮箱</span><br><br>
+        <label for="inp4">座机</label><input type="text" id="inp4"><span>输入您的座机</span><br><br>
+        <label for="inp5">账号</label><input type="text" id="inp5"><span>请输入您的账号</span><br><br>
+        <label for="inp6">密码</label><input type="text" id="inp6"><span>请输入您的密码</span>
+        <!--对密码强度的评价-->
+        <div class="estimate"></div>
+    </div>
+
+    <script>
+        /*
+        需求：对输入的信息进行判断，正确显示正确信息，反之显示错误信息
+         */
+
+        var inpArr = document.getElementsByTagName("input");    //所有input标签
+        var estimate = document.getElementsByClassName("estimate")[0];
+
+        //失去焦点，就要判断
+        //对QQ的判断
+        inpArr[0].onblur = function () {
+            var reg = /^[1-9][0-9]{4,}$/;
+            // //对应的span
+            // var span = this.nextElementSibling || this.nextSibling;
+            // if(reg.test(this.value) === true) {
+            //     span.className = "right";
+            //     span.innerHTML = "输入正确";
+            // } else {
+            //     span.className = "wrong";
+            //     span.innerHTML = "格式不正确"
+            // }
+            judge(this, reg);
+        }
+
+        //对手机号判断
+        inpArr[1].onblur = function () {
+            var reg = /^(13[0-9])|(15[0-9])|(18[0-9])\d{8}$/;
+            judge(this, reg);
+        }
+
+        //对邮箱的判断
+        inpArr[2].onblur = function () {
+            var reg = /^[\w\-\.]{5,}\@[\w]+\.[\w]{2,4}$/;
+            judge(this, reg);
+        }
+
+        //对座机的判断
+        inpArr[3].onblur = function () {
+            var reg = /(^0\d{2}-\d{8}$)|(^0\d{3}-\d{7}$)/;
+            judge(this, reg);
+        }
+
+        //对账号的判断
+        inpArr[4].onblur = function () {
+            var reg = /^[a-zA-Z0-9_-]{3,16}$/;
+            judge(this, reg);
+        }
+
+        //对密码的判断，还要加上密码强度
+        inpArr[5].onblur = function () {
+            var reg = /^[a-zA-Z0-9_\-$]{6,18}$/;
+            var span = this.nextElementSibling || this.nextSibling;
+            if(reg.test(this.value) === true) {
+                span.className = "right";
+                span.innerHTML = "输入正确";
+                //输入正确后，进行密码强度判断
+                //从大往小判断。
+                if(/^[A-Za-z0-9]+[_$][A-Za-z0-9]*$/.test(this.value)){
+                    estimate.className = "estimate best";
+                }else if(/^([a-z].*[0-9])|([A-Z].*[0-9])|[0-9].*[a-zA-Z]$/.test(this.value)){
+                    estimate.className = "estimate good";
+                }else if(/^([a-z].*[A-Z])|([A-Z].*[a-z])$/.test(this.value)){
+                    estimate.className = "estimate normal";
+                } else {
+                    estimate.className = "estimate weak";
+                }
+            } else {
+                span.className = "wrong";
+                span.innerHTML = "格式不正确"
+            }
+        }
+        
+        //我发现每判断一个输入框，其代码的逻辑是一样的，考虑封装一个函数进行判断
+        /**
+         * 进行输入格式的判断
+         * @param ele   要判断的输入框
+         * @param regex 正则
+         */
+        function judge(ele, regex) {
+            //对应的span
+            var span = ele.nextElementSibling || ele.nextSibling;
+            if(regex.test(ele.value) === true) {
+                span.className = "right";
+                span.innerHTML = "输入正确";
+            } else {
+                span.className = "wrong";
+                span.innerHTML = "格式不正确"
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 函数内部的一个对象arguments，是一个伪数组，当函数调用的时候，系统会将所有的实参，依次传入这个数组对象
+    // 所以当参数个数不定的时候，可以不设形参
+
+    // 允许传入任意个参数，结果返回最大值
+    function max() {
+        console.log(arguments);
+
+        var max = arguments[0];
+        for(var i=1; i<arguments.length; i++) {
+            if(arguments[i] > max) {
+                max = arguments[i];
+            }
+        }
+        return max;
+    }
+    console.log(max(1, 2, 5, 4, 3));
+
+    //练习，使用Function创建一个函数，
+    //给函数传入任意个数的参数，
+    //在函数内进行去重操作，然后返回去重后的数组
+    var distinct = new Function(`
+        var arr = [];
+        arr.push(arguments[0]);
+        for(var i=1; i<arguments.length; i++) {
+            // 如果查找不到才插入
+            if(arr.indexOf(arguments[i]) == -1) {
+                arr.push(arguments[i]);
+            }
+        }
+        return arr;
+    `);
+    console.log(distinct(1, 2, 3, 3, 3, 5, 6, 4, 2, 1));
+
+
+    // 1、一个函数有形参的时候，可以不传参数
+    // 2、一个函数没有形参的时候，调用的时候可以传参数  arguments对象
+    // 3、一个函数不管有没有形参，调用的时候都会把实参传入arguments对象
+    function test(a, b){
+        console.log(a , b);
+        console.log(arguments);
+    }
+    test();
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*steps应用之时钟分针*/
+        .clock {
+            width: 10px;
+            height: 300px;
+            background-color: #000;
+            margin: 150px auto;
+
+            transform-origin: bottom center;
+
+            /*
+            animation-timing-function: steps(60)
+                每两个关键帧之间分60步完成
+            */
+            animation: rot 60s steps(60) infinite;
+        }
+
+        @keyframes rot {
+            0% {
+                transform: rotateZ(0deg);
+            }
+            100% {
+                transform: rotateZ(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="clock"></div>
+</body>
+</html>

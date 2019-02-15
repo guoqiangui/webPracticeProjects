@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //1、简单版（外层控制趟数，内层控制每趟比较次数）
+    // var arr = [7,6,8,1,2,5];
+    // var tang = 0;       //趟数
+    // var num = 0;        //比较次数
+    // var temp;
+    // for(var i=0;i<arr.length-1;i++) {
+    //     tang ++;
+    //     for(var j=0;j<arr.length-1;j++) {
+    //         num ++;
+    //         if(arr[j]>arr[j+1]) {
+    //             temp = arr[j];
+    //             arr[j] = arr[j+1];
+    //             arr[j+1] = temp;
+    //         }
+    //     }
+    // }
+    // console.log(arr);
+    // console.log("趟数"+tang);
+    // console.log("比较次数"+num);
+
+    //2、中等版（每趟都会出来一个最大值，所以每趟比较次数应该递减）
+    // var arr = [7,6,8,1,2,5];
+    // var tang = 0;       //趟数
+    // var num = 0;        //比较次数
+    // var temp;
+    // for(var i=0;i<arr.length-1;i++) {
+    //     tang ++;
+    //     for(var j=0;j<arr.length-1-i;j++) {
+    //         num ++;
+    //         if(arr[j]>arr[j+1]) {
+    //             temp = arr[j];
+    //             arr[j] = arr[j+1];
+    //             arr[j+1] = temp;
+    //         }
+    //     }
+    // }
+    // console.log(arr);
+    // console.log("趟数"+tang);
+    // console.log("比较次数"+num);
+
+    // 3、最终版（并不是一定为n-1趟，有可能提前完成）
+    var arr = [1,2,3,4,5,6];
+    var tang = 0;       //趟数
+    var num = 0;        //比较次数
+    var temp;
+    for(var i=0;i<arr.length-1;i++) {
+        var bool = true;  //开闭原则。还有在这个位置给主要是为了比较完一趟后回到初始值
+        tang ++;
+        for(var j=0;j<arr.length-1-i;j++) {
+            num ++;
+            if(arr[j]>arr[j+1]) {
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+                bool = false;       //如果有交换就赋值为false
+            }
+        }
+        if(bool) {   //如果比较完后都没有交换，代表排序已经完成
+            break;
+        }
+    }
+    console.log(arr);
+    console.log("趟数"+tang);
+    console.log("比较次数"+num);
+</script>
+</body>
+</html>

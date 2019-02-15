@@ -1,0 +1,43 @@
+// 3个盒子都是一样的颜色，可以将这个颜色保存起来
+//.box1 {
+//    background-color: green;
+//}
+//.box2 {
+//    border-color: green;
+//}
+//.box3 {
+//    color: green;
+//}
+
+// 定义一个变量，颜色的话会自动在css中转成16进制格式
+@common-color: green;
+
+.box1 {
+    background-color: @common-color;
+}
+.box2 {
+    border-color: @common-color;
+}
+.box3 {
+    color: @common-color;
+}
+
+// 还可以放一行语句
+@common-style: 1px solid green;
+
+.box4 {
+    border: @common-style;
+}
+
+
+// 小实践（涉及到一个方法）
+@button-color: green;
+// 使颜色变暗10%
+@button-hover-color: darken(@button-color, 10%);
+
+button {
+    background-color: @button-color;
+}
+button:hover {
+    background-color: @button-hover-color;
+}

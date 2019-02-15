@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Player(name, age) {
+        this.name = name;
+        this.age = age;
+        this.play = function () {
+            console.log("打篮球");
+        };
+    }
+    var obj = new Player("詹姆斯", 34);
+    obj.play();
+
+    // 原型是什么？
+    // 在构造函数创建出来的时候，系统会帮构造函数创建并关联一个对象，这个对象就是原型
+
+    // 原型的作用
+    // 原型中的属性和方法，可以被该构造函数创建出来的对象使用
+
+    // 访问构造函数的原型：构造函数名.prototype
+    console.log(Player.prototype);
+
+    // 给原型对象添加属性和方法，利用对象的动态特性
+    Player.prototype.play1 = function () {
+        console.log("打篮球");
+    }
+    obj.play1();
+
+    //当使用对象去访问属性和方法的时候
+    //会首先在对象自己内部进行查找，如果找到了，就直接使用
+    //如果没有找到，就去原型中查找，查找到之后，使用
+    //如果原型中还没有， 如果是属性，就是Undefined
+    //如果是方法，就报错
+</script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes blink {
+            0%,
+            100% {
+                opacity: 1
+            }
+            50% {
+                opacity: 0
+            }
+        }
+
+        @-webkit-keyframes blink {
+            0%,
+            100% {
+                opacity: 1
+            }
+            50% {
+                opacity: 0
+            }
+        }
+
+        @-moz-keyframes blink {
+            0%,
+            100% {
+                opacity: 1
+            }
+            50% {
+                opacity: 0
+            }
+        }
+
+        .wrap {
+            width: 1000px;
+            text-align: center;
+            margin: 100px auto 0;
+        }
+
+        .wrap h1 {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 300;
+        }
+
+        .word {
+            font-weight: 700;
+        }
+
+        .typed-cursor {
+            opacity: 1;
+            -webkit-animation: blink .7s infinite;
+            -moz-animation: blink .7s infinite;
+            animation: blink .7s infinite;
+            display: none;  /* 控制光标 */
+        }
+
+        .saySection {
+            margin-top: 50px;
+        }
+
+        .saySection input {
+            font-size: 30px;
+        }
+
+        .saySection .txtSay {
+            padding-left: 10px;
+        }
+
+        .saySection .btnSay {
+            display: inline-block;
+            padding: 0 20px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            /*
+            需求：
+                1、打开网页先显示红鲤鱼...
+                2、点击say后，显示输入的内容
+            步骤:
+                1、显示光标，用定时器每隔一段时间在span中显示一个字
+                2、点击say后，获取输入内容，显示光标，用定时器每隔一段时间显示一个字
+            */
+
+            // 1、显示光标，用定时器每隔一段时间显示一个字
+            var span = $(".word");
+
+            $(".typed-cursor").show();
+            var str = "红鲤鱼与绿鲤鱼与驴";
+            var arr = str.split("");    //将每个字装进数组中
+            var index = 0;  //索引
+            var str = "";
+            var timer = null;
+
+            timer = setInterval(function () {
+                //显示完了需要清除定时器
+                if(index > arr.length-1) {
+                    clearInterval(timer);
+                    $(".typed-cursor").hide();  //隐藏光标
+                } else {
+                    str += arr[index];
+                    span.text(str); //类比innerText
+                    index ++;
+                }
+            }, 200);
+
+            
+            // 2、点击say后，获取输入内容，显示光标，用定时器每隔一段时间显示一个字
+            $("#btnSay").click(function () {
+                $(".typed-cursor").show();  //显示光标
+                str = $("#inValue").val();  //获取输入内容
+                arr = str.split("");    //分割字符串，将每个字装进数组中
+                index = 0;  //索引变为0
+                str = "";
+                timer = null;
+
+                // 获取完内容就设置input内容为空
+                $("#inValue").val("");
+
+                timer = setInterval(function () {
+                    //显示完了需要清除定时器
+                    if(index > arr.length-1) {
+                        clearInterval(timer);
+                        $(".typed-cursor").hide();  //隐藏光标
+                    } else {
+                        str += arr[index];
+                        span.text(str); //类比innerText
+                        index ++;
+                    }
+                }, 200);
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <h1>
+            You want to say ： <span class="word"></span><span class="typed-cursor">|</span> ！
+        </h1>
+
+        <div class="saySection">
+            <input type="text" id="inValue" class="txtSay"/>
+            <input type="button" value="Say" id="btnSay" class="btnSay"/>
+        </div>
+    </div>
+
+
+</body>
+</html>

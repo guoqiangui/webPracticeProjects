@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #ccc;
+        }
+        .box {
+            height: 100px;
+            text-align: center;
+            margin: 200px;
+        }
+        .box span {
+            font-size: 80px;
+            margin: 20px;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            position: relative;
+        }
+        /*分别是白字的阴影和反转的白字*/
+        span::before, span::after {
+            content: attr(data-text);   /*内容为属性中的data-text属性值*/
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            left: 0;
+            color: rgba(0, 0, 0, 0.3);
+            transform: scale(0.95, 1);  /*把宽变窄一点*/
+            transform-origin: left; /*变换原点*/
+            transition: all 2s;     /*过渡*/
+        }
+        /*反转的白字*/
+        span::after {
+            color: #fff;
+        }
+        .box:hover span::after {
+            z-index: 2;
+            transform: rotateY(45deg) skew(0deg, 5deg); /*还是要写在一起，不然会有bug（可能分开写会把之前的旋转清0）*/
+        }
+        .box:hover span::before {
+            z-index: 1;
+            transform: skew(0, 15deg);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span data-text="勒">勒</span>
+        <span data-text="布">布</span>
+        <span data-text="朗">朗</span>
+        <span data-text="詹">詹</span>
+        <span data-text="姆">姆</span>
+        <span data-text="斯">斯</span>
+    </div>
+</body>
+</html>

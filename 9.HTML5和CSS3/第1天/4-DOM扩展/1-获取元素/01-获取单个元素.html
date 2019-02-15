@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 100px;
+            margin: 10px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+    <div class="box box4"></div>
+
+    <script>
+        //总是获取第一个匹配的元素
+        // var box1 = document.querySelector(".box1");
+        var box1 = document.querySelector(".box");
+        box1.style.backgroundColor = "green";
+    </script>
+</body>
+</html>

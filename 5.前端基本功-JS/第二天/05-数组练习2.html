@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 求一组数中的所有数的和 和平均值
+    // var arr = new Array(1,2,3,4,5);
+    // var sum = 0;
+    // for(var i=0;i<arr.length;i++) {
+    //     sum += arr[i];
+    // }
+    // console.log("和："+sum);
+    // console.log("平均值："+sum/arr.length);
+
+    // 求一组数中的最大值和最小值，以及所在位置（最好取数组中第一个数为初始值，这样比较就不会出bug）
+    // var arr = [20,40,100,-3,5];
+    // var max = arr[0];
+    // var min = arr[0];
+    // var maxIndex = 0;
+    // var minIndex = 0;
+    // for(var i=0;i<arr.length;i++) {
+    //     if(arr[i]>max) {
+    //         max = arr[i];
+    //         maxIndex = i;
+    //     }
+    //     if(arr[i]<min) {
+    //         min = arr[i];
+    //         minIndex = i;
+    //     }
+    // }
+    // console.log("最大值："+max+", 位置是："+maxIndex+"; 最小值："+min+", 位置是："+minIndex);
+
+    // 将字符串数组用|或其他符号分割（不推荐这样，因为字符串是在内存中是不可变的，一旦元素一多就会出问题）
+    // var arr = ["吕小布", "张飞", "关羽", "刘备", "诸葛亮"];
+    // var str = arr[0];
+    // for(var i=1;i<arr.length;i++) {
+    //     str += ("|"+arr[i]);
+    // }
+    // console.log(str);
+
+    // 将数组中值为0的去掉，不为0的存入新数组
+    // var arr = [1,3,0,4,5,0,7,0,8];
+    // var newArr = [];
+    // for(var i=0;i<arr.length;i++) {
+    //     if(arr[i] !== 0) {
+    //         newArr[newArr.length] = arr[i];
+    //     }
+    // }
+    // console.log(newArr);
+
+    // 翻转数组
+    // 解法一
+    // var arr = [1,2,3,4,5,6];
+    // var arr2 = [];
+    // for(var i=arr.length-1;i>=0;i--) {
+    //     arr2[arr2.length] = arr[i];
+    // }
+    // console.log(arr2);
+
+    //解法二（注意循环的次数）
+    // var arr = [1,2,3,4,5,6];
+    // for(var i=0;i<(arr.length/2);i++) {
+    //     arr[i] = arr[arr.length-1-i];
+    // }
+    // console.log(arr);
+
+</script>
+</body>
+</html>

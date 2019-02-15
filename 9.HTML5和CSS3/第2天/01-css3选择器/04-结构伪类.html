@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul {
+            width: 500px;
+            margin: 100px auto;
+        }
+        li {
+            list-style: none;
+            width: 70px;
+            height: 70px;
+            border: 1px solid #000;
+            float: left;
+            margin-top: -1px;   /*边框合并*/
+            margin-left: -1px;
+            text-align: center;
+            line-height: 70px;
+        }
+
+        /*
+            符号 :
+            通过结构进行筛选
+        */
+
+        /*先找父元素，再通过父元素查找子元素*/
+        /*选中第一个li*/
+        /*li:first-child {*/
+            /*background-color: green;*/
+        /*}*/
+        /*!*选中最后一个li*!*/
+        /*li:last-child {*/
+            /*background-color: green;*/
+        /*}*/
+
+        /*选中第二个li，编号从1开始*/
+        /*li:nth-child(2) {*/
+            /*background-color: red;*/
+        /*}*/
+        /*!*选中编号为奇数的li*!*/
+        /*li:nth-child(odd) {*/
+            /*background-color: yellow;*/
+        /*}*/
+        /*!*选中编号为偶数的li*!*/
+        /*li:nth-child(even) {*/
+            /*background-color: pink;*/
+        /*}*/
+
+        /*
+            n表示0, 1, 2, 3, ...
+            当n小于1时无效(整条式子的结果)
+        */
+        /*li:nth-child(n) {*/
+            /*background-color: pink;*/
+        /*}*/
+        /*!*奇数*!*/
+        /*li:nth-child(2n+1) {*/
+            /*background-color: green;*/
+        /*}*/
+        /*!*偶数*!*/
+        /*li:nth-child(2n) {*/
+            /*background-color: yellow;*/
+        /*}*/
+
+        /*选中前5个，这里的结果为5,4,3,2,1,0,...*/
+        /*li:nth-child(-n+5) {*/
+            /*background-color: pink;*/
+        /*}*/
+        /*!*最后5个，:nth-last-child表示倒着数*!*/
+        /*li:nth-last-child(-n+5) {*/
+            /*background-color: pink;*/
+        /*}*/
+
+        /*选中7的倍数*/
+        li:nth-child(7n) {
+            background-color: orange;
+        }
+        /*选中倒数第二排*/
+        li:nth-child(7n-1) {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+    <li>11</li>
+    <li>12</li>
+    <li>13</li>
+    <li>14</li>
+    <li>15</li>
+    <li>16</li>
+    <li>17</li>
+    <li>18</li>
+    <li>19</li>
+    <li>20</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+    <li>24</li>
+    <li>25</li>
+    <li>26</li>
+    <li>27</li>
+    <li>28</li>
+    <li>29</li>
+    <li>30</li>
+    <li>31</li>
+    <li>32</li>
+    <li>33</li>
+    <li>34</li>
+    <li>35</li>
+</ul>
+</body>
+</html>

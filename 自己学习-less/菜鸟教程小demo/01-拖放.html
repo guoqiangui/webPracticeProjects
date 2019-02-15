@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            margin: 20px 0;
+            padding-top: 20px;
+        }
+        .box img {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="1.jpg" width="250" height="250" draggable="true">
+    </div>
+    <div class="box"></div>
+
+    <script>
+        var boxs = document.querySelectorAll(".box");
+        var img = document.querySelector("img");
+
+
+        boxs.forEach(function (value) {
+            value.addEventListener("dragover", function (e) {
+                // 阻止默认处理拖放方式
+                e.preventDefault();
+            });
+
+            value.addEventListener("drop", function () {
+                this.appendChild(img);
+            });
+        });
+    </script>
+</body>
+</html>

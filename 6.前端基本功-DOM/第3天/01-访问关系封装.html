@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li {
+            width: 100px;
+            height: 100px;
+            background-color: mediumspringgreen;
+            margin: 10px 0;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li id="box"></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <!--导入外部js-->
+    <script src="tools.js"></script>
+    <script>
+        //用自己封装的函数获取元素
+
+        //获取box改为red
+        var box = getNode("box");
+        box.style.backgroundColor = "red";
+
+        //获取第一个和最后一个子节点
+        var ul = box.parentNode;
+        var first = getFirstChildNode(ul);
+        var last = getLastChildNode(ul);
+        first.style.backgroundColor = "blue";
+        last.style.backgroundColor = "blue";
+
+        //获取上一个和下一个兄弟节点
+        var previous = getPreviousNode(box);
+        var next = getNextNode(box);
+        previous.style.backgroundColor = "yellow";
+        next.style.backgroundColor = "yellow";
+
+        //指定兄弟节点
+        var firstSib = getSibNodeOfIndex(box, 0);
+        firstSib.style.backgroundColor = "purple";
+
+        //获取所有的兄弟节点（返回值是数组，所以用for循环操作）
+        var sibArr = getAllSibNodes(box);
+        for(var i=0;i<sibArr.length;i++) {
+            sibArr[i].style.backgroundColor = "black";
+        }
+
+
+    </script>
+</body>
+</html>

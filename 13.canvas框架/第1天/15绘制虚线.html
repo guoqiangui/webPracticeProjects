@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas id="cvs" width="500" height="500"></canvas>
+
+    <script>
+        var cvs = document.getElementById("cvs");
+        var ctx = cvs.getContext("2d");
+
+        // 设置画的线为虚线，参数为一个数组，可以传任意个值，第一个为实线的像素，第二个为虚线的像素，一直传下去
+        // ctx.setLineDash([5]);   // [5] 表示5个像素实线，5个像素虚线
+        // ctx.setLineDash([5, 3]);    // [5, 3]代表5个像素实线，3个像素虚线
+        ctx.setLineDash([6, 4, 2]); // 这里要连续两次才能构成一个循环
+
+        // ctx.moveTo(10, 10);
+        // ctx.lineTo(200, 10);
+        //
+        // ctx.stroke();
+
+        // 设置虚线绘制时的偏移量，往左偏移给定的像素
+        // ctx.lineDashOffset = 2;
+
+        var i=0, len = 255;
+        for(; i<=len; i++) {
+            ctx.moveTo(10, 10 + i);
+            ctx.lineTo(200, 10 + i);
+
+            ctx.strokeStyle = "rgb(0, " + i + ", 0)";
+            ctx.stroke();
+        }
+
+        // 获取虚线设置规则
+        console.log(ctx.getLineDash());
+
+
+    </script>
+</body>
+</html>

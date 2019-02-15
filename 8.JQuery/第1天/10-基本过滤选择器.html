@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            var oddLi = $("ul li:even");    //获取奇数位的li（even: 获取索引为偶数的元素）
+            var evenLi = $("ul li:odd");    //获取偶数位的li（odd: 获取索引为奇数的元素）
+
+            oddLi.css("background", "green");
+            evenLi.css("background", "yellow");
+
+            var firstLi = $("ul li:eq(0)"); //获取索引为0的li
+            firstLi.css("background", "blue");
+            var li = $("ul li");    //利用索引获取最后一个li
+            var lastLi = $("ul li:eq("+ (li.length-1) +")");
+            lastLi.css("background", "red");
+        });
+    </script>
+</head>
+<body>
+    <ul>
+        <li>班长今天你老帅了，嗷嗷帅....</li>
+        <li>班长今天你老帅了，嗷嗷帅....</li>
+        <li>班长今天你老帅了，嗷嗷帅....</li>
+        <li>班长今天你老帅了，嗷嗷帅....</li>
+        <li>班长今天你老帅了，嗷嗷帅....</li>
+        <li>班长今天你老帅了，嗷嗷帅....</li>
+    </ul>
+</body>
+</html>

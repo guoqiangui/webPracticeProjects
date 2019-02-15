@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #ccc;
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 600px;
+            height: 440px;
+            background-color: #fff;
+            margin: 100px auto;
+            position: relative;
+        }
+        .box div {
+            background-color: greenyellow;
+        }
+        .head {
+            width: 220px;
+            height: 100px;
+            position: absolute;
+            left: 50%;
+            margin-left: -110px;
+            top: 36px;
+            border-radius: 100px 100px 0 0;
+        }
+        .left-eye,
+        .right-eye {
+            width: 20px;
+            height: 20px;
+            background-color: #fff !important;
+            position: absolute;
+            top: 39px;
+        }
+        .left-eye {
+            left: 53px;
+            border-radius: 10px;
+        }
+        .right-eye {
+            right: 53px;
+            border-radius: 10px;
+        }
+        .body {
+            width: 220px;
+            height: 180px;
+            position: absolute;
+            left: 191px;
+            top: 148px;
+            border-radius: 0 0 20px 20px;
+        }
+        .left-arm,
+        .right-arm {
+            width: 50px;
+            height: 150px;
+            position: absolute;
+            top: 0px;
+            border-radius: 30px;
+        }
+        .left-arm {
+            left: -60px;
+        }
+        .right-arm {
+            right: -60px;
+        }
+        .left-foot,
+        .right-foot {
+            width: 50px;
+            height: 75px;
+            position: absolute;
+            bottom: -75px;
+            border-radius: 0 0 30px 30px;
+        }
+        .left-foot {
+            left: 40px;
+        }
+        .right-foot {
+            right: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="head">
+            <div class="left-eye"></div>
+            <div class="right-eye"></div>
+        </div>
+        <div class="body">
+            <div class="left-arm"></div>
+            <div class="right-arm"></div>
+            <div class="left-foot"></div>
+            <div class="right-foot"></div>
+        </div>
+    </div>
+</body>
+</html>

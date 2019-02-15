@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table id="tab"></table>
+
+<script>
+    //以下的内容不常用，了解即可
+
+    var table = document.getElementById("tab");
+
+    var tr = document.createElement("tr");
+    tr.innerHTML = "<td>哈哈啊哈</td>";
+    table.appendChild(tr);
+
+    //向表格中插入新行
+    var insTr = table.insertRow(0); //0代表插入的行在表格中的索引，从0开始，1的话插入到索引值为1处
+    insTr.innerText = "我是新的";
+    //删除指定索引的行，给-1的话就会删除最后一行
+    table.deleteRow(0);
+    //rows属性是包含了所有行的数组
+    var rows = table.rows;
+    var firstRow = rows[0];
+    console.log(firstRow);
+
+    //cells、insertCell() 、deleteCell()
+    var tr = table.children[0];
+    var cells = tr.cells;   //tr中td的集合
+    var cell = tr.insertCell(0);   //与insertRow类似
+    cell.innerText = "我是td";
+    tr.deleteCell(0);
+
+</script>
+</body>
+</html>

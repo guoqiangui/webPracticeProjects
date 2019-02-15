@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body, ul, li, h3 {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            width: 500px;
+            margin: 0 auto;
+            list-style: none;
+        }
+        ul li h3 {
+            width: 480px;
+            height: 35px;
+            background-color: cornflowerblue;
+            border-bottom: 2px solid green;
+            line-height: 35px;
+            padding-left: 20px;
+            color: #fff;
+            transition: all 1s;
+        }
+        li .content {
+            width: 500px;
+            height: 0px;
+            background-color: pink;
+            transition: all 1s;
+        }
+        ul li:hover .content {
+            height: 300px;
+        }
+        ul li:hover h3 {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <h3>今日新闻</h3>
+            <div class="content"></div>
+        </li>
+        <li>
+            <h3>今日新闻</h3>
+            <div class="content"></div>
+        </li>
+        <li>
+            <h3>今日新闻</h3>
+            <div class="content"></div>
+        </li>
+        <li>
+            <h3>今日新闻</h3>
+            <div class="content"></div>
+        </li>
+    </ul>
+</body>
+</html>

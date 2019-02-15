@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text">
+    <button>localStorage储存</button>
+    <button>localStorage获取</button>
+    <button>localStorage更新</button>
+    <button>localStorage删除</button>
+    <button>localStorage清空</button>
+
+    <script>
+        var txt = document.querySelector("input");
+        var btns = document.querySelectorAll("button");
+
+    //    localStorage储存
+        btns[0].onclick = function () {
+            window.localStorage.setItem("username", txt.value);
+            window.localStorage.setItem("password", "123456");
+            window.localStorage.setItem("age", "28");
+        }
+    //    localStorage获取
+        btns[1].onclick = function () {
+            txt.value = window.localStorage.getItem("username");
+        }
+        //    localStorage更新
+        btns[2].onclick = function () {
+            window.localStorage.setItem("username", txt.value);
+        }
+        //    localStorage删除
+        btns[3].onclick = function () {
+            window.localStorage.removeItem("username");
+        }
+        //    localStorage清空
+        btns[4].onclick = function () {
+            window.localStorage.clear();
+        }
+
+    </script>
+</body>
+</html>

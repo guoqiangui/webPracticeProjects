@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .time {
+            width: 800px;
+            font: 400 30px "microsoft yahei";
+            margin: 200px auto;
+            color: mediumspringgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="time">距离NBA季后赛开始还有20天03小时12分钟56秒000毫秒</div>
+
+    <script>
+
+        var div = document.getElementsByTagName("div")[0];
+        //每1毫秒更新一次文字
+        var timer = setInterval(fun1, 1);
+
+        function fun1() {
+            var endTime = new Date("2019/4/25 00:00:00");  //活动开始时间
+            var startTime = new Date(); //当前时间
+            //转为毫秒数
+            var end = endTime.getTime();
+            var start = startTime.getTime();
+            var total = end - start;    //相差时间毫秒数
+
+            var days = parseInt(total/1000/60/60/24);   //获取相差天数
+            var hours = parseInt(total/1000/60/60%24);    //小时数，取余后刚好是剩下的小时数
+            var minutes = parseInt(total/1000/60%60); //分钟数
+            var seconds = parseInt(total/1000%60);  //秒数
+            var milliSeconds = total%1000;  //毫秒数
+
+            //为不足位数的数字补0
+            if(days<10) {
+                days = "0" + days;
+            }
+            hours = hours<10 ? "0"+hours : hours;
+            minutes = minutes<10 ? "0"+minutes : minutes;
+            seconds = seconds<10 ? "0"+seconds : seconds;
+
+            if(milliSeconds<100) {
+                milliSeconds = "0" + milliSeconds;
+            } else if(milliSeconds<10) {
+                milliSeconds = "00" + milliSeconds;
+            }
+
+            if(total<=0) {  //说明已经到了
+                div.innerText = "距离NBA季后赛开始还有00天00小时00分钟00秒000毫秒";
+                clearInterval(timer);   //跳出定时器
+                return; //跳出本函数
+            }
+
+
+            div.innerText = "距离NBA季后赛开始还有"+days+"天"+hours+"小时"+minutes+"分钟"+seconds+"秒"+milliSeconds+"毫秒";
+        }
+
+
+
+    </script>
+</body>
+</html>

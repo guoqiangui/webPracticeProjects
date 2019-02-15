@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//第1题
+		var num = Number(prompt("请输入汽油编号"));
+		var num2 = Number(prompt("请输入要加的升数"));
+		if(num == 92) {
+			if(num2 >= 20) {
+				alert(num2*5.9+"元");
+			} else {
+				alert(num2*6+"元");
+			}			
+		} else if(num == 97) {
+			if(num2 >= 30) {
+				alert(num2*6.59+"元");
+			} else {
+				alert(num2*7+"元");
+			}
+		} else {
+			alert("兄弟，我们没有您输入的汽油");
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

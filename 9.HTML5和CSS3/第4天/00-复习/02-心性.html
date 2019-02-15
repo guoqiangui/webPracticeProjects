@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .heart {
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+        /* 利用伪元素 */
+        .heart::before, .heart::after {
+            content: "";
+            display: block;
+            width: 150px;
+            height: 300px;
+            background-color: green;
+            border-radius: 75px 75px 0 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: rotate(-45deg);
+        }
+        .heart::after {
+            /*right: 0;*/   /*上面已经定义了left，这里再定义right就无效了*/
+            left: 107px;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="heart"></div>
+</body>
+</html>

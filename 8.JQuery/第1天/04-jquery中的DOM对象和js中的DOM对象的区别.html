@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            var div = document.getElementsByTagName("div");
+            var cbox = document.getElementsByClassName("box");
+            var ibox = document.getElementById("box");
+
+            //从js的DOM对象转换为jquery的DOM对象
+            var jqdiv = $(div);
+            var jqcbox = $(cbox);
+            var jqibox = $(ibox);
+
+            //jquery的DOM对象是一个数组，数组中包含原生js的DOM对象
+            console.log(div);
+            console.log(jqdiv);
+            console.log("--------------");
+            console.log(cbox);
+            console.log(jqcbox);
+            console.log("--------------");
+            console.log(ibox);
+            console.log(jqibox);
+        });
+    </script>
+</head>
+<body>
+    <div></div>
+    <div class="box"></div>
+    <div id="box"></div>
+    <div class="box"></div>
+    <div></div>
+</body>
+</html>

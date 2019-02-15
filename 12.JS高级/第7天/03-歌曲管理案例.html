@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        .container {
+            margin: 0 auto;
+            width: 850px;
+            border: 1px solid #dad8d8;
+
+            /*height: 100%;*/
+        }
+        .songslist-main, .songslist-header {
+            position: relative;
+            width: 100%;
+            text-align: center;
+        }
+        .songslist-header {
+            height: 30px;
+            border-bottom: 1px solid #dad8d8;
+            line-height: 30px;
+            background-color: #def;
+        }
+
+        .songslist-name {
+            position: absolute;
+            width: 40%;
+            height: 100%;
+            border-right: 1px solid #dad8d8;
+        }
+        .songslist-singer {
+            position: absolute;
+            left: 40%;
+            width: 50%;
+            height: 100%;
+            border-right: 1px solid #dad8d8;
+        }
+        .songslist-option {
+            position: absolute;
+            left: 90%;
+            width: 10%;
+            height: 100%;
+        }
+
+        .songslist-main {
+            background-color: #fff;
+            height: 100%;
+        }
+        .songslist-main .songslist-name{
+            height: 50px;
+            line-height: 50px;
+            border: 0;
+        }
+        .songslist-main .songslist-singer{
+            height: 50px;
+            line-height: 50px;
+            border: 0;
+        }
+        .songslist-single {
+            height: 50px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            // MP3歌曲管理工具构造函数
+            function MP3(songList) {
+                // 可以传入歌曲列表，没传入的话新建一个空数组
+                this.songList = songList || [];
+                // 调用初始化方法
+                this._init();
+            }
+
+            // 为了简洁，直接替换原型对象
+            MP3.prototype = {
+                // 替换的原型对象需要加上这层关系
+                constructor: MP3,
+                // 初始化方法
+                _init: function () {
+                    console.log("Hello MP3Manager!");
+                    this.render();
+                },
+                //数据驱动，只要歌曲列表发生改变，就调用render方法，将页面上信息进行刷新渲染
+                render: function () {
+                    // 获取所有歌曲的容器
+                    var songsContainer = document.getElementById("c");
+                    // 用来接收拼接好的字符串的数组
+                    var arr = [];
+                    // 遍历歌曲数组，为每首歌创建html代码
+                    for(var i=0; i<this.songList.length; i++) {
+                        var song = this.songList[i];
+
+                        // 拼接字符串
+                        var singleStr = `
+                            <div class="songslist-single">
+                                <div class="songslist-name">` + song.name + `</div>
+                                <div class="songslist-singer">` + song.singer + `</div>
+                            </div>
+                        `;
+                        // 将字符串添加到数组中
+                        // songsContainer.innerHTML += htmlStr; // 默认的歌曲模板没有删除
+                        arr.push(singleStr);
+                    }
+                    // 将数组中的字符串取出，组成一个新的字符串
+                    var htmlStr = arr.join("");
+                    // 将新的字符串加到歌曲容器中
+                    songsContainer.innerHTML = htmlStr;
+                },
+                // 添加歌曲
+                addSong: function (songName, singer) {
+                    if(songName == undefined || songName == "" || singer == undefined || singer == "") {
+                        throw "请传入歌曲名和歌手";
+                    }
+                    var temp = {
+                        name: songName,
+                        singer: singer
+                    };
+                    this.songList.push(temp);
+                    // 更改了歌曲列表要重新渲染
+                    this.render();
+                }, 
+                // 查找歌曲
+                selectSong: function (songName) {
+                    for(var i=0; i<this.songList.length; i++) {
+                        var song = this.songList[i];
+                        if(songName == song.name) {
+                            return song;
+                        }
+                    }
+                    // 没找到返回null
+                    return null;
+                },
+                // 删除歌曲
+                removeSong: function (songName) {
+                    // 先查找歌曲
+                    var song = this.selectSong(songName);
+                    // 获取歌曲在数组中的索引
+                    var index = this.songList.indexOf(song);
+                    // 删除
+                    this.songList.splice(index, 1);
+                    // 渲染
+                    this.render();
+                }, 
+                // 修改歌曲的歌手名
+                updateSong: function (songName, singer) {
+                    var song = this.selectSong(songName);
+                    if(song == null) {
+                        return;
+                    }
+                    song.singer = singer;
+                    // 渲染
+                    this.render();
+                }
+            };
+
+
+            // 测试
+            var songList = [
+                {
+                    name: "New Divide",
+                    singer: "Linkin Park"
+                }, {
+                    name: "Numb",
+                    singer: "Linkin Park"
+                }, {
+                    name: "Not Afraid",
+                    singer: "Eminem"
+                }
+            ];
+            var mp3Manager = new MP3(songList);
+            // mp3Manager.addSong("In the end", "Linkin Park");
+            // console.log(mp3Manager.selectSong("Numb"));
+            // mp3Manager.removeSong("In the end");
+            // mp3Manager.updateSong("Numb", "LP forever");
+
+            // 与页面上的按钮绑定操作
+            var btnAdd = document.getElementById("btnAdd");
+            var btnRemove = document.getElementById("btnRemove");
+            // 用户输入的歌曲名
+            var txtAddSName = document.getElementById("txtAddSName");
+            // 用户输入的歌手名
+            var txtAddSinger = document.getElementById("txtAddSinger");
+
+            // 添加歌曲
+            btnAdd.onclick = function () {
+                // 点击了才可以获取输入信息
+                var songName = txtAddSName.value;
+                var singer = txtAddSinger.value;
+
+                // 判断内容是否为空
+                if(songName.trim() == "" || singer.trim() == "") {
+                    return;
+                }
+                // 调用MP3管理器的方法
+                mp3Manager.addSong(songName, singer);
+            };
+
+            // 删除歌曲
+            btnRemove.onclick = function () {
+                // 点击后才可以获取输入信息
+                var songName = txtAddSName.value;
+                if(songName.trim() == "") {
+                    return;
+                }
+                mp3Manager.removeSong(songName);
+            };
+        };
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <div class="songslist-top">
+        <label for="txtAddSName">歌曲名:</label><input type="text" id="txtAddSName" />
+        <label for="txtAddSinger">歌手:</label><input type="text" id="txtAddSinger" />
+        <button id="btnAdd">添加</button>
+        <button id="btnRemove">删除</button>
+    </div>
+
+    <div class="songslist-header">
+        <div class="songslist-name">歌曲名称</div>
+        <div class="songslist-singer">歌手</div>
+        <div class="songslist-option">操作</div>
+    </div>
+
+    <div class="songslist-main" id="c">
+        <div class="songslist-single">
+            <div class="songslist-name">歌曲名称</div>
+            <div class="songslist-singer">歌手</div>
+        </div>
+
+        <div class="songslist-single">
+            <div class="songslist-name">歌曲名称</div>
+            <div class="songslist-singer">歌手</div>
+        </div>
+
+        <div class="songslist-single">
+            <div class="songslist-name">歌曲名称</div>
+            <div class="songslist-singer">歌手</div>
+        </div>
+
+        <div class="songslist-single">
+            <div class="songslist-name">歌曲名称</div>
+            <div class="songslist-singer">歌手</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

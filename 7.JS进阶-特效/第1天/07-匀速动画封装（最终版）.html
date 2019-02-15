@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #box1 {
+            height: 200px;
+            background-color: #eee;
+            /*position: relative;*/
+        }
+        #box2 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: mediumspringgreen;
+            /*加了margin要玩死我，加了后box.offsetLeft的值变为620，而box.style.left为600*/
+            /*margin: 20px;*/
+            left: 600px;
+        }
+        #box3 {
+             position: absolute;
+             width: 100px;
+             height: 100px;
+             background-color: orange;
+             /*加了margin要玩死我，加了后box.offsetLeft的值变为620，而box.style.left为600*/
+             /*margin: 20px;*/
+             left: 600px;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <button>运动到200</button>
+        <button>运动到400</button>
+        <div id="box2"></div>
+        <div id="box3"></div>
+    </div>
+
+<script>
+    var btnArr = document.getElementsByTagName("button");
+    var box2 = document.getElementById("box2");
+
+    // var timer = null;
+
+    //绑定事件
+    btnArr[0].onclick = function () {
+        animate(200, box2);
+        animate(200, box3);
+    }
+
+    btnArr[1].onclick = function () {
+        animate(400, box2);
+        animate(400, box3);
+    }
+
+
+
+    //要想变得更通用，就不能只更改box2，将要改的盒子设置成参数
+    //不可能每次都要在外部定义定时器，可以考虑将定时器作为盒子的属性
+    /**
+     * 使盒子匀速运动
+     * @param target 要移动到的目标left值
+     * @param ele 要移动的盒子
+     */
+    function animate(target, ele) {
+        //要用定时器，先清除定时器
+        clearInterval(ele.timer);
+        //获取步长
+        var speed = target > ele.offsetLeft ? 10 : -10;
+        //将定时器作为盒子的属性
+        ele.timer = setInterval(function () {
+            //如果已经达到目标值，就清除定时器
+            if(ele.offsetLeft == target) {
+                clearInterval(timer);
+                return; //下面还有代码会执行，不跳出会有bug
+            }
+            //获取目标值与当前值的差
+            var val = target - ele.offsetLeft;
+            //如果差的绝对值小于步长，就令当前值等于目标值并清除定时器
+            if(Math.abs(val) < speed) {
+                ele.style.left = target;
+                clearInterval(timer);
+                return; //下面还有代码会执行，不跳出会有bug
+            }
+            //移动
+            ele.style.left = ele.offsetLeft + speed + "px";
+            console.log(ele.offsetLeft);
+        }, 30);
+    }
+
+    //第二遍
+    // function animate(target, ele) {
+    //     clearInterval(ele.timer);
+    //     var speed = target > ele.offsetLeft ? 10 : -10;
+    //     ele.timer = setInterval(function () {
+    //         if(target == ele.offsetLeft) {
+    //             clearInterval(ele.timer);
+    //             return;
+    //         }
+    //         var val = target - ele.offsetLeft
+    //         if(Math.abs(val) < speed) {
+    //             ele.style.left = ele.offsetLeft;
+    //             clearInterval(ele.timer);
+    //             return;
+    //         }
+    //         //移动
+    //         ele.style.left = ele.offsetLeft + speed + "px";
+    //     }, 30);
+    //
+    // }
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 5000px;
+            height: 5000px;
+        }
+        img {
+            border: 1px solid #000;
+            padding: 15px 0;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <img src="images/img.jpg" width="150px">
+
+    <script src="my.js"></script>
+    <script>
+        /*
+        需求：鼠标点击网页任意一处，图片将移动到鼠标点击的地方
+        思路：
+            1、获取鼠标点击处距离页面顶端和左端的距离（包括被卷曲部分）
+            2、使图片缓动到该处
+         */
+
+        var img = document.getElementsByTagName("img")[0];
+        var targetY = 0;    //目标top值
+        var targetX = 0;    //目标left值
+        var leaderY = 0;    //当前top值
+        var leaderX = 0;    //当前left值
+        var timer = 0;
+
+        // 点击页面任意处触发
+        document.onclick = function (event) {
+            //获取事件对象（兼容写法）
+            event = event || window.event;
+            // 获取鼠标点击处距离页面顶端和左端的距离
+            //pageY和pageX的兼容有问题（鼠标的位置=clientY + 被卷曲的部分）
+            var pageY = event.pageY || scroll().top+event.clientY;
+            var pageX = event.pageX || scroll().left+event.clientX;
+
+            targetY = pageY - 70;   //-70是为了让鼠标在图片中央
+            leaderY = img.offsetTop;
+            targetX = pageX - 70;
+            leaderX = img.offsetLeft;
+
+
+            //缓动到指定位置
+            clearInterval(timer);
+            timer = setInterval(function () {
+                var stepY = (targetY - leaderY) / 10;   //获取垂直方向步长
+                var stepX = (targetX - leaderX) / 10;   //获取水平方向步长
+
+                stepY = stepY>0 ? Math.ceil(stepY) : Math.floor(stepY); //二次加工
+                stepX = stepX>0 ? Math.ceil(stepX) : Math.floor(stepX); //二次加工
+
+                leaderY = leaderY + stepY;
+                leaderX = leaderX + stepX;
+
+                //移动到指定位置, -70是为了让鼠标在图片的中间
+                img.style.top = leaderY + "px";
+                img.style.left = leaderX + "px";
+
+                //如果距离小于步长
+                if(Math.abs(targetY - leaderY) <= Math.abs(stepY) && Math.abs(targetX - leaderX) <= Math.abs(stepX)) {
+                    img.style.top = targetY + "px"; // -70是为了让鼠标在图片的中间
+                    img.style.left = targetX + "px";
+                    clearInterval(timer);
+                }
+            }, 25);
+        }
+
+    </script>
+</body>
+</html>

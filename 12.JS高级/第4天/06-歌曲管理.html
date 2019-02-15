@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 用来储存歌曲对象的数组
+    var songList = [
+        {
+            songName: "New Divide",
+            singer: "Linkin Park"
+        }, {
+            songName: "演员",
+            singer: "薛之谦"
+        }, {
+            songName: "死了都要爱",
+            singer: "信乐团"
+        }
+    ];
+
+    // 增删改查
+    // 增加歌曲
+    songList.push({
+        songName: "Numb",
+        singer: "Linkin Park"
+    });
+    console.log(songList);
+
+    // 删除歌曲 splice(开始索引, 替换个数, 替换内容)
+    songList.splice(1, 1);
+    console.log(songList);
+
+    // 修改歌曲
+    for(var i=0; i<songList.length; i++) {
+        if(songList[i].songName == "死了都要爱") {
+            songList[i].songName = "In the end";
+            songList[i].singer = "Linkin Park";
+        }
+    }
+    console.log(songList);
+
+    // 查询歌曲
+    for(var i=0; i<songList.length; i++) {
+        if(songList[i].songName == "New Divide") {
+            console.log(songList[i]);
+        }
+    }
+</script>
+</body>
+</html>

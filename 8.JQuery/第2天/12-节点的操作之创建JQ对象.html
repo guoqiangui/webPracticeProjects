@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            var ul = $("ul");
+            //第一种创建方式
+            var li = $("<li>我是新创建的li</li>");
+            console.log(li);
+            //第二种创建方式
+            ul.html("<li>我是html()创建的li</li>");
+        });
+    </script>
+</head>
+<body>
+    <ul></ul>
+</body>
+</html>

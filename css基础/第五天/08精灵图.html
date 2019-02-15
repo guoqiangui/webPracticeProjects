@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/* 目标：让想显示的部分到达左上角 */
+		.box{
+			width: 54px;
+			height: 54px;
+			background-image: url(qq.png);
+			/* 移动方向与文档流相反，用负值才能移到左上角 */
+			background-position: -700px -110px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

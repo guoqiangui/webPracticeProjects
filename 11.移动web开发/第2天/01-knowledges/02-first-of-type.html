@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*
+            之前伪类一直用的是nth-child(n)、first-child、last-child，这种方式是用来找兄弟节点的，无论兄弟节点是什么类型，如果遇到兄弟节点元素类型不一样的话，会很麻烦
+            如果要找同类型的兄弟节点，那么可以使用first-of-type、last-of-type、nth-of-type(n)
+        */
+
+        /*div里面的p标签中的第一个p*/
+        div p:first-of-type {
+            background-color: red;
+        }
+        /*div里面的p标签中的第二个p*/
+        div p:nth-of-type(2) {
+            background-color: green;
+        }
+        /*div里面的h3标签中的第一个h3*/
+        div h3:nth-of-type(1) {
+            background-color: blue;
+        }
+        /*div里面的h3标签中的最后一个h3*/
+        div h3:last-of-type {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>我是第一个p</p>
+        <h3>我是第一个h3</h3>
+        <p>我是第二个p</p>
+        <h3>我是第二个h3</h3>
+    </div>
+</body>
+</html>

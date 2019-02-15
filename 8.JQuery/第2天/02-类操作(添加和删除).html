@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            margin: 10px;
+        }
+        .current {
+            background-color: red;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            //给添加按钮绑定事件
+            $("button").eq(0).click(function () {
+                //添加类
+                $("div").addClass("current");
+            });
+            
+            //给删除按钮绑定事件
+            $("button").eq(1).click(function () {
+                $("div").removeClass("current");
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>添加</button>
+    <button>删除</button>
+    <div></div>
+</body>
+</html>

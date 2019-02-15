@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body, ul, li {
+            padding: 0;
+            margin: 0;
+        }
+        .box {
+            width: 1150px;  /* 为了隐藏变动速度不同带来的bug */
+            height: 460px;
+            border: 1px solid limegreen;
+            margin: 150px auto;
+            overflow: hidden;
+        }
+        ul {
+            list-style: none;
+            /* 有时候因为变化宽度可能会超过1200px，导致最后一张图片不显示，所以多预留一点 */
+            width: 1300px;
+        }
+        li {
+            width: 240px;
+            height: 460px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script src="../jquery1.0.0.1.js"></script>
+    <script>
+        /*
+        需求：鼠标放在li上，当前li变宽，其他li变窄，类似手风琴
+         */
+
+        // 为每个li添加背景图片
+        var ul = document.getElementsByTagName("ul")[0];
+        var liArr = ul.getElementsByTagName("li");
+
+        for(var i=0;i<liArr.length;i++) {
+            liArr[i].style.background = "url(images/" + (i+1) + ".jpg)";
+            
+            //绑定鼠标经过事件
+            liArr[i].onmouseenter = function () {
+                //排他思想
+                //先让所有li变窄
+                for(var j=0;j<liArr.length;j++) {
+                    animate(liArr[j], {"width": 100});
+                }
+                //再让当前li变宽
+                animate(this, {"width": 800});
+            }
+            
+            //鼠标离开恢复原状
+            liArr[i].onmouseleave = function () {
+                for(var j=0;j<liArr.length;j++) {
+                    animate(liArr[j], {"width": 240});
+                }
+            }
+        }
+        
+        
+    </script>
+</body>
+</html>

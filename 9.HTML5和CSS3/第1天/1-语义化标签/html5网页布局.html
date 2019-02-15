@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        header, nav, section, footer {
+            margin: 0 auto;
+        }
+
+        header {
+            width: 1000px;
+            height: 50px;
+            background-color: green;
+        }
+        nav {
+            width: 1000px;
+            height: 30px;
+            background-color: blue;
+        }
+        section {
+            width: 1000px;
+            height: 400px;
+        }
+        aside {
+            width: 300px;
+            height: 400px;
+            background-color: yellow;
+            float: left;
+        }
+        article {
+            width: 700px;
+            height: 400px;
+            background-color: pink;
+            float: right;
+        }
+        footer {
+            width: 1000px;
+            height: 50px;
+            background-color: orange;
+        }
+    </style>
+    <!--这些语义化标签有兼容性问题，所以需要导入一个js库来解决兼容问题-->
+    <!--条件注释，只有ie能看懂-->
+    <!--[if lte ie 8]>
+    <script src="html5shiv.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <!--增加了许多语义化标签，以下标签和div没有什么不同-->
+    <header>header</header>
+    <nav>nav</nav>
+    <section>
+        <aside>侧边栏</aside>
+        <article>文章</article>
+    </section>
+    <footer>底部</footer>
+</body>
+</html>

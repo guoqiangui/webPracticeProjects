@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body, ul, li {
+            margin: 0;
+            padding: 0;
+            font: 400 16px "simsun";
+        }
+        ul {
+            list-style: none;
+        }
+        
+        body {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .nav {
+            width: 800px;
+            height: 42px;
+            background: #fff url("images/wifi.png") no-repeat right;
+            margin: 150px auto;
+            border-radius: 8px;
+            position: relative;
+        }
+        ul {
+            position: relative; /* 为了不被筋斗云盖住 */
+            width: 800px;
+            height: 42px;
+        }
+        li {
+            float: left;
+            padding: 0 10px;
+            line-height: 42px;
+            cursor: pointer;
+        }
+        span {
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <!--筋斗云-->
+        <span><img src="images/cloud.gif" alt=""></span>
+        <ul>
+            <li>首页新闻</li>
+            <li>活动策划</li>
+            <li>师资力量</li>
+            <li>企业文化</li>
+            <li>招聘信息</li>
+            <li>公司简介</li>
+            <li>上海校区</li>
+            <li>广州校区</li>
+        </ul>
+    </div>
+
+    <script>
+        //需求一：鼠标移动到任意一个li上，筋斗云就缓动到那个li上，离开就回到默认位置
+        //需求二：点击任意一个li，筋斗云的默认位置就改成那个li
+
+        var liArr = document.getElementsByTagName("li");
+        var span = document.getElementsByTagName("span")[0];
+        var liWid = liArr[0].offsetWidth;   //获取li的宽度
+        var count = 0;  //利用计数器来记录span的位置
+
+        //循环为每个li绑定事件
+        for(var i=0;i<liArr.length;i++) {
+            //为每个li绑定索引属性
+            liArr[i].index = i;
+
+            //绑定鼠标经过事件
+            liArr[i].onmouseover = function () {
+                //移动索引个像素
+                animate(span, this.index*liWid);
+            }
+            //绑定鼠标离开事件
+            liArr[i].onmouseout = function () {
+                //回到默认位置上
+                animate(span, count*liWid);
+            }
+
+            //绑定鼠标点击事件
+            liArr[i].onclick = function () {
+                //点击了就更改默认位置
+                count = this.index;
+            }
+        }
+
+
+        /**
+         * 缓动动画的完整封装
+         * @param ele
+         * @param target
+         */
+        function animate(ele, target) {
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                var step = (target - ele.offsetLeft) / 10;
+                //将步长向上取整
+                step = step>0 ? Math.ceil(step) : Math.floor(step);
+                ele.style.left = ele.offsetLeft + step + "px";
+                //如果距离比步长要小
+                if(Math.abs(target - ele.offsetLeft) < Math.abs(step)) {
+                    //令当前值等于目标值
+                    ele.style.left = target;
+                    //清除定时器
+                    clearInterval(ele.timer);
+                }
+            }, 20);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: mediumspringgreen;
+            border: 10px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <!--<div id="box">-->
+        <!--<p>哈哈哈哈哈哈啊哈哈</p>-->
+        <!--<p>哈哈哈哈哈哈啊哈哈</p>-->
+        <!--<p>哈哈哈哈哈哈啊哈哈</p>-->
+        <!--<p>哈哈哈哈哈哈啊哈哈</p>-->
+    <!--</div>-->
+    <div id="box">
+        哈哈哈
+    </div>
+
+<script>
+    var box = document.getElementById("box");
+
+    //一、检查盒子的宽高（不包含边框）
+    //二、如果有内容超出了，显示内容的高度（也就是盒子宽高和内容宽高取较大值）
+    //IE8+ 不会比盒子小，IE 567取的是内容高度，可以比盒子小
+    console.log(box.scrollWidth);
+    console.log(box.scrollHeight);
+</script>
+</body>
+</html>

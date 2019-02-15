@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 300px;
+            margin: 100px auto;
+        }
+        table {
+            width: 300px;
+            border-spacing: 0;
+            border-collapse: collapse;
+            border: 1px solid #c0c0c0;
+        }
+        th,
+        td {
+            padding: 10px;
+        }
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+        td {
+            font: 14px "微软雅黑";
+        }
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th><input type="checkbox"></th>
+                    <th>菜名</th>
+                    <th>饭店</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>地三鲜</td>
+                    <td>田老师</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>地三鲜</td>
+                    <td>田老师</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>地三鲜</td>
+                    <td>田老师</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>地三鲜</td>
+                    <td>田老师</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        //获取thead里面的input标签
+        var firstInp = document.getElementsByTagName("input")[0];
+        var tbody = document.getElementById("tbody");
+        //获取tbody里面的所有input标签
+        var inputArr = tbody.getElementsByTagName("input");
+        //绑定事件
+        firstInp.onclick = function () {
+            // //自己写的，比较费劲的算法
+            // //如果选中，下面的全部都要选中
+            // if(firstInp.checked) {
+            //     for(var i=0;i<inputArr.length;i++) {
+            //         inputArr[i].checked = true;
+            //     }
+            // } else { //没选中，下面所有都取消选中
+            //     for(var i=0;i<inputArr.length;i++) {
+            //         inputArr[i].checked = false;
+            //     }
+            // }
+
+            //优化版，inputArr所有元素的checked值应该和firstInp的相同
+            for(var i=0;i<inputArr.length;i++) {
+                inputArr[i].checked = firstInp.checked;
+            }
+        }
+        for(var i=0;i<inputArr.length;i++) {
+            inputArr[i].onclick = function () {
+                var flag = true; //开闭原则
+                for(var j=0;j<inputArr.length;j++) {
+                    if(inputArr[j].checked == false) {
+                        flag = false;
+                    }
+                }
+                //还可以再精简
+                // if(flag) { //如果都选中了，那么firstInp也应该选中
+                //     firstInp.checked = true;
+                // } else {    //如果有一项或以上没选中，那么firstInp也不选中
+                //     firstInp.checked = false;
+                // }
+
+                //可以发现，firstInp的checked值和flag相同
+                firstInp.checked = flag;
+            }
+        }
+    </script>
+</body>
+</html>

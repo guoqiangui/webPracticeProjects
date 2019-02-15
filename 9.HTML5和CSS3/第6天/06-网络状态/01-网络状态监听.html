@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // 拔网线或关闭以太网就会断开网络连接
+        window.addEventListener("online", function () {
+            console.log("网络连接已建立");
+        });
+        window.addEventListener("offline", function () {
+            console.log("网络连接已断开");
+        });
+    </script>
+</body>
+</html>

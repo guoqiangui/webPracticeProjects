@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input, button, ul, li {
+            padding: 0;
+            margin: 0;
+        }
+        .w {
+            width: 500px;
+            margin: 200px auto;
+        }
+        input {
+            height: 20px;
+            width: 400px;
+        }
+        button {
+            height: 25px;
+            width: 50px;
+        }
+        ul {
+            width: 392px;
+            border: 1px solid red;
+            /*border-top: none;*/
+            padding: 5px;
+        }
+        li {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="w">
+        <input type="text">
+        <button>搜索</button>
+        <!--<ul>-->
+            <!--<li>哈哈啊哈</li>-->
+        <!--</ul>-->
+    </div>
+
+    <script>
+        //模拟匹配的搜索结果，如果有一样的就显示在ul中
+        var arr = ["a", "aa", "aaa", "ab", "abc"];
+
+        var input = document.getElementsByTagName("input")[0];
+        var wDiv = input.parentNode;
+
+        input.oninput = function () {
+            //bug1: 每次触发删除上次的ul
+            if(wDiv.children[2]) {  //如果存在，就删除
+                wDiv.removeChild(wDiv.children[2]);
+            }
+
+            var content = this.value;   //得到输入内容
+            //bug2: 如果输入内容为空，切断函数（不需要生成ul）
+            if(content.length == 0) {
+                return;
+            }
+
+            //遍历数组，并比较输入内容与数组的内容的前一部分是否一致
+            var ul = document.createElement("ul");
+            for(var i=0;i<arr.length;i++) {
+                if(arr[i].indexOf(content) == 0) { //数组的值的确是以content开头
+                    var li = document.createElement("li");
+                    li.innerText = arr[i];
+                    ul.appendChild(li);
+                }
+            }
+            if(ul.children.length > 0) {    //bug3: 如果ul中有li就加入wDiv中，没有就不用
+                wDiv.appendChild(ul);
+            }
+        }
+    </script>
+</body>
+</html>

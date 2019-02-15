@@ -1,0 +1,14 @@
+// 可以将一些重复的css语句提出来放在一个类中
+.common-css {
+    background-color: green;
+    border: 1px solid #000;
+}
+
+.box1 {
+    // 直接使用这个类即可
+    .common-css;
+}
+
+.box2 {
+    .common-css;
+}

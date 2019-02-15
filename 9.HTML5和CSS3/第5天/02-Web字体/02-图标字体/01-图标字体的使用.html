@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*声明字体*/
+        @font-face {
+            font-family: 'iconfont';
+            src: url('font_fxgctpp51vs/iconfont.eot');
+            src: url('font_fxgctpp51vs/iconfont.eot?#iefix') format('embedded-opentype'),
+            url('font_fxgctpp51vs/iconfont.woff') format('woff'),
+            url('font_fxgctpp51vs/iconfont.ttf') format('truetype'),
+            url('font_fxgctpp51vs/iconfont.svg#iconfont') format('svg');
+        }
+
+        /*定义使用iconfont的样式*/
+        .iconfont {
+            font-family: "iconfont";
+        }
+
+        p {
+            font-size: 50px;
+        }
+        p:nth-child(2) {
+            color: springgreen;
+        }
+        p:nth-child(3) {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <!--挑选相应图标并获取字体编码，应用于页面-->
+    <p class="iconfont">&#xe60c;</p>
+    <p class="iconfont">&#xe65f;</p>
+    <p class="iconfont">&#xe669;</p>
+</body>
+</html>

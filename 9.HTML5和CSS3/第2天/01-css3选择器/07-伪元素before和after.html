@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*在css2中是:before和:after，在css3中变成::before和::after*/
+        /*相当于插入一个标签，但这个标签是假的*/
+        span {
+            border: 1px solid #000;
+        }
+        span::before {
+            content: "今天";
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+        }
+        span::after {
+            content: "真好";
+        }
+    </style>
+</head>
+<body>
+    <span>天气</span>
+</body>
+</html>

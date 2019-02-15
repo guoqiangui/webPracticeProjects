@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            var btn = $("button");
+            var div = $("div");
+
+            //show()和hide()有四种使用方式
+            btn.eq(0).click(function () {
+                //1、show()  直接显示元素
+                // div.show();
+                //2、show(2000)  用2000毫秒来显示元素（有动效）
+                // div.show(2000);
+                //3、show("slow")    用预设的值来显示元素（slow、normal、fast），就是第二种的特殊形式
+                // div.show("slow");
+                // div.show("normal");
+                // div.show("fast");
+                //4、show(毫秒值, 回调函数)    显示完元素后可以执行回调函数
+                div.show(2000, function () {
+                    alert("动画执行完毕");
+                });
+            });
+            
+            btn.eq(1).click(function () {
+                //与show()类似
+                //1、hide()  直接隐藏元素
+                // div.hide();
+                //2、hide(2000)  用2000毫秒来隐藏元素（有动效）
+                // div.hide(2000);
+                //3、hide("slow")    用预设的值来隐藏元素（slow、normal、fast），就是第二种的特殊形式
+                // div.hide("slow");
+                // div.hide("normal");
+                // div.hide("fast");
+                //4、hide(毫秒值, 回调函数)    隐藏完元素后可以执行回调函数
+                div.hide(2000, function () {
+                    alert("动画执行完毕");
+                });
+            });
+            
+            btn.eq(2).click(function () {
+                //显示隐藏切换，同样有四种方式
+                // div.toggle();
+                // div.toggle(2000);
+                // div.toggle("slow");
+                div.toggle(2000, function () {
+                    alert("动画执行完毕");
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>显示</button>
+    <button>隐藏</button>
+    <button>切换</button>
+    <div></div>
+</body>
+</html>

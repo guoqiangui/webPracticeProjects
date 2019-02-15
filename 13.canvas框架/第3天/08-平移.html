@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas id="cvs" width="500" height="500"></canvas>
+
+<script>
+    var cvs = document.getElementById("cvs");
+    var ctx = cvs.getContext("2d");
+
+    /*
+        * 平移坐标轴：
+        * ctx.translate( x轴平移量，y轴平移量 )
+        * 备注：已绘制的图形不会受到影响，平移会累加。
+        * */
+    ctx.fillStyle = "green";
+    ctx.fillRect(100, 100, 100, 100);
+
+    // 平移坐标轴
+    ctx.translate(100, 100);
+
+    ctx.fillStyle = "red";
+    ctx.fillRect(100, 100, 100, 100);
+
+    // 再平移一次
+    ctx.translate(100, 100);
+
+    ctx.fillStyle = "blue";
+    ctx.fillRect(100, 100, 100, 100);
+</script>
+</body>
+</html>

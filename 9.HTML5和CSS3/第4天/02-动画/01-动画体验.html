@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            background-color: green;
+
+
+        }
+        .box:hover {
+            /*动画名称 执行时间（每一次） 执行次数(infinite(无限次)) alternate(是否反向) */
+            animation: gun 8s 1;
+        }
+
+        /*定义动画，定义关键帧*/
+        /*@keyframes gun {*/
+            /*from {*/
+                /*transform: translateX(0px);     !*初始状态最好写上*!*/
+            /*}*/
+            /*to {*/
+                /*transform: translateX(500px);*/
+            /*}*/
+        /*}*/
+
+        /*定义多组动画，每一个关键帧都对应初始位置，取值只需相对初始位置取就行*/
+        @keyframes gun {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            25% {
+                transform: translateX(500px) translateY(0);
+            }
+            50% {
+                transform: translateX(500px) translateY(500px);
+            }
+            75% {
+                transform: translateX(0) translateY(500px);
+            }
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

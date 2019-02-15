@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas id="cvs" width="500" height="500"></canvas>
+
+<script>
+    var cvs = document.getElementById("cvs");
+    var ctx = cvs.getContext("2d");
+
+    /*
+        * 设置文字的水平对其方式：
+        * ctx.textAlign = 'left || start' 、 'right || end' 、 'center'
+        * 默认值为start。
+        * */
+
+    /*
+    * 设置文字的垂直对其方式：
+    * ctx.textBaseline = 'top' 、'bottom'、'middle'、'alphabetic'、'hanging'、'ideographic'
+    * 默认值为alphabetic。
+    * */
+    // ctx.textAlign = "center";
+    // ctx.textBaseline = "alphabetic"; // 表示基线对齐
+    // ctx.textBaseline = "hanging";   // 比top小一点，top会有空隙；hanging与文字顶部贴住
+    ctx.textBaseline = "ideographic"; // 和bottom一样
+
+    ctx.font = "2em 微软雅黑";
+
+    ctx.fillText("詹姆斯", 100, 100);
+
+    // 绘制文字的参考点
+    ctx.fillStyle = "red";
+    ctx.arc(100, 100, 2, 0, Math.PI * 2);
+    ctx.fill();
+</script>
+</body>
+</html>

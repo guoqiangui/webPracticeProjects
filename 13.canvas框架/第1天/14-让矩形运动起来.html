@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas id="cvs" width="500" height="500"></canvas>
+
+    <script>
+        var cvs = document.getElementById("cvs");
+        var ctx = cvs.getContext("2d");
+
+        function Juxing(ctx, startX, startY, width, height, strokeStyle, lineWidth) {
+            // 将绘图工具也传进去
+            this.ctx = ctx;
+            this.startX = startX;
+            this.startY = startY;
+            this.width = width;
+            this.height = height;
+            this.strokeStyle = strokeStyle;
+            this.lineWidth = lineWidth;
+        }
+
+        Juxing.prototype.draw = function () {
+            // 防止重绘
+            this.ctx.beginPath();
+
+            this.ctx.moveTo(this.startX, this.startY);
+
+            this.ctx.lineTo(this.startX + this.width, this.startY);
+            this.ctx.lineTo(this.startX + this.width, this.startY + this.height);
+            this.ctx.lineTo(this.startX, this.startY + this.height);
+            this.ctx.lineTo(this.startX, this.startY);
+            this.ctx.closePath();
+
+            this.ctx.strokeStyle = this.strokeStyle;
+            this.ctx.lineWidth = this.lineWidth;
+            this.ctx.stroke();
+        };
+
+        // 思路，不断画矩形，每次的位置都不一样，在画另外一个之前要清除画布，这样，矩形看起来就像动起来了
+        var juxing = new Juxing(ctx, 10, 10, 150, 150, "red", 3);
+        juxing.draw();
+
+        setInterval(function () {
+            juxing.startX += 2;
+            // 画之前清除画布，注意是canvas标签的宽高
+            ctx.clearRect(0, 0, cvs.width, cvs.height);
+            juxing.draw();
+        }, 100);
+    </script>
+</body>
+</html>

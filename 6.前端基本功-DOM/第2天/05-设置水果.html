@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="btn">识别鲤鱼</button>
+    <button id="qd">去掉</button>
+    <br><br>
+    <select name="" id="">
+        <option value="">香蕉</option>
+        <option value="">苹果</option>
+        <option value="">鲤鱼</option>
+        <option value="">葡萄</option>
+    </select>
+
+    <script>
+        var btn = document.getElementById("btn");
+        var optArr = document.getElementsByTagName("option");
+        var qd = document.getElementById("qd");
+        btn.onclick = function () {
+            optArr[2].selected = true;
+        }
+        qd.onclick = function () {
+            optArr[2].selected = false;
+        }
+    </script>
+</body>
+</html>

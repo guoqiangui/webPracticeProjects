@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #aaa;
+        }
+        ul, li {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+            width: 900px;
+            margin: 100px auto;
+            position: relative;
+        }
+        ul::before, ul::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 80px;
+            background-color: #ccc;
+            position: absolute;
+            left: -100px;
+        }
+        ul::after {
+            left: auto;     /*改为默认值*/
+            right: -100px;
+        }
+        li {
+            float: left;
+            width: 180px;
+            height: 80px;
+            text-align: center;
+            line-height: 80px;
+            font-size: 25px;
+        }
+        /*li中所有的span*/
+        li span {
+            float: left;
+            width: 30px;
+            height: 80px;
+            background-color: #ccc;
+        }
+        /*中间的span*/
+        li span:nth-child(2) {
+            width: 120px;
+        }
+
+        /*设置变换原点*/
+        li span:nth-child(1) {
+            transform-origin: left;
+        }
+        li span:nth-child(3) {
+            transform-origin: right;
+        }
+
+        /*鼠标经过时左边的span*/
+        li:hover span:nth-child(1) {
+            transform: skew(0deg, -30deg);
+            background-color: #bbb;
+            box-shadow: 10px 20px 20px  -10px #666;
+        }
+        /*鼠标经过时中间的span*/
+        li:hover span:nth-child(2) {
+            transform: translateY(-17px);
+            text-shadow: 5px 5px 3px #666;
+            box-shadow: 0 20px 20px -10px #666;
+        }
+        /*鼠标经过时右边的span*/
+        li:hover span:nth-child(3) {
+            transform: skew(0deg, 30deg);
+            background-color: #bbb;
+            box-shadow: -10px 20px 20px  -10px #666;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <span></span>
+            <span>首页</span>
+            <span></span>
+        </li>
+        <li>
+            <span></span>
+            <span>首页</span>
+            <span></span>
+        </li>
+        <li>
+            <span></span>
+            <span>首页</span>
+            <span></span>
+        </li>
+        <li>
+            <span></span>
+            <span>首页</span>
+            <span></span>
+        </li>
+        <li>
+            <span></span>
+            <span>首页</span>
+            <span></span>
+        </li>
+    </ul>
+</body>
+</html>

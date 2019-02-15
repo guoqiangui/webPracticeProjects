@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body, ul {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+
+        .box {
+            width: 200px;
+            margin: 100px auto;
+        }
+        ul li {
+            width: 200px;
+            border: 1px solid #ccc;
+            background-color: darkseagreen;
+            text-align: center;
+            cursor: pointer;
+        }
+        ul div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            text-align: center;
+            display: none;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        /*
+        需求，点击标题，下面弹出内容
+        思路：点击li，li的下一个元素就显示，而其他的div隐藏
+         */
+        $(document).ready(function () {
+            var li = $("ul li");
+            var div = $("ul div");
+
+            // 点击li，li的下一个元素就显示，而其他的div隐藏
+            li.click(function () {
+                //排他思想，先隐藏所有div，再显示this的下一个div
+                div.css("display", "none");
+                $(this).next().show();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>标题1</li>
+            <div>我是弹出来的div</div>
+            <li>标题2</li>
+            <div>我是弹出来的div</div>
+            <li>标题3</li>
+            <div>我是弹出来的div</div>
+            <li>标题4</li>
+            <div>我是弹出来的div</div>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border:10px dashed lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">我是一个div，哈哈哈哈<br>
+        点我有惊喜哦~~~
+    </div>
+
+    <script>
+        //注册事件的方式
+        //1.  ele.on事件类型 = function(){}
+        //2.  addEventListener(事件类型,事件处理函数,useCapture)  第三个参数默认是false，冒泡阶段执行
+        //3.  attachEvent(事件类型，事件处理函数) 旧版IE浏览器使用
+
+        // 封装成函数
+        // 缺点，每次注册事件都要判断
+        // function registeEvent(target, type, handler) {
+        //     if(target.addEventListener) {
+        //         console.log("addEventListener");
+        //         target.addEventListener(type, handler);
+        //     } else if(target.attachEvent) {
+        //         console.log("attachEvent");
+        //         target.attachEvent("on"+type, handler);
+        //     } else {
+        //         console.log("普通绑定");
+        //         target["on"+type] = handler;
+        //     }
+        // }
+
+        // var div1 = document.getElementById("div1");
+        // registeEvent(div1, "click", function () {
+        //    console.log("有惊喜是不可能的，哈哈");
+        // });
+        
+        
+        // 避免多次判断
+
+        //1、注册的事件的处理函数中的，this指向不一致
+        //使用addEventListener的方式注册的点击事件的回调函数中的this 指向target
+        //但是使用attachEvent的方式注册点击事件的回调函数中的this 指向window
+
+        //2、3种注册事件的方式中，回调函数内获取事件对象的方式也是不一致的
+        //要让他们统一，
+        //在第二种的事件注册方式（attachEvent）中，手动给handler传递window.event
+
+        function createEventRegister() {
+            if(window.addEventListener) {
+                return function (target, type, handler) {
+                    target.addEventListener(type, handler);
+                }
+            } else if(window.attachEvent) {
+                return function (target, type, handler) {
+                    target.attachEvent("on"+type, function () {
+                        // 修改this为目标元素，并添加事件对象，这样就统一了3中形式
+                        handler.call(target, window.event);
+                    });
+                }
+            } else {
+                return function (target, type, handler) {
+                    target["on"+type] = handler;
+                }
+            }
+        }
+
+        var registeEvent = createEventRegister();
+        var div1 = document.getElementById("div1");
+        registeEvent(div1, "click", function () {
+            console.log("没有惊喜的骚年");
+            console.log(this);
+        });
+    </script>
+</body>
+</html>

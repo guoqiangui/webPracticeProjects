@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*研究盒子宽高属性的其他取值*/
+        .father {
+            width: 400px;
+            height: 400px;
+            background-color: mediumspringgreen;
+            margin: 200px auto;
+        }
+        .son {
+            /*width: 200px;*/
+            width: 100%;    /*取百分数会根据父盒子的宽高来取*/
+            /*height: 200px;*/
+            height: auto;   /*取auto会根据自身的宽高来取（根据内容的高）*/
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="father">
+        <div class="son">哈哈</div>
+    </div>
+</body>
+</html>

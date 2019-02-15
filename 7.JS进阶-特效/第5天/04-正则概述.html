@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //正则表达式定义（Regular Expression）
+    //1、对象定义法
+    var reg1 = new RegExp(/abc/);
+
+    //2、字面量法
+    var reg2 = /def/;
+    console.log(reg2);
+    console.log(typeof reg2);   //object
+
+    //使用
+    console.log(reg1.test("abcdefg"));
+    console.log(/def/.test("abcdefg"));
+</script>
+</body>
+</html>

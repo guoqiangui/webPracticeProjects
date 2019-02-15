@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas id="cvs" width="500" height="500"></canvas>
+
+    <script src="pipe2.0.js"></script>
+    <script>
+        var cvs = document.getElementById("cvs");
+        var ctx = cvs.getContext("2d");
+
+        // 由于需要在饼图上显示信息，将数据进行改进
+        var data = [
+            {
+                val: 17,
+                msg: "凯尔特人"
+            }, {
+                val: 16,
+                msg: "湖人"
+            }, {
+                val: 6,
+                msg: "公牛"
+            }, {
+                val: 5,
+                msg: "马刺"
+            }
+        ];
+        var pipe = new Pipe(ctx, 200, 200, 100, data);
+        pipe.draw();
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // JSON和对象（对象字面量）的区别仅仅在于JSON的键必须加""，而对象字面量不一定要加
+    var json = {"name": "张三", "age": 18, "arr1": [1, 2, 3]};
+
+    //继续类比，数组可以遍历，那么JSON可不可以遍历呢？
+    // console.log(json.length); //undefined
+
+    //JSON没有长度，所以不可以用for循环遍历，可以用for...in循环遍历
+    for(var key in json) {
+        console.log(key); //打印键名，即属性名
+        // console.log(json.key); //undefined，因为打印的是json的key属性，而json没有这个属性
+        console.log(json[key]); //成功打印，打印的是json这个对象中key这个变量值对应的属性值。
+    }
+
+    //也可以用for...in循环遍历数组，但数组还是建议直接for循环
+    // var arr = [1,2,3,4];
+    // for(var i in arr) {
+    //     console.log(arr[i]);
+    // }
+
+    //可以利用属性绑定这个特性来用for循环创建简单的json
+    var json2 = {};
+    for(var i=1;i<=10;i++) {
+        json2[i] = i*10;
+    }
+    console.log(json2);
+</script>
+</body>
+</html>

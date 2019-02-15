@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//1、数字转字符串
+		var n1 = 12;
+		var n2 = 2.6;
+		var n3 = 6.1;
+
+		// var n4 = String(n3);
+		var n4 = n3.toString();
+		// alert(n4);
+		// alert(typeof(n4));
+
+		//2、字符串转数字
+		var s1 = "12";
+		var s2 = "5.7";
+		var s3 = "-12.8";
+		var s4 = "12abc";
+		var s5 = "love";
+
+		// var s6 = Number(s3);
+		// var s6 = parseInt(s5); //会取整数部分和以数字开头的字符串的数字部分
+		var s6 = parseFloat(s4);
+		// alert(s6);
+		// alert(typeof(s6));
+		 
+		//3、数字、字符串转布尔类型
+		var num1 = 123; //true
+		var str1 = "abc"; //true
+		var num2 = 0; //false
+		var num3; //false
+		var num4 = null; //false
+		var num5 = Infinity; //true
+		var b = Boolean(num5);
+		// alert(b);
+
+		//4、隐式数据类型转换
+		alert(10-"2"); //字符串"2"会在运算时自动转成number
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

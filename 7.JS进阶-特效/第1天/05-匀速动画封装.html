@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box1 {
+            height: 200px;
+            background-color: #eee;
+        }
+        #box2 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: mediumspringgreen;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <button>运动到200</button>
+        <button>运动到400</button>
+        <div id="box2" style="left:0px;"></div>
+    </div>
+
+    <script>
+        var box2 = document.getElementById("box2");
+        var btnArr = document.getElementsByTagName("button");
+
+        btnArr[0].onclick = function () {
+            animate(200);
+        }
+        btnArr[1].onclick = function () {
+            animate(400);
+        }
+
+        var timer = null;
+        function animate(target) {
+            //bug1: 多次按下运动到200会加速，原因：定时器同时被执行多次
+            //解决方法，每次点击都先清除定时器
+            clearInterval(timer);
+            timer = setInterval(function () {
+                box2.style.left = box2.offsetLeft + 10 + "px";
+                if(box2.offsetLeft >= target) {
+                    clearInterval(timer);
+                }
+            }, 500);
+        }
+
+    </script>
+</body>
+</html>

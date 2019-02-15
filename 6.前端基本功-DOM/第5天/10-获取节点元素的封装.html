@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box1"></div>
+    <div class="box2"></div>
+    <div></div>
+<script>
+    //需求：一个方法，包含三种获取元素节点的功能。通过传递参数的不同，来决定使用哪种获取方法。
+    //类似css获取元素的方式，例如getEle("#box")相当于getElementById("box")
+    var box1 = getEle("#box1");
+    console.log(box1);
+    var box2 = getEle(".box2")[0];
+    console.log(box2);
+    var div = getEle("div")[2];
+    console.log(div);
+
+    function getEle(str) {
+        if(str.indexOf("#") == 0) { //如果是#开头
+            return document.getElementById(str.slice(1));
+        } else if(str.indexOf(".") == 0) {  //如果是.开头
+            return document.getElementsByClassName(str.slice(1));
+        } else {
+            return document.getElementsByTagName(str);
+        }
+    }
+</script>
+</body>
+</html>

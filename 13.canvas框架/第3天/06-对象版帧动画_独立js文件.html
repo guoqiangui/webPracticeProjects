@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            display: none;
+        }
+
+        canvas {
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body>
+<canvas id="cvs" width="500" height="500"></canvas>
+<img src="imgs/NPC2.png" alt="">
+
+<script src="person.js"></script>
+<script>
+    var cvs = document.getElementById("cvs");
+    var ctx = cvs.getContext("2d");
+
+    var img = document.getElementsByTagName("img")[0];
+
+    // 图片加载完毕才可以画图
+    img.onload = function () {
+        var person = new Person(ctx, img, 4, 4, 100, 100, 40, 65);
+
+        // 绑定键盘按下事件
+        person.bind();
+
+        setInterval(function () {
+            // 每次进来要清除画布
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+            person.draw();
+
+            // 更新人物的移动位置
+            person.update();
+
+            // 判断当前帧是否超出总的帧数
+            person.currentFrame++;
+            if (person.currentFrame >= person.widthFrame) {
+                person.currentFrame = 0;
+            }
+        }, 100)
+    };
+</script>
+</body>
+</html>

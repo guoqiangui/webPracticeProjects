@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin-top: 10px;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <button>移动到400，宽变成400</button>
+    <div class="box"></div>
+
+    <script src="jquery1.0.0.1.js"></script>
+    <script>
+        var button = document.getElementsByTagName("button")[0];
+        var box = document.getElementsByTagName("div")[0];
+
+        button.onclick = function () {
+            var json = {"left": 400, "width": 600};
+            animate(box, json);
+        }
+
+        //上个版本每次调用方法只能变动一个属性，这次修改成可以一次调用同时变动多个属性
+        //思路：将属性和目标值参数改成json参数
+        /**
+         * 缓动动画封装（可一次变动多个属性），清除定时器有bug
+         * @param ele
+         * @param json 要改动元素的css属性作为json的属性，值作为json的值
+         */
+        function animate(ele, json) {
+            //要用定时器，先清定时器
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                //遍历json
+                for(var key in json) {
+                    //利用之前封装的获取任意形式属性值方法，返回的是10px形式的string，需要转成数字
+                    //parseInt()刚好可以忽略后面的字符串，只得到数字
+                    var leader = parseInt(getStyle(ele, key));
+
+                    var step = (json[key] - leader) / 10;  //计算步长
+                    step = step>0 ? Math.ceil(step) : Math.floor(step); //对步长进行加工
+                    leader = leader + step; //当前值变动
+                    ele.style[key] = leader + "px";    //改变
+                    //判断
+                    if(Math.abs(json[key] - leader) <= Math.abs(step)) {
+                        ele.style[key] = json[key] + "px"; //直接改变到目标值
+                        clearInterval(ele.timer);
+                    }
+                }
+            }, 25);
+        }
+    </script>
+</body>
+</html>

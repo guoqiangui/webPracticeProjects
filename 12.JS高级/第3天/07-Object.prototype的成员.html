@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Player(name) {
+        this.name = name;
+    }
+
+    // 1、constructor 原型对象内的一个属性，指向该原型对象相关联的构造函数
+    console.log(Player.prototype.constructor);
+
+    // 2、hasOwnProperty() 判断对象本身（不包含原型）是否有某个属性
+    var p1 = new Player("詹姆斯");
+    var bool = p1.hasOwnProperty("name"); // p1对象是否有name属性
+    console.log(bool);
+    console.log(p1.hasOwnProperty("__proto__")); // false，因为这个属性是属于原型的
+
+    // 3、propertyIsEnumerable()
+    // 1、判断属性是否属于对象本身，感觉和hasOwnProperty()一样
+    // 2、判断属性是否可以被遍历（即属性可以被for...in循环遍历出来）
+    console.log(p1.propertyIsEnumerable("name"));
+    console.log(p1.propertyIsEnumerable("__proto__"));
+    for(var k in p1) {
+        console.log(k); // 只有属于该实例的属性才可以遍历出来
+    }
+
+    // 4、toString() 和 toLocaleString()
+    var o = {};
+    console.log(o.toString());
+    console.log(o.toLocaleString());
+
+    var now = new Date();
+    console.log(now.toString());
+    console.log(now.toLocaleString());
+
+    // 5、valueOf() 获取当前对象的值
+    // 1、在对象参与运算的时候，会默认调用对象的valueOf()
+    // 2、如果valueOf获取到的值无法参与运算，则会调用对象的toString()方法，最终做字符串拼接的操作
+    // console.log(p1.valueOf());
+    console.log(1 + p1);
+
+    // 6、__proto__ 原型对象中的一个属性，可以访问本对象的原型对象
+
+</script>
+</body>
+</html>

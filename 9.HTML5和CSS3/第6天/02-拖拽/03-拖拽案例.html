@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box1, .box2 {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+        }
+        .box2 {
+            position: relative;
+            left: 800px;
+            top: -50px;
+        }
+        .ball {
+            width: 98px;
+            height: 98px;
+            border: 1px solid #000;
+            background-color: red;
+            border-radius: 50%;
+            float: left;
+            text-align: center;
+            line-height: 98px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="ball" draggable="true">1</div>
+        <div class="ball" draggable="true">2</div>
+        <div class="ball" draggable="true">3</div>
+        <div class="ball" draggable="true">4</div>
+        <div class="ball" draggable="true">5</div>
+        <div class="ball" draggable="true">6</div>
+        <div class="ball" draggable="true">7</div>
+        <div class="ball" draggable="true">8</div>
+        <div class="ball" draggable="true">9</div>
+    </div>
+    <div class="box2"></div>
+
+    <script>
+        var box2 = document.querySelector(".box2");
+        var balls = document.querySelectorAll(".ball");
+        var temp = null;    /*用来记住拖拽元素*/
+
+    //    拖拽元素拖拽事件
+        for(var i=0;i<balls.length;i++) {
+            balls[i].ondragstart = function () {
+                temp = this;    /*储存拖拽元素*/
+            }
+        }
+
+    //    目标元素拖拽事件
+        box2.ondragover = function (event) {
+        //    阻止拖拽默认行为（在ondragover事件中设置）
+            event.preventDefault();
+        }
+        box2.ondrop = function () {
+            // 将球添加到box2中
+            box2.appendChild(temp);
+        }
+    </script>
+</body>
+</html>

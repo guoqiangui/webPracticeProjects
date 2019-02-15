@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+
+    // 递归处理斐波那契数列的性能问题
+    // 用来记录计算次数
+    var count = 0;
+    function fib(n) {
+        count ++;
+
+        if(n <= 2) {
+            return 1;
+        }
+        return fib(n-1) + fib(n-2);
+    }
+
+    console.log(fib(20));
+    console.log(count); // 到了20就计算了13529次，非常影响性能，因为计算了太多已经计算过的结果
+</script>
+</body>
+</html>

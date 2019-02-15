@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .top-nav {
+            height: 30px;
+            background-color: pink;
+        }
+        .top-banner {
+            height: 70px;
+            background-color: yellow;
+            /*opacity: 1;*/
+        }
+        .w {
+            position: relative;
+            width: 1200px;
+            height: 70px;
+            margin: 0 auto;
+            background-color: green;
+        }
+        .nav {
+            width: 1200px;
+            height: 70px;
+            background-color: red;
+            margin: 0 auto;
+        }
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            line-height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-nav"></div>
+    <!--一定要用行内式-->
+    <div class="top-banner" style="opacity: 1">
+        <div class="w">
+            <a class="close" href="#">x</a>
+        </div>
+    </div>
+    <div class="nav"></div>
+
+    <script>
+        var close = document.getElementsByClassName("close")[0];
+        var topBanner = document.getElementsByClassName("top-banner")[0];
+        var timer = null;
+        close.onclick = function () {
+            // banner.style.display = "none";
+            //逐渐消失
+            timer = setInterval(fun, 100);
+        }
+        function fun() {
+            //style属性只能与行内式的样式互动
+            topBanner.style.opacity -= 0.1;
+            if(topBanner.style.opacity<0){
+                topBanner.style.display = "none";
+                clearInterval(timer);
+            }
+
+        }
+    </script>
+</body>
+</html>

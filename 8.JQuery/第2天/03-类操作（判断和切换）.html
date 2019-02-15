@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            margin: 10px;
+        }
+        .current {
+            background-color: pink;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            $("button").click(function () {
+                //判断类是否存在
+                // if($("div").hasClass("current")) {  //如果存在
+                //     $("div").removeClass("current");
+                // } else {    //如果不存在
+                //     $("div").addClass("current");
+                // }
+
+                //上述操作可直接用toggleClass()方法代替
+                $("div").toggleClass("current");
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>切换</button>
+    <div></div>
+</body>
+</html>

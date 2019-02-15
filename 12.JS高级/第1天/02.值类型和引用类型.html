@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*
+        值类型：string number boolean undefined
+        存储的是数据本身的变量就是值类型的数据
+    */
+    var str = "詹姆斯";
+    var num = 123;
+    var bool = true;
+
+    /*
+        引用类型：object
+        存储的是数据在内存中的地址，数据在内存中单独储存，就是引用数据的类型
+     */
+    var car = {
+        brand: "宝马",
+        type: "a123"
+    };
+    var person = {
+        name: "詹姆斯",
+        age: 34,
+        car: car
+    };
+
+//    引用类型赋值：将变量中储存的地址复制一份单独储存，但是两个变量共享同一个对象
+//    修改其中一个变量，另一个变量引用来访问的时候，也会访问到修改后的变量
+</script>
+</body>
+</html>

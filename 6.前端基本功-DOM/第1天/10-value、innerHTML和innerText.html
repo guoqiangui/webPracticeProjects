@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input id="inp1" type="text" value="我是input的value属性值"/>
+
+    <div id="box1">
+        我是box1的内容
+        <div id="box2">我是box2的内容</div>
+    </div>
+
+    <div id="box3">
+        我是box3的内容
+        <div id="box4">我是box4的内容</div>
+    </div>
+
+    <script>
+        //value: 标签的value属性
+        var inp1 = document.getElementById("inp1");
+        console.log(inp1.value);
+
+        //innerHTML: 获取双闭合标签里面的内容（识别标签）
+        var box1 = document.getElementById("box1");
+        console.log(box1.innerHTML); //连标签一起输出
+
+        //innerText: 获取双闭合标签里面的内容（不识别标签）
+        var box3 = document.getElementById("box3");
+        console.log(box3.innerText); //连子盒子的文本都能获取
+    </script>
+</body>
+</html>

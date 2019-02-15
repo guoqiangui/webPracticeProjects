@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--作用域是分段的，每个script标签都是一段-->
+<script>
+    foo()
+    function foo(){
+        console.log("第一个script标签内的函数")
+    };
+</script>
+
+<script>
+    foo()
+    function foo(){
+        console.log("第2个script标签内的函数")
+    }
+</script>
+</body>
+</html>

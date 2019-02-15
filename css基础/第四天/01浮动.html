@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.red,.green,.blue{
+			float:right;
+		}
+
+		.red{
+			width: 300px;
+			height: 200px;
+			background: #f00;
+			/* float: left; */
+		}
+		.green{
+			width: 300px;
+			height: 200px;
+			background: #0f0;
+			/* float: left; */
+		}
+		.blue{
+			width: 300px;
+			height: 200px;
+			background: #00f;
+			/* float: left; */
+		}
+		/* 虽然浮动可以修改大小，但不推荐，建议还是转为行内块 */
+		.pink{
+			width: 200px;
+			height: 100px;
+			background: pink;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div class="red"></div>
+	<div class="green"></div>
+	<div class="blue"></div>
+
+	<span class="pink"></span>
+</body>
+</html>

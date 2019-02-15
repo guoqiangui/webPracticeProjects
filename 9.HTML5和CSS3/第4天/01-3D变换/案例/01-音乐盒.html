@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .musicBox {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: url(images/musicb.jpg);
+            margin: 200px auto;
+            position: relative; /*如果不给父盒子relative的话，这个元素的父盒子就是body*/
+        }
+        .musicBox::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url(images/musict.jpg) no-repeat;
+            border-radius: 50%;
+            transform-origin: bottom;   /*变换原点要在变化前设置好*/
+            /*过渡*/
+            transition: transform 1s;
+        }
+        /*鼠标经过时里面插入的伪元素*/
+        .musicBox:hover::after {
+            transform: rotateX(-180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="musicBox"></div>
+</body>
+</html>

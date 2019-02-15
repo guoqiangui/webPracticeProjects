@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 原型的使用方法
+    // 1、利用对象的动态特性来给原型添加成员
+    // 2、直接替换原型对象
+
+    function Player(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    // 利用对象的动态特性
+    Player.prototype.play = function () {
+        console.log(this.name + "是打篮球的");
+    };
+
+    var player1 = new Player("詹姆斯", 34);
+    player1.play();
+
+    // 直接替换原型对象
+    Player.prototype = {
+        msg: "我是新的原型"
+    };
+
+    var player2 = new Player("杜兰特", 30);
+    console.log(player2.msg); // 替换成功
+    // player2.play();  // player2和新的原型对象没有play方法了，所以报错is not a function
+    player1.play();     // 替换前创建的对象依然可以使用play()
+</script>
+</body>
+</html>

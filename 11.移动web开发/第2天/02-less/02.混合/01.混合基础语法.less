@@ -1,0 +1,29 @@
+.red {
+  background-color: red;
+  border: 1px solid red;
+  color: red;
+}
+
+
+// 类似函数的用法
+// @color相当于参数，后面的#0094ff是默认值（不传值的话）
+.oneColor(@color:#0094ff) {
+  background-color: @color;
+  border: 1px solid @color;
+  color: @color;
+}
+
+// 可以直接调用写好的类，相当于调用方法，要加括号
+body {
+  .red();
+}
+
+// 使用自己传递的参数
+ul {
+  .oneColor(green);
+}
+
+// 不传参数
+ol {
+  .oneColor();
+}

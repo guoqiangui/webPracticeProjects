@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //沙箱
+    //与外界隔绝的一个环境，外界无法修改该环境内任何信息，沙箱内的东西单独属于一个世界
+
+    //360沙箱模式
+    //将软件和操作系统进行隔离，以达到安全的目的
+
+    //苹果手的app使用的就是沙箱模式去运行
+    //隔离app的空间，每个app独立运行
+
+    //JS中的沙箱模式
+    //沙箱模式的基本模型 立即执行函数表达式（IIFE）: ( function () {} )();
+    // (function () {
+    //     console.log(123);
+    // })();
+
+    (function () {
+        //在沙箱中将所有变量的定义放在最上方
+        var sum = 0;
+
+        //中间就放一些逻辑代码
+        for(var i=1; i<=100; i++) {
+            sum += i;
+        }
+        console.log(sum);
+
+        //最后，如果需要，就给外界暴露一些成员（通过window）
+    })();
+
+    // jQuery中的沙箱模式
+    (function (win) {
+        var jQuery = {
+            getEle: function () {
+                console.log(123);
+            }
+        };
+
+        // 暴露一些成员（为了严格符合沙箱规范，这里的window最好不要直接用，要借助参数）
+        // window.jQuery = window.$ = jQuery;
+        win.jQuery = win.$ = jQuery;
+    })(window);
+
+    $.getEle(123);
+</script>
+</body>
+</html>

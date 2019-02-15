@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {
+            outline: none;
+        }
+        .wrong {
+            border: 2px solid red;
+        }
+        .right {
+            border: 2px solid mediumspringgreen;
+        }
+    </style>
+</head>
+<body>
+    用户名: <input type="text"><br><br>
+    密码: <input type="password">
+
+    <script>
+        var inputArr = document.getElementsByTagName("input");
+        for(var i=0;i<inputArr.length;i++) {
+            inputArr[i].onblur = fun1;
+        }
+
+        //匿名和这样差不多，所以不能用i，要用this
+        function fun1() {
+            // 如果用户名长度不在6~12位之间
+            if(this.value.length<6 || this.value.length>12) {
+                this.className = "wrong";
+            } else {
+                this.className = "right";
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button {
+            width: 100px;
+            height: 40px;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+        .current {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+
+    <script>
+        var btnArr = document.getElementsByTagName("button");
+        for(var i=0;i<btnArr.length;i++) {
+            //自定义一个索引属性
+            // btnArr[i].index = i;
+            btnArr[i].setAttribute("index", i);
+            btnArr[i].onmouseover = function () {
+                //排他思想
+                for(var j=0;j<btnArr.length;j++) {
+                    btnArr[j].className = "";
+                }
+                this.className = "current";
+                //怎么定义就怎么获取
+                alert(this.getAttribute("index"));
+            }
+        }
+    </script>
+</body>
+</html>

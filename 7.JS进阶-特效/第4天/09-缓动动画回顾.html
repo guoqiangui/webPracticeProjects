@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: mediumspringgreen;
+            margin: 10px 0;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <button>运动到200</button>
+    <button>运动到400</button>
+    <div id="box"></div>
+
+    <script>
+        var box = document.getElementById("box");
+        var btnArr = document.getElementsByTagName("button");
+        var timer = null;
+        
+        btnArr[0].onclick = function () {
+            animate(box, 200);
+        }
+
+        btnArr[1].onclick = function () {
+            animate(box, 400);
+        }
+
+
+        //缺点：1.只能获取行内式，不能获取内嵌和外链样式。导致我们获取left值的时候,用offsetLeft模拟
+        //2.只能放入一个属性。（一个方法只能操作一个属性）
+        /**
+         * 缓动动画封装
+         * @param ele
+         * @param target
+         */
+        function animate(ele, target) {
+            var leader = 0; //用来记录当前位置
+            //要用定时器，先清定时器
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                leader = ele.offsetLeft;
+                var step = (target - leader) / 10;  //计算步长
+                step = step>0 ? Math.ceil(step) : Math.floor(step); //对步长进行加工
+                leader = leader + step; //当前位置变动
+                ele.style.left = leader + "px"; //运动
+                //判断
+                if(Math.abs(target - leader) <= Math.abs(step)) {
+                    ele.style.left = target + "px"; //直接运动到目标值
+                    clearInterval(ele.timer);
+                }
+            }, 25);
+        }
+    </script>
+</body>
+</html>

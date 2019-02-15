@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" value="哈哈啊哈">
+    <button>禁用</button>
+    <button>解禁</button>
+
+    <script>
+        var input = document.getElementsByTagName("input")[0];
+        var btnArr = document.getElementsByTagName("button");
+        btnArr[0].onclick = function () {
+            input.disabled = "disabled";
+        }
+        btnArr[1].onclick = function () {
+            input.disabled = "";
+        }
+    </script>
+</body>
+</html>

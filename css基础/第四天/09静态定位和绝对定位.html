@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			margin: 0;
+		}
+		.box{
+			width: 300px;
+			height: 300px;
+			background: green;
+			/* 静态定位，默认状态，不随定位的改变而改变 */
+			/* position: static; */
+
+			/* 绝对定位，类似浮动，会脱标 */
+			position: absolute;
+			left: 100px;	/*距离左边100px*/
+			top: 20px;	/*距离上面20px*/
+		}
+		.box2{
+			width: 300px;
+			height: 300px;
+			background: red;
+		} 
+
+		/* 行内元素使用绝对定位会变成行内块，但不推荐使用 */
+		span{
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background: pink;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box2"></div>
+
+	<span></span>
+
+</body>
+</html>

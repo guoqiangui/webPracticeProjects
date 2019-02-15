@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            vertical-align: top;
+        }
+        .w {
+            width: 1519px;
+            margin: 0 auto;
+        }
+        .nav {
+            position: fixed;
+        }
+        .content-left,
+        .content-right {
+            position: absolute;
+            top: 200px;
+        }
+        .content-left {
+            left: 0;
+        }
+        .content-right {
+            right: 0;
+        }
+        .toTop {
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            cursor: pointer;
+            /*display: none;*/
+        }
+    </style>
+</head>
+<body>
+    <div class="box w">
+        <div class="nav">
+            <img src="images/r1_c1.png" alt="">
+        </div>
+        <div class="content">
+            <img src="images/box.png" alt="">
+            <div class="content-left" id="left">
+                <img src="images/r2_c1.png">
+            </div>
+            <div class="content-right" id="right">
+                <img src="images/r2_c2.png">
+            </div>
+            <div class="toTop">
+                <img src="images/20150717215921.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script src="../my.js"></script>
+    <script>
+        var left = document.getElementById("left");
+        var right = document.getElementById("right");
+        var arrow = document.getElementsByClassName("toTop")[0];
+
+        //需求一：网页被卷曲多少，两侧广告就缓动多少
+        //需求二：
+            /*被卷曲高度大于200时，显示上箭头*/
+            /*点击上箭头，页面缓动滚动到顶部*/
+
+        window.onscroll = function () {
+            var scr = scroll().top;
+            //两侧广告缓动
+            animate2(left, scr+200);
+            animate2(right, scr+200);
+
+            //卷曲超过200就显示，否则隐藏
+            if(scr > 200) {
+                arrow.style.display = "block";
+            } else {
+                arrow.style.display = "none";
+            }
+
+            leader = scroll().top;  //每次滚动都将值赋给leader
+        }
+
+        //点击箭头缓动滚动到顶部
+        var timer = null;
+        var leader = 0; //用来记录scrollTop的值
+        arrow.onclick = function () {
+            //要用定时器，先清定时器
+            clearInterval(timer);
+            timer = setInterval(function () {
+                var step = (0 - leader) / 10;  //获得步长
+                step = step>0 ? Math.ceil(step) : Math.floor(step); //对步长进行二次加工
+
+                //缓动滚动
+                leader = leader + step;
+                window.scrollTo(0, leader);
+
+                if(leader == 0) {
+                    clearInterval(timer);
+                }
+                if(Math.abs(0-leader) <= Math.abs(step)) {
+                    window.scrollTo(0, 0);
+                    clearInterval(timer);
+                }
+            }, 30);
+        }
+
+
+
+        //向下向上缓动
+        function animate2(ele, target) {
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                var step = (target - ele.offsetTop) / 10;
+                //将步长向上取整
+                step = step>0 ? Math.ceil(step) : Math.floor(step);
+                ele.style.top = ele.offsetTop + step + "px";
+                //如果距离比步长要小
+                if(Math.abs(target - ele.offsetTop) < Math.abs(step)) {
+                    //令当前值等于目标值
+                    ele.style.top = target;
+                    //清除定时器
+                    clearInterval(ele.timer);
+                }
+            }, 30);
+        }
+    </script>
+</body>
+</html>

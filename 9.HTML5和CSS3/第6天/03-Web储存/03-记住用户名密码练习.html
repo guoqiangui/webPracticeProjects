@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <label for="username">
+        用户名：<input type="text" id="username">
+        <br><br>
+    </label>
+    <label for="pwd">
+        密码：<input type="text" id="pwd">
+        <br><br>
+    </label>
+    <input type="checkbox" id="check">记住密码
+    <br><br>
+    <button>登录</button>
+
+    <script>
+        var username = document.querySelector("#username");
+        var pwd = document.querySelector("#pwd");
+        var check = document.querySelector("#check");
+        var btn = document.querySelector("button");
+        
+        // 点击登录
+        btn.onclick = function () {
+        //    如果记住密码被选中，储存用户名和密码
+        //    没有选中，就清空用户名和密码
+            if(check.checked) {
+                window.localStorage.setItem("username", username.value);
+                window.localStorage.setItem("pwd", pwd.value);
+            } else {
+                window.localStorage.clear();
+            }
+        }
+
+    //    页面加载完毕后，将之前储存的用户名和密码显示在输入框中
+        window.onload = function () {
+            username.value = window.localStorage.getItem("username");
+            pwd.value = window.localStorage.getItem("pwd");
+        }
+    </script>
+</body>
+</html>

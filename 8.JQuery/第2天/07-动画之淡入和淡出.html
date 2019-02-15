@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            var btn = $("button");
+            var div = $("div");
+
+            //方法与show()和hide()一样，都有四种方式，不过还多一种fadeTo()
+
+            btn.eq(0).click(function () {
+                div.fadeIn();
+                // div.fadeIn(2000);
+                // div.fadeIn("slow");
+                // div.fadeIn(2000, function () {
+                //     alert("done");
+                // });
+            });
+
+            btn.eq(1).click(function () {
+                div.fadeOut();
+                // div.fadeOut(2000);
+                // div.fadeOut("slow");
+                // div.fadeOut(2000, function () {
+                //     alert("done");
+                // });
+            });
+
+            btn.eq(2).click(function () {
+                div.fadeToggle();
+                // div.fadeToggle(2000);
+                // div.fadeToggle("slow");
+                // div.fadeToggle(2000, function () {
+                //     alert("done");
+                // });
+            });
+            
+            btn.eq(3).click(function () {
+                //改透明度
+                div.fadeTo(2000, 0.5);
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>淡入</button>
+    <button>淡出</button>
+    <button>切换</button>
+    <button>淡入或淡出到透明度为0.5</button>
+    <div></div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrapper {
+            width: 650px;
+            margin: 0 auto;
+        }
+        .box1 {
+            width: 300px;
+            height: 300px;
+            background-color: green;
+            border: 1px solid #000;
+            float: left;
+            transition: all 2s;
+        }
+        .box2 {
+            width: 300px;
+            height: 300px;
+            background-color: orange;
+            border: 1px solid #000;
+            float: right;
+        }
+
+        .box1:hover {
+            /*
+            translate(水平位移，垂直位移)
+                正值：向右向下；负值：向左向上
+                只写一个值，代表水平移动
+                百分比，相对于自身移动
+            */
+            /*transform: translate(200px, 200px);*/
+            /*transform: translate(200px);*/
+            transform: translate(-50%, 50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="box1"></div>
+        <div class="box2"></div>
+    </div>
+</body>
+</html>

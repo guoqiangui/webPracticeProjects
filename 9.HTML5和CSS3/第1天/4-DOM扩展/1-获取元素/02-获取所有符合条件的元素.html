@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 100px;
+            border: 1px solid #000;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+    <div class="box box4"></div>
+
+    <script>
+        var boxs = document.querySelectorAll(".box");
+        for(var i=0;i<boxs.length;i++) {
+            boxs[i].style.backgroundColor = "green";
+        }
+
+        //总是返回数组
+        // var box = document.querySelectorAll(".box1");
+        // console.log(box);
+    </script>
+</body>
+</html>

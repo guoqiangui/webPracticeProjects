@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box" value="111">你好</div>
+
+    <script>
+        var box = document.getElementById("box"); //元素节点
+        var attr = box.getAttributeNode("value"); //得到属性节点
+        var text = box.firstChild; //文本节点
+
+        // console.log(box);
+        // console.log(attr);
+        // console.log(text);
+
+        //nodeType
+        console.log(box.nodeType);  //1
+        console.log(attr.nodeType); //2
+        console.log(text.nodeType); //3
+
+        //nodeName
+        console.log(box.nodeName);  //DIV
+        console.log(attr.nodeName); //value
+        console.log(text.nodeName); //#text
+
+        //nodeValue
+        console.log(box.nodeValue);     //null
+        console.log(attr.nodeValue);    //111
+        console.log(text.nodeValue);    //你好
+    </script>
+</body>
+</html>

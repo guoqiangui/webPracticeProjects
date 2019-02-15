@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    console.log("-----------预定义类----------");
+    //.   除了换行和回车以外的任意字符
+    // console.log(/./.test("a"));
+    // console.log(/./.test("abc"));
+    // console.log(/./.test("$%*@"));
+    // console.log(/./.test("\n"));
+    // console.log(/./.test("\r"));
+    // console.log(/./.test("\r\n"));
+
+    // \d   匹配数字字符
+    // console.log(/\d/.test("1"));
+    // console.log(/\d/.test("123"));
+    // console.log(/\d/.test("abc"));
+    // \D   与\d相反，匹配非数字字符
+    // console.log(/\D/.test("1"));
+    // console.log(/\D/.test("123"));
+    // console.log(/\D/.test("abc"));
+
+    //  \s  匹配空白字符（如空格、回车、制表符等）
+    // console.log(/\s/.test(" "));
+    // console.log(/\s/.test("\r"));
+    // console.log(/\s/.test("\n"));
+    // console.log(/\s/.test("\t"));
+    //  \S  与\s相反
+    // console.log(/\S/.test(" "));
+
+    //  \w  单词字符（匹配字母数字下划线）
+    // console.log(/\w/.test("abc"));
+    // console.log(/\w/.test("123"));
+    // console.log(/\w/.test("_"));
+    // //  \W  与\w相反
+    // console.log(/\W/.test("abc"));
+    // console.log(/\W/.test("123"));
+    // console.log(/\W/.test("_"));
+
+    console.log("-----------简单类----------");
+    //匹配指定字符，只要有指定字符就匹配成功，要完整
+    // console.log(/abc/.test("abcde"));
+    // console.log(/abc/.test("adbc"));    //false
+
+    //[]: 匹配[]中任意一个字符即可
+    // console.log(/[abcd_123]/.test("abcdefg"));
+    // console.log(/[abcd_1234]/.test("_12abc"));
+
+
+    console.log("-----------负向类----------");
+    //在[]内最前面加^进行取反（/[^abc]/: 不匹配abc或其中任何一个）
+    // console.log(/[^abc]/.test("a11234"));   //true，是因为有不是a的字符
+    // console.log(/[^abc]/.test("ab123"));    //true，同理
+    // console.log(/[^abc]/.test("abc123"));   //true，同理
+    // console.log(/[^abc]/.test("abc"));  //false
+    // console.log(/[^abc]/.test("ab"));
+
+    console.log("-----------范围类----------");
+    //a-z表示从a到z所有字母
+    // console.log(/[a-z]/.test("abcdefg"));
+    // console.log(/[0-9]/.test("122aa"));
+
+    console.log("-----------组合类----------");
+    //在[]中可以直接连接
+    // console.log(/[a-zA-Z]/.test("abcdEFG"));    //匹配所有英文字母
+    // console.log(/[a-zA-Z0-9_]/.test("123_abc"));    //字母数字下划线
+
+</script>
+</body>
+</html>

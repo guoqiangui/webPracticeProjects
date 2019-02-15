@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+            margin: 20px;
+        }
+        ul li {
+            height: 25px;
+            background-color: mediumspringgreen;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button>点击创建5个移民li</button>
+    <ul>
+        <li>我是土著li</li>
+        <li>我是土著li</li>
+        <li>我是土著li</li>
+        <li>我是土著li</li>
+        <li>我是土著li</li>
+    </ul>
+
+    <script>
+        /*
+        需求：点击按钮创建5个li，要求这5个li都能触发与土著li一样的事件
+         */
+        var btn = document.getElementsByTagName("button")[0];
+        var ul = document.getElementsByTagName("ul")[0];
+        var liArr = ul.getElementsByTagName("li");
+
+        btn.onclick = function () {
+            //创建5个li，加到ul中
+            for(var i=0;i<5;i++) {
+                var newLi = document.createElement("li");
+                newLi.innerText = "我是移民li";
+                ul.appendChild(newLi);
+            }
+        }
+
+        //给ul中所有li绑定一样的事件
+        //问题：用普通的事件绑定方式，新添加的移民li并没有成功绑定事件
+        // for(var i=0;i<liArr.length;i++) {
+        //     liArr[i].onclick = function () {
+        //         console.log(1);
+        //     }
+        // }
+
+        //需要使用事件委托，事件委托利用冒泡的特性: 点击li，会冒泡到ul，所以ul也会触发事件
+        //好处很多，比如只需给一个元素绑定事件
+        ul.onclick = function (event) {
+            event = event || window.event;
+            //获取触发事件的元素
+            var target = event.target || event.srcElement;
+            if(target.tagName === "LI") {   //注意是大写
+                console.log(1);
+            }
+        }
+    </script>
+</body>
+</html>

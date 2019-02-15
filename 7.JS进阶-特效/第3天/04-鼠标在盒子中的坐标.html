@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 400px;
+            height: 400px;
+            background-color: mediumspringgreen;
+            margin: 200px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <!--鼠标在盒子中的X坐标为：100px<br>-->
+        <!--鼠标在盒子中的Y坐标为：100px<br>-->
+    </div>
+
+    <script src="my.js"></script>
+    <script>
+        /*
+        需求：鼠标只要在盒子内移动，哪怕1像素，上面的内容都要改变
+        思路：
+            1、给盒子绑定鼠标移动事件（onmousemove）
+            2、计算坐标
+                y: pageY - 盒子距离页面顶部距离
+            3、更改div的内容
+         */
+        var box = document.getElementById("box");
+        // 给盒子绑定鼠标移动事件
+        box.onmousemove = function (event) {
+            //获取event对象
+            event = event || window.event;
+
+            // 获取pageY和pageX的兼容写法
+            var pageY = event.pageY || scroll().top + event.clientY;
+            var pageX = event.pageX || scroll().left + event.clientX;
+
+            // y: pageY - 盒子距离页面顶部距离
+            var y = pageY - box.offsetTop;    //计算y坐标
+            var x = pageX - box.offsetLeft;   //计算x坐标
+
+            //修改盒子的内容
+            box.innerHTML = "鼠标在盒子中的X坐标为："+ x +"px<br>" +
+                "鼠标在盒子中的Y坐标为："+ y +"px<br>";
+        }
+    </script>
+</body>
+</html>

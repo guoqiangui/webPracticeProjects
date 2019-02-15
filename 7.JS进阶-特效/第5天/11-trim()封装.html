@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /*
+        需求：旧版IE不支持trim()，我们自己封装一个trim(str)方法
+         */
+        function trim(str) {
+            //利用replace()将空格换成""
+            var reg1 = /\s/g;    //匹配所有空格
+            var reg2 = /(^\s+)|(\s+$)/g;  //匹配开头和结尾的空格，且全局匹配
+            return str.replace(reg2, "");
+        }
+
+        var str = "   你好  吗   ";
+        console.log(str);
+        console.log(trim(str));
+    </script>
+</body>
+</html>

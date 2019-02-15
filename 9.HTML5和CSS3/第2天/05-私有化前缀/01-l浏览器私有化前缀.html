@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 800px;
+            height: 200px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            /* 渐变，兼容性非常不好，每个浏览器要加私有化前缀才有效果 */
+            /*background: linear-gradient(left, red, blue);   */
+
+            /*
+                -webkit-    谷歌、苹果浏览器
+                -moz-   火狐浏览器
+                -ms-    IE浏览器
+                -o-     欧鹏浏览器
+            */
+            /*兼容写法，最后补上没有私有化前缀的*/
+            background: -webkit-linear-gradient(left, red, blue);
+            background: -moz-linear-gradient(left, red, blue);
+            background: -ms-linear-gradient(left, red, blue);
+            background: -o-linear-gradient(left, red, blue);
+            background: linear-gradient(left, red, blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

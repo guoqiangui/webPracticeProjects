@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 静态成员和实例成员是从其他编程语言中引入的
+    // 静态成员：是指构造函数的属性和方法
+    // 实例成员：是指实例的属性和方法，包括对象本身的成员和原型中的成员
+
+    var player = {name: "詹姆斯"};
+    // 静态成员举例
+    var obj = Object.create(player);
+
+    // 实例成员举例
+    console.log(player.name);
+    console.log(player.__proto__);
+
+    // 一般把工具方法作为静态成员，把对象相关的方法作为实例成员
+</script>
+</body>
+</html>

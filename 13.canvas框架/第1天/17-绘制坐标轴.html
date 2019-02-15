@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="cvs" width="500" height="500"></canvas>
+
+    <script>
+        var cvs = document.getElementById("cvs");
+        var ctx = cvs.getContext("2d");
+
+        // 坐标轴距离画布上右下左的距离
+        var padding = {
+            top: 20,
+            right: 20,
+            bottom: 20,
+            left: 20
+        };
+
+        // 坐标轴中箭头的宽和高
+        var arrow = {
+            width: 12,
+            height: 20
+        };
+
+        // 坐标轴上顶点坐标
+        var vertexTop = {
+            x: padding.left,
+            y: padding.top
+        };
+
+        // 坐标轴原点坐标
+        var origin = {
+            x: padding.left,
+            y: cvs.height - padding.bottom
+        };
+
+        // 坐标轴右顶点坐标
+        var vertexRight = {
+            x: cvs.width - padding.right,
+            y: cvs.height - padding.bottom
+        };
+
+        // 绘制坐标轴
+        ctx.moveTo(vertexTop.x, vertexTop.y);
+        ctx.lineTo(origin.x, origin.y);
+        ctx.lineTo(vertexRight.x, vertexRight.y);
+
+        // 绘制箭头
+        // 向上的箭头
+        ctx.moveTo(vertexTop.x, vertexTop.y);
+        ctx.lineTo(vertexTop.x - arrow.width/2, vertexTop.y + arrow.height);
+        ctx.moveTo(vertexTop.x, vertexTop.y)
+        ctx.lineTo(vertexTop.x + arrow.width/2, vertexTop.y + arrow.height);
+        // 向右的箭头
+        ctx.moveTo(vertexRight.x, vertexRight.y);
+        ctx.lineTo(vertexRight.x - arrow.height, vertexRight.y - arrow.width/2);
+        ctx.moveTo(vertexRight.x, vertexRight.y);
+        ctx.lineTo(vertexRight.x - arrow.height, vertexRight.y + arrow.width/2);
+
+        ctx.stroke();
+    </script>
+</body>
+</html>

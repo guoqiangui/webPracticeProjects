@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // ^ 会匹配行或者字符串的起始位置（在[]外的^）
+    // $ 会匹配行或字符串的结尾位置
+    console.log(/^abc/.test("abcdef")); //以abc开头都会匹配
+    console.log(/^abc/.test("fabcdeg"));
+    console.log(/def$/.test("abcdef")); //以def结尾都会匹配
+
+    // ^$一起用表示精确匹配，内容一定是这里面的，差一点都不可以
+    console.log(/^abc$/.test("abcd"));  //false
+    console.log(/^abc$/.test("abcabc"));    //false，必须只有abc才可以匹配
+    console.log(/^abc$/.test("abc"));
+</script>
+</body>
+</html>

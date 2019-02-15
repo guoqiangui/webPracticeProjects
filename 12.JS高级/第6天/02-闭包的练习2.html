@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var divs = document.querySelectorAll("div");
+            for (var i = 0; i < divs.length; i++) {
+                var div = divs[i];
+
+                // 只会输出第10个div，因为回调函数不是立即执行的，点击的时候i已经变成10了
+                // div.onclick = function () {
+                //     console.log("我是第"+ i +"个div");
+                // };
+
+                // 利用闭包解决：也是及时保存i的值
+                // function foo(j) {
+                //     function callback() {
+                //         console.log("我是第" + j + "个div");
+                //     }
+                //     return callback;
+                // }
+                // div.onclick = foo(i);
+
+                // 简洁写法，记得要调用
+                div.onclick = (function (j) {
+                    return function () {
+                        console.log("我是第" + j + "个div");
+                    }
+                })(i);
+            }
+        };
+    </script>
+</head>
+<body>
+    <div>我是第1个div</div>
+    <div>我是第2个div</div>
+    <div>我是第3个div</div>
+    <div>我是第4个div</div>
+    <div>我是第5个div</div>
+    <div>我是第6个div</div>
+    <div>我是第7个div</div>
+    <div>我是第8个div</div>
+    <div>我是第9个div</div>
+    <div>我是第10个div</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 100px;
+            border: 1px solid #000;
+            margin: 10px;
+        }
+        .active {
+            border-radius: 50%;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <button>切换</button>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+    <div class="box box4"></div>
+
+    <script>
+        //与jquery的类操作类似
+
+        //添加类
+        var box1 = document.querySelector(".box1");
+        box1.classList.add("active");
+
+        //移除类
+        // box1.classList.remove("active");
+
+        //判断类是否存在
+        var bool = box1.classList.contains("active");
+        console.log(bool);
+        
+        //切换类（与jquery的toggle()一样，有就移除，没有就添加）
+        var btn = document.querySelector("button");
+        btn.onclick = function () {
+            var box3 = document.querySelector(".box3");
+            box3.classList.toggle("active");
+        }
+        
+    </script>
+</body>
+</html>

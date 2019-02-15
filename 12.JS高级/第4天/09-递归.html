@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 递归
+    // 在函数内调用函数自己，就是递归
+    // 没有结束条件的递归，是死递归，会不断调用自己，最后浏览器报错:Maximum call stack size exceeded(超出最大调用堆栈大小)
+
+    // 死递归
+    // function test() {
+    //     test();
+    // }
+    // test();
+
+    //使用递归的方法
+    //化归思想：
+    //化归思想，将一个问题由难化易，由繁化简，由复杂化简单的过程称为化归，它是转化和归结的简称。
+
+    // 递归求1加到100的和
+    // 1~1 1
+    // 1~2 1+2
+    // 1~3 1+2+3
+    // 1~n 1+2+...+n --> 1~n-1的和+n --> sum(n) = sum(n-1)+n
+    function sum(n) {
+        // 结束条件
+        if(n == 1) {
+            return 1;
+        }
+        return sum(n-1) + n; // 只返回这个没有结束条件就是死递归
+    }
+    console.log(sum(100));
+</script>
+</body>
+</html>

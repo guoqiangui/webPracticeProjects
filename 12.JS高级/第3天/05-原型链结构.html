@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1、什么是原型链？
+    // 每个构造函数都会有原型对象
+    // 每个对象都会有构造函数
+    // 每个构造函数的原型都是一个对象
+    // 这样就会形成一个链式结构，称为原型链
+
+    // 2、原型链的基本形式（主要看画的图）
+    function Player(name) {
+        this.name = name;
+    }
+    // 下面的关系都是通过.__proto__
+    // p --> Player.prototype --> Object.prototype --> null
+    var p = new Player("詹姆斯");
+    console.log(p.name);
+
+    // 属性搜索原则
+    // 1、访问一个对象的成员的时候，会先在自身找有没有，找到就直接使用
+    // 2、如果没有找到，就去当前对象的原型对象中找，找到了就直接使用
+    // 3、如果没有找到，继续找原型对象的原型对象，找到了就直接使用
+    // 4、如果没有找到，则继续向上查找，直到Object.prototype，如果还没有就报错或undefined
+
+    // 原型继承的概念：通过修改原型链结构实现的继承，就叫做原型继承
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <!--draggable="true" 支持拖拽-->
+    <div class="box" draggable="true"></div>
+
+    <script>
+        var box = document.querySelector(".box");
+
+        // 拖拽开始
+        box.ondragstart = function () {
+            console.log("拖拽开始");
+        }
+    //    拖拽结束
+        box.ondragend = function () {
+            console.log("拖拽结束");
+        }
+    //    拖拽离开（鼠标拖动时离开被拖拽的元素触发，不离开但在盒子内松开也会触发）
+        box.ondragleave = function () {
+            console.log("拖拽离开");
+        }
+    //    拖拽
+        box.ondrag = function () {
+            console.log("拖拽...");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body, ul, ol, li {
+            margin: 0;
+            padding: 0;
+        }
+        ul, ol {
+            list-style: none;
+        }
+        .box {
+            width: 340px;
+            height: 30px;
+            background: url(imgs/bg.jpg);
+            margin: 150px auto;
+        }
+        /* 子代选择器 */
+        ul>li {
+            float: left;
+            margin-left: 10px;
+        }
+        li {
+            width: 100px;
+            height: 30px;
+            background: url(imgs/libg.jpg) no-repeat;
+            line-height: 30px;
+            text-align: center;
+            cursor: pointer;
+        }
+        ol {
+            display: none;
+        }
+    </style>
+    <script src="../jquery-1.11.1.js"></script>
+    <script>
+        /*
+        需求：鼠标经过一级标题显示二级标题，离开隐藏二级标题
+         */
+
+        $(window).ready(function () {
+            var ulLi = $("ul>li");
+            //绑定鼠标进入事件
+            ulLi.mouseenter(function () {
+                //显示ol
+                // console.log(this);  //这里面的this是指js原生DOM的元素
+                // console.log(this.children); //原生DOM的children不能获取文本
+                // this.children[0].style.display = "block";
+
+                //要使用this，需要包装
+                //show() 显示jquery元素
+                $(this).children("ol").show();
+            });
+
+            //绑定鼠标离开事件
+            ulLi.mouseleave(function () {
+                //隐藏ol
+                //hide() 隐藏jquery元素
+                $(this).children("ol").hide();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>
+                一级菜单
+                <ol>
+                    <li>二级菜单</li>
+                    <li>二级菜单</li>
+                    <li>二级菜单</li>
+                </ol>
+            </li>
+            <li>
+                一级菜单
+                <ol>
+                    <li>二级菜单</li>
+                    <li>二级菜单</li>
+                    <li>二级菜单</li>
+                </ol>
+            </li>
+            <li>
+                一级菜单
+                <ol>
+                    <li>二级菜单</li>
+                    <li>二级菜单</li>
+                    <li>二级菜单</li>
+                </ol>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

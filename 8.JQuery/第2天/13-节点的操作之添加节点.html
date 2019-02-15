@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            var ul = $("ul");
+            var tuzhu = $(".tuzhu");
+            var newLi = $("<li>我是新创建的li</li>");
+
+            // ul.append(newLi);   //类比js中的appendChild()
+            //也是添加到末尾，但表达方式反过来
+            // newLi.appendTo(ul);
+
+            //盒子最前面添加
+            // ul.prepend(newLi);
+            // newLi.prependTo(ul);
+
+            //在兄弟元素前或后
+            // tuzhu.before(newLi);
+            tuzhu.after(newLi);
+        });
+
+    </script>
+</head>
+<body>
+    <ul>
+        <li class="tuzhu">我是土著li</li>
+    </ul>
+</body>
+</html>

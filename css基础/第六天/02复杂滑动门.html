@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body,ul,li{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+			float: left;
+		}
+		a{
+			text-decoration: none;
+			display: inline-block;
+			height: 35px;
+			background: url(bg_r1_c1.png) no-repeat;
+			padding-left: 7px;
+			color: #fff;
+			line-height: 35px;
+		}
+		a span{
+			/* 从右边开始显示 */
+			background: url(bg_r1_c2.png) right;
+			display: inline-block;
+			height: 35px;
+			padding-right: 25px;
+		}
+		a:hover{
+			background: url(blue_r1_c1.png);
+		}
+		/* span是属于a的，所以这个伪类成立 */
+		a span:hover{
+			background: url(blue_r1_c2.png) right;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><a href="#"><span>百度</span></a></li>
+		<li><a href="#"><span>百度一下</span></a></li>
+		<li><a href="#"><span>你真的很牛逼</span></a></li>
+	</ul>
+</body>
+</html>

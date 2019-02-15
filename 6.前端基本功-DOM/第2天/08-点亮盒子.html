@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button {
+            width: 100px;
+            height: 40px;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+        .changeYellow {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+
+    <script>
+        var btnArr = document.getElementsByTagName("button");
+        for(var i=0;i<btnArr.length;i++) {
+            btnArr[i].onmouseover = function () {
+                //排他思想(干掉所有人，剩下自己一个)
+                //排他思想跟for循环一起使用
+                for(var j=0;j<btnArr.length;j++) {
+                    btnArr[j].className = "";
+                }
+                this.className = "changeYellow";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .img1 {
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img src="image/jd1.png" class="img1">
+
+    <script>
+        var img1 = document.getElementsByClassName("img1")[0]; //返回的是数组（伪数组）
+        //鼠标放在上面的时候
+        img1.onmouseover = function () {
+            img1.src = "image/jd2.png";
+        }
+        //鼠标离开
+        img1.onmouseout = function () {
+            img1.src = "image/jd1.png";
+        }
+    </script>
+</body>
+</html>

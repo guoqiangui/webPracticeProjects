@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //* 表示任意次（>=0）
+    //+ 表示一次或以上（>=1）
+    //? 0或1次（有或没有）
+
+    //  a出现任意次
+    // console.log(/^a*/.test("aaa"));
+    // console.log(/^a*/.test("bcd"));
+
+    //  a至少出现一次
+    // console.log(/^a+$/.test("aaaa"));
+    // console.log(/^a+$/.test("bcd"));
+
+    //  a出现0或1次
+    // console.log(/^a?$/.test("a"));
+    // console.log(/^a?$/.test("bcd"));
+    // console.log(/^a?$/.test("aa"));
+
+    //多个字母，重复最后一个（比如下面就重复d）
+    // console.log(/^abcd+$/.test("abcd"));
+    // console.log(/^abcd+$/.test("abcddd"));
+    // console.log(/^abcd+$/.test("abcdabcd"));
+
+
+    //{}代表可以重复多少次
+    //1、{6} 可以重复6次
+    //2、{6,}    可以重复6次或更多
+    //3、{6,10} 可以重复6到10次（6<=n<=10）（逗号后不能加空格）
+
+    //a只能重复6次
+    // console.log(/^a{6}$/.test("aaaaaa"));
+    // console.log(/^a{6}$/.test("aaa"));
+
+    //a重复6次或以上
+    // console.log(/^a{6,}$/.test("aaaaaa"));
+    // console.log(/^a{6,}$/.test("aaaaaaaaaa"));
+
+    //a只能重复6到10次
+    // console.log(/^a{6,10}$/.test("aaaaaaaa"));
+    // console.log(/^a{6,10}$/.test("aaaa"));
+
+
+    //| 表示或，()提高权限，与数学的括号类似作用
+    //a只能出现2次或5次，注意，括号内放完整的正则，一般用来连接两个完整正则
+    console.log(/(^a{2}$)|(^a{5}$)/.test("aa"));
+    console.log(/(^a{2}$)|(^a{5}$)/.test("aaaaa"));
+    console.log(/(^a{2}$)|(^a{5}$)/.test("aaaaaaa"));
+</script>
+</body>
+</html>

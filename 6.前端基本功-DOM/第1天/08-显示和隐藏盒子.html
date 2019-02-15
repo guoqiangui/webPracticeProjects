@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 200px;
+            background-color: pink;
+            margin: 10px 0;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button>隐藏</button>
+    <div class="box">
+        临千仞之溪，非才长也，位高也！
+    </div>
+
+    <script>
+        var btn = document.getElementsByTagName("button")[0];
+        var box = document.getElementsByClassName("box")[0];
+        btn.onclick = function () {
+            if(btn.innerHTML == "隐藏") { //如果按钮显示隐藏，就隐藏盒子，按钮显示"显示"
+                box.className += " hide"; //记得空格
+                btn.innerHTML = "显示";
+            } else { //反之，显示盒子，按钮显示"隐藏"
+                box.className = "box";
+                btn.innerHTML = "隐藏";
+            }
+        }
+    </script>
+</body>
+</html>

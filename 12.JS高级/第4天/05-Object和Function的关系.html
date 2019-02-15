@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Object构造函数是通过Function构造函数实例化出来的
+    // Function构造函数也是通过Function构造函数实例化出来的
+
+    // 都是true
+    console.log(Function instanceof Object);
+    console.log(Function instanceof Function);
+
+    console.log(Object instanceof Function);
+    console.log(Object instanceof Object);
+
+    // 我的理解是下面的都是构造函数，也就是函数
+    console.log(Object);
+    console.log(Function);
+</script>
+</body>
+</html>

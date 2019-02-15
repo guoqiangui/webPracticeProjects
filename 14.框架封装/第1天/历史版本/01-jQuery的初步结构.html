@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+        * jquery对外暴露了两个方法：jQuery和$,
+        * 这两方法实际上是同一个方法，
+        * 通过调用这两个方法，可以得到一个jQuery实例对象。
+        *
+        * jQuery实例对象是一个伪数组对象。
+        *
+        * jQuery和$实际上是一个工厂函数。
+        * */
+
+    // 2.2.0的自调结构
+    // (function (win, factory) {
+    //     console.log("对模块化进行了支持");
+    //     factory();
+    // }(window, function () {
+    //     return jQuery;
+    // }));
+
+    // 咱们的自调结构，沿用了1.7的版本
+    (function (win) {
+        // 对外暴露的工厂函数
+        function jQuery() {
+            return new jQuery.fn.init();
+        }
+
+        // 给jQuery.prototype提供一个简写的方式
+        jQuery.prototype = jQuery.fn = {
+
+        };
+
+        // init是真正的构造函数
+        var init = jQuery.fn.init = function () {
+
+        };
+
+        // 替换构造函数的原型为jQuery工厂的原型
+        init.prototype = jQuery.fn;
+
+        // 通过两个变量暴露工厂
+        win.jQuery = win.$ = jQuery;
+    }(window));
+
+</script>
+</body>
+</html>

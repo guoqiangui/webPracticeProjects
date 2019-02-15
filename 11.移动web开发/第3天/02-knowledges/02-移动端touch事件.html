@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: mediumspringgreen;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>
+<script>
+    // touchstart、touchmove、touchend
+    // 这三个事件只能在移动端生效，而左滑、右滑等移动端手势都是基于这三个事件封装的
+    // 相关的数据会封装在回调函数的参数中
+
+
+    /*
+        小案例：用户在屏幕上滑了多少，盒子也跟着滑多少
+        做蛋糕思想，先完成X轴方向上的移动
+        再完成Y轴方向上的移动
+     */
+    // 用来保存触摸开始的坐标值
+    var startX = 0;
+    var startY = 0;
+    // 用来保存用户拖动的距离
+    var moveX = 0;
+    var moveY = 0;
+    // 用来保存触摸距离开始位置的距离
+    var distanceX = 0;
+    var distanceY = 0;
+
+    // 如果无效可以试试document.body.addEventListener()
+    // document.body是body节点；document.documentElement是html节点
+    document.documentElement.addEventListener("touchstart", function (event) {
+        console.log("touchstart");
+        // 需要的坐标数据都在event.touches数组中，数组中每一个元素代表一根手指
+        console.log(event);
+
+        // 记录触摸开始的坐标值
+        startX = event.touches[0].clientX;
+        startY = event.touches[0].clientY;
+    });
+
+    document.documentElement.addEventListener("touchmove", function (event) {
+        console.log("touchmove");
+        console.log(event);
+
+        // 不断记录用户拖动的距离
+        moveX = event.touches[0].clientX - startX;
+        moveY = event.touches[0].clientY - startY;
+
+    //    让盒子跟着移动
+        document.querySelector("div").style.transform = "translate("+(distanceX+moveX)+"px, "+(distanceY+moveY)+"px)";
+    });
+
+    document.documentElement.addEventListener("touchend", function (event) {
+        console.log("touchend");
+        // touchend的event.touches数组没有数据
+        console.log(event);
+
+    //    移动结束时记录距离初始的距离
+        distanceX += moveX;
+        distanceY += moveY;
+    });
+</script>

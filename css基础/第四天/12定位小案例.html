@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body,div,ul,li{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+			float: left;
+		}
+		.nav{
+			height: 55px;
+			background: url(head_bg.jpg);
+			border-top: 1px solid #999;
+			margin-top: 30px;
+		}
+		.nav_con{
+			width: 1000px;
+			margin: 0 auto;
+			position: relative; /*父相*/
+		}
+		img{
+			position: absolute;	/*子绝*/
+			left: 49px;
+			bottom: -9px;
+		}
+
+		ul li a{
+			display: inline-block;
+			height: 55px;
+			/* line-height: 55px; */
+			padding: 0 30px;
+			text-decoration: none;
+			font: 18px/55px 微软雅黑;
+			color: #000;
+			background: url(li_bg.png) no-repeat right;
+		}
+		ul li a:hover{
+			color: green;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<div class="nav_con">
+			<ul>
+				<li><a href="#">智能手机</a></li>
+				<li><a href="#">平板电脑</a></li>
+				<li><a href="#">百度</a></li>
+				<li><a href="#">么么哒</a></li>
+			</ul>
+			<img src="new.png" />
+		</div>
+	</div>
+</body>
+</html>

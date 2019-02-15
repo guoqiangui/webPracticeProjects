@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin: 10px;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            //animate()与之前我封装的animate很像，只有中间的参数不一样，这里是毫秒数
+            //参数：animate(json, 毫秒数, 回调函数)
+            var div = $("div");
+            var btn = $("button");
+            
+            btn.click(function () {
+                // div.animate({"width": 200, "height": 200, "opacity": 0.6}, 2000);
+                div.animate({"width": 200, "height": 200, "opacity": 0.6}, 2000, function () {
+                    div.animate({"width": 150, "height": 150, "opacity": 1}, 2000);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>动画</button>
+    <div></div>
+</body>
+</html>

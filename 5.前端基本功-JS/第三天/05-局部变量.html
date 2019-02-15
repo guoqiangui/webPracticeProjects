@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    function fun1() {
+        var a1 = b1 = c1 = 3; //a1是局部变量，b1、c1是全局变量
+        var a2 = 1;b2 = 2;c1 = 3; //a2是局部变量，b2、c2是全局变量
+        var a3 = 1,b3 = 2,b3 = 3; //都是局部变量
+    }
+</script>
+</body>
+</html>

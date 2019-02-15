@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="cvs" width="500" height="500"></canvas>
+
+<script>
+    var cvs = document.getElementById("cvs");
+    var ctx = cvs.getContext("2d");
+
+    // 渐变矩形: 由许多条颜色逐渐变化的线组成
+    var i=0, len = 100;
+    for(; i<len; i++) {
+        // 需要防止重绘
+        ctx.beginPath();
+        ctx.moveTo(10, 10+i);
+        ctx.lineTo(110, 10+i);
+
+        ctx.strokeStyle = "rgb(0, " + i*255/99 + ", 0)";
+        ctx.stroke();
+    }
+</script>
+</body>
+</html>

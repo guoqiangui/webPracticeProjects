@@ -1,0 +1,177 @@
+/*subbanner开始*/
+.subbanner {
+    position: relative;
+}
+.subbanner a {
+    position: absolute;
+    width: 100%;
+    height: 644px;
+    background: url(../images/subbanner.jpg) no-repeat top center;
+    /*z-index: -1;*/    /*一般不给负，会点不到，给其他盒子高层级就行*/
+}
+/*subbanner结束*/
+/*main部分开始*/
+.main {
+    height: 453px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+    position: relative;
+    /*z-index: 1;*/             /*不推荐写z-index，直接默认就行，写了会压住商品分类*/
+}
+.slide {
+    width: 730px;
+    height: 454px;
+    position: relative;
+    margin-left: 219px;
+    float: left;
+}
+.slide-bottom {
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    margin-left: -66px;
+}
+.slide-btn {
+    float: left;
+    width: 18px;
+    height: 18px;
+    background-color: #3E3E3E;
+    border-radius: 50%;
+    color: #fff;
+    line-height: 18px;
+    text-align: center;
+    margin-right: 4px;
+}
+.slide-btn:hover {
+    background-color: #B61B1F;
+    cursor: default;                /*变成普通鼠标*/
+}
+.slide-arrow {
+    position: absolute;
+    width: 40px;
+    height: 80px;
+    font: 400 40px/80px consolas;
+    text-align: center;
+}
+.slide-arrow-left {
+    left: 0;
+    top: 50%;
+    margin-top: -40px;
+}
+.slide-arrow-right {
+    right: 0;
+    top: 50%;
+    margin-top: -40px;
+}
+.slide-arrow a {
+    background-color: rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    width: 40px;
+    height: 80px;
+    color: #fff;
+}
+.slide-arrow a:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.main-right {
+    width: 250px;
+    height: 454px;
+    float: right;
+}
+.main-right-news-title {
+    width: 218px;
+    height: 32px;
+    border: 1px solid #E4E4E4;
+    border-bottom: none;
+    padding: 0 15px;
+}
+.main-right-news-title h2 {
+    font: 400 16px/32px "microsoft";
+    float: left;
+}
+.main-right-news-title span {
+    float: right;
+    line-height: 32px;
+    font-family: "consolas";
+}
+.main-right-news-content {
+    width: 233px;
+    height: 125px;
+    border: 1px solid #E4E4E4;
+    border-top: 1px dashed #E4E4E4;
+    line-height: 24px;
+    padding-top: 5px;
+    padding-left: 15px;
+}
+.main-right-icons {
+    width: 248px;
+    height: 208px;
+    border: 1px solid #E4E4E4;
+    border-top: none;
+    overflow: hidden;               /*多出来的li部分隐藏*/
+}
+.main-right-icons-box {
+    width: 260px;                   /*为了让一行能显示四个li*/
+}
+.main-right-icons li {
+    float: left;
+    border: 1px solid #E4E4E4;
+    margin-left: -1px;              /*合并边框线*/
+    margin-top: -1px;
+}
+.main-right-icons li a {
+    position: relative;
+    display: inline-block;
+    width: 62px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    padding-top: 40px;
+}
+.main-right-icons i {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 15px;
+    left: 18px;
+}
+.main-right-icons .icon1 {
+    background: url(../images/fly.png) no-repeat;
+}
+.main-right-icons .icon2 {
+    background: url(../images/fly.png) no-repeat 0 -25px;
+}
+.main-right-icons .icon3 {
+    background: url(../images/fly.png) no-repeat 0 -150px;
+}
+.main-right-icons .icon4 {
+    background: url(../images/fly.png) no-repeat 0 -75px;
+}
+.main-right-icons .icon5 {
+    background: url(../images/fly.png) no-repeat 0 -25px;
+}
+.main-right-icons .icon6 {
+    background: url(../images/fly.png) no-repeat 0 -25px;
+}
+.main-right-icons .icon7 {
+    background: url(../images/fly.png) no-repeat 0 -25px;
+}
+.main-right-icons .icon8 {
+    background: url(../images/fly.png) no-repeat 0 -25px;
+}
+.main-right-icons .icon9 {
+    background: url(../images/fly.png) no-repeat 0 -25px;
+}
+.main-right-icons .icon10 {
+    background: url(../images/fly.png) no-repeat 0 -25px;
+}
+.main-right-icons .icon11 {
+    background: url(../images/fly.png) no-repeat 0 -25px;
+}
+.main-right-icons .icon12 {
+    background: url(../images/fly.png) no-repeat 0 -25px;
+}
+.main-right-img {
+    margin-top: 5px;
+}
+/*main部分结束*/

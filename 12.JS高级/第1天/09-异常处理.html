@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        //异常最大的特征，就是一旦出现异常，后面的代码就不会执行
+
+        //那为了保证后面代码在出现异常之后，还能继续执行，所以就要进行异常处理
+
+        //注意 语法异常 try catch无法捕获
+
+        //异常捕获语句
+        //try catch finally（js一般不会用到finally）
+
+        try {
+            // a();
+
+            //    手动抛出异常，用throw关键字，什么都可以抛
+            throw "你的代码出异常了！";
+        } catch(e) {
+            console.log(e);
+        } finally {
+
+        }
+
+
+
+        function sum(num1, num2) {
+            if(num1 == undefined || num2 == undefined) {
+                throw {
+                    errMsg: "参数个数错了！",
+                    errCode: 123
+                };
+            }
+            return num1 + num2;
+        }
+        try {
+            sum(2);
+        } catch (e) {
+            console.log(e);
+        }
+
+    </script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+</html>

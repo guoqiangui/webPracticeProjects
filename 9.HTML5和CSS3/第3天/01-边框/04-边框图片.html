@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 400px;
+            border: 50px solid #000;
+            margin: 100px auto;
+
+            border-image-source : url(images/border.png);
+
+            /*图片的宽高是81px，将图片分成4个角（每个角宽高为27px），加上剩下的一共9部分*/
+            /*border-image-slice: 27 27 27 27;*/
+            border-image-slice: 27;     /*都一样可以简写*/
+
+            border-image-width: 50px;   /*图片边框的宽度*/
+
+            /*边框图片的平铺*/
+            /*border-image-repeat: repeat;    !*正常平铺，但有可能图片显示不完整*!*/
+            /*border-image-repeat: round;     !*保证图片完整的平铺*!*/
+            border-image-repeat: stretch;       /*图片拉伸，默认方式*/
+
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

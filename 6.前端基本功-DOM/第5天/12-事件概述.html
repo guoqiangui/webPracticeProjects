@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button>赋诗</button>
+<script>
+    var btn = document.getElementsByTagName("button")[0];
+    //这种绑定方式容易被层叠
+    // btn.onclick = function() {
+    //     console.log("我是1号");
+    // }
+    // btn.onclick = function() {
+    //     console.log("我是2号");
+    // }
+
+    //这种绑定方式不会被层叠，适合团队开发
+    btn.addEventListener("click", fun1);
+    btn.addEventListener("click", fun2);
+
+
+    function fun1() {
+        console.log(1);
+    }
+    function fun2() {
+        console.log(2);
+    }
+</script>
+</body>
+</html>

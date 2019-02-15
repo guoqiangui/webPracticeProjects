@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        aaaa
+    </ul>
+    <script>
+        //第一种: document.write()创建
+        document.write("<li>我是document.write()创建的</li>");
+
+        //第二种：innerHTML创建
+        var ul = document.getElementsByTagName("ul")[0];
+        ul.innerHTML += "<li>我是innerHTML创建的</li>"; //直接=会覆盖原来的内容
+
+        //第三种：利用dom的api创建
+        var li = document.createElement("li");
+        li.innerText = "我是createElement()创建的";
+        // ul.appendChild(li);
+        //指定位置添加
+        var li1 = ul.firstElementChild || ul.firstChild;
+        ul.insertBefore(li, li1); //在li1之前添加
+
+    </script>
+</body>
+</html>

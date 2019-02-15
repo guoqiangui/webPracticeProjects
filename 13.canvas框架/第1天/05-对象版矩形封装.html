@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas id="cvs" width="500" height="500"></canvas>
+
+    <script>
+        var cvs = document.getElementById("cvs");
+        var ctx = cvs.getContext("2d")
+
+        function Juxing(ctx, startX, startY, width, height, strokeStyle, lineWidth) {
+            // 将画笔也传进去
+            this.ctx = ctx;
+            this.startX = startX;
+            this.startY = startY;
+            this.width = width;
+            this.height = height;
+            this.strokeStyle = strokeStyle;
+            this.lineWidth = lineWidth;
+        }
+
+        Juxing.prototype.draw = function () {
+            // 防止重绘
+            this.ctx.beginPath();
+
+            this.ctx.moveTo(this.startX, this.startY);
+
+            this.ctx.lineTo(this.startX + this.width, this.startY);
+            this.ctx.lineTo(this.startX + this.width, this.startY + this.height);
+            this.ctx.lineTo(this.startX, this.startY + this.height);
+            this.ctx.lineTo(this.startX, this.startY);
+            this.ctx.closePath();
+
+            this.ctx.strokeStyle = this.strokeStyle;
+            this.ctx.lineWidth = this.lineWidth;
+            this.ctx.stroke();
+        };
+
+        var juxing = new Juxing(ctx, 100, 100, 150, 150, "green", 5);
+        juxing.draw();
+
+        // 防止重绘
+        // ctx.beginPath();
+        var juxing2 = new Juxing(ctx, 20, 20, 120, 120, "red", 3);
+        juxing2.draw();
+    </script>
+</body>
+</html>

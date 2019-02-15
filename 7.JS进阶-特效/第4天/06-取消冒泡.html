@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+
+    <script>
+        var box1 = document.getElementsByTagName("div")[0];
+
+        box1.onclick = function (event) {
+            console.log("我是box1");
+
+            //阻止冒泡
+            if(event && event.stopPropagation) {
+                event.stopPropagation();
+            } else {
+                event.cancelBubble = true;
+            }
+        }
+
+        document.onclick = function () {
+            console.log("我是document");
+        }
+    </script>
+</body>
+</html>

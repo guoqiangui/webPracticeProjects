@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1 设置值的时候，也是访问变量
+    //2. 获取值的时候，是访问变量
+    //3.并不是在函数内部写了变量，这个变量就属于这个函数的作用域，
+    // 而是必须使用var来声明变量，这个变量才会属于这个作用域
+
+    //函数在声明出来的时候，里面的代码不会执行，
+    //只有在调用的时候，代码才会执行
+
+    //声明函数时的函数名，其实也是一个变量名
+    //可以通过这个变量名来给其赋值
+
+    // 1、
+    // function foo() {
+    //     var num = 123;
+    //     console.log(num);
+    // }
+    // foo();
+    // console.log(num);
+    // 提升后的代码
+    // function foo() {
+    //     var num;
+    //     num = 123;
+    //     console.log(num);
+    // }
+    // foo(); //123
+    // console.log(num); // num is not defined报错
+
+    // 2、
+    // var scope = "global";
+    // foo();
+    // function foo() {
+    //     console.log(scope); //？
+    //     var scope = "local";
+    //     console.log(scope); //？
+    // }
+
+    // 提升后的代码
+    // var scope;
+    // function foo() {
+    //     var scope;
+    //     console.log(scope); // undefined
+    //     scope = "local";
+    //     console.log(scope); // local
+    // }
+    // scope = "global";
+    // foo();
+
+    // 3、
+    // function f1(){
+    //     var a;
+    //     if ("a" in window) {
+    //         var a = 10;
+    //     }
+    //     alert(a);
+    // }
+    //
+    // f1();
+    //
+    // if ("a" in window) {
+    //     var a = 10;
+    // }
+    // alert(a); // ?
+
+    // 提升后
+    // function f1(){
+    //     var a;
+    //     if ("a" in window) { // 判断a是否是window的属性，true
+    //         a = 10;
+    //     }
+    //     alert(a); // 10
+    // }
+    // var a; // 只有函数才能产生作用域,if语句不能产生作用域；全局中用var声明的变量就是全局对象window的属性
+    // f1();
+    // if ("a" in window) {
+    //    a = 10;
+    // }
+    // alert(a); // 10
+
+    // 4、
+    // var foo = 1;
+    //
+    // function bar() {
+    //     if (!foo) {
+    //         var foo = 10;
+    //     }
+    //     alert(foo); //??10
+    // }
+    //
+    // bar();
+
+    // 提升后
+    // var foo;
+    // function bar() {
+    //     var foo;
+    //     if (!foo) { // undefined取反就是true
+    //         foo = 10;
+    //     }
+    //     alert(foo); // 10
+    // }
+    //
+    // foo = 1;
+    // bar();
+
+    // 5、
+    // function Foo() {
+    //     getName = function () {
+    //         alert(1);
+    //     };
+    //     return this;
+    // }
+    //
+    // Foo.getName = function () {
+    //     alert(2);
+    // };
+    // Foo.prototype.getName = function () {
+    //     alert(3);
+    // };
+    // var getName = function () {
+    //     alert(4);
+    // };
+    //
+    // function getName() {
+    //     alert(5);
+    // }
+    //
+    // Foo.getName(); // ?
+    // getName(); // ?
+    // Foo().getName(); // ?
+    // getName(); // ?
+    // new Foo.getName(); // ?
+    // new Foo().getName(); // ?
+    // new new Foo().getName(); // ?
+
+    // 提升后
+    // function Foo() {
+    //     getName = function () {
+    //         alert(1);
+    //     };
+    //     return this;
+    // }
+    // var getName;
+    // function getName() {
+    //     alert(5);
+    // }
+    //
+    // Foo.getName = function () {
+    //     alert(2);
+    // };
+    // Foo.prototype.getName = function () {
+    //     alert(3);
+    // };
+    // getName = function () {
+    //     alert(4);
+    // };
+    //
+    // Foo.getName(); // ?  2
+    // getName(); // ? 4
+    // Foo().getName(); // ? --> window.getName() --> 1
+    // getName(); // ?   1
+    // new Foo.getName(); // ? --> 2 (new在这里没什么影响)；执行顺序：先Foo.getName()再new
+    // new Foo().getName(); // ? --> Foo实例化的对象.getName() --> 3; 执行顺序：先new Foo()再getName()
+    // new new Foo().getName(); // ?  --> 3; 先new Foo(), 再getName(), 再new
+
+
+</script>
+</body>
+</html>

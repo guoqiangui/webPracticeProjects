@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 将一个字符串数组输出为|分割的形式，比如“刘备|张飞|关羽”。使用两种方式实现
+    // var arr1 = ["刘备", "关羽", "张飞", "王小明", "詹姆斯"];
+    // //第一种
+    // var str = "";
+    // for(var i=0;i<arr1.length;i++) {
+    //     str += arr1[i];
+    //     if(i<arr1.length-1) { //只加到倒数第二个
+    //         str += "|";
+    //     }
+    // }
+    // console.log(str);
+    // //第二种
+    // var str2 = arr1.join("|");
+    // console.log(str2);
+
+
+    // 将一个字符串数组的元素的顺序进行反转。["a","b","c","d"] ["d","c","b","a"]。使用两种种方式实现。
+    // 提示：第i个和第length-i-1个进行交换
+    // var arr = ["a","b","c","d"];
+    // //第一种
+    // console.log(reverse1(arr));
+    // function reverse1(arr) {
+    //     var temp;
+    //     for(var i=0;i<arr.length/2;i++) { //次数要控制，否则换了等于没换
+    //         temp = arr[i];
+    //         arr[i] = arr[arr.length-1-i];
+    //         arr[arr.length-1-i] = temp;
+    //     }
+    //     return arr;
+    // }
+    // //第二种
+    // console.log(arr.reverse());
+
+
+    // 工资的数组[1500,1200,2000,2100,1800],把工资超过2000的删除
+    // var arr = [1500,1200,2000,2100,1800];
+    // var arr2 = arr.filter(function (element, index, array) {
+    //      return element<=2000;
+    // });
+    // console.log(arr2);
+
+
+    // ["c","a","z","a","x","a"]找到数组中每一个元素出现的次数
+    // var arr = ["c","a","z","a","x","a"];
+    // //利用json，用元素作为属性名，出现次数作为属性值
+    // var json = {};
+    // for(var i=0;i<arr.length;i++) {
+    //     if(json[arr[i]]) { //如果这个元素在json中存在
+    //         json[arr[i]] += 1;
+    //     } else { //如果不存在就赋值1
+    //         json[arr[i]] = 1;
+    //     }
+    // }
+    // console.log(json);
+
+
+    // 编写一个方法 去掉一个数组的重复元素
+    //自己写的
+    var arr = ["c","a","z","a","x","a","c"];
+    var noRepeat = [];
+    for(var i=0;i<arr.length-1;i++) {
+        if(noRepeat.indexOf(arr[i])<0) { //如果不存在，就添加到noReapeat数组中
+            noRepeat[noRepeat.length] = arr[i];
+        } else { //如果已经存在，结束本次循环
+            continue;
+        }
+    }
+    console.log(noRepeat);
+    //参照老师的
+    var newArr = [];
+    for(var i=0;i<arr.length;i++) { //外层遍历原数组
+        var flag = true; //开闭原则，true表示没有重复
+        for(var j=0;j<arr.length;j++) { //内层遍历新数组
+            if(arr[i] == newArr[j]) { //如果相等表示重复
+                flag = false;
+            }
+        }
+        if(flag) { //如果没有重复就添加到新数组中
+            newArr[newArr.length] = arr[i];
+        }
+    }
+    console.log(newArr);
+
+
+</script>
+</body>
+</html>

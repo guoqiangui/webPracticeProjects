@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        select {
+            width: 100px;
+            height: 300px;
+            background-color: mediumspringgreen;
+        }
+    </style>
+</head>
+<body>
+    <select name="" id="sel1" multiple>
+        <option value="">詹姆斯</option>
+        <option value="">杜兰特</option>
+        <option value="">莱昂纳德</option>
+        <option value="">字母哥</option>
+        <option value="">乔治</option>
+    </select>
+    <button>>>></button>
+    <button><<<</button>
+    <button>></button>
+    <button><</button>
+    <select name="" id="sel2" multiple></select>
+
+    <script>
+        var btnArr = document.getElementsByTagName("button");
+        var sel1 = document.getElementById("sel1");
+        var sel2 = document.getElementById("sel2");
+
+        //下面的代码逻辑一样，可以封装成函数
+
+        //全部移动到右边
+        // btnArr[0].onclick = fun1(sel1, sel2);  //这样不行，会直接执行函数
+        btnArr[0].onclick = function () {
+            fun1(sel1, sel2);
+        }
+        //全部移动到左边
+        btnArr[1].onclick = function () {
+            fun1(sel2, sel1);
+        }
+
+        function fun1(ele1, ele2) {
+            var optArr = ele1.children;
+            //因为optArr的长度每移动一个就会改变一次，正序会有bug，所以必须倒序添加才能添加完
+            //解决倒序的顺序：每次都添加第0个就行
+            for(var i=optArr.length-1;i>=0;i--) {
+                ele2.appendChild(optArr[0]);
+            }
+        }
+
+        //选定项移动到右边
+        btnArr[2].onclick = function () {
+            fun2(sel1, sel2);
+        }
+        //选定项移动到左边
+        btnArr[3].onclick = function () {
+            fun2(sel2, sel1);
+        }
+
+        function fun2(ele1, ele2) {
+            //遍历所有option元素，如果selected就加入到右边
+            var optArr = ele1.children;
+            for(var i=optArr.length-1;i>=0;i--) {
+                if(optArr[i].selected) {
+                    ele2.appendChild(optArr[i]);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

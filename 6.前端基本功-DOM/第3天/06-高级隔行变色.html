@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            width: 500px;
+            height: 300px;
+            margin: 100px auto;
+            border: 1px solid #888;
+            border-collapse: collapse;
+        }
+        thead {
+            background-color: #1da96a;
+        }
+        thead th {
+            padding: 10px 0;
+            border: 1px solid #888;
+        }
+        td {
+            border: 1px solid #888;
+        }
+        tbody {
+            background-color: #ccc;
+            text-align: center;
+        }
+        tbody tr {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>课程</th>
+                <th>成绩</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr>
+                <td>1</td>
+                <td>吕不韦</td>
+                <td>语文</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>吕布</td>
+                <td>日语</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>吕蒙</td>
+                <td>营销学</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>吕尚</td>
+                <td>数学</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>吕雉</td>
+                <td>英语</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>吕超</td>
+                <td>体育</td>
+                <td>100</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script>
+        var tbody = document.getElementById("tbody");
+        var trArr = tbody.getElementsByTagName("tr");
+        //隔行变色
+        for(var i=0;i<trArr.length;i++) {
+            if(i%2 !== 0) {
+                trArr[i].style.backgroundColor = "#09D9AE";
+            }
+            //给每个tr绑定事件
+            //计数器原理
+            var color = "";     //用来储存背景颜色
+            trArr[i].onmouseover = function () {
+                color = this.style.backgroundColor;     //将原来的背景色储存起来
+                this.style.backgroundColor = "#fff";
+            }
+            trArr[i].onmouseout = function () {
+                this.style.backgroundColor = color;     //恢复到原来的颜色
+            }
+        }
+
+    </script>
+</body>
+</html>

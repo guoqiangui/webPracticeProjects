@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 将伪数组转换成数组
+    // 伪数组
+    var obj = {
+        0: "詹姆斯",
+        1: "杜兰特",
+        2: "卡哇伊",
+        length: 3
+    };
+
+    // concat方法支持传入多个参数
+    // var arr = [].concat(1, 2, 3, 4);
+    // console.log(arr);
+
+    // 使用apply就可以将伪数组作为多个参数传入，因为apply支持传入伪数组和数组
+    var newArr = [].concat.apply([], obj);
+    // console.log(newArr);
+
+
+    //当用call和apply传入的第一个参数为值类型的时候
+    //会将值类型转换成对应的对象（引用类型） 然后赋值给this
+    function test() {
+        // console.log(this);
+        console.log(this + ""); // 可以快速看到包装对象的值
+    }
+    test.apply(1);
+    test.apply("abc");
+    test.apply(true);
+
+    // 传入的是undefined或null的时候，会将window赋值给this
+    test.apply(undefined);
+
+    // 借用构造函数实现继承
+    function Person(){
+        this.name = "张莎";
+        this.age = 18;
+    }
+
+    function Student() {
+        Person.apply(this);
+    }
+    var stu = new Student();
+    console.log(stu);
+</script>
+</body>
+</html>

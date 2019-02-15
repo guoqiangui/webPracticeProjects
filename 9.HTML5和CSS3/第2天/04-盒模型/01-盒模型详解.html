@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            margin: 50px;
+        }
+        .box2 {
+            border: 30px solid blue;
+        }
+
+        .box3 {
+            border: 30px solid blue;
+            /*这种设置盒子的实际宽度与设置的宽度一样，即使有padding和border，也不会撑大盒子*/
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+</body>
+</html>

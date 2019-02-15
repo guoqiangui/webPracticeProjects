@@ -1,0 +1,135 @@
+// 京东红
+@jdRed:rgb(201, 21, 35);
+
+// 设置最外层的盒子和显示的页面一样大
+html, body {
+    height: 100%;
+}
+body {
+    overflow: hidden;
+}
+
+// 通栏
+.header {
+    width: 100%;
+    height: 45px;
+    background-image: url(../images/header-bg.png);
+    // x轴方向重复
+    background-repeat: repeat-x;
+    background-size: 1px 45px;
+    position: relative;
+    padding-left: 40px;
+    padding-right: 50px;
+
+    a:nth-child(1) {
+        font-size: 35px;
+        font-family: "宋体";
+        color: #aaa;
+        line-height: 45px;
+        position: absolute;
+        left: 10px;
+    }
+    input {
+        width: 100%;
+        height: 31px;
+        border-radius: 5px;
+        border: 1px solid #eee;
+        margin-top: 7px;
+    }
+    // 利用nth-of-type选中同类型第二个
+    a:nth-of-type(2) {
+        background: url(../images/sprites.png) -60px 0;
+        background-size: 200px 200px;
+        display: block;
+        width: 40px;
+        height: 44px;
+        padding: 12px 10px;
+        position: absolute;
+        right: 10px;
+        top: 0px;
+        // 背景起点
+        background-origin: content-box;
+        // 背景裁剪
+        background-clip: content-box;
+    }
+}
+
+// 内容区域
+.main {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+
+    // 高度必须给，不给的话就是ul的高度了
+    .main_left {
+        width: 90px;
+        height: 100%;
+        overflow: hidden;
+
+        ul {
+            width: 90px;
+            li {
+                width: 90px;
+                height: 50px;
+                border-right: 1px solid #aaa;
+                border-bottom: 1px solid #aaa;
+                a {
+                    display: block;
+                    width: 90px;
+                    height: 50px;
+                    color: #333;
+                    line-height: 50px;
+                    text-align: center;
+                }
+
+            }
+            // 添加了current类的样式
+            li.current {
+                border-right: none;
+            }
+            li.current a {
+                color: @jdRed;
+            }
+        }
+    }
+
+    .main_right {
+        // 配合.main_left形成左边固定，右边自适应布局
+        overflow: hidden;
+        padding: 10px 10px 0;
+
+        a.right_banner {
+            display: block;
+            width: 100%;
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+        h3 {
+            margin: 5px 0;
+            font-size: 12px;
+        }
+        ul {
+            width: 100%;
+            li {
+                width: 33.333333%;
+                float: left;
+                a {
+                    width: 100%;
+                    text-align: center;
+                    img {
+                        display: block;
+                        width: 80%;
+                        // 使图片居中
+                        margin: 0 auto;
+                    }
+                    p {
+                        color: #666;
+                        padding: 5px 0;
+                    }
+                }
+            }
+        }
+    }
+}

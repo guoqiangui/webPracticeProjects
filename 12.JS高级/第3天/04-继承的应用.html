@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 内置对象的扩展不要直接修改内置对象的原型，因为你不知道别人有没有修改，到时候会有冲突
+    // 继承的应用：扩展内置对象
+
+    // 如何安全地扩展内置对象：自己定义的对象，去继承内置对象，这样就有了内置对象的所有成员
+    // 实际操作：将自己定义的构造函数的原型改为内置构造函数的实例
+    // 例如扩展数组
+    function MyArray() {
+        this.sayHello = function () {
+            console.log("你好！");
+        }
+    }
+    var arr = new Array();
+    // 这样，MyArray实例化出来的对象就拥有了数组的所有成员
+    MyArray.prototype = arr; // 或MyArray.prototype = [];
+    var myArr = new MyArray();
+    myArr.push(1);
+    myArr.push(2, 3, 4, 5);
+    console.log(myArr);
+    console.log(myArr.toString());
+</script>
+</body>
+</html>

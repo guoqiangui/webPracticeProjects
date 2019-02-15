@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            border: 1px solid #000;
+            margin: 0 auto;
+
+            /*过渡属性，所有的属性都发生过渡用all*/
+            transition-property: all;
+            /*过渡持续时间*/
+            transition-duration: 2s;
+
+            /*运动曲线*/
+            /*transition-timing-function: linear;     !*匀速*!*/
+            /*transition-timing-function: ease-in;    !*逐渐变快*!*/
+            /*transition-timing-function: ease-out;       !*逐渐变慢*!*/
+            transition-timing-function: ease-in-out;    /*先变快后变慢*/
+
+            /*过渡延迟*/
+            transition-delay: 1s;
+        }
+        .box:hover {
+            width: 500px;
+            height: 200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

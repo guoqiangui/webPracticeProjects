@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <img src="image/jd1.png" class="box" title="图片" alt="京东狗" id="aaa"/>
+
+    <script>
+        //属性赋值和获取的两种方式
+
+
+        //一、节点.属性或节点[属性]
+        //节点.属性
+        var img = document.getElementsByTagName("img")[0];
+        console.log(img.src);
+        console.log(img.className); //class是关键字，不能直接作为对象属性
+        img.title = "不是图片";
+        console.log(img.title);
+        //节点[属性]
+        console.log(img["src"]);
+        console.log(img["className"]);
+        console.log(img["title"]);
+        console.log(img["id"]);
+
+        //二、节点.方法()
+        console.log(img.getAttribute("class"));
+        img.setAttribute("alt", "京东真的狗");
+        img.removeAttribute("alt");
+        console.log(img);
+    </script>
+</body>
+</html>

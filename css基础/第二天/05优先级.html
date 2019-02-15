@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/* 
+			默认样式<标签选择器<类选择器<ID选择器<行内样式<!important 
+		优先级	0		1			10		100		1000	1000以上
+		*/
+		#div1{
+			font-size: 20px;
+		}
+		.box{
+			font-size: 80px;
+		}
+		div{
+			font-size: 50px !important;
+		}
+
+		/* 继承的优先级权重为0 */
+		.box2{
+			font-size: 10px;
+		}
+		p{
+			font-size: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box" id="div1" style="font-size: 100px">草泥马</div>
+
+	<div class="box2">
+		<p>草泥马2</p>
+	</div>
+</body>
+</html>

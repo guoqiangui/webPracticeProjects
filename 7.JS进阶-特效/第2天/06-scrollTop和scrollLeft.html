@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            height: 5000px;
+            width: 5000px;
+        }
+    </style>
+</head>
+<body>
+    <h2>请看title</h2>
+
+<script>
+    //滚动事件
+    // window.onscroll = function () {
+    //     console.log(1);
+    // }
+
+    //scrollTop和scrollLeft是网页被浏览器遮挡的头部和左边的长度（滚动时遮挡的部分）
+    window.onscroll = function () {
+        // var aaa = document.body.scrollTop;   //不兼容谷歌
+        var aaa = document.documentElement.scrollTop;   //兼容谷歌
+        // var aaa = window.pageYOffset;    //兼容谷歌
+
+        var bbb = document.documentElement.scrollLeft;
+        // var bbb = window.pageXOffset;
+        // console.log(aaa);
+
+        // 在控制台看不方便，可以在title上显示值
+        document.title = aaa+"   "+bbb;
+    }
+</script>
+</body>
+</html>

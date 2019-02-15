@@ -1,0 +1,16 @@
+CACHE MANIFEST
+
+#下面是要缓存的文件
+CACHE:
+    https://gss0.bdstatic.com/5bVWsj_p_tVS5dKfpU_Y_D3/res/r/image/2017-09-27/297f5edb1e984613083a2d3cc0c5bb36.png
+
+#指定必须联网才能访问的文件
+NETWORK:
+    https://gss0.bdstatic.com/5bVWsj_p_tVS5dKfpU_Y_D3/res/r/image/2017-09-26/352f1d243122cf52462a2e6cdcb5ed6d.png
+
+#当前页面无法访问时回退的页面
+FALLBACK:
+    404.html
+
+
+

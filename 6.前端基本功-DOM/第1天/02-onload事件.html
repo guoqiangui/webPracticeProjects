@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //可以预防使用标签在定义标签之前的问题
+        window.onload = function () {
+            var box = document.getElementById("box");
+            box.style.width = "300px";
+            box.style.height = "300px";
+            box.style.backgroundColor = "pink"; //作为对象的属性不能用-，只能驼峰命名
+        }
+    </script>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>

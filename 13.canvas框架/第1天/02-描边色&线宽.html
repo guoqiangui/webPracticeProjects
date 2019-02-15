@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas id="cvs" width="500" height="500"></canvas>
+
+    <script>
+        var cvs = document.getElementById("cvs");
+        var ctx = cvs.getContext("2d");
+
+        // 绘制一个等腰三角形的路径
+        // 移动钢笔到指定的位置
+        ctx.moveTo(100, 100);
+
+        // 开始画线条
+        ctx.lineTo(50, 200);
+        ctx.lineTo(150, 200);
+        ctx.lineTo(100, 100);
+        // 解决锯齿的原始方法，再画一条，让它以为两条线是重合的
+        ctx.lineTo(50, 200);
+
+        // 设置描边色，必须放在绘制之前
+        ctx.strokeStyle = "green";
+        // 线宽设置，必须放在绘制之前
+        ctx.lineWidth = 10;
+        // 描边路径
+        ctx.stroke();
+    </script>
+</body>
+</html>

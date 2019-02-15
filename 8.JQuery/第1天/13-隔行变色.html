@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            var evenLi = $("ul li:even");   //索引为偶数的li
+            var oddLi = $("ul li:odd");     //索引为奇数的li
+            var li = $("ul li");    //获取所有的li
+            var color = "";     //用来记录颜色
+
+            evenLi.css("background", "green");
+            oddLi.css("background", "pink");
+
+            //鼠标经过li变色，离开恢复（需要计数器）
+            li.mouseenter(function () {
+                //记录颜色
+                color = $(this).css("background");  //只有一个属性代表获取值
+                $(this).css("background", "yellow");
+            });
+            li.mouseleave(function () {
+                //将之前记录的颜色赋给this
+                $(this).css("background", color);
+            });
+        });
+    </script>
+</head>
+<body>
+    <ul>
+        <li>魂消香断玉环冷，锦裘绣帕不闻香.......</li>
+        <li>魂消香断玉环冷，锦裘绣帕不闻香.......</li>
+        <li>魂消香断玉环冷，锦裘绣帕不闻香.......</li>
+        <li>魂消香断玉环冷，锦裘绣帕不闻香.......</li>
+        <li>魂消香断玉环冷，锦裘绣帕不闻香.......</li>
+        <li>魂消香断玉环冷，锦裘绣帕不闻香.......</li>
+    </ul>
+</body>
+</html>

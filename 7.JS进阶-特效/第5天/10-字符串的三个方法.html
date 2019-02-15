@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //1、trim()  去除前后的空格（中间的不去除），不修改原字符串
+        // var str = "   你  好  啊！   ";
+        // console.log(str);
+        // console.log(str.trim());
+        // console.log(str);
+
+        //2、replace()   替换字符串成指定内容，支持正则表达式全局匹配，不修改原字符串
+        // var str = "Today is good, today is very good";
+        // console.log(str);
+        // console.log(str.replace("good", "bad"));    //找到一个就直接替换然后结束，不管后面还有没有
+        // console.log(str);
+        //
+        // console.log(str.replace(/good/g, "bad"));   //正则后面加g（global）表示全局匹配，不加就只替换一个
+
+        //3、search()    给字符串查索引
+        var str = "abcdabcda";
+        console.log(str.search("bcd"));
+        console.log(str.search(/bcd/)); //也支持正则
+    </script>
+</body>
+</html>

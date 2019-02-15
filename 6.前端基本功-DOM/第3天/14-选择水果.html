@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        select {
+            width: 100px;
+            height: 300px;
+            background-color: mediumspringgreen;
+        }
+
+    </style>
+</head>
+<body>
+    <select name="" id="sel1" multiple>
+        <option value="">詹姆斯</option>
+        <option value="">杜兰特</option>
+        <option value="">莱昂纳德</option>
+        <option value="">字母哥</option>
+        <option value="">乔治</option>
+    </select>
+    <button>>>></button>
+    <button><<<</button>
+    <button>></button>
+    <button><</button>
+    <select name="" id="sel2" multiple></select>
+
+    <script>
+        var btnArr = document.getElementsByTagName("button");
+        var sel1 = document.getElementById("sel1");
+        var sel2 = document.getElementById("sel2");
+        //全部移动到右边
+        btnArr[0].onclick = function () {
+            var optArr = sel1.children;
+            //因为optArr的长度每移动一个就会改变一次，正序会有bug，所以必须倒序添加才能添加完
+            //解决倒序的顺序：每次都添加第0个就行
+            for(var i=optArr.length-1;i>=0;i--) {
+                sel2.appendChild(optArr[0]);
+            }
+        }
+
+        //全部移动到左边
+        btnArr[1].onclick = function () {
+            var optArr = sel2.children;
+            for(var i=optArr.length-1;i>=0;i--) {
+                sel1.appendChild(optArr[0]);
+            }
+        }
+
+        //选定项移动到右边
+        btnArr[2].onclick = function () {
+            //遍历所有option元素，如果selected就加入到右边
+            var optArr = sel1.children;
+            for(var i=optArr.length-1;i>=0;i--) {
+                if(optArr[i].selected) {
+                    sel2.appendChild(optArr[i]);
+                }
+            }
+        }
+
+        //选定项移动到左边
+        btnArr[3].onclick = function () {
+            //遍历所有option元素，如果selected就加入到左边
+            var optArr = sel2.children;
+            for(var i=optArr.length-1;i>=0;i--) {
+                if(optArr[i].selected) {
+                    sel1.appendChild(optArr[i]);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

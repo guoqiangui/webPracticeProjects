@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="cvs" width="500" height="500"></canvas>
+
+
+<!--导入封装好的饼图代码-->
+<script src="pipe.js"></script>
+<script>
+    var cvs = document.getElementById("cvs");
+    var ctx = cvs.getContext("2d");
+
+    var data = [10, 20, 30, 40];
+    var pipe = new Pipe(ctx, 200, 200, 100, data);
+
+    pipe.draw();
+</script>
+</body>
+</html>

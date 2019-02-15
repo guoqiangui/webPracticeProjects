@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Function构造函数，可以用来创建函数对象
+    // 1、一个参数都不传，创建一个空函数
+    var func1 = new Function();
+    // console.log(func1);
+
+    // 2、只传一个参数，这个参数的内容就是函数体
+    var func2 = new Function("console.log('你好');");
+    func2(); // 调用函数
+
+    // 3、传多个参数，最后一个参数为函数体，前面的参数为形式参数
+    var func3 = new Function("name", "age", "console.log(name, age);");
+    func3("詹姆斯", 34);
+
+    //如何解决使用Funciton创建函数时，代码过长的问题
+    //1.可以使用字符串拼接 让代码换行
+    //2.使用模板的方式，将代码写在模板标签内(即script标签)，获取该标签的内容
+    //3.使用反引号（`） 引住字符串，那么就可以 换行了
+
+    // 练习，传入一个数组，求这个数组中的最大值
+    // 1、字符串拼接
+    var getMax = new Function("arr",
+        "var max = arr[0];" +
+        "for(var i=1; i<arr.length; i++) {" +
+        "if(arr[i] > max) {" +
+        "max = arr[i];" +
+        "}" +
+        "}" +
+        "return max;");
+    console.log(getMax([1, 2, 4, 3, 2]));
+
+    // 2、利用模板，记得要加载完才能用
+    window.onload = function () {
+        var str = document.getElementById("template").innerHTML;
+        var getMax2 = new Function("arr", str);
+        console.log(getMax2([1, 2, 5, 3, 1]));
+    };
+
+    // 3、将字符串改为用``括住，就可以换行
+    // var str = `hah
+    // aa
+    // `;
+    var getMax3 = new Function("arr", `
+        var max = arr[0];
+        for(var i=1; i<arr.length; i++) {
+            if(arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        return max;
+    `);
+    console.log(getMax3([1, 2, 5, 3, 1]));
+
+</script>
+<script type="text/template" id="template">
+    var max = arr[0];
+    for(var i=1; i<arr.length; i++) {
+        if(arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+</script>
+</body>
+</html>

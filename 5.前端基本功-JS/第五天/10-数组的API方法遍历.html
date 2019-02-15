@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //大部分遍历方法都需要指定一个回调函数作为参数
+
+    // var arr1 = [1, 30, 39, 29, 10, 13];
+    // //every() 测试是否所有的元素都通过了指定函数的测试（一个错了都不行）
+    // var bool = arr1.every(function (element, index, array) {
+    //     console.log(element); //打印元素
+    //     console.log(index); //打印元素索引
+    //     console.log(array); //打印数组
+    //
+    //     return element<40; //必须满足这个条件才能迭代下去，如果没给测试条件也是失败（undefined）
+    // });
+    // console.log(bool);
+
+    //filter() 返回一个新数组，包含所有通过指定函数测试的元素
+    // var arr1 = [1, 30, 39, 29, 10, 13];
+    // function isBigEnough(element, index, array) {
+    //     return element>20;
+    // }
+    // var arr2 = arr1.filter(isBigEnough);
+    // console.log(arr2);
+
+    //forEach() 为所有元素执行一次指定的函数
+    // var arr1 = [1, 30, 39, 29, 10, 13];
+    // arr1.forEach(function (element, index, array) {
+    //     console.log(element);
+    // });
+
+    //返回一个新数组，包含为每个元素执行的函数的返回值（包括undefined）
+    // var arr1 = [1, 30, 39, 29, 10, 13];
+    // var arr2 = arr1.map(function (element, index, array) {
+    //     return element*2;
+    // });
+    // console.log(arr2);
+
+    //some() 判断是否有元素通过所给函数的测试（有一个通过就行）
+    var arr1 = [1, 30, 39, 29, 10, 13];
+    var bool = arr1.some(function (element, index, array) {
+        return element<10;
+    });
+    console.log(bool);
+</script>
+</body>
+</html>

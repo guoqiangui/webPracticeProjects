@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            //利用层级选择器获取元素（同样参照css）
+
+            var ulLi = $("ul>li");      //子代选择器
+            var olLi = $("ol li");      //后代选择器
+
+            ulLi.css({"background": "pink", "margin": 10});
+            olLi.css({"background": "green", "margin": 10});
+        });
+    </script>
+</head>
+<body>
+    <ul>
+        <li>哈哈哈</li>
+        <li>哈哈哈</li>
+        <li>哈哈哈</li>
+        <ol>
+            <li>123</li>
+            <li>123</li>
+            <li>123</li>
+        </ol>
+    </ul>
+</body>
+</html>

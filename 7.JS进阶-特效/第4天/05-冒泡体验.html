@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box1 {
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+        }
+        .box2 {
+            width: 300px;
+            height: 300px;
+            background-color: yellow;
+        }
+        .box3 {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2">
+            <div class="box3"></div>
+        </div>
+    </div>
+
+    <script>
+        var box1 = document.getElementsByClassName("box1")[0];
+        var box2 = document.getElementsByClassName("box2")[0];
+        var box3 = document.getElementsByClassName("box3")[0];
+
+        //冒泡：在box3上点击，其父系的点击事件全部接连被触发
+        // box1.onclick = function () {
+        //     alert("我是box1");
+        // }
+        // box2.onclick = function () {
+        //     alert("我是box2");
+        // }
+        // box3.onclick = function () {
+        //     alert("我是box3");
+        // }
+        // document.onclick = function () {
+        //     alert("我是document");
+        // }
+
+        //默认冒泡，想要捕获，需要设置捕获为true
+        //捕获：点击box3，顺序从父系到box3依次触发，与冒泡顺序相反
+        box1.addEventListener("click", function () {
+            alert("我是box1");
+        }, true);
+        box2.addEventListener("click", function () {
+            alert("我是box2");
+        }, true);
+        box3.addEventListener("click", function () {
+            alert("我是box3");
+        }, true);
+        document.addEventListener("click", function () {
+            alert("我是document");
+        }, true);
+
+    </script>
+</body>
+</html>

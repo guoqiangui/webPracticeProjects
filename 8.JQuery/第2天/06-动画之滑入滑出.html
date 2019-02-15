@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            var btn = $("button");
+            var div = $("div");
+
+            //方法与show()和hide()一样，都有四种方式
+            
+            btn.eq(0).click(function () {
+                div.slideDown();
+                // div.slideDown(2000);
+                // div.slideDown("fast");
+                // div.slideDown(2000, function () {
+                //     alert("动画执行完毕");
+                // });
+            });
+
+            btn.eq(1).click(function () {
+                // div.slideUp();
+                // div.slideUp(2000);
+                // div.slideUp("fast");
+                // div.slideUp(2000, function () {
+                //     alert("动画执行完毕");
+                // });
+            });
+
+            btn.eq(2).click(function () {
+                // div.slideToggle();
+                // div.slideToggle(2000);
+                // div.slideToggle("slow");
+                div.slideToggle(2000, function () {
+                    alert("动画执行完毕");
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>滑入</button>
+    <button>滑出</button>
+    <button>切换</button>
+    <div></div>
+</body>
+</html>

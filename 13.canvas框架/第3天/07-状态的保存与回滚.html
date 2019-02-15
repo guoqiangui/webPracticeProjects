@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="cvs" width="500" height="500"></canvas>
+
+<script>
+    var cvs = document.getElementById("cvs");
+    var ctx = cvs.getContext("2d");
+
+    // 相当于往容器中储存数据
+    /*
+        * 状态保存：
+        * ctx.save();
+        * 把当前的状态(绘制环境的所有属性)copy一份进行保存。
+        * */
+
+    /*
+    * 状态回滚：
+    * ctx.restore();
+    * 把最近保存的一次状态作为当前状态。
+    * */
+
+    // 状态保存
+    ctx.save();
+
+    // 修改
+    ctx.strokeStyle = "green";
+    ctx.lineWidth = 3;
+
+    // 修改之后画一条线
+    ctx.beginPath();
+    ctx.moveTo(100, 100);
+    ctx.lineTo(400, 100);
+    ctx.stroke();
+
+    // 保存
+    ctx.save();
+
+    // 再修改
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 8;
+
+    // 修改之后画一条线
+    ctx.beginPath();
+    ctx.moveTo(100, 150);
+    ctx.lineTo(400, 150);
+    ctx.stroke();
+
+    // 回滚
+    ctx.restore();
+
+    ctx.beginPath();
+    ctx.moveTo(100, 200);
+    ctx.lineTo(400, 200);
+    ctx.stroke();
+
+    // 再回滚
+    ctx.restore();
+
+    ctx.beginPath();
+    ctx.moveTo(100, 250);
+    ctx.lineTo(400, 250);
+    ctx.stroke();
+</script>
+</body>
+</html>

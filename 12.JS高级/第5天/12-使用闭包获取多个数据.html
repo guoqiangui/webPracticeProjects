@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function foo() {
+        var name = "詹姆斯";
+        var age = 34;
+
+        // 需要获取多个数据的话，就要多个方法了，可以将方法封装在一个对象中
+        // 返回一个对象，这个对象内有获得函数内的变量的方法
+        return {
+            getName: function () {
+                return name;
+            },
+            getAge: function () {
+                return age;
+            }
+        };
+    }
+
+    var obj = foo();
+    console.log(obj.getName());
+    console.log(obj.getAge());
+</script>
+</body>
+</html>

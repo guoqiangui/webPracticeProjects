@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: mediumseagreen;
+        }
+        .shield {
+            width: 430px;
+            height: 491px;
+            margin: 100px auto;
+        }
+        .shield img:nth-child(1) {
+            transform: translate(150px, 150px) rotate(60deg);
+        }
+        .shield img:nth-child(2) {
+            transform: translate(300px, 300px) rotate(100deg);
+        }
+        .shield img:nth-child(3) {
+            transform: translate(-100px, -80px) rotate(-200deg);
+        }
+        .shield img:nth-child(4) {
+            transform: translate(-100px, -10px) rotate(230deg);
+        }
+        .shield img {
+            transition: all 2s;
+        }
+        .shield:hover img{
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="shield">
+        <img src="images/shield_1_01.png">
+        <img src="images/shield_1_02.png">
+        <img src="images/shield_1_03.png">
+        <img src="images/shield_1_04.png">
+        <img src="images/shield_1_05.png">
+        <img src="images/shield_1_06.png">
+        <img src="images/shield_1_07.png">
+        <img src="images/shield_1_08.png">
+        <img src="images/shield_1_09.png">
+    </div>
+</body>
+</html>

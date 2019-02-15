@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>五角星评分案例</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .comment {
+            font-size: 40px;
+            color: #ff3100;
+        }
+
+        .comment li {
+            float: left;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            //需求：模拟淘宝的评分
+            var wjx_none = '☆'; // 空心五角星
+            var wjx_sel = '★'; // 实心五角星
+
+            /*
+            思路：
+                1、鼠标放在哪个五角星上，那个五角星和前面的五角星都变为实心
+                2、鼠标点击五角星，给当前五角星添加current类，其他去掉current类
+                3、鼠标离开，所有在current类之后的五角星变为空心；如果没有current，全部变为空心
+             */
+            var wjx = $(".comment li"); //获取五角星
+            // 1、鼠标放在哪个五角星上，那个五角星和之前的五角星都变为实心
+            wjx.on("mouseenter", function () {
+                // $(this).text(wjx_sel).prevAll().text(wjx_sel);
+                // $(this).nextAll(wjx_none);
+                $(this).text(wjx_sel).prevAll().text(wjx_sel).end().nextAll(wjx_none);
+            });
+
+            wjx.on("mouseleave", function () {
+                if($("li.current").length === 0) {
+                    // 2、鼠标离开，如果所有li都没有current类，那么所有五角星变为空心
+                    wjx.text(wjx_none);
+                } else {                    // 5、鼠标离开，所有在current类之后的五角星变为空心
+                    $("li.current").nextAll().text(wjx_none);
+                }
+
+            });
+            // 3、鼠标点击五角星，给当前五角星添加current类，其他去掉current类，当前五角星和前面的都变为实心
+            wjx.on("click", function () {
+                //给当前五角星添加类名，清除其他五角星的类名
+                $(this).addClass("current").siblings().removeClass("current");
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <ul class="comment">
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+
+</body>
+</html>

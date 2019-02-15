@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        //入口函数
+        jQuery(document).ready(function () {
+            var li = $("li");   //jquery对象其实是数组
+            console.log(li);
+            console.log(li.length); //数组中元素的个数
+
+            for(var i=0;i<li.length;i++) {
+                if(i%2 === 0) {
+                    //jquery对象转换为js的DOM对象
+                    li[i].style.backgroundColor = "green";
+                } else {
+                    li.get(i).style.backgroundColor = "yellow";
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <ul>
+        <li>哈哈哈哈哈哈哈哈</li>
+        <li>哈哈哈哈哈哈哈哈</li>
+        <li>哈哈哈哈哈哈哈哈</li>
+        <li>哈哈哈哈哈哈哈哈</li>
+        <li>哈哈哈哈哈哈哈哈</li>
+    </ul>
+</body>
+</html>

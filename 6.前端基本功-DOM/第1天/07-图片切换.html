@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        a {
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="#">切换</a>
+    <img src="image/1-small.jpg" alt="">
+
+    <script>
+        var a = document.getElementsByTagName("a")[0];
+        var img = document.getElementsByTagName("img")[0];
+        a.onclick = function () {
+            img.src = "image/2-small.jpg";
+        }
+    </script>
+</body>
+</html>

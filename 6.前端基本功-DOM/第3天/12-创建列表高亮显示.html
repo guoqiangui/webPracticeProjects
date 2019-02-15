@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button>创建列表</button>
+    <ul id="ul"></ul>
+
+    <script>
+        var btn = document.getElementsByTagName("button")[0];
+        var ul = document.getElementById("ul");
+        var arr = ["勒布朗·詹姆斯", "凯文·杜兰特", "科怀·莱昂纳德", "扬尼斯·阿德托昆伯"];
+        btn.onclick = function () {
+            ul.innerHTML = "";  //每次进来都要清空ul
+            for(var i=0;i<arr.length;i++) {
+                var li = document.createElement("li");
+                li.innerText = arr[i];
+                ul.appendChild(li);
+
+                li.onmouseover = function () {
+                    this.style.backgroundColor = "green";
+                }
+                li.onmouseout = function () {
+                    this.style.backgroundColor = "";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

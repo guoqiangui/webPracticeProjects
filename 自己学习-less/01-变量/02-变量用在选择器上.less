@@ -1,0 +1,19 @@
+// 在选择器上使用变量
+@selector-box: boxId;
+@selector-box2: #box2;
+
+// 这样使用需要加{}
+#@{selector-box} {
+    border: 1px solid green;
+}
+
+@{selector-box2} {
+    border: 1px solid #000;
+}
+
+// 在url上使用变量
+@baidu-url: "../js/jquery.js";
+.box2 {
+    background: url(@baidu-url);
+}
+

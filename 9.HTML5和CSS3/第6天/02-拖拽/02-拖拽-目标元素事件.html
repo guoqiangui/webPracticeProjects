@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border: 1px solid #000;
+        }
+        .box2 {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+            border: 1px solid #000;
+            left: 500px;
+            top: 300px;
+        }
+    </style>
+</head>
+<body>
+    <!--让红色盒子可拖拽-->
+    <div class="box1" draggable="true"></div>
+    <div class="box2"></div>
+
+    <script>
+        var box2 = document.querySelector(".box2");
+    //    当被拖拽元素进入时触发（要鼠标进入才算）
+        box2.ondragenter = function () {
+            console.log("来了...");
+        }
+    //    当被拖拽元素离开时触发（也是鼠标离开才触发）
+        box2.ondragleave = function () {
+            console.log("走了...");
+        }
+    //    当被拖拽元素在目标元素上时连续触发（同理，鼠标）
+        box2.ondragover = function (event) {
+            // 阻止拖拽事件的默认行为（不阻止ondrop就不会触发）
+            event.preventDefault();
+            console.log("over....");
+        }
+        // 当在目标元素上松开鼠标时触发
+        box2.ondrop = function () {
+            alert(1);
+            console.log("松开鼠标了");
+        }
+    </script>
+</body>
+</html>

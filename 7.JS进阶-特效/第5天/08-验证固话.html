@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <input type="text">
+    <span>请输入电话号码</span>
+
+    <script>
+        /*
+        验证固定电话
+            0开头
+            直辖市：3位+8位
+            普通市：4位+7位
+         */
+
+        var input = document.getElementsByTagName("input")[0];
+        var span = document.getElementsByTagName("span")[0];
+
+        //失去焦点事件
+        input.onblur = function () {
+            var reg1 = /(^0\d{3}-\d{7}$)|(^0\d{2}-\d{8}$)/;
+            if(reg1.test(input.value) === true) {
+                span.innerHTML = "输入合法！";
+                span.style.color = "green";
+            } else {
+                span.innerHTML = "您输入的号码不合法！";
+                span.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*先要把文字的颜色设置成和背景色一样*/
+        body {
+            background-color: #ccc;
+            text-align: center;
+        }
+        p {
+            color: #ccc;
+            font: 700 100px "microsoft yahei";
+        }
+
+        .ao {
+            /*凹的效果：使用两个阴影上面的阴影为黑色，下面的阴影为白色*/
+            /*设置多个阴影不能分开写，要写在一起*/
+            text-shadow: -1px -1px 1px #000, 1px 1px 1px #fff;
+        }
+        .tu {
+            /*凸出的效果：上面的阴影为白色，下面的阴影为黑色*/
+            text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
+        }
+    </style>
+</head>
+<body>
+    <p class="ao">苍茫的天涯我的爱</p>
+    <p class="tu">苍茫的天涯我的爱</p>
+</body>
+</html>

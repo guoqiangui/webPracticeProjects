@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text">
+    <button>sessionStorage储存</button>
+    <button>sessionStorage获取</button>
+    <button>sessionStorage更新</button>
+    <button>sessionStorage删除</button>
+    <button>sessionStorage清空</button>
+
+    <script>
+        // sessionStorage   可存5M    关闭该页面失效（刷新不会失效, 可以说在同一页面内可共享）
+        // localStorage     可存20M   永久有效，除非清除数据（也是只在同一页面共享）
+
+        var txt = document.querySelector("input");
+        var btns = document.querySelectorAll("button");
+
+    //    sessionStorage储存
+        btns[0].onclick = function () {
+            window.sessionStorage.setItem("username", txt.value);
+            window.sessionStorage.setItem("password", "123456");    /*两个参数必须是string*/
+            window.sessionStorage.setItem("age", "18");
+        }
+    //    sessionStorage获取
+        btns[1].onclick = function () {
+            var username = window.sessionStorage.getItem("username");
+            txt.value = username;
+        }
+    //    sessionStorage更新
+        btns[2].onclick = function () {
+            window.sessionStorage.setItem("username", txt.value);
+        }
+    //    sessionStorage删除
+        btns[3].onclick = function () {
+            window.sessionStorage.removeItem("username");
+        }
+    //    sessionStorage清空
+        btns[4].onclick = function () {
+            window.sessionStorage.clear();
+        }
+    </script>
+</body>
+</html>

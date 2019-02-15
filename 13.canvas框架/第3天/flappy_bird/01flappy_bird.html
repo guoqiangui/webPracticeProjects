@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flappy_bird</title>
+    <style>
+        canvas {
+            border:1px solid red;
+        }
+        img {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="cvs" width="500" height="500"></canvas>
+
+    <script src="loadImage.js"></script>
+    <script>
+        /*
+         * 绘制背景
+         * construcotor { Sky } 背景构造函数
+         * parasm { ctx: Context } 绘制环境
+         * parasm { img: Image } 背景图像
+         * parasm { speed: number } 背景速度
+         * */
+        function Sky(ctx, img, speed) {
+            this.ctx = ctx;
+            this.img = img;
+            this.speed = speed;
+
+            // 每创建一个实例，实例个数自增
+            Sky.len ++;
+
+            // 图片的原点坐标，根据实例个数改变
+            this.x = img.width * (Sky.len - 1);
+            this.y = 0;
+        }
+
+        // 背景的实例个数
+        Sky.len = 0;
+
+        Sky.prototype = {
+            constructor: Sky,
+
+            // 绘制背景
+            draw: function () {
+                this.ctx.drawImage(this.img, this.x, this.y, this.img.width, this.img.height);
+            },
+
+            // 下一次绘制图片，更新数据
+            update: function () {
+                // x轴改变
+                this.x -= this.speed;
+                // 判断是否走完一张，走完了就移动到另一张后面
+                if(this.x <= -this.img.width) {
+                    this.x = (Sky.len - 1) * this.img.width;
+                }
+            }
+        };
+
+
+        /*
+        * constructor { Bird } 鸟构造函数
+        * param { ctx: Context } 绘图环境
+        * param { img: Image } 鸟图
+        * param { widthFrame: number } 一排的帧数
+        * param { heightFrame: number } 一列的帧数
+        * param { x: number } 鸟的起始x轴坐标
+        * param { y: number } 鸟的起始y轴坐标
+        * */
+        function Bird(ctx, img, widthFrame, heightFrame, x, y) {
+            this.ctx = ctx;
+            this.img = img;
+            this.widthFrame = widthFrame;
+            this.heightFrame = heightFrame;
+            this.x = x;
+            this.y = y;
+
+            // 鸟的宽和高
+            this.width = this.img.width / this.widthFrame;
+            this.height = this.img.height / this.heightFrame;
+
+            // 当前帧
+            this.currentFrame = 0;
+
+            // 鸟的下坠速度
+            this.speed = 5;
+            // 加速度
+            this.aSpeed = 0.5;
+
+            // 绑定事件
+            this._bind();
+        }
+        Bird.prototype = {
+            constructor: Bird,
+
+            // 画一只鸟
+            draw: function () {
+                this.ctx.drawImage(this.img,
+                    this.currentFrame * this.width, 0, this.width, this.height,
+                    this.x, this.y, this.width, this.height
+                    );
+            },
+
+            // 鸟的下一帧
+            update: function () {
+                this.currentFrame ++;
+                // 判断帧数是否超过总帧数，超过了就回到第一帧
+                if(this.currentFrame >= this.widthFrame) {
+                    this.currentFrame = 0;
+                }
+
+                // 鸟默认会自动下坠
+                this.y += this.speed;
+                // 加速度是加在速度上的
+                this.speed += this.aSpeed;
+            }, 
+            
+            // 绑定鼠标点击事件
+            _bind: function () {
+                // 保存this
+                var that = this;
+                // 给画布绑定
+                this.ctx.canvas.addEventListener("click", function () {
+                    // 将速度立刻变成-5，小鸟就会向上移动，由于有加速度，小鸟会逐渐变慢，停止后开始逐渐加速下降
+                    that.speed = -5;
+                });
+            }
+        };
+
+
+        var cvs = document.getElementById("cvs");
+        var ctx = cvs.getContext("2d");
+
+        var imgUrl = {
+            bird: "img/bird.png",
+            land: "img/land.png",
+            pipeDown: "img/pipeDown.png",
+            pipeUp: "img/pipeUp.png",
+            sky: "img/sky.png"
+        };
+
+        loadImage(imgUrl, function (imgObj) {
+            // 绘制背景
+            // 背景有多大，画布就多大
+            ctx.canvas.width = imgObj.sky.width;
+            ctx.canvas.height = imgObj.sky.height;
+            var sky = new Sky(ctx, imgObj.sky, 10);
+            sky.draw();
+            // 为了达到无缝滚动，需要2张背景
+            var sky2 = new Sky(ctx, imgObj.sky, 10);
+            sky2.draw();
+
+            // 绘制鸟
+            var bird = new Bird(ctx, imgObj.bird, 3, 1, 20, 20);
+            bird.draw();
+
+            setInterval(function () {
+                // 让背景动起来
+                sky.update();
+                sky.draw();
+
+                sky2.update();
+                sky2.draw();
+
+                // 让鸟动起来
+                bird.update();
+                bird.draw();
+            }, 100);
+
+
+        });
+    </script>
+</body>
+</html>

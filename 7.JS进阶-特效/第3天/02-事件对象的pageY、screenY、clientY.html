@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            height: 5000px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        //在页面的任意处点击都会触发
+        document.onclick = function (event) {
+            // console.log(1);
+
+            //一般浏览器都支持传参方式，但IE67不支持，所以用兼容写法兼容IE67
+            // console.log(event);  //一般浏览器支持
+            //获取事件对象的兼容写法
+            event = event || window.event;
+            console.log(event);
+            console.log("pageY: " + event.pageY);   //到页面顶端距离（包括被卷曲的部分）
+            console.log("screenY: " + event.screenY);   //到屏幕顶部距离
+            console.log("clientY: " + event.clientY);   //到浏览器显示页面顶端（不包括被卷曲部分）
+
+            //同理
+            console.log("pageX: " + event.pageX);
+            console.log("screenX: " + event.screenX);
+            console.log("clientX: " + event.clientX);
+        }
+    </script>
+</body>
+</html>

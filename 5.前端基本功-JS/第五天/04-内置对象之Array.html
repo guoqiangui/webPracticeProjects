@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //数组定义方法
+    var arr1 = [1, 2, 3];
+    var arr2 = new Array(1,2,3);
+    console.log(arr1);
+    console.log(arr2);
+
+    //Array中简单的方法
+    var bool = arr1 instanceof Array; //instanceof判断是否为符合的类型，其他类型也可以用
+    console.log(Array.isArray(arr1)); //静态方法，判断是否为数组
+    console.log(bool);
+
+    var str1 = "哈哈哈";
+    var str2 = new String("呵呵呵");
+    console.log(str1 instanceof String); //false
+    console.log(str2 instanceof String); //true，一定要new才行
+
+    console.log("======================");
+
+    //数组转换
+    console.log(arr1.toString()); //转化成字符串形式
+    console.log(typeof arr1.toString()); //string
+    console.log(arr1.valueOf()); //返回指定对象的原始值
+    console.log(typeof arr1.valueOf()); //object
+
+    //join是把数组元素用特殊方式链接成字符串(参数决定用什么连接，无参默认用逗号连接)
+    var str3 = arr1.join("|");
+    // var str3 = arr1.join(""); //无缝连接
+    // var str3 = arr1.join(); //默认逗号连接
+    console.log(str3);
+</script>
+</body>
+</html>

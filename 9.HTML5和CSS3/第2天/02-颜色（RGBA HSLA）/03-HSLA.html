@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .out {
+            width: 400px;
+            height: 400px;
+            text-align: center;
+            /*
+                h: 色调（0~360）
+                s: 饱和度（0~100%）
+                l: 亮度（0~100%）
+                a: 透明度（0~1）
+                也可以用在边框、文字
+            */
+            background-color: hsla(120,50%,50%,1);
+            border: 1px solid #000; /*解决外边距塌陷*/
+        }
+        .in {
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+<div class="out">
+    <div class="in"></div>
+</div>
+</body>
+</html>

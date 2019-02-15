@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1、什么是闭包
+    // 一个具有封闭的，对外不公开的，包裹结构，或空间
+
+    // 2、js中的闭包：函数
+
+    // 3、闭包的原理：作用域访问原则
+    // 上级作用域无法直接访问下级作用域中的变量
+
+    // function f1() {
+    //     var num = 123;
+    //
+    //     function f2() {
+    //         console.log(num);
+    //     }
+    //
+    //     f2();
+    // }
+
+    // 4、使用闭包要解决什么问题
+        // 闭包内的数据不允许外界访问
+        // 所以要解决的问题就是间接访问闭包内的数据
+    // function foo() {
+    //     var num = 123;
+    //     return num;
+    // }
+    // var x = foo();
+    // console.log(x);
+
+    // 如果num是引用类型的话，每次返回的都是不同的对象
+    // function foo() {
+    //     var obj = {
+    //         name: "小明"
+    //     };
+    //     return obj;
+    // }
+    // var x = foo();
+    // var y = foo();
+    // console.log(x === y); // false，说明每次调用该方法都会创建一个新对象
+
+    //使用return关键字将函数内部的数据返回，这个数据只能被使用一次
+
+    //1.函数内部的函数中可以访问该函数中的变量
+    //2.但是我们需要在函数外部去访问函数中变量
+
+    // 直接返回变量，这个数据只能使用一次，但返回一个函数，这个函数是可以访问到外函数内部的变量的，就可以不断进行操作了，原理：函数内部的函数中可以访问该函数中的变量
+    function foo() {
+        var num = 123;
+        // 不传参数获取值，传参修改值
+        return function (a) {
+            if(a === undefined) {
+                return num;
+            } else {
+                num = a;
+            }
+        }
+    }
+
+    // 先获取返回的函数
+    var f1 = foo();
+    // 获取值
+    console.log(f1());
+    // 修改值
+    f1(456);
+    console.log(f1());
+</script>
+</body>
+</html>

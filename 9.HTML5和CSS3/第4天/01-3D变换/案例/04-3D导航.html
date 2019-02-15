@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul, li {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+            width: 500px;
+            margin: 100px auto;
+        }
+        li {
+            float: left;
+            width: 100px;
+            height: 40px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 2s;
+        }
+
+        /*过渡延时*/
+        li:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+        li:nth-child(3) {
+            transition-delay: 0.4s;
+        }
+        li:nth-child(4) {
+            transition-delay: 0.6s;
+        }
+        li:nth-child(5) {
+            transition-delay: 0.8s;
+        }
+
+
+        li span {
+            position: absolute;
+            width: 100px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+        }
+        li span:nth-child(1) {
+            /*之前顺序反了就失败，可能是因为层级问题吧，这里把层级高的移到上面就没事*/
+            background-color: yellow;
+            transform: translateZ(20px);
+        }
+        li span:nth-child(2) {
+            background-color: green;
+            transform: rotateX(90deg)  translateZ(20px);
+        }
+        ul:hover li {
+            transform: rotateX(-90deg);
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <span>传智播客</span>
+            <span>Web前端</span>
+        </li>
+        <li>
+            <span>传智播客</span>
+            <span>Web前端</span>
+        </li>
+        <li>
+            <span>传智播客</span>
+            <span>Web前端</span>
+        </li>
+        <li>
+            <span>传智播客</span>
+            <span>Web前端</span>
+        </li>
+        <li>
+            <span>传智播客</span>
+            <span>Web前端</span>
+        </li>
+    </ul>
+</body>
+</html>

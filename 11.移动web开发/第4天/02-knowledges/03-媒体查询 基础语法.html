@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*
+            css3中新增加的媒体查询，是响应式布局的核心原理
+            设备的屏幕尺寸大于等于480的时候使用大括号内的样式
+            和css一样，也会被层叠掉
+        */
+        @media screen and (min-width: 960px) {
+            body {
+                background-color: green;
+            }
+        }
+        /* 设备的屏幕尺寸大于等于960的时候使用大括号内的样式 */
+        @media screen and (min-width: 1500px) {
+            body {
+                background-color: hotpink;
+            }
+        }
+        /*设备的屏幕尺寸小于于等于960的时候使用大括号内的样式*/
+        @media screen and (max-width: 640px) {
+            body {
+                background-color: yellow;
+            }
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>

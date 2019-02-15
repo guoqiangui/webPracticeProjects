@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flappy_bird</title>
+    <style>
+        canvas {
+            border:1px solid red;
+        }
+        img {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="cvs" width="500" height="500"></canvas>
+
+    <!--导入相关js文件-->
+    <script src="js/util.js"></script>
+    <script src="js/sky.js"></script>
+    <script src="js/bird.js"></script>
+    <script src="js/land.js"></script>
+    <script src="js/pipe.js"></script>
+    <script src="js/gameScene.js"></script>
+    <script src="js/overScene.js"></script>
+    <script>
+        var cvs = document.getElementById("cvs");
+        var ctx = cvs.getContext("2d");
+
+        var imgUrl = {
+            bird: "img/bird.png",
+            land: "img/land.png",
+            pipeDown: "img/pipeDown.png",
+            pipeUp: "img/pipeUp.png",
+            sky: "img/sky.png"
+        };
+
+        util.loadImage(imgUrl, function (imgObj) {
+            // 背景有多大，画布就多大
+            ctx.canvas.width = imgObj.sky.width;
+            ctx.canvas.height = imgObj.sky.height;
+
+            // 创建游戏场景
+            var gameScene = getGameScene(ctx, imgObj);
+            // 创建游戏结束场景
+            var overScene = getOverScene(ctx);
+
+            // 绘制所有角色
+            gameScene.draw();
+
+            // 鸟的中心坐标
+            var birdX;
+            var birdY;
+            // 鸟对象
+            var bird;
+
+            var timer = setInterval(function () {
+                // 让所有角色动起来
+                gameScene.draw();
+
+                // 因为是鸟的工厂里面是单例，所以会获得同一个对象
+                bird = getBird();
+                // 判断鸟的中心坐标是否与管道接触，接触了游戏结束
+                // 获取鸟的中心坐标
+                birdX = bird.x + bird.width / 2;
+                birdY = bird.y + bird.height / 2;
+
+                // 判断坐标是否在路径内、判断鸟是否撞到画布顶部或大地
+                if(ctx.isPointInPath(birdX, birdY) || birdY <= 0 || birdY >= ctx.canvas.height - imgObj.land.height) {
+                    // 接触到了或撞到了就清除定时器
+                    clearInterval(timer);
+
+                    // 并显示游戏结束
+                    overScene.draw();
+                }
+            }, 50);
+        });
+    </script>
+</body>
+</html>

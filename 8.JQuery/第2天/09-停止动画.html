@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            //stop(clearQueue, jumpToEnd)   默认参数都为false(不清除排在后面的动画，不跳到动画结束)
+            var btn = $("button");
+            var div = $("div");
+
+            btn.eq(0).click(function () {
+                div.slideDown(2000);
+            });
+            btn.eq(1).click(function () {
+                div.slideUp(2000);
+            });
+            btn.eq(2).click(function () {
+                div.stop(false, false); //常用这种
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>滑入</button>
+    <button>滑出</button>
+    <button>停止</button>
+    <div></div>
+</body>
+</html>

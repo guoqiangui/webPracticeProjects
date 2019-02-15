@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {
+            width: 300px;
+            height: 40px;
+        }
+        .jd {
+            color: #ccc;
+        }
+        label {
+            position: absolute;
+            left: 54px;
+            top: 154px;
+            color: #ccc;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!--placeholder最简单，但兼容性不好，不推荐-->
+    placeholder: <input type="text" placeholder="placeholder"><br><br>
+    京东: <input type="text" value="我是京东" class="jd"><br><br>
+    淘宝: <label for="tb">我是淘宝</label><input type="text" id="tb">
+
+    <script>
+
+        //京东
+        //1、获取事件源及相关标签
+        var jdInp = document.getElementsByClassName("jd")[0];
+        //2、绑定事件
+        jdInp.onfocus = function () {
+            if(jdInp.value=="我是京东" || !jdInp.value) {
+                jdInp.value = "";
+            }
+        }
+        jdInp.onblur = function () {
+            if(!jdInp.value) {
+                jdInp.value = "我是京东";
+            }
+        }
+
+        //淘宝
+        var tbInp = document.getElementById("tb");
+        var label = document.getElementsByTagName("label")[0];
+        tbInp.oninput = function () {
+            if(tbInp.value) {
+                label.className = "hide";
+            }
+        }
+        tbInp.onblur = function () {
+            if(!tbInp.value) {
+                label.className = "";
+            }
+        }
+    </script>
+</body>
+</html>

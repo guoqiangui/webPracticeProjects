@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        a {
+            display: block;
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            margin: 20px;
+            /* 清除手指点击产生的默认高亮效果（设置成透明即可） */
+            -webkit-tap-highlight-color: transparent;
+            /* 盒子模型， 移动端的盒子都是border-box，保证盒子大小不变 */
+            box-sizing: border-box;
+        }
+        input {
+            width: 200px;
+            height: 200px;
+            background-color: greenyellow;
+            /* 移动端有些浏览器会默认给input标签添加一些特有的样式，比如3d高光，需要清除（为了扁平化设计） */
+            -webkit-appearance: none;
+        }
+    </style>
+</head>
+<body>
+    <a href="#">我是一个超链接</a>
+    <input type="button" value="我是一个按钮">
+</body>
+</html>

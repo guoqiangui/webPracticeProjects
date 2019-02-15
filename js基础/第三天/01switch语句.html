@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var fruit = prompt("请输入您爱吃的水果");
+		//一定要加break
+		// switch(fruit){
+		// 	case "苹果":
+		// 		alert("您爱吃的水果是苹果");
+		// 		break;
+		// 	case "香蕉":
+		// 		alert("您爱吃的水果是香蕉");
+		// 		break;
+		// 	case "葡萄":
+		// 		alert("您爱吃的水果是葡萄");
+		// 		break;
+		// 	default:
+		// 		alert("口味真重");
+		// }
+		 
+		//switch语句的连续声明
+		switch(fruit) {
+			case "苹果":case "香蕉":case "葡萄":
+				alert("您爱吃的是水果");
+				break;
+			default:
+				alert("口味真重");
+		}
+	</script>
+</body>
+</html>

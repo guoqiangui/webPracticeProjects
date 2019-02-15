@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //递归是一种思想，类似计数器、开闭原则
+    //递归的实质就是函数自己调用自己
+    //递归注意点：递归必须有跳出条件，否则是死循环
+
+    // //递归演示
+    // var i=0;
+    // fun();
+    //
+    // function fun() {
+    //     alert("从前有座山，山上有座庙......");
+    //     i++;
+    //     if(i<3) {  //跳出条件
+    //         fun(); //调用自己
+    //     }
+    // }
+
+    //递归案例
+    //用递归求1+到100的和。
+    // console.log(getSum(100));
+    //
+    // function getSum(n) {
+    //     if(n<1) { //跳出条件
+    //         return 0;
+    //     }
+    //     //100+getSum(99)-->100+99+getSum(n-1)...-->100+99+...+1+getSum(0)-->100+99+...+1+0
+    //     return n + getSum(n-1);
+    // }
+
+    //用递归求斐波那契数列第12项
+    alert(getFib(12));
+
+    //根据f(n) = f(n-1) + f(n-2)
+    function getFib(n) {
+        if(n==1 || n==2) {
+            return 1;
+        }
+        return getFib(n-1) + getFib(n-2);
+    }
+</script>
+</body>
+</html>

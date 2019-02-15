@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+    <script>
+        //隐藏盒子的四种方式（一般用display和opacity）
+
+        var box = document.getElementById("box");
+        box.onclick = function () {
+            // this.style.display = "none";
+            // this.style.visibility = "hidden";
+            // this.style.opacity = "0";
+            this.style.position = "absolute";
+            this.style.top = "-100px";
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Player() {
+
+    }
+    var team = {
+        name: "湖人队",
+        champions: 16
+    };
+    Player.prototype.team = team;
+
+    var p1 = new Player();
+    console.log(p1.team.name);
+
+    // p1.team是获取值，这里获得一个对象，再.name是修改属性的值
+    p1.team.name = "凯尔特人";
+    console.log(p1.team.name);
+
+    // 原型对象在创建出来的时候，会默认有一个constructor属性（还有一个__proto__属性），指向对应的构造函数
+    var p2 = new p1.constructor(); //相当于new Player()
+    console.log(p2.team.name);
+    // console.log(Player.prototype.constructor);
+
+</script>
+</body>
+</html>

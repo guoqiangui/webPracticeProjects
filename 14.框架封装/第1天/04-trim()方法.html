@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+        * trim方法是ES5提供的字符串方法，用来去除字符串首尾空白字符，但是IE9+才能兼容。
+        * */
+    // 处理trim的兼容问题
+    function trim(str) {
+        // 如果传入的不是字符串，则不必处理
+        if(typeof str !== "string") {
+            return str;
+        }
+        // 如果支持，优先使用trim
+        if(str.trim) {
+            return str.trim();
+        }
+        // 不支持，则利用正则表达式清除首尾空格
+        return str.replace(/^\s+|\s+$/g, "");
+    }
+
+
+    console.log(typeof "哈哈");
+</script>
+</body>
+</html>

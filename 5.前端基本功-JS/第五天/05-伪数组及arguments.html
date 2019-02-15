@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    fun1(1, 2);
+    fun1(1, 2, 3);
+    fun1(1, 2, 3, 4);
+
+    function fun1(a, b) {
+        //arguments只在函数中使用，存储实参的伪数组（不能修改长度的数组）
+        arguments[0] = 6; //可以修改元素的值
+        console.log(arguments);
+        // arguments.push(1); //不能修改长度
+        console.log(arguments instanceof Array); //false，表示不是Array
+
+        console.log(arguments.length); //实参个数
+        console.log(fun1.length); //形参个数
+
+        // console.log(arguments.callee); //输出整个函数，与console.log(fun1)一样
+    }
+</script>
+</body>
+</html>

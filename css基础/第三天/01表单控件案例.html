@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.username{
+			border: 0 none;			/*去掉边框*/
+			outline-style: none;	/*去掉轮廓线*/
+			border: dashed 1px black;
+			background: pink;
+		}
+		.email{
+			border: 0 none;
+			outline-style: none;
+			border-bottom: dotted 1px purple;
+		}
+		.search{
+			background: url(search.jpg) no-repeat right center;
+			border: 0 none;
+			outline-style: none;
+			border: solid 1px #555;
+		}
+		/* 获取焦点，属于伪类 */
+		.username:focus{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<!-- 也是获取焦点，为了让用户点到文字也能出效果 -->
+	<label for="uname">用户名: </label><input type="text" class="username" id="uname"><br/><br/>
+	邮&nbsp;箱: <input type="text" class="email"><br/><br/>
+	搜索一下: <input type="text" class="search"><br/><br/>
+</body>
+</html>

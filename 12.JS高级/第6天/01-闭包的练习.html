@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //线程：一个线程一次只能处理一件事情，多个线程就可以多个事情同时进行
+    //JS是单线程的！
+    //JS中，分了三个任务
+        //1.渲染任务
+        //2.js的代码执行任务
+        //3.事件处理任务
+
+    //JS代码的执行顺序
+    //1.先把主任务（代码任务）执行完毕
+    //2.再去执行次要的任务(包括setTimeOut和setInterval中的回调函数中的代码)
+
+    //setTimeOut
+    //至少在指定的时间后执行指定回调函数
+    //因为要等主任务中的代码执行完毕之后，才回去检查，setTimeOut的回调函数，有没到执行时间
+
+
+    // 会输出10个10，此时执行回调函数的时间至少是主任务（for循环等代码）执行完毕后
+    // for循环执行完毕后，i已经变成10，此时再执行回调函数，就只能输出10了
+    // for(var i = 0 ; i < 10; i++){
+    //     setTimeout(function () {
+    //         console.log(i);
+    //     }, 0);
+    // }
+
+    // 利用闭包解决
+    // 会连续输出10就是因为没有及时记录i，只要想办法将i记录下来即可
+    // 只要访问的i不是全局变量就可以
+    for (var i = 0; i < 10 ; i++) {
+        function foo(j) {
+            // var j;
+            // j = 实参;
+
+            function callback() {
+                console.log(j);
+            }
+            return callback;
+        }
+
+        // 将i作为参数传入foo，此时foo返回的回调函数就变成了我们想要的
+        var f1 = foo(i);
+        setTimeout(f1, 0);
+    }
+
+    // for(var i=0; i< 10; i++) {
+    //     function foo(j) {
+    //         return function () {
+    //             console.log(j);
+    //         }
+    //     }
+    //     var f = foo(i);
+    //     setTimeout(f, 0);
+    // }
+</script>
+</body>
+</html>

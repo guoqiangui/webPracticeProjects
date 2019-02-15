@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 用来储存歌曲对象的数组
+    // 自己指定歌曲列表比较好
+    var songList = [
+        {
+            songName: "New Divide",
+            singer: "Linkin Park"
+        }, {
+            songName: "演员",
+            singer: "薛之谦"
+        }, {
+            songName: "死了都要爱",
+            singer: "信乐团"
+        }
+    ];
+
+    
+    // 一般初始化不这样做
+    // function SongManager(songList) {
+    //     this.songList = songList;
+    // }
+    function SongManager() {
+        this.songList = null;
+    }
+
+    // 通用的方法最好放在原型里
+    // 更加简洁的方式是直接替换原型对象
+    // 初始化方法
+    SongManager.prototype.init = function (songList) {
+          this.songList = songList;
+    };
+    // 增
+    SongManager.prototype.addSong = function (song) {
+        songList.push(song);
+    };
+    // 查
+    SongManager.prototype.selectSong = function (songName) {
+        for(var i=0; i<this.songList.length; i++) {
+            if(this.songList[i].songName == songName) {
+                return this.songList[i];
+            }
+        }
+    }
+    // 删
+    SongManager.prototype.removeSong = function (songName) {
+        // 按照歌名查找，在当前对象中调用当前对象的其他方法要使用this
+        var song = this.selectSong(songName);
+        // 获取索引
+        var index = this.songList.indexOf(song);
+        // 删除
+        this.songList.splice(index, 1);
+    };
+    // 改歌手
+    SongManager.prototype.updateSong = function (songName, singer) {
+        // 按照歌名查找
+        var song = this.selectSong(songName);
+        song.singer = singer;
+    }
+
+
+    // 测试
+    var songManager = new SongManager();
+    songManager.init(songList);
+
+    // songManager.addSong({
+    //     songName: "Numb",
+    //     singer: "Linkin Park"
+    // });
+
+    // songManager.removeSong("演员");
+
+    // songManager.updateSong("演员", "哈哈哈");
+
+    // console.log(songManager.selectSong("演员"));
+
+    console.log(songManager.songList);
+</script>
+</body>
+</html>

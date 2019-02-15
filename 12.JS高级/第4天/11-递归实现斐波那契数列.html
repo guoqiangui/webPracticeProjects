@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 斐波那契数列：1 1 2 3 5 8 13 ....
+    // 1  1
+    // 2  1 1
+    // 3  1 1 2
+    // n  1 1 2 .... f(n-2) f(n-1) f(n) --> f(n) = f(n-2) + f(n-1)
+
+    /**
+     * 返回斐波那契数列的第n项
+     * @param n
+     */
+    function fibnacci(n) {
+        // 结束条件
+        if(n <= 2) {
+            return 1;
+        }
+        return fibnacci(n-2) + fibnacci(n-1);
+    }
+
+    console.log(fibnacci(3));
+    console.log(fibnacci(4));
+    console.log(fibnacci(5));
+    console.log(fibnacci(6));
+</script>
+</body>
+</html>

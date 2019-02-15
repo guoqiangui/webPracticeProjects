@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Player() {
+
+    }
+
+    console.log(Player.prototype.constructor);
+
+    Player.prototype = {};
+
+    // 替换了原型对象后，原型对象的constructor属性的值变成了Object
+    console.log(Player.prototype.constructor);
+
+    // 为了保证构造函数--原型--对象之间关系的合理性，应该在替换原型对象后在新的原型对象中手动添加constructor属性为构造函数
+    Player.prototype = {
+        constructor: Player
+    };
+    console.log(Player.prototype.constructor);
+</script>
+</body>
+</html>

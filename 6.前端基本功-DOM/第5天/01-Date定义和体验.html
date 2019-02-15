@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //第一种
+    var date = new Date();
+    console.log(date);
+
+    //第二种（兼容性最强）
+    var date2 = new Date("2018/12/25 12:24:48");
+    console.log(date2);
+
+    //第三种（第三种和第四种兼容性不好，不推荐使用）
+    var date3 = new Date("Thu Oct 18 2018 15:45:18 GMT+0800 (中国标准时间)");
+    console.log(date3);
+
+    //第四种
+    var date4 = new Date(2018, 2, 23);
+    console.log(date4);
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #000;
+        }
+        .sun, .earth, .mars, .venus, .moon {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+        }
+        .earth::after, .moon::after, .mars::after, .venus::after {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        /*太阳*/
+        .sun {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            border-radius: 50%;
+            box-shadow: 1px 1px 36px 8px gold;
+            margin-left: -50px;
+            margin-top: -50px;
+        }
+        /*地球的运动轨道*/
+        .earth {
+            width: 350px;
+            height: 350px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            margin-left: -175px;
+            margin-top: -175px;
+            /*其实是盒子在转*/
+            animation: move 10s linear infinite;
+        }
+        /*地球*/
+        .earth::after {
+            content: "";
+            width: 40px;
+            height: 40px;
+            background-color: deepskyblue;
+            border-radius: 50%;
+        }
+        /*月亮的轨道*/
+        .earth .moon {
+            width: 75px;
+            height: 75px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            left: auto;
+            margin-top: -37.5px;
+            margin-left: -37.5px;
+            animation: move 2s linear infinite;
+        }
+        .earth .moon::after {
+            content: "";
+            width: 16px;
+            height: 16px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+        /*火星轨道*/
+        .mars {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            margin-left: -250px;
+            margin-top: -250px;
+            animation: move 7s linear infinite;
+        }
+        /*火星*/
+        .mars::after {
+            content: "";
+            width: 30px;
+            height: 30px;
+            background-color: orange;
+            border-radius: 50%;
+        }
+        /*金星轨道*/
+        .venus {
+            width: 700px;
+            height: 700px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            margin-left: -350px;
+            margin-top: -350px;
+            animation: move 15s linear infinite;
+        }
+        /*金星*/
+        .venus::after {
+            content: "";
+            width: 60px;
+            height: 60px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        /*定义动画*/
+        @keyframes move {
+            0% {
+                transform: rotateZ(0deg);
+            }
+            100% {
+                transform: rotateZ(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sun"></div>
+    <div class="earth">
+        <div class="moon"></div>
+    </div>
+    <div class="mars"></div>
+    <div class="venus"></div>
+</body>
+</html>

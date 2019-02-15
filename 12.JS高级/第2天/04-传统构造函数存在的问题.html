@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 如果在构造函数中定义函数，那么每次调用构造函数都会重新创建该函数
+    // 并且函数内部的代码完全一样，这样就造成了资源浪费
+    // function Player(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.play = function () {
+    //         console.log("打篮球");
+    //     };
+    // }
+
+    // 解决办法1：把函数提到构造函数的外面，将函数赋值给构造函数内的属性
+    // 缺点：1、全局变量增多，造成污染；2、代码结构混乱，不易维护
+    function play() {
+        console.log("打篮球");
+    }
+    function Player(name, age) {
+        this.name = name;
+        this.age = age;
+        // 注意不能加括号，加括号就是调用函数了
+        this.play = play;
+    }
+
+</script>
+</body>
+</html>

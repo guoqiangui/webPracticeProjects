@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //简单数据类型无法绑定属性和方法（简单数据类型: number、string、boolean、undefined、null）
+    var str = "abcdefg";
+    // str.aaa = "哈哈";
+    // console.log(str.aaa);    //undefined
+
+    var strObj = new String("abcdefg");
+    console.log(str == strObj); //true, 值一样
+    console.log(str === strObj);    //false，类型不同
+    console.log(typeof strObj); //object
+    strObj.aaa = "哈啊哈";
+    console.log(strObj.aaa);
+
+    //简单数据类型string可以用String的方法是因为底层进行了数据类型转换,boolean和number同理
+    console.log(str.length);
+    console.log(str.indexOf("c"));
+</script>
+</body>
+</html>

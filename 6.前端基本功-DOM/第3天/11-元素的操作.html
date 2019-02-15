@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li id="li1">我是参照标签li1</li>
+    </ul>
+
+    <script>
+            //创建、添加
+            var li2 = document.createElement("li");
+            li2.innerText = "我是createElement()创建的，使用appendChild()添加";
+            var li1 = document.getElementById("li1");
+            li1.parentNode.appendChild(li2);
+            var li3 = document.createElement("li");
+            li3.innerText = "我是createElement()创建的，使用insertBefore()添加";
+            li1.parentNode.insertBefore(li3, li2);  //insertBefore(new, old)
+
+            //删除
+            li1.parentNode.removeChild(li2);
+            //替换
+            li1.parentNode.replaceChild(li2, li3); //replaceChild(new, old)
+            //克隆
+            for(var i=0;i<3;i++) {
+                var newLi = li3.cloneNode(true); //true表示深层复制
+                li1.parentNode.appendChild(newLi);
+            }
+    </script>
+</body>
+</html>

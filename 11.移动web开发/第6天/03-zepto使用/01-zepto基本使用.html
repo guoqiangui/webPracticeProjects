@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--zepto与jq十分相似，用法几乎一样-->
+    <!--zepto的基础模块，必须导入-->
+    <script src="zepto-master/src/zepto.js"></script>
+    <!--想使用zepto的事件，导入event模块-->
+    <script src="zepto-master/src/event.js"></script>
+    <!--使用动画，导入fx模块-->
+    <script src="zepto-master/src/fx.js"></script>
+    <!--使用移动端的事件，导入touch模块-->
+    <script src="zepto-master/src/touch.js"></script>
+
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: mediumspringgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <ul>
+        <li>西兰花炒蛋很好吃</li>
+        <li>西兰花炒蛋很好吃</li>
+        <li>西兰花炒蛋很好吃</li>
+        <li>西兰花炒蛋很好吃</li>
+    </ul>
+
+    <script>
+        $(function () {
+        //    绑定事件
+            $(".box").on("click", function() {
+                console.log("我被点击了");
+            });
+            // 链式编程
+            $("li").click(function () {
+                // 修改样式
+                $("li").css("backgroundColor", "white");
+                $(this).css("backgroundColor", "green").animate({
+                    height: 50
+                }, 1000, "linear");
+            }).longTap(function () {
+                $(this).css("backgroundColor", "hotpink");
+            });
+        });
+    //    移动端事件还有doubleTap、swipeLeft、swipeRight
+    </script>
+</body>
+</html>

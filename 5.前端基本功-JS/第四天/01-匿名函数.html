@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //调用方式1（要加括号）
+    (function () {console.log("方式1");})();
+
+    //调用方式2（绑定事件）
+    document.onclick = function () {
+        console.log("方式2");
+    }
+
+    //调用方式3（计时器）
+    setInterval(function () {
+        console.log("方式3");
+    }, 2000);
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin-top: 10px;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <button>移动到400</button>
+    <button>宽变成400</button>
+    <div class="box"></div>
+
+    <script src="jquery1.0.0.1.js"></script>
+    <script>
+        var btnArr = document.getElementsByTagName("button");
+        var box = document.getElementsByTagName("div")[0];
+        
+        btnArr[0].onclick = function () {
+            animate(box, "left", 400);
+        }
+        btnArr[1].onclick = function () {
+            animate(box, "width", 400);
+        }
+
+        //以前只能修改left值，现在扩展成修改任意属性
+        /**
+         * 缓动动画封装（可修改单个属性）
+         * @param ele
+         * @param attr
+         * @param target
+         */
+        function animate(ele, attr, target) {
+            var leader = 0; //用来记录当前位置
+            //要用定时器，先清定时器
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                //利用之前封装的获取任意形式属性值方法，返回的是10px形式的string，需要转成数字
+                //parseInt()刚好可以忽略后面的字符串，只得到数字
+                leader = parseInt(getStyle(ele, attr));
+
+                var step = (target - leader) / 10;  //计算步长
+                step = step>0 ? Math.ceil(step) : Math.floor(step); //对步长进行加工
+                leader = leader + step; //当前值变动
+                ele.style[attr] = leader + "px";    //改变
+                //判断
+                if(Math.abs(target - leader) <= Math.abs(step)) {
+                    ele.style[attr] = target + "px"; //直接改变到目标值
+                    clearInterval(ele.timer);
+                }
+            }, 25);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="cvs" width="500" height="500"></canvas>
+
+<script>
+    var cvs = document.getElementById("cvs");
+    var ctx = cvs.getContext("2d");
+
+    // 在100，100点绘制一个宽50，高50的矩形（旋转45度）。
+    ctx.fillStyle = "green";
+    // 正常矩形
+    ctx.fillRect(100, 100, 50, 50);
+
+    ctx.fillStyle = "red";
+
+    // 因为旋转的是坐标轴，所以位置要调整
+    // ctx.rotate(Math.PI / 4);
+    // ctx.fillRect(100, 100, 50, 50);
+
+    // 如果能够让旋转的中心是图形的中心，
+    // 那么就可以完成旋转图形的绘制。
+
+    // 先平移坐标轴到图形中心处，即125, 125
+    ctx.translate(125, 125);
+    // 再旋转坐标轴
+    ctx.rotate(Math.PI / 4);
+    // 最后在新坐标轴绘制矩形， 在-25, -25处，为了让图形在坐标轴的中心
+    ctx.fillRect(-25, -25, 50, 50);
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var inpArr = document.getElementsByTagName("input");
+            var set = document.getElementById("set");
+            var get = document.getElementById("get");
+            set.onclick = function () {
+                //分别赋值0~5
+                for(var i=0;i<inpArr.length;i++) {
+                    inpArr[i].value = i;
+                }
+            }
+            get.onclick = function () {
+                //取出来的值放入数组中
+                var arr = [];
+                for(var i=0;i<inpArr.length;i++) {
+                    arr.push(inpArr[i].value);
+                }
+                console.log(arr.join(", "));
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="text"><br><br>
+    <input type="text"><br><br>
+    <input type="text"><br><br>
+    <input type="text"><br><br>
+    <input type="text"><br><br>
+    <button id="set">赋值</button>
+    <button id="get">取值</button>
+</body>
+</html>

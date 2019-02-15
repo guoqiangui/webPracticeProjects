@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .time {
+            width: 800px;
+            font: 400 50px "microsoft yahei";
+            margin: 200px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="time"></div>
+
+    <script>
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth(); //范围0~11
+        var ri = date.getDate();  //号
+        var day = date.getDay();    //星期
+
+        var div = document.getElementsByTagName("div")[0];
+        //因为星期日是0，所以数组第一位是星期日
+        var arr = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+        div.innerText = "今天是"+year+"年"+(month+1)+"月"+ri+"日 "+arr[day];
+    </script>
+</body>
+</html>

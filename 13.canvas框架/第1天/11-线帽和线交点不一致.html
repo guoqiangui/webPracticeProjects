@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="cvs" width="500" height="500"></canvas>
+
+<script>
+    var cvs = document.getElementById("cvs");
+    var ctx = cvs.getContext("2d");
+
+    ctx.lineWidth = 10;
+
+    // 有重复的地方按交点的样式处理
+
+    ctx.lineJoin = 'miter';
+    ctx.lineCap = 'round';
+    ctx.moveTo( 10, 10 );
+    ctx.lineTo( 60, 110 );
+    ctx.lineTo( 110, 10 );
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'square';
+    ctx.moveTo( 10, 50 );
+    ctx.lineTo( 60, 150 );
+    ctx.lineTo( 110, 50 );
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.lineJoin = 'bevel';
+    ctx.lineCap = 'round';
+    ctx.moveTo( 10, 90 );
+    ctx.lineTo( 60, 190 );
+    ctx.lineTo( 110, 90 );
+    ctx.stroke();
+</script>
+</body>
+</html>

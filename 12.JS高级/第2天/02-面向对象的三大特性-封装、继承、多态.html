@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 封装
+    var name = "张学友";
+    var age = 18;
+    function sayHello() {
+        console.log("你好");
+    }
+//    可以对上面的代码进行封装
+    var obj = {
+        name: "张学友",
+        age: 18,
+        sayHello: function () {
+            console.log("你好");
+        }
+    };
+
+
+    //继承
+    /*
+    js中的继承是指：一个对象没有的属性和方法，另外一个对象有，把另外一个对象的属性和方法拿过来使用，就是继承
+     */
+    var obj1 = {};
+    var obj2 = {
+        name: "詹姆斯",
+        age: 34
+    };
+    // 可以用for...in循环模拟继承（混入式继承）
+    for(var key in obj2) {
+        obj1[key] = obj2[key];
+    }
+    console.log(obj1);
+
+    // 多态在js中没有体现，在强类型语言中较为常用
+    // 使用父类的引用（指针）指向子类的对象，就叫做多态
+    // 使用多态来隐藏不同
+    // 父类不能访问子类特有的属性和方法
+</script>
+</body>
+</html>

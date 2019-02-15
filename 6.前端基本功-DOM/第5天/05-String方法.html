@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = "abcdcba";
+
+    //根据字符查索引
+    console.log(str.indexOf("a"));  //从前往后查，查到一个就返回
+    console.log(str.lastIndexOf("a"));  //从后往前查，查到一个就返回
+
+    //根据索引查字符
+    console.log(str.charAt(1));
+    //可以遍历字符串
+    for(var i=0;i<str.length;i++) {
+        console.log(str.charAt(i));
+    }
+
+    //返回Unicode中的码表值
+    console.log(str.charCodeAt(0));
+
+    //了解
+    // var website = "http://www.baidu.com?username='张三'";
+    // var encode = encodeURIComponent(website);
+    // var decode = decodeURIComponent(encode);
+    // console.log(encode);
+    // console.log(decode);
+
+</script>
+</body>
+</html>

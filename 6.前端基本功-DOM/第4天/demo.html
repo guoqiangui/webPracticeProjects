@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+        #content {
+            width: 500px;
+            background-color: green;
+        }
+    </style>
+
+</head>
+<body>
+<div id="content"></div>
+<script>
+    var content = document.getElementById("content");
+    for(var i=0;i<10;i++) {
+        //不知道为什么，这样创建的元素在最后绑定事件时10个元素之后最后一个元素成功绑定
+        //但是用createElement()就没有这样的问题
+        // content.innerHTML = "<div id='tip'"+i+"></div>";
+
+        var div = document.createElement("div");
+        div.id = "tip"+i;
+        content.appendChild(div);
+
+        var tip = document.getElementById("tip"+i);
+        tip.onclick = function () {
+            alert(1);
+        }
+    }
+</script>
+</body>
+</html>

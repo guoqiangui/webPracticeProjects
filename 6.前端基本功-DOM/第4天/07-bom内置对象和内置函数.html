@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a href="javascript:;">点击我可以创建一个新页面</a><br>
+    <a href="javascript:;">点击我可以关闭当前页面</a><br>
+    <div>点击我跳转到百度</div>
+    <a href="javascript:;">点击我测试回退</a>
+
+    <script>
+        //window.open(URL, 是否打开新窗口, 参数)
+        var a1 = document.getElementsByTagName("a")[0];
+        var a2 = document.getElementsByTagName("a")[1];
+        var a3 = document.getElementsByTagName("a")[2];
+        a1.onclick = function () {
+            window.open("http://www.jd.com", "_self"); //访问网址要加协议
+        }
+
+        //window.close() 关闭当前页面
+        a2.onclick = function () {
+            window.close();
+        }
+
+        var div = document.getElementsByTagName("div")[0];
+        div.onclick = function () {
+            location.href = "http://www.baidu.com"; //跳转到百度
+        }
+
+        // console.log(navigator.userAgent);
+        // console.log(navigator.platform);
+
+        //回退
+        // history.go(-1);
+        // history.back();
+        a3.onclick = function () {
+            location.href = "demo02.html";
+        }
+    </script>
+</body>
+</html>

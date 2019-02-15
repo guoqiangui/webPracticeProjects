@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 咱们的自调结构，沿用了1.7的版本
+    (function (win) {
+        // 对外暴露的工厂函数
+        function jQuery() {
+            return new jQuery.fn.init();
+        }
+
+        // 给jQuery.prototype提供一个简写的方式
+        jQuery.prototype = jQuery.fn = {
+
+        };
+
+        // init是真正的构造函数
+        var init = jQuery.fn.init = function () {
+
+        };
+
+        // 替换构造函数的原型为jQuery工厂的原型
+        // 为了实现插件机制，让外界可以透过jQuery.fn扩充方法。
+        init.prototype = jQuery.fn;
+
+        // 通过两个变量暴露工厂
+        win.jQuery = win.$ = jQuery;
+    }(window));
+
+    /*
+        * jQuery插件实现机制：
+        * 就是给原型添加一些功能方法。
+        * */
+    $.fn.sayHello = function () {
+        console.log("Hello!");
+    }
+
+    $().sayHello();
+</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body, ul, ol, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+        /*利用继承*/
+        body, html {
+            height: 100%;
+        }
+        ul {
+            height: 100%;
+        }
+        ul li {
+            height: 100%;
+        }
+
+        ol {
+            position: fixed;
+            top: 100px;
+            left: 50px;
+            /*background-color: red;*/
+            cursor: pointer;
+        }
+        ol li {
+            width: 70px;
+            height: 70px;
+            text-align: center;
+            line-height: 70px;
+            border: 1px solid black;
+            margin-top: -1px;   /*让边框合并*/
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>鞋子</li>
+        <li>袜子</li>
+        <li>裤子</li>
+        <li>裙子</li>
+        <li>帽子</li>
+    </ul>
+    <ol>
+        <li>鞋子</li>
+        <li>袜子</li>
+        <li>裤子</li>
+        <li>裙子</li>
+        <li>帽子</li>
+    </ol>
+
+    <script src="my.js"></script>
+    <script>
+        /*
+        需求：点击小盒子，跳转到指定的楼层（点击ol中的li，跳转到对应的ul中的li）
+         */
+
+        //获取相关元素
+        var ol = document.getElementsByTagName("ol")[0];
+        var ul = document.getElementsByTagName("ul")[0];
+        var olLiArr = ol.getElementsByTagName("li");
+        var ulLiArr = ul.getElementsByTagName("li");
+        var target = 0; //要移动到的高度
+        var leader = 0; //当前距离顶部的高度
+        var timer = 0;
+        var ulLiHei = ulLiArr[0].offsetHeight;  //ul中一个li的高度
+
+        //用数组储存元素
+        var colorArr = ["yellow", "green", "blue", "pink", "orange"];
+        //利用for循环给ul和ol中的li上色
+        for(var i=0;i<olLiArr.length;i++) {
+            olLiArr[i].style.backgroundColor = colorArr[i];
+            ulLiArr[i].style.backgroundColor = colorArr[i];
+        }
+
+        //绑定事件
+        for(var i=0;i<olLiArr.length;i++) {
+            olLiArr[i].index = i;   //给ol中每个li绑定索引属性
+
+            olLiArr[i].onclick = function () {
+                target = this.index * ulLiHei;    //获取目标高度
+
+                //缓动到对应ul中的li（参考点击小火箭到顶部）
+                //要用定时器，先清定时器
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    // console.log(this);   //Window
+
+                    var step = (target - leader) / 10;  //获取步长
+                    step = step>0 ? Math.ceil(step) : Math.floor(step); //对步长进行二次加工
+                    leader = leader + step;
+                    window.scrollTo(0, leader); //滚动到指定位置
+
+                    if(Math.abs(target-leader) <= Math.abs(step)) {  //如果当前距离比步长要小或相等
+                        window.scrollTo(0, target); //滚动到目标值
+                        clearInterval(timer);
+                    }
+                }, 25);
+            }
+        }
+
+        window.onscroll = function () {
+            //获取当前被卷曲的高度当作当前高度
+            leader = scroll().top;
+            // console.log(leader);
+        }
+
+
+
+
+    </script>
+</body>
+</html>

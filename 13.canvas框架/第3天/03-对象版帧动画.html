@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<canvas id="cvs" width="500" height="500"></canvas>
+<img src="imgs/NPC2.png" alt="">
+
+<script>
+    /*
+            * constructor { Person } 人构造函数
+            * param { ctx: Context } 绘制环境
+            * param { img: Image } 绘制的图像
+            * param { widthFrame: number } 图像一排有多少个人
+            * param { heightFrame: number } 图像一列有多少个人
+            * param { x: number } 指定人物绘制的x轴坐标
+            * param { y: number } 指定人物绘制的y轴坐标
+            * param { renderWidth: number } 人物绘制时的宽
+            * param { renderHeight: number } 人物绘制时的高
+            * */
+    function Person(ctx, img, widthFrame, heightFrame, x, y, renderWidth, renderHeight) {
+        this.ctx = ctx;
+        this.img = img;
+        this.widthFrame = widthFrame;
+        this.heightFrame = heightFrame;
+        this.x = x;
+        this.y = y;
+        this.renderWidth = renderWidth;
+        this.renderHeight = renderHeight;
+
+        // 求一个人的宽和高
+        this.width = this.img.width / this.widthFrame;
+        this.height = this.img.height / this.heightFrame;
+    }
+
+    Person.prototype = {
+        constructor: Person,
+
+        draw: function () {
+            // 保存this给回调函数使用
+            var that = this;
+
+            this.img.onload = function () {
+                // 每个方向总共有widthFrame帧
+                var index = 0;
+
+                setInterval(function () {
+                    // 每次进来需要清除画布
+                    that.ctx.clearRect(0, 0, that.ctx.canvas.width, that.ctx.canvas.height);
+
+                    that.ctx.drawImage(that.img,
+                        index * that.width, 0 * that.height, that.width, that.height,
+                        that.x, that.y, that.renderWidth, that.renderHeight);
+
+                    index ++;
+                    if(index >= that.widthFrame) {
+                        index = 0;
+                    }
+                }, 200);
+            };
+        }
+    };
+
+    var cvs = document.getElementById("cvs");
+    var ctx = cvs.getContext("2d");
+
+    var img = document.getElementsByTagName("img")[0];
+    // 测试
+    var person = new Person(ctx, img, 4, 4, 100, 100, 200, 200);
+    person.draw();
+</script>
+</body>
+</html>

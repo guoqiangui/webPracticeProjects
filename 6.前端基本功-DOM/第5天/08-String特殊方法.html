@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //trim、replace、split都不修改之前的字符串
+
+    //trim()    去除前后空格
+    // var str = "  ab cd e  ";
+    // console.log(str);
+    // console.log(str.trim());
+    // console.log(str);
+
+    //replace()
+    // var str2 = "Today is a fine day, today is a fine day.";
+    // console.log(str2.replace("today", "tomorrow"));  //仅today就只会替换一个
+    // console.log(str2.replace(/today/g, "tomorrow")); //利用正则表达式可以全部替换
+    // console.log(str2.replace(/today/gi, "tomorrow"));    //利用正则表达式忽略大小写全部替换
+    // console.log(str2);
+
+    //split()
+    // var str3 = "詹姆斯|杜兰特|欧文";
+    // var arr = str3.split("|");  //分割后返回一个数组
+    // for(var i=0;i<arr.length;i++) {
+    //     console.log(arr[i]);
+    // }
+
+    var str = "abcdEFG";
+    console.log(str.toLowerCase()); //转成小写
+    console.log(str.toUpperCase()); //转成大写
+
+    var str2 = "abc";
+    console.log(str2.anchor());
+    console.log(str2.big());
+    console.log(str2.sub());
+    console.log(str2.sup());
+    console.log(str2.link("http://www.baidu.com"));
+    console.log(str2.bold());
+</script>
+</body>
+</html>

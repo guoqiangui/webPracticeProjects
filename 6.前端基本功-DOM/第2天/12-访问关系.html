@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li {
+            list-style: none;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin: 5px;
+        }
+    </style>
+
+</head>
+<body>
+    <ul>
+        <li class="box1"></li>
+        <li class="box2"></li>
+        <li id="box3"></li>
+        <li class="box4"></li>
+        <li class="box5"></li>
+    </ul>
+
+    <script>
+        var box3 = document.getElementById("box3");
+        //父节点
+        var body = box3.parentNode;
+        body.style.backgroundColor = "blue";
+
+        //兄弟节点
+        //previousElementSibling和nextElementSibling在IE678中不支持。IE678不能获取文本节点。
+        var box2 = box3.previousElementSibling || box3.previousSibling;
+        box2.style.backgroundColor = "green";
+        var box4 = box3.nextElementSibling || box3.nextSibling;
+        box4.style.backgroundColor = "red";
+
+        //单个子元素
+        var box1 = box3.parentNode.firstElementChild || box3.parentNode.firstChild;
+        box1.style.backgroundColor = "purple";
+        var box5 = box3.parentNode.lastElementChild || box3.parentNode.lastChild;
+        box5.style.backgroundColor = "orange";
+
+        //所有子元素
+        // var boxArr = ul.children;
+        var boxArr = box3.parentNode.childNodes;
+        var newArr = [];
+        for(var i=0;i<boxArr.length;i++) {
+            //是元素节点才加入数组
+            if(boxArr[i].nodeType == 1) {
+                newArr.push(boxArr[i]);
+            }
+        }
+        for(var i=0;i<newArr.length;i++) {
+            newArr[i].style.backgroundColor = "yellow";
+        }
+
+        //随意获取指定兄弟节点
+        var index = 0;
+        var node = box3.parentNode.children[index];
+        console.log(node);
+
+        //获取所有的兄弟节点
+        var arr = box3.parentNode.children;
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+        .view {
+            width: 882px;
+            height: 86px;
+            margin: 200px auto;
+            overflow: hidden;
+        }
+        ul {
+            width: 1764px;
+            height: 86px;
+            list-style: none;
+            animation: move 5s infinite linear;
+        }
+        li {
+            float: left;
+        }
+        ul:hover {
+            animation-play-state: paused;   /*鼠标放到上面停止播放动画*/
+        }
+
+        @keyframes move {
+            from {
+                transform: translateX(0px);
+            }
+            to {
+                transform: translateX(-882px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="view">
+        <ul>
+            <!--一套图片出现两次-->
+            <li><img src="images/1.jpg" alt=""></li>
+            <li><img src="images/2.jpg" alt=""></li>
+            <li><img src="images/3.jpg" alt=""></li>
+            <li><img src="images/4.jpg" alt=""></li>
+            <li><img src="images/5.jpg" alt=""></li>
+            <li><img src="images/6.jpg" alt=""></li>
+            <li><img src="images/7.jpg" alt=""></li>
+            <li><img src="images/1.jpg" alt=""></li>
+            <li><img src="images/2.jpg" alt=""></li>
+            <li><img src="images/3.jpg" alt=""></li>
+            <li><img src="images/4.jpg" alt=""></li>
+            <li><img src="images/5.jpg" alt=""></li>
+            <li><img src="images/6.jpg" alt=""></li>
+            <li><img src="images/7.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>

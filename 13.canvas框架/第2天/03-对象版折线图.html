@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<canvas id="cvs" width="500" height="500"></canvas>
+
+<!--引入封装好的折线-->
+<script src="line.js"></script>
+<script>
+    var cvs = document.getElementById("cvs");
+    var ctx = cvs.getContext("2d");
+
+    // 坐标轴距离画布上右下左的距离
+    var padding = {
+        top: 20,
+        right: 20,
+        bottom: 20,
+        left: 20
+    };
+
+    // 坐标轴中箭头的宽和高
+    var arrow = {
+        width: 12,
+        height: 20
+    };
+
+    // 数据
+    var data = [ 10, 20, 50, 80, 120, 300, 100, 50, 2 ];
+
+    var line = new Line(ctx, padding, arrow, data);
+    // line.drawCoord();
+    // line.drawArrow();
+    // line.drawLine();
+    line.draw();
+</script>
+</body>
+</html>

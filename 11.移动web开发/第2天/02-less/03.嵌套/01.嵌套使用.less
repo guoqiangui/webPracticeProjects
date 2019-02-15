@@ -1,0 +1,48 @@
+// 类中可以写类
+// 直接写单纯的层级关系，看起来更加层次明了
+.main {
+    width: 100%;
+    // 这个类在html中被.main包住了
+    .main_left {
+        width: 90px;
+        ul {
+            width: 100%;
+            li {
+                width: 100%;
+                text-align: center;
+                height: 50px;
+                line-height: 50px;
+                border-bottom: 1px solid gray;
+                border-right: 1px solid gray;
+                a {
+                    color: black;
+                }
+            }
+        }
+    }
+
+    // 这是与.main_left同级的类
+    .main_right {
+        overflow: hidden;
+        /* 顶部 左右 底部为0 */
+        padding: 10px 10px 0;
+        // 右边banner（注释写得不好，可以考虑只写在less，以后维护less文件即可）
+        .right_banner {
+            display: block;
+            width: 100%;
+            img {
+                display: block;
+                width: 100%;
+            }
+        }
+
+        h3 {
+            margin-top: 10px;
+        }
+
+        ul {
+            width: 100%;
+            padding-top: 10px;
+        }
+    }
+}

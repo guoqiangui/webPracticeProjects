@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/* 后代选择器，可以隔代 */
+		/* div p span{
+			font-size: 50px;
+			background-color: yellow;
+		} */
+		div span{
+			font-size: 50px;
+		}
+		.div1 span{
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div class="div1">
+		<p><span>詹姆斯</span></p>
+	</div>
+	<p id="p1">王小明</p>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas id="cvs" width="500" height="500"></canvas>
+
+<script>
+    var cvs = document.getElementById("cvs");
+    var ctx = cvs.getContext("2d");
+
+    /*
+        * 缩放坐标轴：
+        * ctx.scale( x轴缩放的比值，y轴缩放的比值 )
+        * 备注：已绘制的图形不会受到影响，缩放会累加。
+        * */
+    ctx.fillStyle = "green";
+    ctx.fillRect(100, 100, 100, 100);
+
+    ctx.scale(0.5, 0.5);
+
+    ctx.fillStyle = "red";
+    ctx.fillRect(100, 100, 100, 100);
+</script>
+</body>
+</html>

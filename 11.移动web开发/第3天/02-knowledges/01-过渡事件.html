@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: mediumseagreen;
+            margin: 100px auto;
+            /*过渡*/
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script>
+        // 点击变形
+        var box = document.querySelector(".box");
+        box.onclick = function () {
+            this.style.borderRadius = "50%";
+            this.style.backgroundColor = "yellow";
+        }
+
+    //    绑定过渡结束事件
+    //     document.querySelector(".box").addEventListener("transitionEnd", function () {
+    //         console.log("过渡结束了");
+    //     });
+
+    //    transitionEnd是css3推出的新属性，新属性对应的新事件，浏览器厂商需要添加私有前缀
+        box.addEventListener("webkitTransitionEnd", function () {
+            console.log("过渡结束了");
+            // 每次过渡结束都会触发本事件，连事件里面绑定的函数也不例外
+            this.style.borderRadius = "20px";
+        });
+    </script>
+</body>
+</html>

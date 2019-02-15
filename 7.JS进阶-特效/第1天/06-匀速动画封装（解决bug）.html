@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #box1 {
+            height: 200px;
+            background-color: #eee;
+            /*position: relative;*/
+        }
+        #box2 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: mediumspringgreen;
+            /*加了margin要玩死我，加了后box.offsetLeft的值变为620，而box.style.left为600*/
+            /*margin: 20px;*/
+            left: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <button>运动到200</button>
+        <button>运动到400</button>
+        <div id="box2"></div>
+    </div>
+
+<script>
+    var btnArr = document.getElementsByTagName("button");
+    var box2 = document.getElementById("box2");
+
+    var timer = null;
+
+    console.log(box2.offsetLeft);
+
+    //绑定事件
+    btnArr[0].onclick = function () {
+        animate(200);
+    }
+
+    btnArr[1].onclick = function () {
+        animate(400);
+    }
+
+
+    function animate(target){
+        //BUG1：点击多次以后，越来越快：每次只能开一个定时器。（执行定时器前面，先清楚定时器）
+        //要用定时器，先清定时器。
+        clearInterval(timer);
+        //BUG2:无法返回。 原因就是步长不能为恒定值。
+        // 传递的目标值如果比当前值大，那么步长为+10；
+        // 传递的目标值如果比当前值小，那么步长为-10；
+
+        //box2.style.left只能和行内式互动，取值最好用box2.offsetLeft，赋值可以用box2.style.left
+        var speed = target>box2.offsetLeft ? 10 : -10;
+
+        timer = setInterval(function () {
+            box2.style.left = box2.offsetLeft + speed + "px";
+            if(box2.offsetLeft == target) {
+                clearInterval(timer);
+            }
+            //BUG3：如果当前值无法与目标值相等（与目标值的差的绝对值小于步长），就不会停止移动
+            var val = box2.offsetLeft - target;
+            //如果当前值与目标值的差的绝对值小于步长，令当前值等于目标值，并清除定时器
+            if(Math.abs(val) < speed) {
+                box2.style.left = target;
+                clearInterval(timer);
+            }
+
+            console.log(box2.offsetLeft);
+        }, 30);
+
+    }
+
+    //第二遍
+    // function animate(target) {
+    //     //要用定时器，先清定时器
+    //     clearInterval(timer);
+    //     //确定步长，不能恒定，否则不能返回
+    //     var speed = target>box2.offsetLeft ? 10 : -10;
+    //
+    //     timer = setInterval(function () {
+    //         box2.style.left = box2.offsetLeft + speed +"px";
+    //         var val = target - box2.offsetLeft;
+    //         if(box2.offsetLeft == target) {
+    //             clearInterval(timer);
+    //         }
+    //         if(Math.abs(val) < speed) {
+    //             box2.style.left = target;
+    //             clearInterval(timer);
+    //         }
+    //         console.log(box2.offsetLeft);
+    //     }, 30);
+    //
+    // }
+
+</script>
+</body>
+</html>

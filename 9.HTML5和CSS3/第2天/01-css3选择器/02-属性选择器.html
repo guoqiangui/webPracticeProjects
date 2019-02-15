@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 60px;
+            border: 1px solid #000;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        /*属性选择器，类比类选择器，是通过属性选择标签*/
+
+        /* 选择带有class属性的div标签 */
+        div[class] {
+            background-color: green;
+        }
+
+        /*选择class属性值为box1的div标签       */
+        div[class="box1"] {
+            background-color: red;
+        }
+
+        /*含有class属性，且值以aa开头*/
+        div[class^="aa"] {
+            background-color: yellow;
+        }
+
+        /*含有class属性，且值以aa结尾*/
+        div[class$="aa"] {
+            background-color: pink;
+        }
+
+        /*含有class属性，且值包含aa*/
+        div[class*="aa"] {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">1</div>
+    <div class="aabox2">2</div>
+    <div class="bbbox3">3</div>
+    <div class="box4aa">4</div>
+    <div class="box5bb">5</div>
+    <div class="aabox6bb">6</div>
+    <div class="bbbox7aa">7</div>
+    <div>8</div>
+</body>
+</html>

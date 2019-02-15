@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body,div{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			height: 500px;
+			background-color: #ddd;
+			position: relative;
+		}
+		.nav{
+			width: 700px;
+			height: 80px;
+			background: #666;
+			position: absolute;
+			bottom: 0;
+			/* 先往右移动父元素宽度的50%，再往左移动子盒子宽度的一半 */
+			/* 往左与文档流方向相反，所以用负值 */
+			left: 50%;
+			margin-left: -350px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="nav"></div>
+	</div>
+</body>
+</html>

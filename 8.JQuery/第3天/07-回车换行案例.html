@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            //在input中按回车，焦点移动到下一个input
+            
+            //得知回车键的keyCode值为13
+            // $(document).on("keyup", function (event) {
+            //     console.log(event.keyCode);
+            // });
+            
+            $("input").on("keyup", function (event) {
+                if(event.keyCode === 13) {  //按了回车键
+                    //焦点移动到下一个input（focus() 输入框获取焦点，js原生也有这个方法）
+                    $(this).next().next().next().focus();   //中间有两个换行
+                }
+            });
+
+            //input获取焦点时，里面的内容全部选中
+            $("input").on("focus", function () {
+                $(this).select();   //select()  选中可输入内容标签里面的内容（js原生也有）
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="text" value="詹姆斯MVP"><br><br>
+    <input type="text" value="詹姆斯MVP"><br><br>
+    <input type="text" value="詹姆斯MVP"><br><br>
+    <input type="text" value="詹姆斯MVP"><br><br>
+    <input type="text" value="詹姆斯MVP"><br><br>
+    <input type="text" value="詹姆斯MVP"><br><br>
+</body>
+</html>

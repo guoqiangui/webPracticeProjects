@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 330px;
+            height: 227px;
+            margin: 200px auto;
+
+            /*因为绕着z轴转的平面与眼睛的距离始终不变，所以看不到效果*/
+            perspective: 100px;
+        }
+        .box img {
+            transition: transform 2s;
+        }
+        .box:hover img {
+            /*绕着z轴旋转*/
+            transform: rotateZ(360deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="images/z.jpg" alt="">
+    </div>
+</body>
+</html>

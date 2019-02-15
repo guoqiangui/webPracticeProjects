@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #ccc;
+        }
+        .w {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            font-family: simsun;
+        }
+        .register a {
+            text-decoration: none;
+            color: orange;
+        }
+        .nav {
+            width: 490px;
+            height: 62px;
+        }
+        .nav img {
+            width: 100px;
+            height: 62px;
+            margin-right: 17px;
+        }
+        #showPic {
+            width: 460px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="w">
+        <h2>美女画廊</h2>
+        <h4 class="register"><a href="#">注册</a></h4>
+        <div class="nav">   <!--因为上面是小图片，点击后要显示大图片，就在a链接中放大图片的地址-->
+            <!--a链接中也可以像img一样放title-->
+            <a href="image/1.jpg" title="美女A">
+                <img src="image/1-small.jpg" >
+            </a>
+            <a href="image/2.jpg" title="美女B">
+                <img src="image/2-small.jpg" >
+            </a>
+            <a href="image/3.jpg" title="美女C">
+                <img src="image/3-small.jpg">
+            </a>
+            <a href="image/4.jpg" title="美女D">
+                <img src="image/4-small.jpg">
+            </a>
+        </div>
+        <img src="image/placeholder.png" id="showPic"><br>
+        <span>选择一个图片</span>
+    </div>
+
+    <script>
+        //1、获取事件源和相关标签
+        var nav = document.getElementsByClassName("nav")[0];
+        var aArr = nav.getElementsByTagName("a");   //事件源的数组
+        var showPic = document.getElementById("showPic");
+        var span = document.getElementsByTagName("span")[0];
+        //2、绑定事件
+        for(var i=0;i<aArr.length;i++) {
+            //3、书写事件驱动程序
+            aArr[i].onclick = function () {
+                //里面要用this，不能用aArr[i]
+                showPic.src = this.href; //将储存在a链接中的大图片地址赋给src
+                span.innerHTML = this.title;
+                return false; //防止a链接的跳转
+            }
+        }
+    </script>
+</body>
+</html>

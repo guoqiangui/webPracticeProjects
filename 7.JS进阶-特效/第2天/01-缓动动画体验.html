@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            position: absolute; /*要想运动一定要设置定位*/
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button>运动到400</button>
+    <div id="box"></div>
+
+    <script>
+        var box = document.getElementById("box");
+        var btn = document.getElementsByTagName("button")[0];
+
+        btn.onclick = function () {
+            setInterval(function () {
+                //获得步长
+                var step = (400 - box.offsetLeft) / 10;
+                box.style.left = box.offsetLeft + step + "px";
+            }, 30);
+        }
+    </script>
+</body>
+</html>

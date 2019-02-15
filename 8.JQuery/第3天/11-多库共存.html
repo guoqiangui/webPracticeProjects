@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.8.2.min.js"></script>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        // console.log($.fn.jquery);   //打印版本号
+
+        //让高版本的jquery（在这里是1.11.1）放弃$的使用权
+        // $.noConflict();
+        // console.log($.fn.jquery);   //1.8.2，证明1.11.1放弃了$的使用权
+        // console.log(jQuery.fn.jquery);  //1.11.1    证明没有放弃jQuery的使用权，只是放弃了$的使用权
+
+        //让高版本的jquery放弃$和jQuery的使用权，返回值是新的使用方式
+        var guoQuery = $.noConflict(true);
+        console.log($.fn.jquery);   //1.8.2
+        console.log(jQuery.fn.jquery);  //1.8.2
+        console.log(guoQuery.fn.jquery);    //1.11.1
+    </script>
+</head>
+<body>
+
+</body>
+</html>

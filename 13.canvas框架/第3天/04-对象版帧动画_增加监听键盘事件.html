@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            display: none;
+        }
+        canvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<canvas id="cvs" width="500" height="500"></canvas>
+<img src="imgs/NPC2.png" alt="">
+
+<script>
+    /*
+            * constructor { Person } 人构造函数
+            * param { ctx: Context } 绘制环境
+            * param { img: Image } 绘制的图像
+            * param { widthFrame: number } 图像一排有多少个人
+            * param { heightFrame: number } 图像一列有多少个人
+            * param { x: number } 指定人物绘制的x轴坐标
+            * param { y: number } 指定人物绘制的y轴坐标
+            * param { renderWidth: number } 人物绘制时的宽
+            * param { renderHeight: number } 人物绘制时的高
+            * */
+    function Person(ctx, img, widthFrame, heightFrame, x, y, renderWidth, renderHeight) {
+        this.ctx = ctx;
+        this.img = img;
+        this.widthFrame = widthFrame;
+        this.heightFrame = heightFrame;
+        this.x = x;
+        this.y = y;
+        this.renderWidth = renderWidth;
+        this.renderHeight = renderHeight;
+
+        // 求一个人的宽和高
+        this.width = this.img.width / this.widthFrame;
+        this.height = this.img.height / this.heightFrame;
+
+        // 当前帧
+        this.currentFrame = 0;
+        // 当前方向
+        this.direction = 0;
+    }
+
+    Person.prototype = {
+        constructor: Person,
+
+        // 改进，对象里面的draw方法改成只画一次，给用户决定怎么变化
+        draw: function () {
+            this.ctx.drawImage(this.img,
+                this.currentFrame * this.width, this.direction * this.height, this.width, this.height,
+                this.x, this.y, this.renderWidth, this.renderHeight);
+        },
+
+        // 绑定监听键盘事件
+        bind: function () {
+            // 保存this
+            var that = this;
+
+            document.addEventListener("keydown", function (event) {
+                // 根据按下的方向键改变方向
+                switch (event.keyCode) {
+                    // 按了上方向键
+                    case 38:
+                        that.direction = 3;
+                        break;
+                    // 按了右方向键
+                    case 39:
+                        that.direction = 2;
+                        break;
+                    // 按了下方向键
+                    case 40:
+                        that.direction = 0;
+                        break;
+                    // 按了左方向键
+                    case 37:
+                        that.direction = 1;
+                        break;
+                }
+            });
+        },
+
+        // 更新人物的移动
+        update: function () {
+            switch (this.direction) {
+                // 下
+                case 0:
+                    this.y += 5;
+                    // 如果超过了画布，就从另一边出来
+                    if(this.y >= this.ctx.canvas.height) {
+                        this.y = - this.height;
+                    }
+                    break;
+                // 左
+                case 1:
+                    this.x -= 5;
+                    // 如果超过了画布，就从另一边出来
+                    if(this.x <= - this.width) {
+                        this.x = this.ctx.canvas.width;
+                    }
+                    break;
+                // 右
+                case 2:
+                    this.x += 5;
+
+                    if(this.x >= this.ctx.canvas.width) {
+                        this.x = -this.width;
+                    }
+                    break;
+                // 上
+                case 3:
+                    this.y -= 5;
+
+                    if(this.y <= -this.height) {
+                        this.y = this.ctx.canvas.height;
+                    }
+                    break;
+            }
+        }
+    };
+
+    var cvs = document.getElementById("cvs");
+    var ctx = cvs.getContext("2d");
+
+    var img = document.getElementsByTagName("img")[0];
+
+    // 测试
+    // 图片加载完毕才可以画图
+    img.onload = function () {
+        var person = new Person(ctx, img, 4, 4, 100, 100, 40, 65);
+
+        // 修改人物的方向, 0是面对我们，1是向左走，2是向右走, 3是背对我们
+        person.direction = 3;
+
+        // 绑定键盘按下事件
+        person.bind();
+
+        setInterval(function () {
+            // 每次进来要清除画布
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+            person.draw();
+
+            // 更新人物的移动位置
+            person.update();
+
+            // 判断当前帧是否超出总的帧数
+            person.currentFrame ++;
+            if(person.currentFrame >= person.widthFrame) {
+                person.currentFrame = 0;
+            }
+        }, 100)
+    };
+</script>
+</body>
+</html>

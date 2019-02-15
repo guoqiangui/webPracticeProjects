@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 对象的动态特性是指：对象创建出来之后，还可以给对象添加新的属性或方法
+    var obj = {
+        name: "詹姆斯",
+        age: 34
+    };
+
+    // 使用点语法进行赋值的时候，如果存在该属性，为修改该属性的值；
+    // 如果不存在该属性，是给该对象新增属性且赋值
+    obj.team = "Lakers";
+    obj.goal = function () {
+        console.log("赢得总冠军");
+    };
+    obj.goal();
+
+    obj["mvp"] = "4次";
+    console.log(obj);
+
+    //新增属性、方法的方式有：
+    //1.点语法
+    //2.通过 [] 的形式去添加
+</script>
+</body>
+</html>

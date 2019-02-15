@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //原理，中文占2个长度，英文1个
+    var str = "abc哈哈哈";
+
+    console.log(str.length);
+
+    //需求：输出字符的占位长度
+    //计数器原理
+    var count = 0;
+    for(var i=0;i<str.length;i++) {
+        //在0~127之间的是英文字符
+        if(str.charCodeAt(i)>=0 && str.charCodeAt(i)<=127) {
+            count += 1;
+        } else {
+            count += 2;
+        }
+    }
+    console.log(count);
+</script>
+</body>
+</html>

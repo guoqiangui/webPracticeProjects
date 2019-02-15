@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div></div>
+<div></div>
+<div></div>
+
+<script>
+    //使用函数将代码封装，使得复用性更高
+
+    //使用函数封装带来的问题：
+    //1.全局变量污染
+    //2.代码结构不够清晰，维护不方便
+
+
+    //使用对象进行封装后的优势
+    //1.暴露在全局的只有一个对象名 不会造成全局变量污染
+    //2.使用对象将代码进行功能模块的划分，有利于日后的维护
+
+    window.onload = function () {
+        var divs = guoQuery.getEle.tag("div");
+        console.log(divs);
+    }
+
+    var guoQuery = {
+        // 获取dom元素的方法
+        getEle: {
+            tag: function (tagName) {
+                return document.getElementsByTagName(tagName);
+            },
+            id: function (id) {
+                return document.getElementById(id);
+            }
+        },
+        // 设置样式的方法
+        setCss: {
+            setStyle: function (elements) {
+                for(var i=0; i<elements.length; i++) {
+                    elements[i].style.border = "1px solid red";
+                }
+            }
+        }
+    };
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 1000px;
+            height: 100px;
+            border: 1px solid #000;
+            margin: 50px auto;
+        }
+
+        /*
+        语法
+            background: linear-gradient(方向, 起始颜色, 终止颜色)（颜色可以不只两个）
+                方向：to left, to right, to top, to bottom 或   30deg（角度）
+        */
+        div:nth-child(1) {
+            background-image: linear-gradient(to right, yellow, green);
+        }
+        div:nth-child(2) {
+            background-image: linear-gradient(to bottom, yellow, green);  /*默认方向*/
+        }
+        div:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            /*0度相当于to top，90度相当于to right，45度是从左下角射入，135度从左上角射入*/
+            background-image: linear-gradient(135deg, yellow, green);
+        }
+        div:nth-child(4) {
+            /*red 50%，表示红色在中间显示（最红的在中间，两边逐渐变浅（渐变））*/
+            background-image: linear-gradient(to right,
+                yellow 0%,
+                red 50%,
+                green 70%,
+                blue 100%);
+        }
+        div:nth-child(5) {
+            /*相邻颜色一样的话，渐变也没效果*/
+            /*在边界上用两种颜色，可以有突变效果*/
+            background-image: linear-gradient(45deg,
+                yellow 0%,
+                yellow 25%,
+                red 25%,
+                red 50%,
+                green 50%,
+                green 75%,
+                blue 75%,
+                blue 100%);
+        }
+        div:nth-child(6) {
+            background-image: linear-gradient(135deg,
+                #000 0%,
+                #000 25%,
+                #fff 25%,
+                #fff 50%,
+                #000 50%,
+                #000 75%,
+                #fff 75%,
+                #fff 100%);
+
+            background-size: 100px 100px;   /*将背景变小，在利用默认的平铺，可以得到小的横条*/
+
+            /*动起来*/
+            animation: gun 1s infinite linear;
+        }
+
+        @keyframes gun {
+            0%{
+
+            }
+
+            100%{
+                background-position: 100px 0px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

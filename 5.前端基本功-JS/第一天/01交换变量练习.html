@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        var n1 = 1;
+        var n2 = 2;
+        console.log("n1: "+n1+"---n2: "+n2);
+        // //有中间值的交换
+        // var temp = n1;
+        // n1 = n2;
+        // n2 = temp;
+        // console.log("n1: "+n1+"---n2: "+n2);
+
+        //没有中间值的交换（利用两数的和）
+        // var sum = n1 + n2;
+        // n1 = sum - n1;
+        // n2 = sum - n2;
+        // console.log("n1: "+n1+"---n2: "+n2);
+        n1 = n1 + n2;
+        n2 = n1 - n2;
+        n1 = n1 - n2;
+        console.log("n1: "+n1+"---n2: "+n2);
+    </script>
+</head>
+<body>
+</body>
+</html>

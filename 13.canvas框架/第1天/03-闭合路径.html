@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas id="cvs" width="500" height="500"></canvas>
+
+    <script>
+        var cvs = document.getElementById("cvs");
+        var ctx = cvs.getContext("2d");
+
+        ctx.moveTo(100, 100);
+
+        ctx.lineTo(50, 200);
+        ctx.lineTo(150, 200);
+        // ctx.lineTo(100, 100) // 有了闭合路径，可省略
+        /*
+        * 闭合路径：
+        * 从当前路径的起点点到结束点连一条路径。
+        * 可以解决锯齿问题，而且对于某些图形，可以少画一条边
+        * ctx.closePath()
+        * */
+        ctx.closePath();
+
+        ctx.strokeStyle = "hotpink";
+        ctx.lineWidth = 10;
+        // 描边路径
+        ctx.stroke();
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="cvs" width="500" height="500"></canvas>
+
+    <script>
+        var cvs = document.getElementById("cvs");
+        var ctx = cvs.getContext("2d");
+
+        // 坐标轴距离画布上右下左的距离
+        var padding = {
+            top: 20,
+            right: 20,
+            bottom: 20,
+            left: 20
+        };
+
+        // 坐标轴中箭头的宽和高
+        var arrow = {
+            width: 12,
+            height: 20
+        };
+
+        // 坐标轴上顶点坐标
+        var vertexTop = {
+            x: padding.left,
+            y: padding.top
+        };
+
+        // 坐标轴原点坐标
+        var origin = {
+            x: padding.left,
+            y: cvs.height - padding.bottom
+        };
+
+        // 坐标轴右顶点坐标
+        var vertexRight = {
+            x: cvs.width - padding.right,
+            y: cvs.height - padding.bottom
+        };
+
+        ctx.lineWidth = 2;
+
+        // 绘制坐标轴
+        ctx.moveTo(vertexTop.x, vertexTop.y);
+        ctx.lineTo(origin.x, origin.y);
+        ctx.lineTo(vertexRight.x, vertexRight.y);
+        ctx.stroke();
+
+        // 绘制箭头
+        // 向上的箭头
+        ctx.beginPath();
+        ctx.moveTo(vertexTop.x, vertexTop.y);
+        ctx.lineTo(vertexTop.x - arrow.width/2, vertexTop.y + arrow.height);
+        ctx.lineTo(vertexTop.x, vertexTop.y + arrow.height/2);
+        ctx.lineTo(vertexTop.x + arrow.width/2, vertexTop.y + arrow.height);
+        ctx.closePath();
+        ctx.fill();
+        // ctx.stroke(); // 这里线宽为2，如果描边的话箭头会变大
+
+        // 向右的箭头
+        ctx.beginPath();
+        ctx.moveTo(vertexRight.x, vertexRight.y);
+        ctx.lineTo(vertexRight.x - arrow.height, vertexRight.y - arrow.width/2);
+        ctx.lineTo(vertexRight.x - arrow.height/2, vertexRight.y);
+        ctx.lineTo(vertexRight.x - arrow.height, vertexRight.y + arrow.width/2);
+        ctx.closePath();
+        ctx.fill();
+
+
+        // 在坐标轴(100, 100)处画一点（注意：不是浏览器中的坐标了，是自己画的坐标）
+        // 算法：
+        //  x轴：原点坐标x + 100
+        //  y轴：原点坐标y - 100
+        var points = [ [ 10, 10 ], [ 40, 20 ], [ 50, 30 ], [ 80, 40 ] ];
+
+        // 画点
+        for(var i=0; i<points.length; i++) {
+            var point = points[i];
+            ctx.fillRect(origin.x + point[0], origin.y - point[1], 2, 2);
+        }
+
+        // 在坐标轴中根据点的坐标画折线
+        ctx.beginPath();
+        // ctx.moveTo(origin.x + points[0][0], origin.y - points[0][1]); // 居然不用起始点也可以
+        for(var i=0; i<points.length; i++) {
+            var point = points[i];
+            ctx.lineTo(origin.x + point[0] + 1 , origin.y - point[1] + 1);
+        }
+        ctx.stroke();
+    </script>
+</body>
+</html>

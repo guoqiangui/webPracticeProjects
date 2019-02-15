@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        fieldset {
+            width: 100%;
+            max-width: 640px;
+            min-width: 480px;
+            margin: 0 auto;
+        }
+        input, meter, progress {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>表单元素</legend>
+            <label for="">
+                用户名：<input type="text" name="username">
+            </label><br><br>
+            <label for="">
+                密码：<input type="password" name="pwd">
+            </label><br><br>
+            <label for="">
+                性别：<input type="text" name="gender" list="gender">
+                <datalist id="gender">
+                    <option>男</option>
+                    <option>女</option>
+                    <option>不详</option>
+                </datalist>
+            </label><br><br>
+            <!--output也是语义化标签-->
+            <label for="">推荐人：<output>春哥</output></label><br><br>
+            <label for="">
+                加密类型:
+                <keygen/>
+            </label><br><br>
+            <label for="">
+                度量器：<meter value="90" max="100" min="0" high="80" low="30"></meter>
+            </label><br><br>
+            <label for="">
+                <!--不给值就像不断加载一样-->
+                进度条：<progress value="60" max="100" min="0"></progress>
+            </label><br><br>
+
+            <input type="submit" value="提交">
+        </fieldset>
+    </form>
+</body>
+</html>

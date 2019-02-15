@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            width: 5000px;
+            height: 5000px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        window.onscroll = function () {
+            document.title = scroll().top + "   " + scroll().left;
+        }
+
+        /**
+         * 利用json获取scrollTop和scrollLeft（处理了兼容问题）
+         * @returns {{top: number, left: number}}
+         */
+        function scroll() {
+            return {
+                "top": window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop,
+                "left": window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft
+            };
+        }
+    </script>
+</body>
+</html>

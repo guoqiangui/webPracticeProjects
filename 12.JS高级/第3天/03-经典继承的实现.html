@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 《JavaScript语言精粹》作者提出了一个方式来实现继承
+    // object参数为要继承的对象，返回一个继承了object对象的对象
+    // 原理就是原型继承
+    function jiCheng(object) {
+        var o = {};
+        o.__proto__ = object;
+        return o;
+    }
+    var player = {
+        name: "詹姆斯",
+        age: 34
+    };
+    var p1 = jiCheng(player);
+    console.log(p1.name, p1.age);
+
+
+    // 经典继承：根据这位作者的思路，给Object添加了create()方法，用来快速继承
+    // 但Object.create(obj) 有兼容性问题，因为这个方法是ES5才提出的
+    // var p2 = Object.create(player);
+    // console.log(p2.name, p2.age);
+
+    // 处理Object.create(obj) 的兼容性问题
+    // 思路：判断浏览器支不支持这个方法，如果支持就直接调用，不支持就自己写继承
+    // 这样每次继承都要写一次，重复性工作太多
+    // if(Object.create) {
+    //     var o = Object.create(player);
+    // } else {
+    //     // 不支持进入这里，这里就不要用对象.__proto__方式了，兼容性不好
+    //     function P() {}
+    //     P.prototype = player;
+    //     var o = new P();
+    // }
+    // console.log(o.name, o.age);
+
+    // 解决重复性工作方式1：如果浏览器没有这个方法，就给Object添加这个方法（不推荐）
+    // if(!(Object.create)) {
+    //     Object.create = function (obj) {
+    //         function F() {
+    //         }
+    //         F.prototype = obj;
+    //         return new F();
+    //     }
+    // }
+    // var o = Object.create(player);
+    // console.log(o.name);
+
+    // 解决重复性工作方式2：自己封装一个方法
+    function create(obj) {
+        if(Object.create) {
+            return Object.create(obj);
+        } else {
+            function F() {}
+            F.prototype = obj;
+            return new F();
+        }
+    }
+    var o = create(player);
+    console.log(o.name);
+</script>
+</body>
+</html>

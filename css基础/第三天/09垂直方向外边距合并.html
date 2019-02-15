@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box{
+			width: 400px;
+			height: 200px;
+			background: yellow;
+
+			margin-bottom: 20px;
+		}
+		.box2{
+			width: 500px;
+			height: 200px;
+			background: green;
+
+			margin-top: 30px;/*不会叠加外边距，会取较大值，因为这个较大值已经满足较小值*/
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box2"></div>
+</body>
+</html>

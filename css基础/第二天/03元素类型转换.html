@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		/* 行内元素转块元素 */
+		/* span, strong {
+			display: block;
+			width: 200px;
+			height: 100px;
+			background-color: yellow;
+		} */
+
+		/* 块元素转为行内元素 */
+		/* div, p{
+			display: inline;
+			background-color: pink;
+		} */
+
+		/* 块和行内元素转为行内块元素 */
+		span,strong,div,p{
+			display: inline-block;
+			background-color: yellow;
+			width: 150px;
+			height: 100px;
+		}
+	</style>
+</head>
+<body>
+	<span>草泥马</span>
+	<strong>草泥马</strong>
+
+	<div>原来为块元素</div>
+	<p>原来为块元素</p>
+
+
+</body>
+</html>

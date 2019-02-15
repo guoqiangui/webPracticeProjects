@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            //1、js的DOM对象转换成jquery对象：$(js的DOM对象)
+            //2、jquery对象转换成js的DOM对象：jquery对象[索引]或jquery对象.get(索引)
+
+            var div = document.getElementsByTagName("div");
+            var cbox = document.getElementsByClassName("box");
+            var box = document.getElementById("box");
+
+            //js的DOM对象转换成jQuery对象
+            var jqdiv = $(div);
+            var jqCbox = $(cbox);
+            var jqbox = $(box);
+
+            //jquery对象转换成js的DOM对象（就是把数组里面的原生js的DOM对象取出来）
+            var div1 = jqdiv[0];
+            console.log(div1);
+            var div2 = jqdiv.get(1);
+            console.log(div2);
+
+            jqdiv.css({"width": 100, "height": 100, "background-color": "green", "border": "1px solid black"});
+            jqCbox.css("background-color", "red");
+            jqbox.css("background-color", "yellow");
+        });
+    </script>
+</head>
+<body>
+    <div></div>
+    <div class="box"></div>
+    <div id="box"></div>
+    <div class="box"></div>
+    <div></div>
+</body>
+</html>

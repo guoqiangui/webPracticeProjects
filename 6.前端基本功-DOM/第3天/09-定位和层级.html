@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: mediumspringgreen;
+            position: absolute;
+            top: 50px;
+            left: 15px;
+            z-index: 1;
+        }
+        img {
+            position: absolute;
+            top: 40px;
+            left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <button>动！！！</button>
+    <div></div>
+    <img src="image/mm.png" width="300px">
+
+    <script>
+        var btn = document.getElementsByTagName("button")[0];
+        var div = document.getElementsByTagName("div")[0];
+        var img = document.getElementsByTagName("img")[0];
+        btn.onclick = function () {
+            div.style.top = "400px";
+            div.style.left = "400px";
+            img.style.top = "400px";
+            img.style.left = "400px";
+            img.style.zIndex = "1";
+        }
+    </script>
+</body>
+</html>

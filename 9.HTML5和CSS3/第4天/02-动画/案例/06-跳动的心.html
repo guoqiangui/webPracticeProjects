@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: pink;
+        }
+        .heart {
+            width: 356px;
+            height: 322px;
+            /*background-color: green;*/
+            margin: 100px auto;
+            position: relative;
+            animation: beat 0.5s infinite linear;
+        }
+        .left, .right, .center {
+            position: absolute;
+            background: red;
+        }
+        .left {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            left: 0px;
+            top: 0px;
+        }
+        .right {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            right: 0px;
+            top: 0px;
+        }
+        .center {
+            width: 200px;
+            height: 200px;
+            transform: rotateZ(45deg);
+            left: 79px;
+            bottom: 45px;
+        }
+        @keyframes beat {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.1);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="heart">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="center"></div>
+    </div>
+</body>
+</html>

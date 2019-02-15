@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            background-color: green;
+            margin: 100px;
+
+            /*动画名称*/
+            animation-name: move;
+            /*一次动画执行时间（前两个属性是必须的，且顺序也不能变）*/
+            animation-duration: 3s;
+            /*动画执行次数*/
+            animation-iteration-count: 3;
+            /*animation-iteration-count: infinite;    !*无限次*!*/
+            /*动画的方向：normal正常    alternate反向（会交替）*/
+            animation-direction: alternate;
+            /*延迟时间*/
+            animation-delay: 1s;
+            /*
+            设置动画结束盒子的状态
+                forwards    保持动画结束后的状态
+                backwards   保持动画开始前的状态
+            */
+            /*animation-fill-mode: forwards;*/
+            animation-fill-mode: backwards;
+            /*
+            运动曲线
+                linear  ease-in     steps(8)
+            */
+            animation-timing-function: ease-in;
+            /*animation-timing-function: steps(8);*/
+        }
+
+
+
+        @keyframes move {
+            from {
+                transform: translateX(0) rotateZ(0);
+            }
+            to {
+                transform: translateX(500px) rotateZ(375deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

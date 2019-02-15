@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Function 也可以被当作一个构造函数
+    // 那么通过Function new出来的函数也可以被当作实例化的对象
+    // 那么Function这个构造函数也有原型对象
+    var f1 = new Function();
+
+    // Function的原型对象是一个空函数（不清楚是不是空的，我看到的还有native code字样）
+    // Function的原型对象的原型对象是Object.prototype
+    console.log(Function.prototype);
+    console.log(Function.prototype.__proto__); // Object.prototype
+    console.log(Function.prototype.__proto__.__proto__); // null
+
+    console.log(Function.prototype.__proto__ === Object.prototype); // true
+    console.log(f1.__proto__);
+    console.log(f1);
+</script>
+</body>
+</html>

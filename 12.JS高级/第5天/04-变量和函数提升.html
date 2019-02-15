@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // js代码的执行分两步
+    // 1、预解析
+    //      提升
+    //      js代码在预解析阶段，会对以var声明的变量和function开头的语句块进行提升操作
+    // 2、执行
+
+    // 变量的提升
+    // alert(a); // undefined表示声明了变量但没有赋值，如果连声明就没有，就是报错：is not defined
+    // var a = 1;
+    // 提升后的代码
+    // var a;
+    // alert(a);
+    // a = 1;
+
+    // 函数同名，如何提升？
+    // 预处理的时候，会将两个函数全部提升，但后面的函数会覆盖前面的函数
+    // func1();  //last
+    // function func1() {
+    //     console.log('This is first func1');
+    // }
+    //
+    // func1();  //last
+    // function func1() {
+    //     console.log('This is last func1');
+    // }
+    // 预解析提升后的代码（可以看到被覆盖了）
+    // function func1() {
+    //     console.log('This is last func1');
+    // }
+    // func1();
+    // func1();
+
+    // 变量和函数同名，如何提升？
+    // 在提升的时候，如果变量和函数同名，会忽略掉变量，只提升函数
+    alert(foo);
+    var foo = 2;
+    function foo(){}
+    alert(foo);
+    // 预解析提升后的代码
+    // function foo(){}
+    // alert(foo);
+    // foo = 2
+    // alert(foo);
+</script>
+</body>
+</html>

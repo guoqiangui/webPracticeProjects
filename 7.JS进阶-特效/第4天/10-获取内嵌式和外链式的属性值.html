@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<style>-->
+        <!--.box {-->
+            <!--width: 200px;-->
+            <!--height: 200px;-->
+            <!--background-color: green;-->
+        <!--}-->
+    <!--</style>-->
+    <link rel="stylesheet" type="text/css" href="demo.css">
+</head>
+<body>
+    <!--<div class="box" style="width: 100px; height: 100px; background-color: pink;"></div>-->
+    <div class="box"></div>
+
+    <script>
+        var box = document.getElementsByTagName("div")[0];
+        //赋值: box.style. ...
+        // box.style.width = "200px";
+
+        //行内式: 用box.style. ...获取值
+        // console.log(box.style.width);
+
+        //获取行内式、内嵌式、外链式
+        // console.log(window.getComputedStyle(box, null));
+        // console.log(window.getComputedStyle(box, null).height);
+        // console.log(window.getComputedStyle(box, null)["width"]);
+
+        //在这里说没有这个属性（查文档说是给旧版IE浏览器用的，与getComputedStyle效果一样）
+        // console.log(box.currentStyle.width);
+        // console.log(box.currentStyle["height"]);
+
+        console.log(getStyle(box, "width"));
+        console.log(getStyle(box, "height"));
+
+        /**
+         * 获取任意形式样式的兼容写法
+         * @param ele
+         * @param attr
+         * @returns {*}
+         */
+        function getStyle(ele, attr) {
+            if(window.getComputedStyle) {
+                return window.getComputedStyle(ele, null)[attr];
+            }
+            return ele.currentStyle[attr];
+        }
+    </script>
+</body>
+</html>

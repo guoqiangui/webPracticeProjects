@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //注意他们的形式，是固定的，可以根据形式判断this是谁
+    //1.函数模式
+    //this指向window全局对象
+    function f1() {
+
+    }
+    f1();
+
+    //2.方法模式
+    //this指向调用这个方法的对象
+    var obj = {
+        f2: function () {
+
+        }
+    };
+    obj.f2();
+
+    //3.构造函数模式
+    //this 使用new创建出来的对象
+    function Person() {
+
+    }
+    Person.prototype.f3 = function () {
+
+    };
+    var person = new Person();
+    person.f3();
+
+    //4.上下文模式
+    // this由call、apply方法的参数决定
+</script>
+</body>
+</html>

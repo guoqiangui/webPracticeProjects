@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 944px;
+            height: 640px;
+            margin: 150px auto;
+        }
+    </style>
+    <script src="../jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            //获取元素
+            var jqbtn = $("button");
+            var jqbody = $("body");
+
+            //先取出js的DOM对象，再转成jquery的DOM对象，再利用jquery的方式绑定事件
+            $(jqbtn[0]).click(function () {
+                jqbody.css("background-color", "#fff");
+            });
+
+            $(jqbtn[1]).click(function () {
+                jqbody.css("background-color", "#000");
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>开灯</button>
+    <button>关灯</button>
+    <div class="box">
+        <img src="imgs/coder.jpg" alt="">
+    </div>
+</body>
+</html>

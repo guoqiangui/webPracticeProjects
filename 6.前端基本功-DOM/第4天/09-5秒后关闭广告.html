@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p {
+            font-size: 50px;
+        }
+        #content {
+            width: 800px;
+            margin: 20px auto;
+        }
+        #left {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            margin-top: -220px;
+        }
+        #right {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            margin-top: -220px;
+        }
+    </style>
+</head>
+<body>
+    <div id="left">
+        <img src="images/1.gif" alt="">
+    </div>
+    <div id="content">
+        <p>我为党国流过血，我为抗战立过功，我要见委座，<br>我要见委座，我要见委座!!!啪...</p>
+        <p>我为党国流过血，我为抗战立过功，我要见委座，<br>我要见委座，我要见委座!!!啪...</p>
+        <p>我为党国流过血，我为抗战立过功，我要见委座，<br>我要见委座，我要见委座!!!啪...</p>
+        <p>我为党国流过血，我为抗战立过功，我要见委座，<br>我要见委座，我要见委座!!!啪...</p>
+        <p>我为党国流过血，我为抗战立过功，我要见委座，<br>我要见委座，我要见委座!!!啪...</p>
+        <p>我为党国流过血，我为抗战立过功，我要见委座，<br>我要见委座，我要见委座!!!啪...</p>
+        <p>我为党国流过血，我为抗战立过功，我要见委座，<br>我要见委座，我要见委座!!!啪...</p>
+        <p>我为党国流过血，我为抗战立过功，我要见委座，<br>我要见委座，我要见委座!!!啪...</p>
+        <p>我为党国流过血，我为抗战立过功，我要见委座，<br>我要见委座，我要见委座!!!啪...</p>
+        <p>我为党国流过血，我为抗战立过功，我要见委座，<br>我要见委座，我要见委座!!!啪...</p>
+        <p>我为党国流过血，我为抗战立过功，我要见委座，<br>我要见委座，我要见委座!!!啪...</p>
+        <p>我为党国流过血，我为抗战立过功，我要见委座，<br>我要见委座，我要见委座!!!啪...</p>
+        <p>我为党国流过血，我为抗战立过功，我要见委座，<br>我要见委座，我要见委座!!!啪...</p>
+    </div>
+    <div id="right">
+        <img src="images/2.gif" alt="">
+    </div>
+
+<script>
+    var left = document.getElementById("left");
+    var right = document.getElementById("right");
+
+    setTimeout(closeAd, 5000);
+
+    function closeAd() {
+        left.parentNode.removeChild(left);
+        // right.parentNode.removeChild(right);
+        document.body.removeChild(right);
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            border: 1px solid #000;
+            margin: 0 auto;
+
+            /*过渡属性*/
+            /*transition: width 2s, background-color 2s;*/
+
+            /*transition: 过渡属性 持续事件 运动曲线 延迟时间*/
+            transition: all 2s linear 1s;   /*所有属性一样的话用all*/
+        }
+        .box:hover {
+            width: 500px;
+            height: 200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

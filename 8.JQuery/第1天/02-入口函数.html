@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        //入口函数
+        //等待文档准备好了再执行入口函数里面的代码，图片未加载就可以执行
+        $(document).ready(function () {
+            alert(1);
+        });
+
+        // 与上面作用一样，是上面的简写
+        // $(function () {
+        //     alert(1);
+        // });
+
+        //虽然老师说图片会加载完毕，但是我实验的时候还是和上面一样
+        // $(window).ready(function () {
+        //     alert(1);
+        // });
+
+        //反而这种与上面都有区别
+        // window.onload = function () {
+        //     alert(1);
+        // }
+    </script>
+</head>
+<body>
+    <img src="logo.png" alt="">
+    <h3>哈哈哈哈哈哈哈哈</h3>
+
+</body>
+</html>

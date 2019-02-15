@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box1 {
+            width: 300px;
+            height: 300px;
+            background-color: green;
+        }
+        .box2 {
+            width: 300px;
+            height: 300px;
+            background-color: green;
+            border-radius: 50%;
+            margin-top: 100px;
+        }
+        /*可以修改全屏样式*/
+        /*.box1:-webkit-full-screen {*/
+            /*border-radius: 50%;*/
+        /*}*/
+        .box2:-webkit-full-screen {
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <script>
+        // HTML5规范允许用户自定义网页上任一元素全屏显示
+        var box1 = document.querySelector(".box1");
+        var box2 = document.querySelector(".box2");
+
+        box1.onclick = function () {
+            // 兼容写法
+            if(box1.requestFullscreen) {
+                box1.requestFullscreen();
+            } else if(box1.webkitRequestFullScreen) {   /*兼容谷歌浏览器*/
+                box1.webkitRequestFullScreen();
+            } else if(box1.mozRequestFullScreen) {  /*兼容火狐浏览器*/
+                box1.mozRequestFullScreen();
+            }
+        }
+
+        box2.onclick = function () {
+            // 兼容写法
+            if(box2.requestFullscreen) {
+                box2.requestFullscreen();
+            } else if(box2.webkitRequestFullScreen) {   /*兼容谷歌浏览器*/
+                box2.webkitRequestFullScreen();
+            } else if(box2.mozRequestFullScreen) {  /*兼容火狐浏览器*/
+                box2.mozRequestFullScreen();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul {
+            margin: 100px auto;
+            width: 500px;
+        }
+        li {
+            width: 500px;
+            height: 50px;
+            line-height: 50px;
+            cursor: pointer;
+        }
+        .changeGreen {
+            background-color: mediumspringgreen;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>北京股指 3063.31-22.18 (-0.72%)</li>
+        <li>上海股指 3063.31-22.18 (-0.72%)</li>
+        <li>广州股指 3063.31-22.18 (-0.72%)</li>
+        <li>深圳股指 3063.31-22.18 (-0.72%)</li>
+        <li>北京股指 3063.31-22.18 (-0.72%)</li>
+        <li>上海股指 3063.31-22.18 (-0.72%)</li>
+        <li>广州股指 3063.31-22.18 (-0.72%)</li>
+        <li>深圳股指 3063.31-22.18 (-0.72%)</li>
+    </ul>
+
+    <script>
+        //需求：利用childNodes实现各行变色
+        var ul = document.getElementsByTagName("ul")[0];
+        var nodeArr = ul.childNodes; //连换行、空格也被当做节点
+        var liArr = [];
+        //将元素节点加进数组中
+        for(var i=0;i<nodeArr.length;i++) {
+            if(nodeArr[i].nodeType == 1) {
+                liArr.push(nodeArr[i]);
+            }
+        }
+        for(var i=0;i<liArr.length;i++) {
+            if(i%2==0) {
+                liArr[i].className = "changeGreen";
+            }
+        }
+    </script>
+</body>
+</html>

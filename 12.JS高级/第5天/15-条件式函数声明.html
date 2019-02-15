@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 条件式函数声明是否会提升，取决于浏览器（大部分都不会提升）
+    // 不推荐写条件式函数声明，即不推荐将function写在if中
+    foo(); //谷歌浏览器foo is not a function，证明未被提升
+
+    if(true) {
+        function foo() {
+            console.log(123);
+        }
+    }
+</script>
+</body>
+</html>

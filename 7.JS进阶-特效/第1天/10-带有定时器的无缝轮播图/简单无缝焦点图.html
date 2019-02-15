@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 500px;
+            height: 200px;
+            margin: 200px auto;
+            border: 1px solid #888;
+            padding: 5px;
+        }
+        .inner {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;   /*给父盒子overflow: hidden*/
+            position: relative;
+        }
+        ul {
+            list-style: none;
+            width: 600%;    /*继承了父盒子inner的宽，要横向显示5张图片直接5倍即可*/
+            height: 200px;
+            position: absolute;
+        }
+        li {
+            float: left;
+        }
+        .square {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+        span {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            text-align: center;
+            line-height: 18px;
+            cursor: pointer;
+            margin: 0 3px;
+        }
+        .current {
+            background-color: orange;
+            color: #000;
+        }
+        .inner-left,
+        .inner-right {
+            width: 40px;
+            height: 40px;
+            background-color: #000;
+            opacity: 0.3;
+            font: 400 30px/40px "黑体";
+            color: #fff;
+            text-align: center;
+            position: absolute;
+            cursor: pointer;
+            border: 1px solid #eee;
+            display: none;  /*默认隐藏*/
+        }
+        .inner-left {
+            left: 0;
+            top: 50%;
+            margin-top: -20px;
+        }
+        .inner-right {
+            right: 0;
+            top: 50%;
+            margin-top: -20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="inner">
+            <ul>
+                <li><img src="images/1.jpg" alt=""></li>
+                <li><img src="images/2.jpg" alt=""></li>
+                <li><img src="images/3.jpg" alt=""></li>
+                <li><img src="images/4.jpg" alt=""></li>
+                <li><img src="images/5.jpg" alt=""></li>
+            </ul>
+            <div class="square">
+                <span class="current">1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+            </div>
+            <div class="inner-left"><</div>
+            <div class="inner-right">></div>
+        </div>
+    </div>
+
+    <script>
+        var spanArr = document.getElementsByTagName("span");
+        var ul = document.getElementsByTagName("ul")[0];
+        var left = document.getElementsByClassName("inner-left")[0];    //左盒子
+        var right = document.getElementsByClassName("inner-right")[0];  //右盒子
+        var box = document.getElementsByClassName("box")[0];    //大盒子
+        var img1 = document.getElementsByTagName("img")[0];
+        var imgWid = img1.offsetWidth;  //获得图片宽度
+
+        //复制ul中第一个li，添加到ul最后（为了无缝轮播）
+        var firstLi = ul.children[0];
+        var newLi = firstLi.cloneNode(true);
+        ul.appendChild(newLi);
+
+        //鼠标经过span切换图片
+        for(var i=0;i<spanArr.length;i++) {
+            spanArr[i].index = i;   //给span绑定索引属性
+            spanArr[i].onmouseover = function () {
+                //排他思想
+                for(var j=0;j<spanArr.length;j++) {
+                    spanArr[j].className = "";
+                }
+                this.className = "current";
+                //切换图片
+                animate(-this.index*imgWid, ul);
+                //imgIdx = this.index;
+                //squareIdx = this.index;
+                imgIdx = squareIdx = this.index;    //从选定图片处继续轮播
+            }
+        }
+
+        //添加定时器，进行轮播
+        var timer = null;
+        var imgIdx = 0;     //轮播时图片的索引
+        var squareIdx = 0;  //轮播时span的索引
+        timer = setInterval(autoPlay, 1000);
+        
+        function autoPlay() {
+            imgIdx ++;
+            squareIdx ++;
+            if(imgIdx > ul.children.length-1) {
+                imgIdx = 1; //从最后一张直接到第二张
+                //移动前先设置到第一张的位置（比较巧妙）
+                ul.style.left = "0";
+            }
+            if(squareIdx > spanArr.length-1) {
+                squareIdx = 0;
+            }
+            //轮播
+            animate(-imgIdx*imgWid, ul);
+            //这个位置的span需要高亮
+            //排他思想
+            for(var i=0;i<spanArr.length;i++) {
+                spanArr[i].className = "";
+            }
+            spanArr[squareIdx].className = "current";
+        }
+
+        //鼠标经过停止轮播，鼠标放开开始轮播；经过显示左右按钮，离开隐藏
+        box.onmouseover = function () {
+            clearInterval(timer);
+
+            left.style.display = "block";
+            right.style.display = "block";
+        }
+        box.onmouseout = function () {
+            timer = setInterval(autoPlay, 1000);    //不要漏了赋值，否则下次清除不了
+
+            left.style.display = "none";
+            right.style.display = "none";
+        }
+
+        //左右按钮切换图片，点击右按钮下一张，点击左按钮上一张
+        right.onclick = function () {     //和轮播一样的思路
+            // imgIdx ++;  //图片和span索引自增
+            // squareIdx ++;
+            // if(imgIdx > ul.children.length-1) {
+            //     imgIdx = 1;
+            //     ul.style.left = "0";
+            // }
+            // if(squareIdx > spanArr.length-1) {
+            //     squareIdx = 0;
+            // }
+            // //下一张
+            // animate(-imgIdx*imgWid, ul);
+            // //当前span高亮
+            // for(var i=0;i<spanArr.length;i++) {
+            //     spanArr[i].className = "";
+            // }
+            // spanArr[squareIdx].className = "current";
+
+            autoPlay(); //逻辑完全一样，都是下一张，可直接调用
+        }
+        left.onclick = function () {
+            imgIdx --;
+            squareIdx --;
+            //为了无缝，图片直接跳到最后一张的前一张
+            if(imgIdx < 0) {
+                imgIdx = ul.children.length-1-1;
+                ul.style.left = -(ul.children.length-1) * imgWid + "px";
+            }
+            if(squareIdx < 0) {
+                squareIdx = spanArr.length - 1;  //到最后一个
+            }
+            //移动
+            animate(-imgIdx*imgWid, ul);
+            //当前span高亮
+            for(var i=0;i<spanArr.length;i++) {
+                spanArr[i].className = "";
+            }
+            spanArr[squareIdx].className = "current";
+        }
+
+        //匀速运动
+        function animate(target, ele) {
+            //要用定时器，先清除定时器
+            clearInterval(ele.timer);
+            //获取步长
+            var speed = target > ele.offsetLeft ? 10 : -10;
+            //将定时器作为盒子的属性
+            ele.timer = setInterval(function () {
+                //如果已经达到目标值，就清除定时器
+                if(ele.offsetLeft == target) {
+                    clearInterval(ele.timer);
+                    return; //下面还有代码会执行，不跳出会有bug
+                }
+                //获取目标值与当前值的差
+                var val = target - ele.offsetLeft;
+                //如果差的绝对值小于步长，就令当前值等于目标值并清除定时器
+                if(Math.abs(val) < speed) {
+                    ele.style.left = target;
+                    clearInterval(ele.timer);
+                    return; //下面还有代码会执行，不跳出会有bug
+                }
+                //移动
+                ele.style.left = ele.offsetLeft + speed + "px";
+            }, 10);
+        }
+    </script>
+</body>
+</html>

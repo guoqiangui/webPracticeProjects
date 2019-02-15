@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .out {
+            width: 400px;
+            height: 400px;
+            text-align: center;
+            border: 1px solid #000; /*解决外边距塌陷*/
+            background: transparent;  /*虽然不影响里面盒子，但只能全透明*/
+        }
+        .in {
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="out">
+        <div class="in"></div>
+    </div>
+</body>
+</html>

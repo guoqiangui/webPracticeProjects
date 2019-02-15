@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //反转数组，返回被反转后的数组（修改了原数组）
+    // var arr = ["a", "b", "c", "d", "e"];
+    // console.log(arr.reverse());
+    // console.log(arr);
+
+    //数组排序，可以对字母和数字进行排序，返回排序后的数组(修改原数组)
+    //要给数字排序的话，需要使用回调函数设置规则，不然会有bug
+    // var arr2 = ["e", "d", "c", "b", "a"];
+    // var arr3 = [2, 1, 13, 8, 4, 16]; //这样的数组不能直接排序
+    // console.log(arr2.sort());
+    // console.log(arr2);
+    // // console.log(arr3.sort()); //不能这样排序
+    // console.log(arr3.sort(function (a, b) {
+    //     // return a-b; //升序
+    //     return b-a; //降序
+    // }));
+
+    //模拟实现sort()的回调部分
+    var arr4 = [2, 1, 13, 8, 4, 16];
+    bubble(arr4, function (a, b) {
+        return a-b;
+    });
+    console.log(arr4);
+
+    function bubble(arr, demo) {
+        var temp;
+        for(var i=0;i<arr.length-1;i++) {
+            for(var j=0;j<arr.length-1;j++) {
+                if(demo(arr[j], arr[j+1])>0) { //arr[j]>arr[j+1]-->arr[j]-arr[j+1]>0
+                    temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+        return arr;
+    }
+</script>
+</body>
+</html>

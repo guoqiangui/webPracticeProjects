@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body,ul,li{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+			float: left;
+		}
+		.nav{
+			height: 50px;
+			background: #000;
+			margin-top: 100px;
+			position: relative;
+		}
+		.nav-con{
+			width: 1200px;
+			height: 50px;
+			/* background: #eee; */
+			position: absolute;
+			left: 50%;
+			margin-left: -600px;
+		}
+		ul li a{
+			display: inline-block;
+			height: 50px;
+			padding: 0 20px;
+			font: 16px/50px 微软雅黑;
+			text-decoration: none;
+			color: #fff;
+		}
+		ul li a:hover{
+			background: #7EC0EE;
+		}
+		.hot{
+			width: 31px;
+			height: 21px;
+			background-image: url(sprite.png);
+			background-position: -57px 0;
+			position: absolute;
+			left: 653px;
+			top: -7px;
+		}
+		.new{
+			width: 31px;
+			height: 21px;
+			background-image: url(sprite.png);
+			background-position: -135px 0;
+			position: absolute;
+			left: 1111px;
+			top: -7px;
+		}
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<div class="nav-con">
+			<ul>
+				<li><a href="#">首页</a></li>
+				<li><a href="#">Java</a></li>
+				<li><a href="#">UI设计</a></li>
+				<li><a href="#">前端与移动开发</a></li>
+				<li><a href="#">问答专区</a></li>
+				<li><a href="#">iOS</a></li>
+				<li><a href="#">PHP</a></li>
+				<li><a href="#">C/C++</a></li>
+				<li><a href="#">python</a></li>
+				<li><a href="#">网络营销</a></li>
+				<li><a href="#">活动专区</a></li>
+			</ul>
+		</div>
+		<div class="hot"></div>
+		<div class="new"></div>
+	</div>
+</body>
+</html>

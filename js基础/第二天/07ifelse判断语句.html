@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//案例一
+		// var bool = confirm("你确定要退出？");
+		// if(bool) {
+		// 	alert("您已退出");
+		// } else {
+		// 	alert("您已取消退出");
+		// }
+
+		//案例二
+		// var num = prompt("请输入一个数字");
+		// if(num%2==0) {
+		// 	console.log(num);
+		// } else {
+		// 	console.log("该数字不是偶数");
+		// }
+
+		//案例三
+		// var num = prompt("请输入一个数字");
+		// if(num>=20 && num<=70) {
+		// 	alert(num);
+		// } else {
+		// 	alert("数字不在20到70之间");
+		// }
+		
+		//案例四
+		var num = prompt("请输入一个数");
+		var rand = Math.floor(Math.random()*100); //0~99，包含99
+		if(num>rand) {
+			alert(num+">"+rand+"，您赢了！");
+		} else {
+			alert(num+"<"+rand+"，您输了！");
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

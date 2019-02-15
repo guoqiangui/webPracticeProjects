@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 原型继承：利用原型中的成员可以和其相关的对象共享这一特性，来实现继承
+
+    // 方式1、给原型对象添加成员（通过对象的动态特性） 不是严格意义上的继承
+    // function Player() {
+    // }
+    // Player.prototype.name = "詹姆斯";
+    // Player.prototype.age = 34;
+    //
+    // // 这样，通过该构造函数创建出来的对象就有了自己没有的成员
+    // var p1 = new Player();
+    // console.log(p1.name);
+    // console.log(p1.age);
+
+
+    // 方式2、直接替换原型对象为需要继承的对象
+    // function Player() {}
+    // var player = {
+    //     name: "詹姆斯",
+    //     age: 34,
+    //     play: function () {
+    //         console.log(this.name + "是职业篮球运动员");
+    //     }
+    // };
+    // Player.prototype = player;
+    //
+    // // 这样，p2对象就继承了player对象，但旧的原型中的成员就因此丢失
+    // var p2 = new Player();
+    // console.log(p2.name);
+    // p2.play();
+
+
+    // 方式3、利用混入的方式给原型对象添加成员
+    function Player() {
+    }
+    var player = {
+        name: "欧文",
+        age: 26,
+        play: function () {
+            console.log(this.name + "的运球是历史级别的");
+        }
+    };
+    for(var key in player) {
+        Player.prototype[key] = player[key];
+    }
+
+    // p3对象继承了player对象
+    var p3 = new Player();
+    console.log(p3.name);
+    p3.play();
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<canvas id="cvs" width="500" height="500"></canvas>
+<img src="imgs/NPC2.png" alt="">
+
+<script>
+    var cvs = document.getElementById("cvs");
+    var ctx = cvs.getContext("2d");
+
+    // 让小人动起来
+    var img = document.getElementsByTagName("img")[0];
+    img.onload = function () {
+        // 总共有四帧
+        var index = 0;
+
+        setInterval(function () {
+            // 每次进来需要清除画布
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+            ctx.drawImage(img,
+                index * img.width / 4, 1 * img.height / 4, img.width / 4, img.height / 4,
+                100, 100, 100, 100);
+
+            index ++;
+            if(index >= 4) {
+                index = 0;
+            }
+        }, 200);
+    };
+</script>
+</body>
+</html>

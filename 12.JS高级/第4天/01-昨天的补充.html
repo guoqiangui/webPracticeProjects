@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Object.prototype的成员的补充
+    // 对象1.isPrototypeOf(对象2) 判断对象1是否是对象2的原型
+    function Player() {
+    }
+    var p = new Player();
+    console.log(Player.prototype.isPrototypeOf(p));
+    console.log(Player.prototype.__proto__.isPrototypeOf(p)); // 连p的原型链上的原型也算
+    console.log(Object.prototype.isPrototypeOf(p)); // 和上面等价
+
+    /*
+    Function 和 eval 的区别
+        共同点：都可以将字符串转成js代码
+        不同点：
+            1、Function创建出来的是函数，并不会直接调用，只有手动去调用创建出来的函数的时候，才会执行
+            2、eval把字符串转换成代码后会立即执行
+     */
+
+    // arguments.callee 指向函数本身（如果函数想调用函数本身，又是匿名函数的时候可以使用）
+    function f1() {
+        console.log(arguments.callee);
+    }
+    f1();
+
+</script>
+</body>
+</html>

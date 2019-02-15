@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body, div {
+            margin: 0;
+            padding: 0;
+        }
+        .top-banner {
+            background-color: pink;
+        }
+        .w {
+            width: 1200px;
+            height: 80px;
+            background-color: limegreen;
+            margin: 10px auto;
+            position: relative;
+        }
+        .close1 {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+        .close1 a {
+            display: inline-block;
+            text-decoration: none;
+            width: 20px;
+            height: 20px;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            line-height: 20px;
+        }
+
+        /*用类来控制隐藏*/
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="top-banner">
+    <div class="w">
+        <div class="close1">
+            <a href="#" class="close-banner">x</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    //1、获取事件源及相关标签
+    var closeBanner = document.getElementsByClassName("close-banner")[0];
+    var topBanner = document.getElementsByClassName("top-banner")[0];
+    //2、绑定事件
+    closeBanner.onclick = function () {
+        topBanner.className = "hide";
+    }
+</script>
+</body>
+</html>

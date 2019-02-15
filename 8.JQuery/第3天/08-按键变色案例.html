@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 200px;
+            margin: 100px auto;
+        }
+        #box div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            text-align: center;
+            line-height: 200px;
+            font-size: 20px;
+        }
+    </style>
+    <script src="jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            var div = $("#box div");
+            //按下哪个键，就显示对应颜色
+            $(document).on("keyup", function (event) {
+                // console.log(event.keyCode);
+                switch(event.keyCode) {
+                    //B 66
+                    case 66:
+                        div.css("background-color", "blue");
+                        div.text("keyCode为" + event.keyCode);
+                        break;
+                    //Y 89
+                    case 89:
+                        div.css("background-color", "yellow");
+                        div.text("keyCode为" + event.keyCode);
+                        break;
+                    //G 71
+                    case 71:
+                        div.css("background-color", "green");
+                        div.text("keyCode为" + event.keyCode);
+                        break;
+                    //O 79
+                    case 79:
+                        div.css("background-color", "orange");
+                        div.text("keyCode为" + event.keyCode);
+                        break;
+                    //P 80
+                    case 80:
+                        div.css("background-color", "pink");
+                        div.text("keyCode为" + event.keyCode);
+                        break;
+                    //R 82
+                    case 82:
+                        div.css("background-color", "red");
+                        div.text("keyCode为" + event.keyCode);
+                        break;
+                    default:
+                        alert("我们没有设置你输入的颜色");
+                }
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="box">
+        <h1>按键改变颜色</h1>
+        <div>
+            keyCode为80
+        </div>
+    </div>
+</body>
+</html>

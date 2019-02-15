@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 动物 --> 人 --> 老师 --> 坏老师
+    // 即人继承动物，老师继承人，坏老师继承老师
+    function Animal() {
+        this.gender = "male";
+    }
+    function Human() {
+        this.actionWay = "走路";
+    }
+    function Teacher() {
+        this.skill = "教书";
+    }
+    function BadTeacher() {
+        this.name = "某某老师";
+    }
+
+    // 改了原型别忘了保证三角关系
+    Human.prototype = new Animal();
+    Human.prototype.constructor = Human;
+
+    Teacher.prototype = new Human();
+    Teacher.prototype.constructor = Teacher;
+
+    BadTeacher.prototype = new Teacher();
+    BadTeacher.prototype.constructor = BadTeacher;
+
+    var obj = new BadTeacher();
+    console.log(obj);
+</script>
+</body>
+</html>

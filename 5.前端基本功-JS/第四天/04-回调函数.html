@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //回调函数:函数作为参数进行传递和使用。
+
+    // //回调函数演示
+    // fun(test);
+    //
+    // function fun(demo) {
+    //     demo();
+    // }
+    // function test() {
+    //     console.log("哈哈哈");
+    // }
+
+    //回调函数案例
+    //什么情况下，使用回调函数？
+    //回调函数一般是用于定义一个规则来使用的。
+    //规则的传递只能通过函数实现。通过变量无法达成。所以我们需要传递规则的时候必须使用回调函数。
+
+    alert(fun(12, 3, test4));
+
+    function fun(num1, num2, demo) {
+        return demo(num1, num2);
+    }
+
+    //定义四个规则：加减乘除
+    function test1(num1, num2) {
+        return num1+num2;
+    }
+    function test2(num1, num2) {
+        return num1-num2;
+    }
+    function test3(num1, num2) {
+        return num1*num2;
+    }
+    function test4(num1, num2) {
+        return num1/num2;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            position: absolute; /*要想运动一定要设置定位*/
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<button>运动到400</button>
+<button>运动到200</button>
+<div id="box"></div>
+
+<script>
+    var box = document.getElementById("box");
+    var btn = document.getElementsByTagName("button")[0];
+    var btn2 = document.getElementsByTagName("button")[1];
+
+    // btn.onclick = function () {
+    //     animate(box, 400);
+    // }
+    btn2.onclick = function () {
+        animate(box, 200);
+    }
+
+    /**
+     * 缓动动画的简单封装
+     * @param ele
+     * @param target
+     */
+    function animate(ele, target) {
+        setInterval(function () {
+            var step = (target - ele.offsetLeft) / 10;
+            ele.style.left = ele.offsetLeft + step + "px";
+        }, 30);
+    }
+</script>
+</body>
+</html>

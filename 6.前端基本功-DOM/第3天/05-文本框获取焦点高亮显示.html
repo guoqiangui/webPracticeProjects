@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {
+            outline-style: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="text"><br><br>
+    <input type="text"><br><br>
+    <input type="text"><br><br>
+    <input type="text"><br><br>
+    <input type="text"><br><br>
+    <button>设置</button>
+
+    <script>
+        //需求：点击设置后文本框获取焦点就高亮显示
+        //1、获取事件源及相关标签
+        var btn = document.getElementsByTagName("button")[0];
+        var inpArr = document.getElementsByTagName("input");
+        //2、绑定事件
+        btn.onclick = fun1;
+        //3、书写事件驱动程序
+        function fun1() {
+            //给每个输入框绑定事件
+            for(var i=0;i<inpArr.length;i++) {
+                inpArr[i].onfocus = function () {
+                    //用排他思想有点问题，失去焦点后应该清空样式无法完成
+                    //应该与onblur配合完成
+                    this.style.backgroundColor = "#ccc";
+                    this.style.border = "2px solid red";
+                }
+                inpArr[i].onblur = function () {
+                    // this.style.cssText = "";
+                    this.style.backgroundColor = "";
+                    this.style.border = "";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

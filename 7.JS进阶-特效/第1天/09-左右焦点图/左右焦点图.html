@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 520px;
+            height: 170px;
+            margin: 200px auto;
+            border: 1px solid #888;
+            padding: 5px;
+        }
+        .inner {
+            width: 520px;
+            height: 170px;
+            overflow: hidden;   /*给父盒子overflow: hidden*/
+            position: relative;
+        }
+        ul {
+            list-style: none;
+            width: 500%;    /*继承了父盒子inner的宽，要横向显示5张图片直接5倍即可*/
+            height: 170px;
+            position: absolute;
+        }
+        li {
+            float: left;
+        }
+        .left,
+        .right {
+            width: 40px;
+            height: 40px;
+            background-color: #000;
+            opacity: 0.3;
+            color: #fff;
+            font: 400 35px/40px "黑体";
+            text-align: center;
+            position: absolute;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            display: none;
+            margin: 5px;
+        }
+        .left {
+            left: 0;
+            top: 50%;
+            margin-top: -20px;
+        }
+        .right {
+            right: 0;
+            top: 50%;
+            margin-top: -20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="inner">
+            <ul>
+                <li><img src="images/1.jpg" alt=""></li>
+                <li><img src="images/2.jpg" alt=""></li>
+                <li><img src="images/3.jpg" alt=""></li>
+                <li><img src="images/4.jpg" alt=""></li>
+                <li><img src="images/5.jpg" alt=""></li>
+            </ul>
+            <div class="left"><</div>
+            <div class="right">></div>
+        </div>
+    </div>
+
+    <script>
+        var ul = document.getElementsByTagName("ul")[0];
+        var box = document.getElementsByClassName("box")[0];
+        var left = document.getElementsByClassName("left")[0];
+        var right = document.getElementsByClassName("right")[0];
+
+        //鼠标经过就显示left和right小方块
+        box.onmouseover = function () {
+            left.style.display = "block";
+            right.style.display = "block";
+        }
+        //鼠标离开就隐藏left和right小方块
+        box.onmouseout = function () {
+            left.style.display = "none";
+            right.style.display = "none";
+        }
+
+        // 计数器原理模拟索引
+        var index = 0;
+        //点击右，就要向左移动ul
+        right.onclick = function () {
+            //移动盒子
+            index ++;
+            if(index > ul.children.length-1) {
+                //将index赋值为长度-1，否则每次点击进来都会自增
+                index = ul.children.length-1;
+
+                alert("后面没有了！");
+                return;
+            }
+            animate(-index*520, ul);
+        }
+        //点击左，就要向右移动ul
+        left.onclick = function () {
+            //移动盒子
+            index --;
+            if(index < 0) {
+                //将index赋值为0
+                index = 0;
+                alert("前面没有了！");
+                return;
+            }
+            animate(-index*520, ul);
+        }
+
+
+        function animate(target, ele) {
+            //要用定时器，先清除定时器
+            clearInterval(ele.timer);
+            //获取步长
+            var speed = target > ele.offsetLeft ? 10 : -10;
+            //将定时器作为盒子的属性
+            ele.timer = setInterval(function () {
+                //如果已经达到目标值，就清除定时器
+                if(ele.offsetLeft == target) {
+                    clearInterval(timer);
+                    return; //下面还有代码会执行，不跳出会有bug
+                }
+                //获取目标值与当前值的差
+                var val = target - ele.offsetLeft;
+                //如果差的绝对值小于步长，就令当前值等于目标值并清除定时器
+                if(Math.abs(val) < speed) {
+                    ele.style.left = target;
+                    clearInterval(timer);
+                    return; //下面还有代码会执行，不跳出会有bug
+                }
+                //移动
+                ele.style.left = ele.offsetLeft + speed + "px";
+                console.log(ele.offsetLeft);
+            }, 10);
+        }
+    </script>
+</body>
+</html>

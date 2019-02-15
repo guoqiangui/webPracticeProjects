@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        fieldset {
+            width: 600px;
+            margin: 0 auto;
+        }
+        input {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>表单事件</legend>
+            <label for="email">
+                邮箱：<input type="email" name="email" id="email">
+            </label><br><br>
+            <label for="pwd">
+                密码：<input type="text" id="pwd">
+            </label><br><br>
+
+            <input type="submit">
+        </fieldset>
+    </form>
+
+    <script>
+        //1、表单输入事件(oninput)
+        //2、表单验证失败事件(oninvalid)
+        var email = document.getElementById("email");
+        var pwd = document.getElementById("pwd");
+        
+        var count = 0;
+        email.oninput = function () {
+            count ++;
+            pwd.value = count;
+        }
+        
+        email.oninvalid = function () {
+            //用于设置验证不通过时的提示文字
+            this.setCustomValidity("亲，邮箱格式有误！");
+        }
+
+    </script>
+</body>
+</html>

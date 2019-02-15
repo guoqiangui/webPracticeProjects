@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button>查看当前的天气预报</button>
+
+    <script src="jquery.min.js" type="text/javascript"></script>
+    <script>
+        // 利用百度提供的接口获取天气数据
+        $(function () {
+            // 绑定点击事件
+            $("button").on("click", function () {
+                // 额，居然失败了，看来百度不给了
+                $.ajax({
+                    url: "http://api.map.baidu.com/telematics/v3/weather?location=广州&output=json&ak=v3CNmVSv7SWDtSTq2VOYiVRtXzIju7iU",
+                    dataType: "jsonp",
+                    success: function (data) {
+                        //    如果不写jsonCallback，那么默认调用的是success方法
+                        console.log(data);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

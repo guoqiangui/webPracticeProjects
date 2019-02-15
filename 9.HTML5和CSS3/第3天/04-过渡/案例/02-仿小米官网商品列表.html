@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #eee;
+            margin: 0;
+            padding: 0;
+        }
+        .items {
+            width: 1300px;
+            margin: 100px auto;
+        }
+        .item {
+            width: 230px;
+            height: 300px;
+            background-color: #fff;
+            float: left;
+            margin: 10px;
+            position: relative;
+            overflow: hidden;
+            transition: all 1s;
+        }
+        .item .pic {
+            margin-left: 40px;
+            margin-top: 20px;
+        }
+        .item .desc {
+            width: 230px;
+            height: 100px;
+            background-color: orange;
+            position: absolute;
+            bottom: -100px;
+
+            /*过渡*/
+            transition: all 0.5s;
+        }
+        /*鼠标经过盒子时，里面的desc向上移动*/
+        .item:hover .desc {
+            bottom: 0;
+        }
+        /*经过盒子时，整个盒子出现阴影，并微微向上移动*/
+        .item:hover {
+            box-shadow: 7px 4px 24px -5px #000;
+            margin-top: -3px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="items">
+        <div class="item">
+            <img src="images/1.jpg" alt="">
+        </div>
+        <div class="item">
+            <div class="pic"><img src="images/2.jpg" alt=""></div>
+            <div class="desc"></div>
+        </div>
+        <div class="item">
+            <div class="pic"><img src="images/3.jpg" alt=""></div>
+            <div class="desc"></div>
+        </div>
+        <div class="item">
+            <div class="pic"><img src="images/4.jpg" alt=""></div>
+            <div class="desc"></div>
+        </div>
+        <div class="item">
+            <div class="pic"><img src="images/5.jpg" alt=""></div>
+            <div class="desc"></div>
+        </div>
+    </div>
+</body>
+</html>

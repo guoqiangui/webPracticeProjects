@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: mediumspringgreen;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" style="left:100px; top:100px;"></div>
+    <button>动</button>
+
+    <script>
+        var box = document.getElementById("box");
+        var btn = document.getElementsByTagName("button")[0];
+
+        //闪现
+        // btn.onclick = function () {
+        //     box.style.left = "500px";
+        // }
+
+        //匀速运动
+        btn.onclick = function () {
+            setInterval(function () {
+                box.style.left = box.offsetLeft + 10 + "px";
+            }, 300);
+        }
+
+    </script>
+</body>
+</html>

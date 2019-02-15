@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    	<form action="1.php" method="post">
+    		<!-- 表单信息分组 -->
+    		<fieldset>
+    			<legend>分组1</legend>
+	    		<!-- maxlength:限制十个字符（十个英文字母或汉字等），readonly:只读 -->
+	    		用户名：<input type="text" maxlength="10" name="username" value="詹姆斯"/>
+	    		<br/><br/>
+	    		<!-- 只读状态 -->
+	    		<!-- 用户名：<input type="text" readonly="readonly" />	 -->
+	    		<!-- 未激活状态	 -->
+	    		<!-- 用户名：<input type="text" disabled="disabled" />	 -->
+
+	    		密&nbsp;&nbsp;&nbsp;码：<input type="password" maxlength="10" name="pwd" />
+	    		<br/><br/>
+	    		<!-- <input type="password" readonly="readonly" /> -->
+	    		<!-- <input type="password" disabled="disabled" /> -->
+
+				<!-- 单选框，name值必须一样才能实现单选 -->
+				男<input type="radio" name="gender" checked="checked"/>
+				女<input type="radio" name="gender"/>
+				<br/><br/>
+			</fieldset>
+
+			<fieldset>
+				<legend>分组2</legend>
+				<!-- 下拉列表 -->
+				生日：<select name="birthday">
+						  <option>一月</option>
+						  <option>二月</option>
+						  <option selected="selected">三月</option>
+					  </select>
+					  <br/><br/>
+
+				  <!-- 将下拉列表变成可以多选 -->
+				  <!-- <select multiple="multiple">
+					  <option>一月</option>
+					  <option>二月</option>
+					  <option>三月</option>
+				  </select> -->
+
+				  <!-- 给下拉列表分组,label:分组名称 -->
+				  <!-- <select name="birthday">
+				  	<optgroup label="第一季度">
+				  		<option>一月</option>
+						<option>二月</option>
+						<option>三月</option>
+				  	</optgroup>
+				  	<optgroup label="第二季度">
+				  		<option>四月</option>
+				  		<option>五月</option>
+				  		<option>六月</option>
+				  	</optgroup>
+				  </select> -->
+
+				<!-- 多选框 -->
+				<input type="checkbox" checked="checked"/>吃饭
+				<input type="checkbox" checked="checked"/>睡觉
+				<input type="checkbox" checked="checked"/>打代码
+				<br/><br/>
+
+				<!-- 多行文本框 -->
+				自我介绍：<textarea cols="30" rows="10"></textarea>
+				<br/><br/>
+				
+				<!-- 文件上传控件 -->
+				<input type="file" />
+				<br/><br/>
+
+				<!-- 提交控件 -->
+				<input type="submit" value="提交" />
+				<!-- 重置按钮 -->
+				<input type="reset" value="重置" />
+				<br/><br/>
+
+				<!-- 普通按钮，不能提交 -->
+				<input type="button" value="普通按钮" />
+				<br/><br/>
+
+				<!-- 图片按钮，可以实现提交 -->
+				<input type="image" src="按钮.jpg" />
+				<br/><br/>
+			</fieldset>
+
+
+    	</form>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button>赋诗</button>
+
+    <script>
+        var btn = document.getElementsByTagName("button")[0];
+
+        fun1("click", fun2, btn);
+        function fun2() {
+            console.log("成功了");
+        }
+
+        //addEventListener原理（了解）
+        /**
+         *
+         * @param str 事件名（前面没有on）
+         * @param fun 事件驱动程序
+         * @param ele 元素
+         */
+        function fun1(str, fun, ele) {
+            var oldEvent = ele["on"+str];
+
+            if(oldEvent) {  //如果绑定事件之前还绑定了事件
+                oldEvent(); //执行之前的事件
+                ele["on"+str] = function () {
+                    fun();
+                }
+            } else {    //没有就直接执行绑定事件
+                ele["on"+str] = function () {
+                    fun();
+                }
+            }
+        }
+    </script>
+</body>
+</html>

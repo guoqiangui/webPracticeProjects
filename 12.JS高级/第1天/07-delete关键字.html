@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    delete关键字可以用来删除对象的属性，还可以用来删除未使用var声明的变量
+        当不用var声明一个js全局变量时，实际上是定义了全局变量的一个属性，即window对象的属性
+    delete关键字有返回值，表示删除是否成功
+        注意：
+            如果删除的是不存在的属性，返回的是true
+            如果删除的属性存在原型当中，返回值是true，实际上没有删除
+     */
+    var obj = {
+        name: "詹姆斯",
+        age: 34,
+        team: "Lakers"
+    };
+
+    var bool = delete obj.team;
+    var bool2 = delete obj.haha; // 删除不存在的属性返回true
+    console.log(obj);
+    console.log(bool);
+    console.log(bool2);
+
+    name1 = "詹姆斯";
+    console.log(name1);
+    console.log(window.name1);  // 不用var声明就相当于定义了全局变量的一个属性
+    var bool2 = delete name1;
+    // console.log(name1); // 报未定义的错误
+    console.log(window.name1); // undefined，表示删除成功
+
+</script>
+</body>
+</html>

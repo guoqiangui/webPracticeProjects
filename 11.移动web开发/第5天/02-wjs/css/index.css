@@ -1,0 +1,195 @@
+/*顶部通栏的样式*/
+.header .container-fluid .row > div {
+  border: 1px solid #aaa;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+.header .container-fluid .row > div a {
+  color: gray;
+  text-decoration: none;
+}
+.header .container-fluid .row > div:first-child a {
+  position: relative;
+}
+.header .container-fluid .row > div:first-child a img {
+  position: absolute;
+  bottom: -149px;
+  left: -12px;
+  display: none;
+}
+.header .container-fluid .row > div:first-child a:hover img {
+  display: block;
+}
+/*将bootstrap里面的nav-default类复制过来，并重命名，再修改样式*/
+.wjs_navbar {
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+  /*清空下外边距*/
+  margin-bottom: auto;
+}
+.wjs_navbar .navbar-brand {
+  color: #777;
+  height: 80px;
+  line-height: 50px;
+}
+.wjs_navbar .navbar-brand span {
+  font-size: 50px;
+}
+.wjs_navbar .navbar-brand span:first-child {
+  color: red;
+}
+.wjs_navbar .navbar-brand span:last-child {
+  color: black;
+}
+.wjs_navbar .navbar-brand:hover,
+.wjs_navbar .navbar-brand:focus {
+  color: #5e5e5e;
+  background-color: transparent;
+}
+.wjs_navbar .navbar-text {
+  color: #777;
+}
+.wjs_navbar .navbar-nav > li > a {
+  color: #777;
+  height: 80px;
+  line-height: 50px;
+}
+.wjs_navbar .navbar-nav > li > a:hover,
+.wjs_navbar .navbar-nav > li > a:focus {
+  color: #333;
+  background-color: transparent;
+  border-bottom: 3px solid red;
+}
+.wjs_navbar .navbar-nav > .disabled > a,
+.wjs_navbar .navbar-nav > .disabled > a:hover,
+.wjs_navbar .navbar-nav > .disabled > a:focus {
+  color: #ccc;
+  background-color: transparent;
+}
+.wjs_navbar .navbar-toggle {
+  border-color: #ddd;
+}
+.wjs_navbar .navbar-toggle:hover,
+.wjs_navbar .navbar-toggle:focus {
+  background-color: #ddd;
+}
+.wjs_navbar .navbar-toggle .icon-bar {
+  background-color: #888;
+}
+.wjs_navbar .navbar-collapse,
+.wjs_navbar .navbar-form {
+  border-color: #e7e7e7;
+}
+.wjs_navbar .navbar-nav > .open > a,
+.wjs_navbar .navbar-nav > .open > a:hover,
+.wjs_navbar .navbar-nav > .open > a:focus {
+  color: #555;
+  background-color: #e7e7e7;
+}
+@media (max-width: 767px) {
+  .wjs_navbar .navbar-nav .open .dropdown-menu > li > a {
+    color: #777;
+  }
+  .wjs_navbar .navbar-nav .open .dropdown-menu > li > a:hover,
+  .wjs_navbar .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #333;
+    background-color: transparent;
+  }
+  .wjs_navbar .navbar-nav .open .dropdown-menu > .active > a,
+  .wjs_navbar .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .wjs_navbar .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #555;
+    background-color: #e7e7e7;
+  }
+  .wjs_navbar .navbar-nav .open .dropdown-menu > .disabled > a,
+  .wjs_navbar .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+  .wjs_navbar .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: #ccc;
+    background-color: transparent;
+  }
+}
+.wjs_navbar .navbar-link {
+  color: #777;
+}
+.wjs_navbar .navbar-link:hover {
+  color: #333;
+}
+.wjs_navbar .btn-link {
+  color: #777;
+}
+.wjs_navbar .btn-link:hover,
+.wjs_navbar .btn-link:focus {
+  color: #333;
+}
+.wjs_navbar .btn-link[disabled]:hover,
+fieldset[disabled] .wjs_navbar .btn-link:hover,
+.wjs_navbar .btn-link[disabled]:focus,
+fieldset[disabled] .wjs_navbar .btn-link:focus {
+  color: #ccc;
+}
+/* 轮播图样式 */
+/* 桌面端样式 */
+.banner_a {
+  display: block;
+  height: 410px;
+  /*保持图片始终居中*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.banner_a.image_a {
+  background-image: url(../images/slide_01_2000x410.jpg);
+}
+.banner_a.image_b {
+  background-image: url(../images/slide_02_2000x410.jpg);
+}
+.banner_a.image_c {
+  background-image: url(../images/slide_03_2000x410.jpg);
+}
+.banner_a.image_d {
+  background-image: url(../images/slide_04_2000x410.jpg);
+}
+/* 移动端样式 */
+.mobile_a img {
+  width: 100%;
+}
+/*信息列表样式*/
+.info {
+  padding: 50px 0;
+}
+.info .container {
+  /*设置最大宽度*/
+  max-width: 910px;
+}
+.info .container .row > div {
+  padding-left: 30px;
+  margin-bottom: 25px;
+}
+.info .container .row > div .media a {
+  color: gray;
+}
+.info .container .row > div .media a:hover {
+  color: red;
+}
+.info .container .row > div .media a .media-left span {
+  font-size: 40px;
+}
+/*预约界面*/
+.book .container-fluid {
+  padding: 20px 100px;
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+}
+.book .container-fluid .pull-left a {
+  color: red;
+  text-decoration: none;
+  /*加虚线，只需要加边框即可*/
+  border-bottom: 1px dashed red;
+}
+.book .container-fluid .pull-right a {
+  color: gray;
+}
+.book .container-fluid .pull-right a:hover {
+  color: red;
+}

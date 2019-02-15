@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*css初始化*/
+        body, ul {
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            vertical-align: top;
+        }
+        ul {
+            list-style: none;
+        }
+
+        body {
+            background-color: #000;
+        }
+        .box {
+            width: 642px;
+            height: 406px;
+            margin: 100px auto;
+            border: 1px solid #fff;
+        }
+        ul li {
+            float: left;
+            margin: 10px 0 0 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="../jquery-1.11.1.js"></script>
+    <script>
+        /*
+        需求：鼠标移到图片上该图片高亮（自己不透明，其他图片半透明）
+         */
+
+        $(document).ready(function () {
+            var li =  $("ul li");
+            var box = $(".box");
+            
+            //鼠标移到图片上高亮
+            li.mouseenter(function () {
+                // 自己变不透明，其他兄弟元素都变半透明，
+                // $(this).css("opacity", 1);
+                // $(this).siblings().css("opacity", 0.5);
+
+                //上面两步可以用链式编程（css()执行后会返回this，所以可以链式编程）
+                $(this).css("opacity", 1).siblings().css("opacity", 0.5);
+            });
+
+            //鼠标离开box恢复不透明
+            box.mouseleave(function () {
+                li.css("opacity", 1);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li><img src="images/01.jpg" alt=""></li>
+            <li><img src="images/02.jpg" alt=""></li>
+            <li><img src="images/03.jpg" alt=""></li>
+            <li><img src="images/04.jpg" alt=""></li>
+            <li><img src="images/05.jpg" alt=""></li>
+            <li><img src="images/06.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script src="jquery1.0.0.1.js"></script>
+    <script>
+        window.onresize = fun1;
+        //需要执行一遍，否则刚打开网页的时候没有变化
+        fun1();
+
+        function fun1() {
+            if(client().width > 960) {
+                document.body.style.backgroundColor = "green";
+            } else if(client().width > 640) {
+                document.body.style.backgroundColor = "red";
+            } else {
+                document.body.style.backgroundColor = "blue";
+            }
+        }
+
+    </script>
+</body>
+</html>
