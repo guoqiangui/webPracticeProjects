@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1、冒泡排序（进行了两次优化）
+        function bubbleSort(arr) {
+            // 如果数组长度为1，就不用排序
+            if(arr.length == 1) {
+                return arr;
+            }
+
+            // 用来临时储存值
+            var temp;
+            // 是否进行了替换
+            var isReplace = false;
+
+            for(var i = 0; i < arr.length-1; i++) {
+                for(var j = 0; j < arr.length - i - 1; j++) {
+                    count ++;
+
+                    // 如果前一项的值比后一项要大，就调换值
+                    if(arr[j] > arr[j+1]) {
+                        temp = arr[j];
+                        arr[j] = arr[j+1];
+                        arr[j+1] = temp;
+
+                        isReplace = true;
+                    }
+                }
+                // 判断这一趟有没有进行替换，如果没有，证明已经按顺序排了
+                if(!isReplace) {
+                    console.log(count);
+                    return arr;
+                }
+            }
+
+            return arr;
+        }
+    </script>
+</body>
+</html>

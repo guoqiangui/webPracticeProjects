@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="demo1">
+			<alert-box>出现了某个错误</alert-box>
+		</div>
+		
+		
+		<script>
+			// 自定义标签中的内容会在slot元素中渲染
+			Vue.component("alert-box", {
+				template: `
+					<div class="alert-box">
+						<strong>Error: </strong>
+						<slot></slot>
+					</div>
+				`
+			});
+			
+			new Vue({
+				el: "#demo1"
+			});
+		</script>
+	</body>
+</html>

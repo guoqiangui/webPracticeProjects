@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- itmes是源数据数组，item是数组元素迭代的别名 -->
+		<ul id="demo1">
+			<li v-for="item in items">
+				{{ item.message }}
+			</li>
+		</ul>
+		
+		<!-- 在 v-for 块中，我们拥有对父作用域属性的完全访问权限。v-for 还支持一个可选的第二个参数为当前项的索引。 -->
+		<ul id="demo2">
+			<li v-for="(item, index) in items">
+				{{ parentMsg }}: {{ item.msg }}: {{ index }}
+			</li>
+		</ul>
+		
+		<!-- in可以用of替代 -->
+		
+		<script>
+			// 1
+			new Vue({
+				el: "#demo1",
+				data: {
+					items: [
+						{message: "詹姆斯"},
+						{message: "杜兰特"}
+					]
+				}
+			});
+			
+			// 2
+			new Vue({
+				el: "#demo2",
+				data: {
+					parentMsg: "parent",
+					items: [
+						{msg: "字母哥"},
+						{msg: "泡椒"}
+					]
+				}
+			});
+		</script>
+	</body>
+</html>

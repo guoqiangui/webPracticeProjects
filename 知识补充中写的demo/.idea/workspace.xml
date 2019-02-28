@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5a6a01f4-f419-40b7-8742-82cb66eae5f5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../tmall/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/css/base.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/css/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/css/index.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/HELP-US-OUT.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/css/font-awesome.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/css/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/fonts/FontAwesome.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/fonts/fontawesome-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/fonts/fontawesome-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/less/animated.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/less/bordered-pulled.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/less/core.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/less/fixed-width.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/less/font-awesome.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/less/icons.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/less/larger.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/less/list.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/less/mixins.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/less/path.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/less/rotated-flipped.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/less/screen-reader.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/less/stacked.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/less/variables.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/scss/_animated.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/scss/_bordered-pulled.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/scss/_core.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/scss/_fixed-width.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/scss/_icons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/scss/_larger.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/scss/_list.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/scss/_mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/scss/_path.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/scss/_rotated-flipped.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/scss/_screen-reader.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/scss/_stacked.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/scss/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/font/font-awesome-4.7.0/scss/font-awesome.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../tmall/less/common.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/02-display table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/05afb66f-1334-4522-a472-b8aee48cf3de.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/124d82cc-cfce-44ab-b711-28b21be81683.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/66cbfd29-8e48-4ed1-aee0-e0e46f4cdc8b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/9df8948d-398c-4aa6-a744-2321c7b2dbbc.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/T1KOYgBQdv1RXrhCrK.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/T1MQDgB5Vv1RXrhCrK.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/T1YTJ_B_Av1RXrhCrK.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/T1ZOZgBmYv1RXrhCrK.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/T1k9CgB7Av1RXrhCrK.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/T1o3Z_BKET1RXrhCrK!220x220.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/T1rQAgB7Av1RXrhCrK.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/T1v3LgBTxv1RXrhCrK.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/T1zBYgBCWv1RXrhCrK!220x220.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/T1zTK_Bbhv1RXrhCrK.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/banner-li-hover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/banner-li.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/banner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/ddffe50f-7022-48ed-9553-24fb7c29dcc4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/haidaoquannew.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/pms_1464071511.37197399!220x220.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/images/slogan2016.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/效果图.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/小米案例/文字.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第一天/02类选择器.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第一天/03ID选择器.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第一天/04通配符选择器.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第一天/05交集选择器.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第一天/06后代选择器.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第一天/07子代选择器.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第一天/08文本元素.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第一天/09文字的表达方式.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第一天/10案例一.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第一天/11案例二谷歌图标.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第一天/12综合练习.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第一天/并集选择器.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/01微信复杂滑动门.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/css/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/buy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/c1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/c2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/c3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/c4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/center-r.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/center-r2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/center.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/et.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/et01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/et02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/et03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/et04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/et_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/et_right_bottom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/footer_bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/icon_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/icon_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/icon_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/icon_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/icon_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/icon_6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/input.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/li_bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/sj.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/images/subtitle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/2.梅兰商贸主页案例/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第七天/weixin_bg1d20af.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/01表单控件案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/02行高.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/03边框.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/04边框合并.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/05内边距.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/06内边距撑大盒子.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/07内边距撑大盒子2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/08外边距.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/09垂直方向外边距合并.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/10嵌套的盒子外边距塌陷.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/11新浪导航案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/12行业动态案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/13爱宠知识.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/14个人资料案例/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/14个人资料案例/14个人资料.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/14个人资料案例/v.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/14个人资料案例/vb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/15体育栏目案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/bg.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/li_bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/search.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/tb.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/tiyu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/v.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第三天/vb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/01.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/02块、行内元素、行内块元素.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/03元素类型转换.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/04继承性.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/05优先级.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/06权重可叠加.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/07伪类.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/08背景属性.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/09背景属性连写.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/1.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/10导航案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/110.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/11背景案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/12列表背景案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/13五彩导航作业/demo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/13五彩导航作业/images/bg1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/13五彩导航作业/images/bg2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/13五彩导航作业/images/bg3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/13五彩导航作业/images/bg3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/13五彩导航作业/images/bg4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/13五彩导航作业/images/bg5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/13五彩导航作业/images/bg6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/13五彩导航作业/images/bg7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/14购物车案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/15简单导航栏案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/16英雄联盟背景作业/demo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/16英雄联盟背景作业/index-bg-v14.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/16英雄联盟背景作业/top.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/bgc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/li.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第二天/serch.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/01定位的盒子居中显示.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/02顺丰盒子居中.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/03规避脱标流.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/04图片文字的垂直居中对齐.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/05tab切换案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/06logo内容移除.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/07内容移除2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/08精灵图.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/09精灵图案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/10制作精灵图测试.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/11属性选择器.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/12emmet语法.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/13简单滑动门案例/13简单滑动门.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/13简单滑动门案例/l.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/13简单滑动门案例/m.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/13简单滑动门案例/r.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/14微信案例/14微信案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/14微信案例/bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/14微信案例/weixin_bg1d20af.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/15复杂滑动门/15复杂滑动门.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/15复杂滑动门/bg_r1_c1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/15复杂滑动门/bg_r1_c2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/16属性选择器作业.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/17子代选择器作业.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/18尚合主页作业/18尚合主页作业.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/18尚合主页作业/images/21.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/18尚合主页作业/images/banner.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/18尚合主页作业/images/home_hot_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/18尚合主页作业/images/icon_0.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/18尚合主页作业/images/index_161-175.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/18尚合主页作业/images/left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/18尚合主页作业/images/logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/18尚合主页作业/images/nav_bg-line.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/18尚合主页作业/images/nav_bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/18尚合主页作业/images/o.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/18尚合主页作业/images/renren.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/18尚合主页作业/images/right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/18尚合主页作业/images/search2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/18尚合主页作业/images/weibo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/18尚合主页作业/images/xinlang.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/18尚合主页作业/images/zone.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/my.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/qq.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/sf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/sprite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第五天/taobao.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第六天/01简单滑动门.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第六天/02复杂滑动门.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第六天/bg_r1_c1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第六天/bg_r1_c2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第六天/blue_r1_c1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第六天/blue_r1_c2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第六天/l.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第六天/m.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第六天/r.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/01浮动.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/02文字绕图.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/03简单导航案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/04上合导航案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/05浮动布局.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/06浮动布局2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/07overflow和伪元素清除浮动.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/08overflow.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/09静态定位和绝对定位.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/10静态定位和绝对定位2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/11相对定位.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/12定位小案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/13小米定位案例/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/13小米定位案例/13小米定位案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/13小米定位案例/left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/13小米定位案例/right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/13小米定位案例/xiaom_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/14固定定位.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/15导航作业/15导航作业.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/15导航作业/a_bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/15导航作业/banner1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/15导航作业/banner_bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/15导航作业/button2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/15导航作业/nav_bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/16固定定位作业/16固定定位作业.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/16固定定位作业/box.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/16固定定位作业/r1_c1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/16固定定位作业/r2_c1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/16固定定位作业/r2_c2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/head_bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/li_bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../css基础/第四天/new.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第一天/01.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第一天/02.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第一天/03.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第一天/04.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第一天/05.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第一天/TheFatRat - Time Lapse.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第一天/chun.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第一天/dong.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第一天/images/chun.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第一天/images/dong.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第一天/images/qiu.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第一天/images/swk.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第一天/images/swk.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第一天/images/xia.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第一天/qiu.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第一天/xia.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/01.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/02表格.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/03表格的标准结构.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/04表格单元格合并.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/05.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/06表单.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/07h5补充表单控件.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/08练习细线课表.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/09标签语义化.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/按钮.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/练习/01.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/练习/注册.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/练习/登陆.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/表单综合案例/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/表单综合案例/jd.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/表单综合案例/reg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/表单综合案例/yzm.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/表单综合案例/内容页.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/表单综合案例/注册.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html基础/第二天/表单综合案例/登录.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第一天/01js书写位置.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第一天/02js向页面输出方式.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第一天/03变量案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第一天/04数据类型之数字和字符串类型.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第一天/05数据类型之布尔、undefined、null.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第一天/06算术运算符.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第一天/07带操作的赋值运算.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第一天/1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第三天/01switch语句.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第三天/02switch案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第三天/03自增自减.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第三天/04while循环案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第三天/05dowhile循环.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第三天/06for循环练习.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第三天/07break案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第三天/08continue案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第三天/09数组.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第三天/10函数.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第二天/01Date对象.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第二天/02Math对象.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第二天/03.数据类型转换.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第二天/04数据转换小案例.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第二天/05逻辑运算符.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第二天/06等号运算符.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第二天/07ifelse判断语句.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第二天/08ifelse嵌套.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第二天/09三元表达式.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第二天/10作业.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../js基础/第二天/11作业2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../菜鸟教程上的小demo/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../菜鸟教程上的小demo/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../菜鸟教程上的小demo/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../菜鸟教程上的小demo/.idea/菜鸟教程上的小demo.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../菜鸟教程上的小demo/css3/01-按钮动画.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../菜鸟教程上的小demo/css3/02-分页样式.html" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-2006079605">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="html" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="HTML" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="html" value="142" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="HTML" value="142" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/css/02-display table.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/css/02-display table.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="953" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="知识补充中写的demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="知识补充中写的demo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="知识补充中写的demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="知识补充中写的demo" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5a6a01f4-f419-40b7-8742-82cb66eae5f5" name="Default Changelist" comment="" />
+      <created>1550567955547</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1550567955547</updated>
+      <workItem from="1550567956944" duration="818000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="818000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/css/02-display table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 在监听键盘事件时，我们经常需要检查详细的按键。Vue 允许为 v-on 在监听键盘事件时添加按键修饰符： -->
+		<div id="demo1">
+			<!-- 只有在 `key` 是 `Enter` 时调用 `vm.submit()` -->
+			<input type="text" v-on:keyup.enter="submit()">
+			
+			<!-- 你可以直接将 KeyboardEvent.key 暴露的任意有效按键名转换为 kebab-case 来作为修饰符。 -->
+			<!-- 在$event.key 等于 PageDown的时候被调用 -->
+			<input type="text" v-on:keyup.page-down="onPageDown()">
+		</div>
+		
+		<!-- 使用keyCode特性也是可以的 -->
+		
+		<!-- 为了在必要的情况下支持旧浏览器，Vue 提供了绝大多数常用的按键码的别名 -->
+		
+		<!-- 你还可以通过全局 config.keyCodes 对象自定义按键修饰符别名： -->
+		
+		<script>
+			new Vue({
+				el: "#demo1",
+				methods: {
+					submit: function () {
+						alert("提交");
+					},
+					onPageDown: function () {
+						alert("按了pageDown");
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

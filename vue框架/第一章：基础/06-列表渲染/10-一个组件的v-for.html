@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 案例:todo list -->
+		<div id="demo1">
+			<!-- 阻止默认行为 -->
+			<form v-on:submit.prevent="addNewTodo">
+				<label for="todo-input">加一件事</label>
+				<input type="text" id="todo-input" placeholder="例如: 打篮球" v-model="nextTodoTitle">
+				<button>添加</button>
+			</form>
+			<ul>
+				<!-- 现在组件使用v-for必须加上key -->
+				<!-- <todo-item 
+					v-for="todo in todos" 
+					v-bind:key="todo.id"
+					v-bind:title="todo.title"
+				></todo-item> -->
+				
+				<!-- 利用特殊的is属性来避免一些报错 -->
+				<li is="todo-item"
+					v-for="(todo, index) in todos"
+					v-bind:key="todo.id"
+					v-bind:title="todo.title"
+					v-on:remove="todos.splice(index, 1)"
+				></li>
+			</ul>
+		</div>
+		
+		<script>
+			// 要做的事 组件
+			Vue.component('todo-item', {
+				props: ['title'],
+				template: `
+					<li>
+						{{ title }}
+						<button v-on:click="$emit('remove')">删除</button>
+					</li>
+				`
+			});
+			
+			new Vue({
+				el: "#demo1",
+				data: {
+					// 要做的所有事
+					todos: [
+						{id: 1, title: "打扫卫生"},
+						{id: 2, title: "洗碗"},
+						{id: 3, title: "吃饭"}
+					],
+					// 下一个加进来的事情的id
+					nextTodoId: 4,
+					// 下一个加进来的事情的内容
+					nextTodoTitle: ""
+				},
+				methods: {
+					addNewTodo: function () {
+						this.todos.push({
+							id: this.nextTodoId,
+							title: this.nextTodoTitle
+						});
+						// 添加完后, 下一件事的属性相应改变
+						this.nextTodoId ++;
+						this.nextTodoTitle = "";
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

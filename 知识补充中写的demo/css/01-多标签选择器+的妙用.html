@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		/* 需求，除了最后一个li，给其他li添加下边框 */
+		/* 简便方法，利用多标签选择器+，每次选择下一个兄弟元素，而且添加的是上边框 */
+		ul li+li {
+			border-top: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	
+	<ul>
+		<li>菜单1</li>
+		<li>菜单2</li>
+		<li>菜单3</li>
+		<li>菜单4</li>
+		<li>菜单5</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,39 @@
+// 导入通用样式
+@import url(../less/common.less);
+
+// 顶部导航
+.top-nav-wrapper {
+    background-color: rgb(242, 242, 242);
+    border-bottom: 1px solid rgb(229, 229, 229);
+
+    .top-nav {
+        .left {
+            float: left;
+
+            ul {
+                li {
+                    .top-nav-common-style();
+                }
+
+                // 第一个li只有右内边距
+                li:first-of-type {
+                    padding: 0 10px 0 0;
+                }
+            }
+        }
+
+        .right {
+            float: right;
+
+            ul {
+                li {
+                    .top-nav-common-style();
+
+                    i {
+                        color: @tmall-red;
+                    }
+                }
+            }
+        }
+    }
+}

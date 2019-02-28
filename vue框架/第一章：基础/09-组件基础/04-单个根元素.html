@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="demo1">
+			<!-- 可以看出，当信息增多的时候，为每个信息都增加一个Html属性十分繁琐 -->
+			<blog-post 
+				v-for="post in posts" 
+				v-bind:key="post.id"
+				v-bind:title="post.title"
+				v-bind:content="post.content"
+			></blog-post>
+		</div>
+		<hr>
+		
+		<!-- 对上面的组件进行重构 -->
+		<!-- 现在，不论何时为 post 对象添加一个新的属性，它都会自动地在 <blog-post2> 内可用。 -->
+		<div id="demo2">
+			<blog-post2 
+				v-for="post in posts"
+				v-bind:key="post.id"
+				v-bind:post="post"
+			></blog-post2>
+		</div>
+		
+		
+		<script>
+			// 每个组件必须只有一个根元素,所以元素增多的时候,可以在外面用一个父元素包起来
+			Vue.component("blog-post", {
+				props: ['title', 'content'],
+				template: `
+					<div class="blog-post">
+						<h3>{{ title }}</h3>
+						<div v-html="content"></div>
+					</div>
+				`
+			});
+			
+			Vue.component("blog-post2", {
+				// 现在只需一个html属性，传入博文对象
+				props: ['post'],
+				template: `
+					<div class="blog-post">
+						<h3>{{ post.title }}</h3>
+						<div v-html="post.content"></div>
+					</div>
+				`
+			});
+			
+			new Vue({
+				el: "#demo1",
+				data: {
+					posts: [
+						{id: 1, title: "詹姆斯砍下三双", content: "以下是详细报道"},
+						{id: 2, title: "杜兰特砍下三双", content: "以下是详细报道"},
+						{id: 3, title: "字母哥砍下三双", content: "以下是详细报道"},
+						{id: 4, title: "威少砍下三双", content: "以下是详细报道"},
+					]
+				}
+			});
+			
+			new Vue({
+				el: "#demo2",
+				data: {
+					posts: [
+						{id: 1, title: "詹姆斯砍下三双", content: "以下是详细报道"},
+						{id: 2, title: "杜兰特砍下三双", content: "以下是详细报道"},
+						{id: 3, title: "字母哥砍下三双", content: "以下是详细报道"},
+						{id: 4, title: "威少砍下三双", content: "以下是详细报道"},
+					]
+				}
+			});
+		</script>
+	</body>
+</html>

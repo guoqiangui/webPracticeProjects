@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="box">
+			<p>{{ name }}</p>
+			<button v-on:click="name='杜兰特'">点击改变</div>
+		</div>
+		
+		
+		
+		<script>
+			// 当一个 Vue 实例被创建时，它向 Vue 的响应式系统中加入了其 data 对象中能找到的所有的属性。当这些属性的值发生改变时，视图将会产生“响应”，即匹配更新为新的值。
+			// 当这些数据改变时，视图会进行重渲染。值得注意的是只有当实例被创建时 data 中存在的属性才是响应式的。也就是说如果你添加一个新的属性, 比如vm.b = "abc", 是不会进行响应的
+			
+			// 数据对象
+			var data = {
+				name: "张三"
+			};
+			
+			// 将对象加入到vue实例中
+			var vm = new Vue({
+				data: data
+			});
+			
+			console.log(vm.name == data.name); // true
+			
+			data.name = "李四";
+			console.log(vm.name);	// 李四
+			
+			vm.name = "王五";
+			console.log(data.name);	// 王五
+			
+			vm.b = "bbb";
+			console.log(data.b); // undefined
+			
+			
+			
+			// 使用Object.freeze(obj)会阻止修改现有的属性, 意味着无法进行响应
+			var obj = {name: "詹姆斯"};
+			Object.freeze(obj);
+			var vm2 = new Vue({
+				el: "#box",
+				data: obj
+			});
+			
+			
+			
+			// 除了数据属性, Vue实例还暴露了一些有用的实例属性和方法,它们都有前缀$
+			console.log(vm.$data === data); // true
+			console.log(vm2.$el === document.querySelector("#box")); // true
+		</script>
+	</body>
+</html>

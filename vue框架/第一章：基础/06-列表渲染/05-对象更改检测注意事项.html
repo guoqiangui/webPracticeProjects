@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="demo1">
+			<p>{{ a }} -- {{ b }}</p>
+			<p>
+				{{ person.name }} -- {{ person.age }} -- {{ person.champions }}
+			</p>
+		</div>
+		
+		<script>
+			var vm = new Vue({
+				el: "#demo1",
+				data: {
+					a: 1,
+					person: {
+						name: "詹姆斯"
+					}
+				}
+			});
+			
+			// 由于 JavaScript 的限制，Vue 不能检测对象属性的添加或删除: 对象.属性 = 值
+			// 不是响应式的(无法渲染到html)
+			// vm.b = 2;
+			
+			// 对于已经创建的实例，Vue 不能动态添加根级别的响应式属性(例如data、methods、computed等)
+			// 但是，可以使用 Vue.set(object, key, value) 方法向嵌套对象添加响应式属性。
+			// Vue.set(vm.person, "age", 34);
+			vm.$set(vm.person, "age", 34); // 和Vue.set一样,只是别名而已
+			
+			// 有时你可能需要为已有对象赋予多个新属性, 在这种情况下，你应该用两个对象的属性创建一个新的对象。
+			// 不应该这样:
+// 			Object.assign(vm.person, {
+// 				age: 34,
+// 				champions: 3
+// 			});
+
+			// 应该创建一个新对象 Object.assign(target[, source1[, source2[, ...]]])
+			vm.person = Object.assign({}, vm.person, {
+				age: 34,
+				champions: 3
+			});
+		</script>
+	</body>
+</html>

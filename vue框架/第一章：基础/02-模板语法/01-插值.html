@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 插入文本 -->
+		<div id="ele1">
+			<!-- 最常见的是{{ 数据对象上的属性 }}，而且会随着属性值的改变而改变 -->
+			<span>{{ name }}</span>
+			<!-- 利用v-once，设置的值就不会改变了 -->
+			<span v-once>{{ name }}</span>
+		</div>
+		
+		<!-- 插入原始html -->
+		<!-- {{}}会解析成普通文本，而不是html，用v-html指令输出html代码 -->
+		<div id="ele2">
+			<p>使用双大括号: {{ name }}</p>
+			<p>使用v-html: <span v-html="name"></span></p>
+		</div>
+		
+		<!-- 双大括号不能用在html属性上，html属性需要用v-bind指令 -->
+		<div id="ele3">
+			<p v-bind:title="msg">鼠标放在我上面</p>
+		</div>
+		
+		<!-- 使用javascript表达式 -->
+		<!-- 对于所有的数据绑定，vue都提供了完全的js表达式支持 -->
+		<!-- 注意，只能是单个表达式，普通的js语句不行；if判断也不行，要用三元表达式 -->
+		<div id="ele4">
+			<p>{{ number + 1 }}</p>
+			<p>{{ isTrue ? "对的" : "错的" }}</p>
+			<p>{{ msg.split("").reverse().join("") }}</p>
+		</div>
+		
+		
+		<script>
+			var vm = new Vue({
+				el: "#ele1", 
+				data: {
+					name: "詹姆斯"
+				}
+			});
+			vm.name = "杜兰特";
+			
+			var vm2 = new Vue({
+				el: "#ele2", 
+				data: {
+					name: "<h1>詹姆斯</h1>"
+				}
+			});
+			
+			new Vue({
+				el: "#ele3", 
+				data: {
+					msg: "我是title的值"
+				}
+			});
+			
+			new Vue({
+				el: "#ele4", 
+				data: {
+					number: 123, 
+					isTrue: true, 
+					msg: "abcde"
+				}
+			});
+		</script>
+	</body>
+</html>

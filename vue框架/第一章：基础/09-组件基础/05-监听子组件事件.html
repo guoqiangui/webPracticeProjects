@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 1、在父组件添加数据属性用来控制字号 -->
+		<!-- 2、在html中使用该数据属性 -->
+		<!-- 3、在博文中添加一个按钮用来放大字号 -->
+		<!-- 4、父组件监听子组件的自定义事件 -->
+		<!-- 5、子组件触发自定义事件 -->
+		
+		<!-- 在我们开发 <blog-post> 组件时，它的一些功能可能要求我们和父级组件进行沟通。例如我们可能会引入一个可访问性的功能来放大博文的字号，同时让页面的其它部分保持默认的字号。 -->
+		<div id="demo1">
+			<!-- postFontSize数据属性用来控制所有博文的字号 -->
+			<!-- 父组件监听子组件的自定义事件 -->
+			<div v-bind:style="{fontSize: postFontSize + 'em'}">
+				<blog-post
+					v-for="post in posts"
+					v-bind:key="post.id"
+					v-bind:post="post"
+					v-on:enlarge-text="postFontSize += 0.1"
+				></blog-post>
+			</div>
+		</div>
+		<hr>
+		
+		
+		<!-- 使用事件抛出一个值 -->
+		<!-- 1、有的时候用一个事件来抛出一个特定的值是非常有用的。例如我们可能想让 <blog-post> 组件决定它的文本要放大多少。这时可以使用 $emit 的第二个参数来提供这个值： -->
+		<!-- 2、然后当在父级组件监听这个事件的时候，我们可以通过 $event 访问到被抛出的这个值： -->
+		<!-- 或者，如果这个事件处理函数是一个方法： -->
+		<!-- 那么这个值将会作为第一个参数传入这个方法： -->
+		<div id="demo2">
+			<div v-bind:style="{fontSize: postFontSize + 'em'}">
+				<blog-post2
+					v-for="post in posts"
+					v-bind:key="post.id"
+					v-bind:post="post"
+					v-on:enlarge-text="postFontSize += $event"
+					v-on:enlarge-text2="onEnlargeText"
+				></blog-post2>
+			</div>
+		</div>
+		
+		
+		<!-- 在组件上使用v-model -->
+		<!-- 自定义事件也可以用于创建支持 v-model 的自定义输入组件。 -->
+		<!-- 
+			为了让自定义输入组件正常工作，这个组件内的 <input> 必须：
+				将其 value 特性绑定到一个名叫 value 的 prop 上
+				在其 input 事件被触发时，将新的值通过自定义的 input 事件抛出 
+		-->
+		<div id="demo3">
+			<guo-input v-model="msg"></guo-input>
+			你输入了: {{ msg }}
+		</div>
+		
+		<script>
+			Vue.component("blog-post", {
+				// 现在只需一个html属性，传入博文对象
+				props: ['post'],
+				// 在博文中添加一个按钮用来放大字号
+				// 子组件通过内建的$emit方法传入事件名触发自定义事件
+				template: `
+					<div class="blog-post">
+						<h3>{{ post.title }}</h3>
+						<button v-on:click="$emit('enlarge-text')">放大</button>
+						<div v-html="post.content"></div>
+					</div>
+				`
+			});
+			
+			Vue.component("blog-post2", {
+				// 现在只需一个html属性，传入博文对象
+				props: ['post'],
+				// 在博文中添加一个按钮用来放大字号
+				// 子组件通过内建的$emit方法传入事件名触发自定义事件
+				template: `
+					<div class="blog-post">
+						<h3>{{ post.title }}</h3>
+						<button v-on:click="$emit('enlarge-text', 0.1)">放大</button>
+						<button v-on:click="$emit('enlarge-text', 0.1)">放大2</button>
+						<div v-html="post.content"></div>
+					</div>
+				`
+			});
+			
+			// 自定义输入组件
+			Vue.component("guo-input", {
+				props: ['value'],
+				template: `
+					<input 
+						type="text"
+						v-bind:value="value"
+						v-on:input="$emit('input', $event.target.value)"
+					>
+				`
+			});
+			
+			// 1
+			// 在其父组件中，我们可以通过添加一个 postFontSize 数据属性来支持这个功能 
+			new Vue({
+				el: "#demo1",
+				data: {
+					posts: [
+						{id: 1, title: "詹姆斯砍下三双", content: "以下是详细报道"},
+						{id: 2, title: "杜兰特砍下三双", content: "以下是详细报道"},
+						{id: 3, title: "字母哥砍下三双", content: "以下是详细报道"},
+						{id: 4, title: "威少砍下三双", content: "以下是详细报道"},
+					],
+					// 单位: em
+					postFontSize: 1
+				}
+			});
+			
+			// 2
+			new Vue({
+				el: "#demo2",
+				data: {
+					posts: [
+						{id: 1, title: "詹姆斯砍下三双", content: "以下是详细报道"},
+						{id: 2, title: "杜兰特砍下三双", content: "以下是详细报道"},
+						{id: 3, title: "字母哥砍下三双", content: "以下是详细报道"},
+						{id: 4, title: "威少砍下三双", content: "以下是详细报道"},
+					],
+					// 单位: em
+					postFontSize: 1
+				},
+				methods: {
+					// 子组件中抛出的的值会作为这个函数的第一个参数
+					onEnlargeText: function (enlargeValue) {
+						this.postFontSize += enlargeValue;
+					}
+				}
+			});
+			
+			// 3
+			new Vue({
+				el: "#demo3",
+				data: {
+					msg: ""
+				}
+			});
+		</script>
+	</body>
+</html>

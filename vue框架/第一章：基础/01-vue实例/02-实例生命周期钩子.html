@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<script>
+			// 每个Vue在初始化过程中都会运行一些叫做生命周期钩子的函数,给了用户在不同阶段添加自己的代码的机会
+			new Vue({
+				data: {
+					a: 1
+				}, 
+				// created钩子可以用来在实例化后执行代码
+				created: function () {
+					// this指向Vue实例
+					console.log("a is " + this.a);
+				}
+			});
+			
+			// 注意,不要在选项属性或回调函数上使用最新的箭头函数
+		</script>
+	</body>
+</html>

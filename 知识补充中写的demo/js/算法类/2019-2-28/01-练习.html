@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 1、不借助临时变量, 进行两个整数的交换
+			function swap(a, b) {
+				b = a + b;
+				// 将b的值给a
+				a = b - a;
+				// 将a的值给b
+				b = b - a;
+				
+				return [a, b];
+			}
+			
+			// 2、生成斐波那契数组
+				// 自己实现版: 可读性很好, 但性能太差, 有许多值被重复计算
+			// 参数为数组长度
+			function getFibonacciArr(n) {
+				// 储存斐波那契数列的数组
+				var arr = [];
+				// 求斐波那契数列的第n项
+				function fibonacci(n) {
+					if(n<=2) {
+						return 1;
+					}
+					return fibonacci(n-2) + fibonacci(n-1);
+				}
+				
+				for(var i=1; i<=n; i++) {
+					arr.push(fibonacci(i));
+				}
+				
+				return arr;
+			}
+			
+				// 参考实现版
+			function getFibonacciArr2(n) {
+				var arr = [];
+				for(var i=0; i<n; i++) {
+					// 处理特殊情况(前两项都为1)
+					if(i == 0 || i == 1) {
+						arr.push(1);
+					} else {
+						arr.push(arr[i-1] + arr[i-2]);
+					}
+				}
+				
+				return arr;
+			}
+			
+			// 3 根据生成的斐波那契数列画弧
+		</script>
+	</body>
+</html>

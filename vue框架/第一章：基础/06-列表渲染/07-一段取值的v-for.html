@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- v-for 也可以取整数。在这种情况下，它将重复多次模板。 -->
+		<ul id="demo1">
+			<li v-for="n in 10">
+				{{ n }}
+			</li>
+		</ul>
+		
+		<script>
+			new Vue({
+				el: "#demo1"
+			});
+		</script>
+	</body>
+</html>

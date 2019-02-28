@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 类似于 v-if，你也可以利用带有 v-for 的 <template> 渲染多个元素。 -->
+		<ul id="demo1">
+			<template v-for="item in msgs">
+				<li>名字：{{ item.name }}</li>
+				<li>年龄：{{ item.age }}</li>
+			</template>
+		</ul>
+		
+		<script>
+			new Vue({
+				el: "#demo1",
+				data: {
+					msgs: [
+						{name: "詹姆斯", age: 34},
+						{name: "杜兰特", age: 30},
+						{name: "字母哥", age: 25},
+						{name: "卡哇伊", age: 28}
+					]
+				}
+			});
+		</script>
+	</body>
+</html>

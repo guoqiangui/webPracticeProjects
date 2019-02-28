@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 对象语法 -->
+		<div id="ele">
+			<!-- 我们可以传给 v-bind:class 一个对象，以动态地切换 class -->
+			<!-- active是否存在取决于isActive -->
+			<div v-bind:class="{active: isActive}"></div>
+			
+			<!-- 可以在对象中传入多个属性来切换多个class -->
+			<div v-bind:class="{active: isActive, 'text-danger': hasError}"></div>
+			<!-- 或者不内联定义在模板里面 -->
+			<div v-bind:class="classObject"></div>
+			<!-- 或者绑定一个返回对象的计算属性，常用 -->
+			<div v-bind:class="classObject2"></div>
+		</div>
+		
+		<!-- 数组语法 -->
+		<div id="ele2">
+			<!-- 我们可以把一个数组传给v-bind:class，以应用一个class列表 -->
+			<div v-bind:class="[activeClass, errorClass]"></div>
+			
+			<!-- 如果想根据条件切换class，可以使用三元表达式 -->
+			<div v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
+			
+			<!-- 如果嫌条件语法繁琐，数组中也可以使用对象语法 -->
+			<div v-bind:class="[{active: isActive}, errorClass]"></div>
+		</div>
+		
+		<!-- 用在组件上 -->
+		<!-- 当在一个自定义组件上使用 class 属性时，这些类将被添加到该组件的根元素上面。这个元素上已经存在的类不会被覆盖。 -->
+		<div id="ele3">
+			<guo-comp v-bind:class="['haha', {active: 1 <= 3}]"></guo-comp>
+		</div>
+		
+		<script>
+			// 1
+			new Vue({
+				el: "#ele",
+				
+				data: {
+					isActive: true,
+					hasError: true,
+					classObject: {
+						active: true,
+						// 有了其他符号就要加引号
+						'text-danger': true
+					}
+				},
+				
+				computed: {
+					// getter
+					classObject2: function () {
+						return {
+							active: this.isActive
+						};
+					}
+				}
+			});
+			
+			// 2
+			new Vue({
+				el: "#ele2", 
+				data: {
+					activeClass: "active",
+					errorClass: "text-danger",
+					isActive: true
+				}
+			});
+			
+			// 3
+			Vue.component("guo-comp", {
+				template: '<div class="guo-comp">我是guo-comp组件</div>'
+			});
+			
+			new Vue({
+				el: "#ele3"
+			});
+		</script>
+	</body>
+</html>

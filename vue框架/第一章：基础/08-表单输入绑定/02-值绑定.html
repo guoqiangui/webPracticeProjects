@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 对于单选按钮，复选框及选择框的选项，v-model 绑定的值通常是静态字符串 (对于复选框也可以是布尔值) -->
+		<!-- 但是有时我们可能想把值绑定到 Vue 实例的一个动态属性上，这时可以用 v-bind 实现，并且这个属性的值可以不是字符串。 -->
+		
+		<!-- 1、复选框（绑在true-value和false-value属性上） -->
+		<div id="demo1">
+			<input 
+				type="checkbox" 
+				v-model="toggle" 
+				v-bind:true-value="yes" 
+				v-bind:false-value="no"
+			>
+			<span>{{ toggle }}</span>
+		</div>
+		
+		<!-- 2、单选按钮 -->
+		<div id="demo2">
+			<input type="radio" v-model="pick" v-bind:value="radioValue">
+			<span>{{ pick }}</span>
+		</div>
+		
+		<!-- 3、选择框的选项 -->
+		<div id="demo3">
+			<select v-model="selected">
+				<!-- 内联对象字面量 -->
+				<option v-bind:value="{name: '詹姆斯'}">詹姆斯</option>
+			</select>
+			{{ selected.name }}
+		</div>
+		
+		<script>
+			// 1
+			new Vue({
+				el: "#demo1",
+				data: {
+					toggle: "",
+					yes: "选中了",
+					no: "没选中"
+				}
+			});
+			
+			// 2
+			new Vue({
+				el: "#demo2",
+				data: {
+					pick: "",
+					radioValue: "abcd"
+				}
+			});
+			
+			// 3
+			new Vue({
+				el: "#demo3",
+				data: {
+					selected: ""
+				}
+			});
+		</script>
+	</body>
+</html>

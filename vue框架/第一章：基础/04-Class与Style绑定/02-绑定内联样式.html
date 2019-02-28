@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 对象语法 -->
+		<div id="ele">
+			<!-- v-bind:style 的对象语法十分直观——看着非常像 CSS，但其实是一个 JavaScript 对象。 -->
+			<!-- CSS 属性名可以用驼峰式 (camelCase) 或短横线分隔 (kebab-case，记得用单引号括起来) 来命名 -->
+			<div v-bind:style="{color: activeColor, fontSize: fontSize + 'px'}">Hello Vue!</div>
+			
+			<!-- 直接绑定到样式对象比较好，会让模板更清晰 -->
+			<div v-bind:style="styleObject">Hello Vue!</div>
+		</div>
+		
+		<!-- 数组语法 -->
+		<!-- 数组语法可以将多个样式对象应用到同一个元素上 -->
+		<div id="ele2">
+			<div v-bind:style="[baseStyles, boxStyles]">Hello Vue!</div>
+		</div>
+		
+		<!-- 自动添加前缀 -->
+		<!-- 当样式需要添加浏览器引擎前缀的时候，vue会自动侦测并添加前缀 -->
+		
+		<!-- 多重值 -->
+		<!-- 从 2.3.0 起你可以为 style 绑定中的属性提供一个包含多个值的数组，常用于提供多个带前缀的值 -->
+		<!-- 这样写只会渲染数组中最后一个被浏览器支持的值。 -->
+		<div id="ele3">
+			<div v-bind:style="{display: ['-webkit-box', '-ms-flexbox', 'flex']}"></div>
+		</div>
+		
+		<script>
+			// 1
+			new Vue({
+				el: "#ele",
+				data: {
+					activeColor: "green",
+					fontSize: 30,
+					styleObject: {
+						color: "red",
+						fontSize: "25px"
+					}
+				}
+			});
+			
+			// 2
+			new Vue({
+				el: "#ele2",
+				data: {
+					baseStyles: {
+						color: "green",
+						fontSize: "25px"
+					},
+					boxStyles: {
+						width: "150px",
+						height: "150px",
+						border: "1px solid red"
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

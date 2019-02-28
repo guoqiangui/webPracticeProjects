@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 1、变异方法（会改变原数组） -->
+		<!-- Vue 包含一组观察数组的变异方法，所以它们也将会触发视图更新 -->
+		<!-- 变异方法有push(), pop(), shift(), unshift(), splice(), sort(), reverse() -->
+		<ul id="demo1">
+			<li v-for="(item, index) in items">
+				{{ index }} ==> {{ item.msg }}
+			</li>
+		</ul>
+		
+		<!-- 2、替换数组 -->
+		<!-- 使用非变异方法时，总会返回一个新数组，所以可以用新数组代替旧数组 -->
+		<!-- 非变异方法有filter()、concat()、slice() -->
+		
+		<!-- 3、注意事项 -->
+		<!-- 由于 JavaScript 的限制，Vue 不能检测以下变动的数组：
+				1.当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue
+				2.当你修改数组的长度时，例如：vm.items.length = newLength 
+		-->
+		<!-- 解决第一个问题，用splice或Vue.set(数组, 索引, 新的值)代替直接赋值 -->
+		<!-- 解决第二个问题，用splice -->
+		<ul id="demo3">
+			<li v-for="(item, index) in items">
+				{{ index }} ==> {{ item.msg }}
+			</li>
+		</ul>
+		
+		<script>
+			var vm = new Vue({
+				el: "#demo1",
+				data: {
+					items: [
+						{msg: "詹姆斯"},
+						{msg: "杜兰特"},
+						{msg: "阿德托昆博"}
+					]
+				}
+			});
+			// 变异方法
+			vm.items.push({msg: "莱昂纳德"});
+			
+			// 非变异方法替换数组
+			vm.items = vm.items.filter(function (element, index, array) {
+// 				if(element.msg.length == 3) {
+// 					return true;
+// 				} else {
+// 					return false;
+// 				}
+				// 简化
+				return element.msg.length == 3;
+			});
+			
+			
+			var vm2 = new Vue({
+				el: "#demo3",
+				data: {
+					items: [
+						{msg: "詹姆斯"},
+						{msg: "杜兰特"},
+						{msg: "阿德托昆博"}
+					]
+				}
+			});
+			// 解决 数组[索引] = 值 问题
+			// vm2.items.splice(2, 1, {msg: "字母哥"});
+			// Vue.set(vm2.items, 2, {msg: "字母哥"});
+			// vm2.$set(vm2.items, 2, {msg: "字母哥"});	// vm2.$set是Vue.set的别名, 是一样的
+			
+			// 解决第二类问题, splice(n)代表截取数组前n个元素
+			vm2.items.splice(2);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 声明式渲染 -->
+		<!-- 数据和dom被建立了关联，所有东西都是响应式的；控制台修改vm.msg的值，显示的内容会相应更新（不用刷新页面） -->
+		<div id="box">{{ msg }}</div>
+		
+		<!-- 另一种绑定方式 -->
+		<div id="box2">
+			<!-- 将这个元素的title属性的值和message的值保持一致 -->
+			<span v-bind:title="message">鼠标悬停到这里看看绑定了什么</span>
+		</div>
+		
+		<script>
+			var vm = new Vue({
+				// 要应用vue的元素
+				el: "#box", 
+				// 数据
+				data: {
+					msg: "你好, vue!"
+				}
+			});
+			
+			var vm2 = new Vue({
+				el: "#box2", 
+				data: {
+					message: "现在的时间是：" + new Date().toLocaleString()
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 利用v-on绑定事件 -->
+		<div id="box">
+			{{ msg }}
+			<button v-on:click="reverseMsg">逆转信息</button>
+		</div>
+		
+		<!-- 利用v-model可以实现表单输入和应用状态之间的双向绑定 -->
+		<div id="box2">
+			<p>{{ msg }}</p>
+			<input v-model="msg">
+		</div>
+		
+		<script>
+			var vm = new Vue({
+				el: "#box", 
+				data: {
+					msg: "詹姆斯最牛"
+				}, 
+				// 里面存放方法
+				methods: {
+					// 将信息反转
+					reverseMsg: function (str) {
+						// vue会把数据里面的属性作为vm的属性
+						this.msg = this.msg.split("").reverse().join("");
+					}
+				}
+			});
+			
+			var vm2 = new Vue({
+				el: "#box2", 
+				data: {
+					msg: "Hello Vue!"
+				}
+			});
+		</script>
+	</body>
+</html>

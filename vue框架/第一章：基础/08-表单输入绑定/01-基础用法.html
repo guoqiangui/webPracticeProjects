@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- v-model指令在表单input、textarea、select元素上创建双向绑定 -->
+		<!-- 注意：v-model 会忽略所有表单元素的 value、checked、selected 特性的初始值而总是将 Vue 实例的数据作为数据来源。你应该通过 JavaScript 在组件的 data 选项中声明初始值。 -->
+		
+		<!-- v-model在内部为不同的输入元素使用不同的属性，并抛出不同的事件 -->
+		<!-- text和textarea元素使用value属性，input事件 -->
+		<!-- checkbox和radio使用value属性，change事件 -->
+		<!-- select元素使用value属性，change事件 -->
+		
+		<!-- 注意: 对于需要使用输入法 (如中文、日文、韩文等) 的语言，你会发现 v-model 不会在输入法组合文字过程中得到更新。如果你也想处理这个过程，请使用 input 事件。 -->
+		
+		<!-- 1、文本 -->
+		<div id="demo1">
+			<input type="text" v-model="message">
+			<p>您输入的信息：{{ message }}</p>
+		</div>
+		
+		<!-- 2、多行文本 -->
+		<div id="demo2">
+			<textarea v-model="message" placeholder="请输入多行文本"></textarea>
+			<p>您输入的信息：</p>
+			<pre>{{ message }}</pre>
+		</div>
+		
+		<!-- 3、复选框 -->
+		<div id="demo3">
+			<!-- 单个复选框，绑定到布尔值（双向绑定，在模板改了也会影响数据） -->
+			<input type="checkbox" v-model="checked">
+			<span>{{ checked }}</span>
+			<hr>
+			
+			<!-- 多个复选框，绑定到同一个数组 -->
+			<input type="checkbox" value="James" v-model="checkedNames">詹姆斯<br>
+			<input type="checkbox" value="Durant" v-model="checkedNames">杜兰特<br>
+			<input type="checkbox" value="Giannis" v-model="checkedNames">字母哥<br>
+			已选的名字：<span>{{ checkedNames }}</span>
+		</div>
+		<hr>
+		
+		<!-- 4、单选按钮 -->
+		<div id="demo4">
+			<input type="radio" value="One" v-model="picked">一<br>
+			<input type="radio" value="Two" v-model="picked">二<br>
+			你选择了：<span>{{ picked }}</span>
+		</div>
+		<hr>
+		
+		<!-- 5、选择框（下拉列表） -->
+		<div id="demo5">
+			<!-- 单选时 -->
+			<select v-model="selected">
+				<option value="" disabled>请选择</option>
+				<option value="A">A</option>
+				<option value="B">B</option>
+				<option value="C">C</option>
+			</select>
+			你选择了: <span>{{ selected }}</span>
+			<br><br>
+			
+			<!-- 多选时 -->
+			<select v-model="selectedNames" multiple="multiple">
+				<option value="James">詹姆斯</option>
+				<option value="Durant">杜兰特</option>
+				<option value="Giannis">字母哥</option>
+			</select>
+			你选择了: <span>{{ selectedNames }}</span>
+			<br><br>
+			
+			<!-- 用v-for渲染的动态选项 -->
+			<p>用v-for渲染的动态选项</p>
+			<select v-model="sel">
+				<option v-for="option in options" v-bind:value="option.value">
+					{{ option.text }}
+				</option>
+			</select>
+			你选择了: <span>{{ sel }}</span>
+		</div>
+		
+		<script>
+			// 1
+			new Vue({
+				el: "#demo1",
+				data: {
+					message: "我是初始值"
+				}
+			});
+			
+			// 2
+			new Vue({
+				el: "#demo2",
+				data: {
+					message: ""
+				}
+			});
+			
+			// 3
+			new Vue({
+				el: "#demo3",
+				data: {
+					checked: false,
+					checkedNames: []
+				}
+			});
+			
+			// 4
+			new Vue({
+				el: "#demo4",
+				data: {
+					picked: ""
+				}
+			});
+			
+			// 5
+			new Vue({
+				el: "#demo5",
+				data: {
+					selected: "",
+					selectedNames: [],
+					sel: "James",
+					options: [
+						{text: "詹姆斯", value: "James"},
+						{text: "杜兰特", value: "Durant"},
+						{text: "字母哥", value: "Giannis"}
+					]
+				}
+			});
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 可以用v-for通过一个对象的属性遍历 -->
+		<ul id="demo1">
+			<li v-for="value in obj">
+				{{ value }}
+			</li>
+		</ul>
+		
+		<!-- 可以以键名为第二个参数 -->
+		<ul id="demo2">
+			<li v-for="(value, key) in obj">
+				{{ key }} ==> {{ value }}
+			</li>
+		</ul>
+		
+		<!-- 第三个参数为索引 -->
+		<ul id="demo3">
+			<li v-for="(value, key, index) in obj">
+				{{ index }} ==> {{ key }} ==> {{ value }}
+			</li>
+		</ul>
+		
+		<!-- 原理：按Object.keys()的结果遍历，不保证不同浏览器结果一致 -->
+		
+		<script>
+			// 1
+			new Vue({
+				el: "#demo1",
+				data: {
+					obj: {
+						name: "张三",
+						age: 18
+					}
+				}
+			});
+			
+			// 2
+			new Vue({
+				el: "#demo2",
+				data: {
+					obj: {
+						name: "詹姆斯",
+						age: 34,
+						champions: 3
+					}
+				}
+			});
+			
+			// 3
+			new Vue({
+				el: "#demo3",
+				data: {
+					obj: {
+						name: "杜兰特",
+						age: 30,
+						champions: 2
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

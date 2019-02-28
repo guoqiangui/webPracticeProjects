@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 指令是指带有v-前缀的特殊属性，指令特性的值预期是单个js表达式（v-for例外） -->
+		<!-- 指令的职责是当表达式的值改变时，将其产生的连带影响，响应式地作用于dom -->
+		<div id="ele1">
+			<!-- 可以控制是否显示该元素 -->
+			<p v-if="seen">现在你能看到我了</p>
+		</div>
+		
+		<!-- 参数 -->
+		<!-- 一个指令可以接收一个参数，用:接上 -->
+		<div id="ele2">
+			<!-- v-bind:属性 可以响应式更新html属性 -->
+			<p v-bind:title="title">鼠标放在我上面</p>
+			<!-- v-on:事件 可以监听DOM事件 -->
+			<button v-on:click="callback">点我</button>
+		</div>
+		
+		<!-- 动态参数 -->
+		<!-- 例如v-bind:[动态参数名]，里面可以放js表达式 -->
+		<div id="ele3">
+			<!-- 居然不能用大写？用了大写会自动转为小写，导致找不到 -->
+			<a v-bind:[attrname]="url" target="_blank">点击我跳转</a><br>
+			<button v-on:[event]="callback">点击我</button>
+		</div>
+		<!-- 动态参数表达式有一些语法约束，因为某些字符，例如空格和引号，放在 HTML 特性名里是无效的。 -->
+		
+		<!-- 修饰符 -->
+		<!-- 修饰符是以.指明的特殊后缀，用于指出一个指令应该以特殊方式绑定 -->
+		<!-- 例如.prevent告诉v-on指令对于触发的事件调用event.preventDefault() -->
+		<div id="ele4">
+			<form action="" v-on:submit.prevent="callback">
+				<input type="text">
+			</form>
+		</div>
+		
+		<script>
+			new Vue({
+				el: "#ele1", 
+				data: {
+					seen: false
+				}
+			});
+			
+			new Vue({
+				el: "#ele2", 
+				data: {
+					title: "哈哈2", 
+					callback: function () {
+						console.log(123);
+					}
+				}
+			});
+			
+			new Vue({
+				el: "#ele3", 
+				data: {
+					attrname: "href", 
+					url: "https://www.baidu.com", 
+					event: "click",
+					callback: function () {
+						console.log("成功调用了我");
+					}
+				}
+			});
+			
+			new Vue({
+				el: "#ele4", 
+				data: {
+					callback: function () {
+						
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

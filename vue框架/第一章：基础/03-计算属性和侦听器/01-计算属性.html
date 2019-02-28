@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 模板内的表达式最好做简单运算 -->
+		<!-- {{ message.split('').reverse().join('') }}这样的表达式就不太好 -->
+		<!-- 对于复杂逻辑，应该使用计算属性 -->
+		<div id="ele">
+			<!-- 不推荐 -->
+			<!-- <p>{{ msg.split("").reverse().join("") }}</p> -->
+			
+			<p>{{ reverseMsg }}</p>
+		</div>
+		
+		<!-- 计算属性缓存vs方法 -->
+		<!-- 我们可以将同一个函数定义为一个方法而不是一个计算属性，两种方式最终结果是相同的 -->
+		<!-- 计算属性是基于依赖进行缓存的，只有在相关依赖发生改变时他们才会重新求值 -->
+		<!-- 每当触发重新渲染时，调用方法将总会再次执行函数 -->
+		<div id="ele2">
+			<p>信息：{{ msg }}</p>
+			<!-- 依赖不改变的话，下面计算属性不再更新，改代码除外 -->
+			<p>现在的时间是：{{ computedDate }}</p>
+			<!-- 因为是方法，所以要调用 -->
+			<p>现在的时间是：{{ methodsDate() }}</p>
+		</div>
+		<!-- 如果不希望有缓存，用方法来替代 -->
+		
+		<!-- 计算属性优于侦听属性 -->
+		
+		<!-- 计算属性的setter -->
+		<!-- 计算属性默认只有 getter ，不过在需要时你也可以提供一个 setter -->
+		<div id="ele3">
+			<p>firstName: {{ firstName }}</p>
+			<p>lastName: {{ lastName }}</p>
+		</div>
+		
+		<script>
+			var vm = new Vue({
+				el: "#ele",
+				data: {
+					msg: "Hello"
+				},
+				// 计算属性的getter
+				computed: {
+					reverseMsg: function () {
+						// this指向vm实例
+						return this.msg.split("").reverse().join("");
+					}
+				}
+			});
+			
+			// 并且vm.reverseMsg的值是取决于vm.msg的值的
+			console.log(vm.reverseMsg);
+			
+			var vm2 = new Vue({
+				el: "#ele2",
+				data: {
+					msg: "哈哈哈哈"
+				},
+				computed: {
+					computedDate: function () {
+						return Date.now();
+					}
+				},
+				methods: {
+					methodsDate: function () {
+						return Date.now();
+					}
+				}
+			});
+			
+			var vm3 = new Vue({
+				el: "#ele3",
+				
+				data: {
+					firstName: "Kevin",
+					lastName: "Durant"
+				},
+				// 计算属性
+				computed: {
+					fullName: {
+						// getter
+						get: function () {
+							return this.firstName + " " + this.lastName;
+						},
+						// setter
+						set: function (fullName) {
+							var arr = fullName.split(" ");
+							this.firstName = arr[0];
+							this.lastName = arr[arr.length - 1];
+						}
+					}
+				}
+			});
+			// 更改之后, firstName和lastName也会相应更新
+			vm3.fullName = "LeBron James";
+		</script>
+	</body>
+</html>

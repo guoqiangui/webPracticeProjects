@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="box">
+			<!-- 将seen的值改成false就不会显示了 -->
+			<p v-if="seen">现在你看到我了</p>
+		</div>
+		
+		<!-- 利用v-for可以循环渲染数据中的数组 -->
+		<div id="box2">
+			<ul>
+				<li v-for="toDo in toDos">
+					{{ toDo.text }}
+				</li>
+			</ul>
+		</div>
+		
+		<script>
+			var vm = new Vue({
+				el: "#box", 
+				data: {
+					seen: true
+				}
+			});
+			
+			var vm2 = new Vue({
+				el: "#box2", 
+				data: {
+					toDos: [
+						{text: "学习js"}, 
+						{text: "学习vue"}, 
+						{text: "学习后端"}
+					]
+				}
+			});
+		</script>
+	</body>
+</html>

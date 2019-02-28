@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1、判断一个单词是否为回文
+        function checkPalindrom(str) {
+            return str == str.split("").reverse().join("");
+        } 
+
+        // 2、统计一个字符串出现最多的字母
+        function findMaxDuplicateChar(str) {
+            // 如果长度为1，就不需要统计了
+            if(str.length == 1) {
+                return str;
+            }
+
+            // 利用对象来统计，属性为字母，值为出现次数
+            var obj = {};
+            // 用于在遍历字符串的时候储存当前元素
+            var letter;
+            // 用于在遍历对象的时候记录最大值
+            var maxValue;
+            // 用于在遍历对象的时候记录最大值的属性名
+            var maxKey;
+
+            for(var i=0; i<str.length; i++) {
+                letter = str[i];
+                // 如果不存在，作为对象的属性，并赋值为1
+                if(!obj[letter]) {
+                    obj[letter] = 1;
+                } else {
+                    // 如果存在，属性值加1
+                    obj[letter] ++;
+                }
+            }
+
+            // 找出出现最多的字母
+            for(var key in obj) {
+                // 如果没有初始化，证明是第一次进来，就把第一个字母出现的次数赋给max
+                if(maxValue === undefined) {
+                    maxValue = obj[key];
+                    maxKey = key;
+                    continue;
+                }
+                // 比较大小
+                if(obj[key] > maxValue) {
+                    maxValue = obj[key];
+                    maxKey = key;
+                }
+            }
+
+            return maxKey;
+        }
+    </script>
+</body>
+</html>

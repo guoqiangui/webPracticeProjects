@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 把数据作为一个自定义特性传递进来 -->
+		<div id="demo1">
+			<blog-post title="我是标题"></blog-post>
+		</div>
+		
+		<!-- 我们可以使用 v-bind 来动态传递 prop。这在你一开始不清楚要渲染的具体内容，比如从一个 API 获取博文列表的时候，是非常有用的。 -->
+		<div id="demo2">
+			<blog-post 
+				v-for="post in posts" 
+				v-bind:key="post.id" 
+				v-bind:title="post.title" 
+			></blog-post>
+		</div>
+		
+		<script>
+			// Prop 是你可以在组件上注册的一些自定义特性。当一个值传递给一个 prop 特性的时候，它就变成了那个组件实例的一个属性。
+			// 一个组件默认可以拥有任意数量的 prop，任何值都可以传递给任何 prop。我们能够在组件实例中访问这个值，就像访问 data 中的值一样。
+			Vue.component("blog-post", {
+				props: ["title"],
+				template: '<h3>{{ title }}</h3>'
+			});
+			
+			new Vue({
+				el: "#demo1"
+			});
+			
+			new Vue({
+				el: "#demo2",
+				data: {
+					posts: [
+						{id: 1, title: "詹姆斯无力回天"},
+						{id: 2, title: "杜兰特轻取30分"},
+						{id: 3, title: "字母哥暴力两双"}
+					]
+				}
+			});
+		</script>
+	</body>
+</html>

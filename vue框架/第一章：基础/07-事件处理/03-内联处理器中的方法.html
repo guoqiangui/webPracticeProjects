@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 除了直接绑定到一个方法，也可以在内联 JavaScript 语句中调用方法： -->
+		<div id="demo1">
+			<button v-on:click="say('Hello')">say Hello</button>
+			<button v-on:click="say('你好')">say 你好</button>
+		</div>
+		
+		<!-- 有时也需要在内联语句处理器中访问原始的 DOM 事件。可以用特殊变量 $event 把它传入方法 -->
+		<div id="demo2">
+			<button v-on:click="warn('Form cannot be submit yet', $event)">submit</button>
+		</div>
+		
+		<script>
+			new Vue({
+				el: "#demo1",
+				methods: {
+					say: function (msg) {
+						alert(msg);
+					}
+				}
+			});
+			
+			new Vue({
+				el: "#demo2",
+				methods: {
+					warn: function (msg, event) {
+						// 现在我们可以访问原生事件对象
+						if(event) {
+							event.preventDefault();
+						}
+						alert(msg);
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

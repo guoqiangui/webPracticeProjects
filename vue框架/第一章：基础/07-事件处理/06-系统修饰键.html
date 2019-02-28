@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 可以用如下修饰符来实现仅在按下相应按键时才触发鼠标或键盘事件的监听器。 -->
+		<!-- .ctrl、.alt、.shift、.meta -->
+		<div id="demo1">
+			<!-- 监听alt+c -->
+			<input type="text" v-on:keyup.alt.c="clear">
+			
+			<!-- 监听ctrl+鼠标单击 -->
+			<div v-on:click.ctrl="doSomething">哈哈哈</div>
+		</div>
+		
+		<!-- 请注意修饰键与常规按键不同，在和 keyup 事件一起用时，事件触发时修饰键必须处于按下状态。换句话说，只有在按住 ctrl 的情况下释放其它按键，才能触发 keyup.ctrl。而单单释放 ctrl 也不会触发事件。如果你想要这样的行为，请为 ctrl 换用 keyCode：keyup.17。 -->
+		
+		<!-- .exact修饰符 -->
+		<div id="demo2">
+			<!-- 即使 Alt 或 Shift 被一同按下时也会触发 -->
+			<button v-on:click.ctrl="onClick">A</button>
+			
+			<!-- 必须ctrl  + click，多按了其他键无效 -->
+			<button v-on:click.ctrl.exact="onExactClick">B</button>
+			
+			<!-- 必须click，多按了其他键无效 -->
+			<button v-on:click.exact="onOnlyClick">C</button>
+		</div>
+		
+		<!-- 鼠标按钮修饰符 -->
+		<!-- .right、.left、.middle -->
+		
+		<script>
+			new Vue({
+				el: "#demo1",
+				methods: {
+					clear: function () {
+						alert("Alt+C");
+					},
+					doSomething: function () {
+						alert("do something");
+					}
+				}
+			});
+			
+			new Vue({
+				el: "#demo2",
+				methods: {
+					onClick: function () {
+						alert("按多了个alt或shift也会触发哦");
+					},
+					onExactClick: function () {
+						alert("必须ctrl + click");
+					},
+					onOnlyClick: function () {
+						alert("必须click");
+					}
+				}
+			});
+		</script>
+		
+	</body>
+</html>

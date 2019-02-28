@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- v-bind缩写 -->
+		<div id="ele">
+			<!-- 完整 -->
+			<!-- <p v-bind:title="msg">鼠标放在我上面</p> -->
+			<!-- 缩写 -->
+			<p :title="msg">鼠标放在我上</p>
+		</div>
+		
+		<!-- v-on缩写 -->
+		<div id="ele2">
+			<p>
+				<!-- 完整 -->
+				<!-- <button v-on:click="callback">点击我</button> -->
+				<!-- 缩写 -->
+				<button @click="callback">点我</button>
+			</p>
+		</div>
+		
+		<script>
+			new Vue({
+				el: "#ele",
+				data: {
+					msg: "哈哈哈哈"
+				}
+			});
+			
+			new Vue({
+				el: "#ele2",
+				data: {
+					callback: function () {
+						console.log(123);
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

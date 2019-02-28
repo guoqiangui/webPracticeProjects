@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 当它们处于同一节点，v-for 的优先级比 v-if 更高，这意味着 v-if 将分别重复运行于每个 v-for 循环中。当你想为仅有的一些项渲染节点时，这种优先级的机制会十分有用 -->
+		<ul id="demo1">
+			<li v-for="n in numbers" v-if="n % 2 === 0">
+				{{ n }}
+			</li>
+		</ul>
+		
+		<!-- 而如果你的目的是有条件地跳过循环的执行，那么可以将 v-if 置于外层元素 (或 <template>)上。 -->
+		<ul id="demo2">
+			<template v-if="numbers.length">
+				<li v-for="n in numbers">
+					{{ n }}
+				</li>
+			</template>
+			<p v-else>数组中没有元素！</p>
+		</ul>
+		
+		<script>
+			new Vue({
+				el: "#demo1",
+				data: {
+					numbers: [1, 2, 3, 4, 5]
+				}
+			});
+			
+			new Vue({
+				el: "#demo2",
+				data: {
+					numbers: [1, 2, 3, 4, 5]
+				}
+			});
+		</script>
+	</body>
+</html>
