@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 某些情况下，需要对prop进行双向绑定 -->
+		<!-- 原理：使用自定义事件，子组件抛出要修改的值，父组件借此更新 -->
+		<!-- 简化方式.sync修饰符 -->
+		<!-- 注意：带有sync修饰符的v-bind不能接表达式，只能传属性名 -->
+		<div id="demo">
+			<my-component v-bind:title.sync="msg"></my-component>
+		</div>
+		
+		<script>
+			Vue.component("my-component", {
+				template: "<p>{{ title }}</p>",
+				props: ["title"]
+			});
+			
+			new Vue({
+				el: "#demo",
+				data: {
+					msg: "哈哈哈"
+				}
+			});
+		</script>
+	</body>
+</html>

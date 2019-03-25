@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script>
+			// 模板字符串用反引号括住，用来方便地输出模板
+			document.body.innerHTML = `
+				<ul>
+					<li>詹姆斯</li>
+					<li>35岁</li>
+					<li>湖人队</li>
+				</ul>
+			`;
+			
+			// 如果想输出的内容不保留空格和换行，可以用trim()
+			document.body.innerHTML += `
+				<ul>
+					<li>杜兰特</li>
+					<li>30岁</li>
+					<li>勇士队</li>
+				</ul>
+			`.trim();
+			
+			// 模板字符串中需要嵌入变量，需要将变量写在${}中
+			var str = "湖人无缘季后赛";
+			document.body.innerHTML += `
+				<h3>${str}</h3>
+			`;
+			
+			// ${}内可以放入任意js表达式，甚至可以调用方法
+			var obj = {
+				name: "欧文",
+				age: 27,
+				team: "凯尔特人"
+			};
+			document.body.innerHTML += `
+				<ul>
+					<li>${obj.name}</li>
+					<li>${obj.age}</li>
+					<li>${obj.team}</li>
+				</ul>
+			`;
+		</script>
+	</body>
+</html>

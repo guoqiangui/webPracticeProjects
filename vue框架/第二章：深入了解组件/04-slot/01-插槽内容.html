@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 之前已经了解过，使用slot元素进行内容分发 -->
+		<div id="demo1">
+			<my-component>我是分发的内容</my-component>
+		</div>
+		
+		<!-- slot可以包含任意模板和html代码，甚至是其他组件 -->
+		<div id="demo2">
+			<my-component>
+				<my-component2 title="我是内容"></my-component2>
+			</my-component>
+		</div>
+		
+		<script>
+			Vue.component("my-component", {
+				template: "<p><slot></slot></p>"
+			});
+			Vue.component("my-component2", {
+				props: ["title"],
+				template: "<h3>{{ title }}</h3>"
+			});
+			
+			new Vue({
+				el: "#demo1"
+			});
+			new Vue({
+				el: "#demo2"
+			});
+		</script>
+	</body>
+</html>

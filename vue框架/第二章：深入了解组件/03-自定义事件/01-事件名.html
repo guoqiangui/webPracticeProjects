@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 不同于组件和 prop，事件名不存在任何自动化的大小写转换。而是触发的事件名需要完全匹配监听这个事件所用的名称。 -->
+		<!-- v-on事件监听器在DOM中会自动转换为全小写（html对大小写不敏感），推荐用短横线命名法 -->
+		<div id="demo1">
+			<!-- 监听自定义事件add-one -->
+			<my-component v-on:add-one="addOne()">{{ msg }}</my-component>
+		</div>
+		
+		<script>
+			Vue.component("my-component", {
+				// 触发自定义事件add-one
+				template: '<button v-on:click="$emit(\'add-one\')">点击后加1哦: <slot></slot></button>'
+			});
+			
+			new Vue({
+				el: "#demo1",
+				data: {
+					msg: 0
+				},
+				methods: {
+					addOne: function () {
+						this.msg ++;
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

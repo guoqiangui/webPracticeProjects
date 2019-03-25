@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			{
+				// 1. 字符串的解构赋值
+				// 这时字符串会自动转化为伪数组
+				let [a, b, c, d, e] = "James";
+				console.log(a, b, c, d, e);
+				
+				// 伪数组都会有length属性, 可以对length属性解构赋值
+				// 相当于let {length: len} = {length: 5, 0: "D", 1: "u", ...};
+				let {length: len} = "Durant";
+				console.log(len);
+			}
+			
+			{
+				// 2. 数值和布尔值的解构赋值
+				// 如果等号右边是数值或布尔值, 会先转换为对象
+				let {toString: s1} = 123;
+				let {toString: s2} = true;
+				
+				console.log(s1 === Number.prototype.toString, s2 === Boolean.prototype.toString);
+			}
+			
+			{
+				// 总结一下解构赋值的规则, 只要右边的值不是对象, 都会转成对象
+				// 而null 和 undefined 无法转成对象, 所以会报错
+				// let {a} = null;
+				// let {b} = undefined;
+			}
+			
+			// 3. 函数参数的解构赋值
+			// 数组中的x和y在传入参数的时候解构成变量x和y
+			function add([x, y]) {
+				return x + y;
+			}
+			console.log(add([12, 24]));
+			
+			// 传入的[a, b]被解构成变量a和b, 正好对应[1, 2]中的1和2, 计算的是1+2
+			var arr = [[1, 2], [3, 4]].map(function ([a, b]) {
+				return a + b;
+			});
+			console.log(arr);
+			
+			// 函数参数的解构也可以使用默认值
+			function f1({a=1, b=2}) {
+				console.log([a, b]);
+			}
+			f1({a: 5, b: 5});
+			f1({a: 8, b: undefined});
+			f1({});
+			// f1(); // 不传入对象会报错
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="demo">
+			<my-checkbox v-model="msg"></my-checkbox>
+		</div>
+		
+		<!-- 一个组件上的v-model会利用名为value的prop和input事件 -->
+		<!-- 但像radio和checkbox这样的输入控件可能将value用于不同目的，为了防止冲突，需要model选项 -->
+		<script>
+			Vue.component("my-checkbox", {
+				// 注意你仍然需要在组件的 props 选项里声明 checked 这个 prop。
+				props: {
+					checked: Boolean
+				},
+				// 为checkbox或radio提供特殊的绑定
+				model: {
+					prop: "checked",
+					event: "change"
+				},
+				// 这样就双向绑定了
+				template: `
+					<input 
+						type="checkbox"
+						v-bind:checked="checked"
+						v-on:change="$emit('change', $event.target.checked)"
+					>
+				`
+			});
+			
+			var vm = new Vue({
+				el: "#demo",
+				data: {
+					msg: false
+				}
+			});
+		</script>
+	</body>
+</html>

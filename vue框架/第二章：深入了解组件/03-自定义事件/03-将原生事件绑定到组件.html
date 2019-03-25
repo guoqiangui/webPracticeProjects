@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 你可能有很多次想要在一个组件的根元素上直接监听一个原生事件。这时，你可以使用 v-on 的 .native 修饰符： -->
+		<div id="demo1">
+			<my-input v-on:input.native="onInput"></my-input>
+		</div>
+		
+		<!-- 如果根元素不是input的话，.native将静默失败，即失效了但不会报错 -->
+		<!-- 为了解决这个问题，Vue提供了一个$listeners属性，是一个对象，里面包含了作用在这个组件上的所有监听器 -->
+		<div id="demo2">
+			<!-- 经过一系列操作后，这个组件绑定事件已经和input没什么区别了，连.native都不用加了 -->
+			<my-input2 label="用户名: " v-on:input="onInput"></my-input2>
+		</div>
+		
+		<script>
+			Vue.component("my-input", {
+				template: "<input type='text'>"
+			});
+			
+			Vue.component("my-input2", {
+				props: ["label", "value"],
+				computed: {
+					// 这个计算属性用来覆写$listeners中的某个属性,用来添加自定义回调函数
+					// 不需要用回调函数的话,可以直接v-on="$listeners"绑定所有事件到这个组件指定的子元素中
+					inputListeners: function () {
+						// 记录this给回调函数使用
+						var vm = this;
+						
+						return Object.assign(
+							{}, 
+							this.$listeners,
+							{
+								input: function (event) {
+									vm.$emit("input", event.target.value);
+								}
+							}
+						);
+					}
+				},
+				// v-on="对象"的用法和v-bind="对象"一样, 都是将对象中的所有属性都绑定到事件或特性中
+				template: `
+					<label>
+						{{ label }}
+						<input type="text" 
+							v-bind:value="value"
+							v-on="inputListeners"
+						>
+					</label>
+				`
+			});
+			
+			new Vue({
+				el: "#demo1",
+				methods: {
+					onInput: function () {
+						alert(123);
+					}
+				}
+			});
+			
+			new Vue({
+				el: "#demo2",
+				methods: {
+					onInput: function () {
+						alert("成功了");
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

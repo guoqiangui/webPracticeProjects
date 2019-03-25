@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<style>
+			p, ul, li {
+				margin: 0;
+				padding: 0;
+			}
+			ul {
+				list-style: none;
+			}
+			/* 清除浮动 */
+			.clearfix::before,
+			.clearfix::after {
+				content: "";
+				display: block;
+				visibility: hidden;
+				height: 0;
+				line-height: 0;
+				clear: both;
+			}
+			
+			.top {
+				margin-bottom: 10px;
+			}
+			.top button {
+				width: 60px;
+				height: 30px;
+				float: left;
+				background-color: #F0F8FF;
+				outline-style: none;
+				cursor: pointer;
+			}
+			.top button:hover {
+				background-color: antiquewhite;
+			}
+			.tab-news ul.slide-bar {
+				float: left;
+				border: 1px solid #ccc;
+				padding: 10px;
+				height: 280px;
+			}
+			.tab-news ul.slide-bar li {
+				width: 200px;
+				height: 40px;
+				line-height: 40px;
+				background-color: #F0F8FF;
+				margin-bottom: 10px;
+				cursor: pointer;
+				padding: 10px;
+			}
+			.tab-news ul.slide-bar li:hover {
+				background-color: skyblue;
+			}
+			.tab-news ul.slide-bar li.active {
+				background-color: seagreen;
+			}
+			.tab-news .selected-container {
+				border: 1px solid #ccc;
+				overflow: hidden;
+				height: 300px;
+			}
+			.tab-others {
+				border: 1px solid #ccc;
+			}
+		</style>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- demo1中切换组件后，无法记住上次激活的新闻 -->
+		<!-- 也就是无法保持上次的状态，原因是每次切换组件都会重新渲染 -->
+		<div id="demo1">
+			<div class="top clearfix">
+				<button v-on:click="currentTab = tabs[0]">新闻</button>
+				<button v-on:click="currentTab = tabs[1]">其他</button>
+			</div>
+			<!-- 通过is特性切换组件 -->
+			<component v-bind:is="currentTab"></component>
+		</div>
+		
+		<div id="demo2">
+			<div class="top clearfix">
+				<button v-on:click="currentTab = tabs[0]">新闻</button>
+				<button v-on:click="currentTab = tabs[1]">其他</button>
+			</div>
+			<!-- 通过keep-alive包裹动态组件来保存状态，原理就是不重复渲染 -->
+			<keep-alive>
+				<!-- 通过is特性切换组件 -->
+				<component v-bind:is="currentTab"></component>
+			</keep-alive>
+		</div>
+		
+		<script>
+			// 新闻组件
+			Vue.component("tab-news", {
+				data: function () {
+					return {
+						posts: [
+							{
+								id: 1, 
+								title: "詹姆斯常规赛得分超越乔丹", 
+								content: "虎扑3月7日讯 洛杉矶湖人队今天主场对阵丹佛掘金队的比赛正在进行中。比赛进行到第二节，湖人前锋勒布朗-詹姆斯已经得到14分，从而超越了迈克尔-乔丹升至NBA历史得分榜第4位。随后，各大媒体发布图集致敬詹姆斯总得分超越乔丹"
+							}, {
+								id: 2,
+								title: "绿军险胜国王赢得两连胜",
+								content: "虎扑3月7日讯 凯尔特人在大胜国王之后，他们北上客场挑战国王，首节比赛两支球队僵持了大半节，国王依靠着末段内外结合命中3记三分的表现打出15-7的攻势确立起6分领先结束第一节。次节开局双方互飙三分，不过国王的攻势很快就回落，绿军则依靠着一波12-0的攻势扭转比分。末段双方重新回到同一起跑线上，希尔德最后时刻扣篮追平比分，半场战罢，双方49-49战成平手。"
+							}, {
+								id: 3,
+								title: "勇士签下博古特",
+								content: "勇士官方今天宣布，他们已经用一年底薪合同签下了中锋安德鲁-博古特。"
+							}
+						],
+						// 被选中的文章, 传入文章对象
+						seletedPost: null
+					};
+				},
+				template: `
+					<div class="tab-news">
+						<ul class="slide-bar">
+							<li 
+								v-for="post in posts" 
+								v-on:click="seletedPost = post"
+								v-bind:class="{active: post === seletedPost}"
+							>
+								{{ post.title }}
+							</li>
+						</ul>
+						
+						<div class="selected-container">
+							<div v-if="seletedPost" class="selected-post">
+								<h3>{{ seletedPost.title }}</h3>
+								<p>{{ seletedPost.content }}</p>
+							</div>
+							<strong v-else>点击以查看新闻</strong>
+						</div>
+					</div>
+				`
+			});
+			
+			// 其他组件
+			Vue.component("tab-others", {
+				template: '<div class="tab-others"><h3>这是其他组件的内容</h3></div>'
+			});
+			
+			new Vue({
+				el: "#demo1",
+				data: {
+					// 正在激活的tab
+					currentTab: "tab-news",
+					// 所有tab
+					tabs: ["tab-news", "tab-others"]
+				}
+			});
+			new Vue({
+				el: "#demo2",
+				data: {
+					// 正在激活的tab
+					currentTab: "tab-news",
+					// 所有tab
+					tabs: ["tab-news", "tab-others"]
+				}
+			});
+		</script>
+	</body>
+</html>

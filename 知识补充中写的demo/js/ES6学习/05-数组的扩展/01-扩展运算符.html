@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// ...运算符将数组里面的值展开成一个一个的参数
+			console.log(...[1, 2, 3]);
+			
+			console.log(1, 2, ...[3, 4], 5);
+			
+			// 主要用于函数调用
+			var params = [1, 2, 3, 4, 5];
+			var arr2 = [].push(...params);
+			console.log(arr2);
+			
+		</script>
+	</body>
+</html>

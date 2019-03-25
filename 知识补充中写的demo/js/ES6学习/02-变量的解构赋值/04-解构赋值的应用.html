@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			{
+				// 1. 交换变量的值
+				let a = 1;
+				let b = 2;
+				
+				[a, b] = [b, a];
+				console.log(a, b);
+			}
+			
+			// 2. 从函数返回多个值
+			// 返回多个值只能用数组或对象, 有了解构赋值, 取出来就很方便
+			function fun1() {
+				return [1, 2, 3];
+			}
+			let [a, b, c] = fun1();
+			console.log(a, b, c);
+			
+			function fun2() {
+				return {name: "James", age: 34, team: "Lakers"};
+			}
+			var {name, age, team} = fun2();
+			console.log(name, age, team);
+			
+			
+			// 3.函数参数的定义
+			// 有顺序的参数
+			function fun3([a, b, c]) {
+				return a + b - c;
+			}
+			console.log(fun3([1, 2, 3]));
+			
+			// 没有顺序的参数
+			function fun4({a, b, c}) {
+				return a + b - c;
+			}
+			console.log(fun4({b: 5, a: 10, c: 6}));
+			
+			{
+				// 4. 提取JSON数据
+				let jsonData = {
+					name: "Durant", 
+					age: 30,
+					team: "Warriors"
+				};
+				
+				let {name, age, team} = jsonData;
+				console.log(name, age, team);
+			}
+			
+			
+			// 5.指定函数参数的默认值
+			function fun5({name="无名氏", age="不详"}) {
+				return {name: name, age: age};
+			}
+			console.log(fun5({}));
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 一个非 prop 特性是指传向一个组件，但是该组件并没有相应 prop 定义的特性。 -->
+		<!-- 因为显式定义的 prop 适用于向一个子组件传入信息，然而组件库的作者并不总能预见组件会被用于怎样的场景。这也是为什么组件可以接受任意的特性，而这些特性会被添加到这个组件的根元素上。 -->
+		<!-- 对于绝大多数特性来说，从外部提供给组件的值会替换掉组件内部设置好的值。但class和style会在原来的基础上添加 -->
+		<div id="demo1">
+			<my-component class="box1"></my-component>
+		</div>
+		
+		<div id="demo2">
+			<my-component2 type="text" placeholder="哈哈哈"></my-component2>
+		</div>
+		
+		<script>
+			Vue.component("my-component", {
+				template: '<div class="box"><h3>测试</h3></div>'
+			});
+			
+			// 如果你不希望组件的根元素继承特性，你可以在组件的选项中设置inheritAttrs为false
+			// 这尤其适合配合实例的 $attrs 属性使用，该属性包含了传递给一个组件的特性名和特性值(非prop特性,style和class除外)
+			// 注意: inheritAttrs: false 选项不会影响 style 和 class 的绑定。
+			Vue.component("my-component2", {
+				inheritAttrs: false,
+				template: '<div class="box"><input v-bind="$attrs"></div>'
+			});
+			
+			new Vue({
+				el: "#demo1"
+			});
+			
+			new Vue({
+				el: "#demo2"
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// Generator函数写法, 在function后加一个*
+			// 里面可以使用yield关键字, 和return有点像, 暂停函数执行并输出内容
+			function* foo(x) {
+				yield x + 1;
+				yield x + 2;
+				return x + 3;
+			}
+			console.log(foo);
+			// 传入参数后不断使用next()执行, 每执行一次都会输出一次内容
+			var f = foo(10);
+			// 输出的对象中有一个done属性, 代表这个函数是否已经把内容全部输出
+			console.log(f.next(), f.next(), f.next());
+		</script>
+	</body>
+</html>

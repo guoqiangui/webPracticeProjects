@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 单向数据流： -->
+		<!-- 所有的 prop 都使得其父子 prop 之间形成了一个单向下行绑定：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解。 -->
+		<!-- 额外的，每次父级组件发生更新时，子组件中所有的 prop 都将会刷新为最新的值。这意味着你不应该在一个子组件内部改变 prop。如果你这样做了，Vue 会在浏览器的控制台中发出警告。 -->
+		<div id="demo1">
+			<my-component v-bind:counter="0"></my-component>
+		</div>
+		
+		<!-- 解决方法 -->
+		<!-- 这个 prop 用来传递一个初始值；这个子组件接下来希望将其作为一个本地的 prop 数据来使用。在这种情况下，最好定义一个本地的 data 属性并将这个 prop 用作其初始值： -->
+		<div id="demo2">
+			<my-component2 v-bind:initial-counter="0"></my-component2>
+		</div>
+		
+		<!-- 这个 prop 以一种原始的值传入且需要进行转换。在这种情况下，最好使用这个 prop 的值来定义一个计算属性： -->
+		<div id="demo3">
+			<my-component3 before-str="  詹姆斯最强ABC  "></my-component3>
+		</div>
+		
+		<script>
+			// 子组件内部更改prop,会有警告,但会修改成功
+			Vue.component("my-component", {
+				props: ["counter"],
+				template: "<button v-on:click='counter++'>点击了{{ counter }}次</button>"
+			});
+			
+			// 不会警告了
+			Vue.component("my-component2", {
+				props: ["initialCounter"],
+				// 记住,组件里面的data需要是一个函数
+				data: function () {
+					return {
+						counter: this.initialCounter
+					};
+				},
+				template: "<button v-on:click='counter++'>点击了{{ counter }}次</button>"
+			});
+			
+			// 也不会警告
+			Vue.component("my-component3", {
+				props: ["beforeStr"],
+				computed: {
+					handleStr: function () {
+						return this.beforeStr.trim().toLowerCase();
+					}
+				},
+				template: "<h3>处理后：{{ handleStr }}</h3>"
+			});
+			
+			
+			new Vue({
+				el: "#demo1"
+			});
+			new Vue({
+				el: "#demo2"
+			});
+			new Vue({
+				el: "#demo3"
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// 箭头函数的this指向定义时的作用域, 而不是执行时的作用域
+			
+			/* var obj = {
+				name: "james", 
+				sayName: function () {
+					console.log(this.name);
+				}
+			};
+			obj.sayName(); */
+			
+			/* var name = "Durant";
+			var obj = {
+				name: "James",
+				sayName: () => {
+					console.log(this.name);
+				}
+			};
+			obj.sayName(); // Durant */
+			
+			// 上述代码其实是:
+			/* var name = "Durant";
+			var obj = {};
+			obj.name = "James";
+			// 箭头函数的this就是这个this, 即window, 在定义时已经确定
+			console.log(this);
+			obj.sayName = () => {
+				console.log(this.name);
+			};
+			obj.sayName(); */
+			
+			// 如果不用箭头函数, this肯定是window
+			// 有了箭头函数, 可以在setTimeout内直接使用this输出对象的属性
+			var obj = {
+				name: "james",
+				sayName: function () {
+					// 箭头函数的this与这个this等同
+					console.log(this);
+					
+					setTimeout(() => {
+						console.log(this.name);
+					}, 1000);
+				}
+			};
+			obj.sayName();
+		</script>
+	</body>
+</html>

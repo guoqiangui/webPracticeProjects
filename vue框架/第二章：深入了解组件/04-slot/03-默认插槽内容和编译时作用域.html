@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="demo1">
+			<!-- 因为有了默认插槽内容，所以用户不设置的话就会自动显示默认内容 -->
+			<submit-button></submit-button>
+			<!-- 用户设置了就会替换默认内容 -->
+			<submit-button>提交</submit-button>
+		</div>
+		
+		<!-- 父组件模板的内容，全部在父组件作用域内编译；子组件模板的内容，全部在子组件作用域内编译。 -->
+		
+		<script>
+			// 有时,插槽需要默认的内容,比如提交按钮,需要默认显示Submit,也可以用户指定
+			Vue.component("submit-button", {
+				template: "<button><slot>Submit</slot></button>"
+			});
+			
+			new Vue({
+				el: "#demo1"
+			});
+		</script>
+	</body>
+</html>

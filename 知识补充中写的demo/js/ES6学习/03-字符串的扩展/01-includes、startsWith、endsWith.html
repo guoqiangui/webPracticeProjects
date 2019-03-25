@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// ES6之前, js只有indexOf()方法可以确定一个字符串是否包含另外一个字符串
+			// 现在增加了includes(), startsWith(), endsWith(), 都返回布尔值
+			
+			// includes() 是否包含指定字符串
+			console.log("abc".includes("a"));
+			console.log("abc".includes("ac"));
+			
+			// startsWith() 是否以指定字符串开头
+			console.log("James".startsWith("J"));
+			console.log("James".startsWith("j"));
+			console.log("James".startsWith("Jam"));
+			
+			// endsWidth() 是否以指定字符串结尾
+			console.log("Durant".endsWith("t"));
+			console.log("Durant".endsWith("ant"));
+			console.log("Durant".endsWith("tna"));
+			
+			
+			var str = "Hello World";
+			// 这三个方法都支持第二个参数, 表示开始的索引
+			console.log(str.includes("or", 7));
+			console.log(str.includes("or", 8));
+			
+			console.log(str.startsWith("ll", 2));
+			
+			// endsWith不一样, 表示前几个
+			console.log(str.endsWith("lo", 4));
+			console.log(str.endsWith("lo", 5)); // 前五个字符中是否以lo结束
+
+		</script>
+	</body>
+</html>

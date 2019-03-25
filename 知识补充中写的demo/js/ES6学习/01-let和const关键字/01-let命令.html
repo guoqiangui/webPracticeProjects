@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// let用来声明变量
+			// let只在所在的块级作用域生效
+			{
+				let a = 123;
+				var b = 456;
+				console.log(a); // 123
+			}
+			// console.log(a); // 报错: a is not defined,报错了下面的代码不会执行
+			console.log(b); // 456
+			
+			// 适合用在for循环上
+			for(let i = 0; i < 10; i ++) {
+				console.log(i);
+			}
+			// console.log(i); // 在外面就访问不到
+			
+			// let不存在变量提升
+			// console.log(a);
+			let a = "abc";
+			
+			// 暂时性死区: 只要块级作用域存在let命令, 它所声明的变量就绑定该区域, 不受外界影响
+			var b = "james";
+			if(true) {
+				b = "durant";
+				console.log(b); // 如果let声明了b，就不能输出了
+				// let b; 
+			}
+			
+		</script>
+	</body>
+</html>

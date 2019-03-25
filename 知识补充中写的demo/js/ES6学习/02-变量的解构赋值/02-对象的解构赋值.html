@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			{
+				// 解构也可以用于对象
+				// 对象的解构和数组的不同之处是对象解构不用按照顺序, 只要名称对了就行
+				let {name, age} = {name: "James", age: 34};
+				console.log(name, age);
+			}
+			
+			{
+				// 如果变量名和属性名不一致, 写成这样,真正赋值的是后面的变量
+				let {foo: name} = {foo: "James"};
+				console.log(name);	// 最终赋给了name
+				
+				// 这说明, 对象的解构赋值完整写法其实是
+				let {a: a, b: b} = {a: 123, b: 456};
+				console.log(a, b);
+			}
+			
+			{
+				// 对象的解构赋值也可以指定默认值
+				// 默认值生效条件: 严格等于undefined(或者直接不定义，但是不能用null)
+				let {name="James", age} = {name: undefined, age: 34};
+				console.log(name, age);
+			}
+		</script>
+	</body>
+</html>

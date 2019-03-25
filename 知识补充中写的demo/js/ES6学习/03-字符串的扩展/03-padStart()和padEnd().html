@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// padStart() 和 padEnd() 用来补足不足位数的字符串
+			
+			// padStart(位数, 用来补足的字符串) 如果位数不足, 就在原字符串开头插入补足的字符串
+			console.log("x".padStart(6, "abc"));
+			
+			// padEnd 用来在原字符串后面插入补足的字符串
+			console.log("x".padEnd(5, "a"));
+			
+			// 常见用法1: 为数字补足位数
+			// 生成10位数字
+			console.log("12".padStart(10, "0"));
+			
+			// 用法2: 提示字符串格式
+			console.log("09-03".padStart(10, "YYYY-MM-DD"));
+			
+		</script>
+	</body>
+</html>

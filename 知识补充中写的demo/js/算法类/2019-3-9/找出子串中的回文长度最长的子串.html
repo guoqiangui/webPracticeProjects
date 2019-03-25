@@ -2,9 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<script>
+    // 测试
+    console.log(getMaxLenReverseStr("abbbcbacabcdda"));
+
+    // 判断是否为回文
+    function isReverseString(str) {
+        if(str.length === 1) {
+            return true;
+        }
+        return str === str.split("").reverse().join("");
+    }
+
+    function getMaxLenReverseStr(str) {
+        // 用来储存子字符串
+        var subStr = "";
+        // 用来记录回文及其长度的对象，不能定义为null，空对象即可
+        var obj = {};
+
+        for(var i=0; i<str.length; i++) {
+            // 因为左闭右开0,0相当于什么都没截到
+            for(var j=1; j<str.length; j++) {
+                subStr = str.substr(i, j);
+                // 判断是否为回文，是的话将其记录到一个对象中，属性为该回文，值为回文长度
+                if( isReverseString(subStr) ) {
+                    obj[subStr] = subStr.length;
+                }
+            }
+            // 也因为左闭右开，最后一个字母会截不到
+            // 现在仅处理一直截到最后的情况
+            subStr = str.substr(i);
+            if( isReverseString(subStr) ) {
+                obj[subStr] = subStr.length;
+            }
+        }
+
+        // 用来记录最大长度
+        var maxLen = 0;
+        // 用来记录最大长度对应的回文
+        var maxReverseStr = "";
+        // 记录完成后，需要比较出回文长度的最大值
+        for(var key in obj) {
+            if(obj[key] > maxLen) {
+                maxLen = obj[key];
+                maxReverseStr = key;
+            }
+        }
+
+        // 返回最长的回文
+        return maxReverseStr;
+    }
+
+</script>
 </body>
 </html>

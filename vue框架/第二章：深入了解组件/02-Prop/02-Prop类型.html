@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="demo1">
+			<!-- 为了不解析成字符串，需要用v-bind绑定，后面就可以跟表达式了 -->
+			<nba-player
+				player-name="詹姆斯"
+				v-bind:age="34"
+				v-bind:is-retired="false"
+				v-bind:weared-number="[6, 23]"
+				v-bind:team="{name: '湖人', champions: 16}"
+			></nba-player>
+		</div>
+		
+		<script>
+			// 之前组件中的props属性都是用数组列出所有自定义属性
+			// 如果想让每个prop都有指定的值类型, 就可以用对象的形式列出属性, 对象的名是prop,值是类型
+			// 这不仅为你的组件提供了文档，还会在它们遇到错误的类型时从浏览器的 JavaScript 控制台提示用户。
+			Vue.component("nba-player", {
+				props: {
+					playerName: String,
+					age: Number,
+					// 是否已退役
+					isRetired: Boolean,
+					// 曾穿过的号码
+					wearedNumber: Array,
+					// 效力球队
+					team: Object
+				},
+				template: `
+					<ul>
+						<li>名字：{{ playerName }}</li>
+						<li>年龄：{{ age }}</li>
+						<li>是否已退役：{{ isRetired }}</li>
+						<li>曾穿过的号码：{{ wearedNumber }}</li>
+						<li>效力球队：{{ team }}</li>
+					</ul>
+				`
+			});
+			
+			new Vue({
+				el: "#demo1"
+			});
+		</script>
+	</body>
+</html>

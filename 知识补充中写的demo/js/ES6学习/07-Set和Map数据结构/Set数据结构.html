@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// Set相当于无序集合, 里面的元素不重复
+			
+			// 构造Set, 使用数组, 如果数组中有重复值, 会自动去掉
+			var set = new Set([1, 2, 2, 5, 4, 4]);
+			console.log(set);
+			
+			// Set转换成数组, 使用...
+			var arr = [...set];
+			console.log(arr);
+			
+			// 遍历Set, 用for...of循环
+			/* for(let item of set) {
+				console.log(item);
+			} */
+			
+			// 返回Set中元素的个数
+			console.log("个数为：" + set.size);
+			
+			// 对Set进行操作: add(), delete(), has(), clear()
+			// 在Set中增加元素, 如果与存在的元素重复, 则不会添加
+			/* set.add(6);
+			console.log(set);
+			
+			// 在Set中删除元素
+			set.delete(1);
+			console.log(set);
+			
+			// 判断Set中是否含有指定元素
+			console.log(set.has(2));
+			console.log(set.has(9));
+			
+			// 清除Set中所有元素
+			set.clear();
+			console.log(set); */
+			
+			
+			// Set的其他用于遍历的方法
+			// keys()返回键名的遍历器, 这里和遍历值一样, 因为Set的键和值相等
+			/* for(let item of set.keys()) {
+				console.log(item);
+			} */
+			
+			// values() 返回键值的遍历器
+			/* for(let item of set.values()) {
+				console.log(item);
+			} */
+			
+			// entries() 返回键值对的遍历器, 结果放在数组中
+			/* for(let entry of set.entries()) {
+				console.log(entry);
+			}
+			for(let [key, item] of set.entries()) {
+				console.log(key, item);
+			} */
+			
+			// forEach() 使用回调函数遍历每个元素
+			set.forEach((value, key) => {
+				console.log(value * 2);
+			});
+		</script>
+	</body>
+</html>

@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    // 求两个数字字符串的乘积
+    function chengJi(a, b) {
+        // 先转换成数字
+        a = parseFloat(a);
+        b = parseFloat(b);
+
+        var result = a*b;
+        // 还要化成字符串，不然就是科学计数法
+        // 利用数字.toString()，new String(数字)不行
+        return result.toString();
+    }
+
+    // 测试
+    console.log(chengJi("20000000000", "30000000000"));
+</script>
 </body>
 </html>

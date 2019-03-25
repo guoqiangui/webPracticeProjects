@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		
+		<div id="demo1">
+			<nba-player
+				player-name="詹姆斯"
+				age="34"
+				weight="250lbs"
+				is-retired="not retire"
+			></nba-player>
+		</div>
+		
+		<script>
+			// 我们可以为组件的 prop 指定验证要求，例如你知道的这些类型。如果有一个需求没有被满足，则 Vue 会在浏览器控制台中警告你。这在开发一个会被别人用到的组件时尤其有帮助。 
+			// 为了定制 prop 的验证方式，你可以为 props 中的值提供一个带有验证需求的对象，而不是一个字符串数组。
+			// 注意那些 prop 会在一个组件实例创建之前进行验证，所以实例的属性 (如 data、computed 等) 在 default 或 validator 函数中是不可用的。
+			// type可以是原生构造函数中的任意一个: String, Number, Boolean, Array, Object, Date, Function, Symbol; 也可以是自定义构造函数(原理是通过instanceof判断)
+			Vue.component("nba-player", {
+				props: {
+					// 类型检查(null或undefined会通过任何类型的验证)
+					playerName: String,
+					// 多个可能的类型
+					age: [String, Number],
+					// 必填的字符串
+					weight: {
+						type: String,
+						required: true
+					},
+					// 带有默认值的数字
+					champions: {
+						type: Number,
+						default: 0
+					},
+					// 带有默认值的对象
+					team: {
+						type: Object,
+						// 对象或数组默认值必须从一个工厂函数获取
+						default: function () {
+							return {name: "自由球员"};
+						}
+					},
+					// 自定义验证函数
+					isRetired: {
+						validator: function (value) {
+							// 填的值必须在数组中存在
+							return ["retired", "not retire"].indexOf(value) !== -1;
+						}
+					}
+				},
+				template: `
+					<ul>
+						<li>名字: {{ playerName }}</li>
+						<li>年龄: {{ age }}</li>
+						<li>体重: {{ weight }}</li>
+						<li>总冠军数: {{ champions }}</li>
+						<li>效力球队: {{ team }}</li>
+						<li>是否退役: {{ isRetired }}</li>
+					</ul>
+				`
+			});
+			
+			new Vue({
+				el: "#demo1"
+			});
+		</script>
+	</body>
+</html>

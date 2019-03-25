@@ -7,6 +7,10 @@
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	</head>
 	<body>
+		<div id="demo1">
+			<component-a></component-a>
+			<component-b></component-b>
+		</div>
 		
 		<script>
 			// 全局注册
@@ -17,9 +21,30 @@
 			// 局部注册
 			// 通过一个js对象来定义组件
 			// 在Vue实例的components选项中定义想要使用的组件
+			// 对于 components 对象中的每个属性来说，其属性名就是自定义元素的名字，其属性值就是这个组件的选项对象。
 			
+			// 1 通过对象定义组件
+			var ComponentA = {
+				template: "<h3>我是标题</h3>"
+			};
+			
+			// 如果希望组件A在组件B中使用,可以这样
+			var ComponentB = {
+				components: {
+					"component-a": ComponentA
+				},
+				// 需要定义模板来使用组件A
+				template: "<component-a></component-a>"
+			};
+			
+			// 2 在components选项中定义想要使用的组件
 			new Vue({
-				
+				el: "#demo1",
+				components: {
+					// 有特殊符号需要加引号
+					"component-a": ComponentA,
+					"component-b": ComponentB
+				}
 			});
 		</script>
 	</body>

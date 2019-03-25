@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="demo1">
+			<!-- 给prop传入静态的值 -->
+			<nba-player player-name="詹姆斯"></nba-player>
+			
+			<!-- 通过v-bind给prop传入动态的值，在表达式中就不用{{}}了 -->
+			<nba-player v-bind:player-name="playerName"></nba-player>
+			
+			<!-- 任何类型的值都可以传入prop -->
+			<!-- 传入数字 -->
+			<!-- 传入布尔值 -->
+			<!-- 传入数组 -->
+			<!-- 传入对象 -->
+			<nba-player
+				player-name="邓肯"
+				v-bind:age="43"
+				v-bind:is-retired="true"
+				v-bind:weared-number="[21]"
+				v-bind:team="{name: '马刺'}"
+			></nba-player>
+			
+			<!-- 传入一个对象的所有属性 -->
+			<!-- 如果想将一个对象的所有属性都作为prop传入，需要使用不带参数的v-bind -->
+			<nba-player v-bind="playerIrving"></nba-player>
+		</div>
+		
+		<script>
+			Vue.component("nba-player", {
+				props: {
+					playerName: String,
+					age: Number,
+					// 是否已退役
+					isRetired: Boolean,
+					// 曾穿过的号码
+					wearedNumber: Array,
+					// 效力球队
+					team: Object
+				},
+				template: `
+					<ul>
+						<li>名字：{{ playerName }}</li>
+						<li>年龄：{{ age }}</li>
+						<li>是否已退役：{{ isRetired }}</li>
+						<li>曾穿过的号码：{{ wearedNumber }}</li>
+						<li>效力球队：{{ team }}</li>
+					</ul>
+				`
+			});
+			
+			new Vue({
+				el: "#demo1",
+				data: {
+					playerName: "杜兰特",
+					playerIrving: {
+						playerName: "欧文",
+						age: 26,
+						isRetired: false,
+						wearedNumber: [2, 11],
+						team: {name: "凯尔特人"}
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

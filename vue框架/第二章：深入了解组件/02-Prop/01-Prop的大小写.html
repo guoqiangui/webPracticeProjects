@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="demo1">
+			<component-a title-content="我是标题的内容2"></component-a>
+		</div>
+		
+		<script>
+			// HTML 中的特性名是大小写不敏感的，所以浏览器会把所有大写字符解释为小写字符。这意味着当你使用 DOM 中的模板时，camelCase (驼峰命名法) 的 prop 名需要使用其等价的 kebab-case (短横线分隔命名) 命名
+			var ComponentA = {
+				props: ["titleContent"],
+				template: "<h2>{{ titleContent }}</h2>"
+			};
+			
+			new Vue({
+				el: "#demo1",
+				components: {
+					componentA: ComponentA
+				}
+			});
+		</script>
+	</body>
+</html>

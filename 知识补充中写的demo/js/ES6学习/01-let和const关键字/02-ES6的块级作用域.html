@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// let实际上为js提供了块级作用域
+			// 下面的函数, 如果用var声明的话, 结果为10
+			function f1() {
+				let n = 5;
+				if(true) {
+					let n = 10;
+				}
+				console.log(n);
+			}
+			f1();
+			
+			// ES6允许块级作用域的任意嵌套
+			{
+				let n = 456;
+				{
+					// let n = 123; // 内层作用域可以重复定义外层作用域的同名变量
+					// 内层作用域可以直接使用外层作用域的let变量
+					console.log(n);
+				}
+				// 外层作用域无法读取内层作用域的let变量
+				// console.log(n); 
+			}
+			
+			// 块级作用域的出现，实际上使得获得广泛应用的立即执行函数表达式（IIFE）不再必要了。
+			// IIFE写法
+			(function () {
+				var abc = 123;
+				console.log(123);
+			})();
+			// 块级作用域写法
+			{
+				let abc = 123;
+				console.log(abc);
+			}
+			
+			// ES5规定, 函数不能在块级作用域中声明, 例如if中
+			// ES6允许函数在块级作用域中声明, 函数在块级作用域中的声明类似let, 在块级作用域外不可以引用
+			function f2() {
+				console.log("I am outside");
+			}
+			
+			(function () {
+				if(false) {
+					function f2() {
+						console.log("I am inside");
+					}
+				}
+				
+				f2(); // ES6环境理论上会得到I am outside, 但对旧版本兼容较差, 不同浏览器实现可以不遵守规则，实际上可能会报错，所以不推荐在块级作用域声明函数
+			})();
+			
+		</script>
+	</body>
+</html>

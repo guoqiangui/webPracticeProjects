@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// Map是键值对的集合, 和对象类似
+			
+			// 构造Map, 使用二维数组
+			var map = new Map([["键", "值"], ["名字", "james"]]);
+			console.log(map);
+			
+			// 返回Map的键值对个数
+			console.log(map.size);
+			
+			// 操作Map
+			// 添加键值对
+			/* map.set("年龄", 34);
+			console.log(map); */
+			
+			// 根据键获取值
+			// console.log(map.get("名字"));
+			
+			// 根据键删除键值对
+			/* map.delete("键");
+			console.log(map); */
+			
+			// 判断Map是否含有指定键的键值对
+			/* console.log(map.has("键"));
+			console.log(map.has("哈哈")); */
+			
+			// 清除map中所有的键值对
+			/* map.clear();
+			console.log(map); */
+			
+			// 用来遍历Map的相关方法
+			// 返回键名的遍历器
+			/* for(let key of map.keys()) {
+				console.log(key);
+			} */
+			
+			// 返回值的遍历器
+			/* for(let value of map.values()) {
+				console.log(value);
+			} */
+			
+			// 返回键值对的遍历器, 和Set一样, 返回数组
+			/* for(let entry of map.entries()) {
+				console.log(entry);
+			}
+			for(let [key, value] of map.entries()) {
+				console.log(key + "==>" + value);
+			} */
+			
+			// forEach使用回调函数遍历每个成员, 和Set一样, 注意参数value在前
+			map.forEach((value, key) => {
+				console.log(key + "===>" + value);
+			});
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// const声明一个只读的常量, 一旦声明, 就不可以更改
+			// 所以在声明的时候要立即初始化
+			const PI = 3.14;
+			console.log(PI);
+			// 更改的时候会报错
+			// PI = 3.14159;
+			
+			// 和let一样, const在块级作用域声明的话，只能在块级作用域内生效, 也存在暂时性死区
+			if(true) {
+				const NAME = "Lebron James";
+			}
+			// console.log(NAME); // 报错is not defined
+			
+			// const声明的变量是不是真的不能改变？
+			// 实际上并不能保证变量的值不变, 而是变量所指向内存地址不变
+			// 对于简单数据类型, 值保存在变量所指向的内存地址, 所以是不变的;
+			// 对于复合数据类型, const只能保证指向的地址不变, 但其地址上保存的数据结构发生改变, 这就不能阻止了
+			// 因此, 对于常量的声明应该非常小心
+			
+			// 如果想将一个对象冻结, 不要使用const, 应该使用Object.freeze(对象);
+			var obj = {name: "James"};
+			Object.freeze(obj);
+			obj.age = 23;
+			console.log(obj); // 添加属性失败, 因为被冻结了
+			
+			// 如果对象的属性也是对象, 这就不能完全冻结了
+			// 想完全冻结, 就需要遍历对象, 将其属性也完全冻结
+			function freezeAll(object) {
+				Object.freeze(object);
+				
+				for(var key in object) {
+					if(typeof object[key] === "object") {
+						// 利用递归
+						freezeAll(object[key]);
+					}
+				}
+			}
+			var person = {
+				name: "詹姆斯",
+				team: {
+					name: "湖人",
+					champions: 17
+				}
+			};
+			freezeAll(person);
+			person.team.city = "洛杉矶";
+			console.log(person); // 添加属性失败
+			
+		</script>
+	</body>
+</html>

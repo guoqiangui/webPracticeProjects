@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			// ES5中, 全局变量是顶层对象window的属性
+			// 在ES6中, 只有var 和 function 声明的全局变量是顶层对象的属性, 
+			// 而let, const, class命令声明的全局变量, 不属于window的属性
+			let a = 1;
+			console.log(window.a); // undefined
+		</script>
+	</body>
+</html>

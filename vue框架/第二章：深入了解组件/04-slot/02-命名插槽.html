@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>起步</title>
+		<!-- 引入开发环境版本的vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- 给命名插槽提供内容有两种方法 -->
+		<!-- 1、使用template元素包裹需要分发的内容，并使用slot特性，值为slot元素中name的值 -->
+		<div id="demo1">
+			<my-component>
+				<template slot="header">
+					我是header的内容
+				</template>
+				我是main的内容
+				<template slot="footer">
+					我是footer的内容
+				</template>
+			</my-component>
+		</div>
+		
+		<!-- 2、给某个元素直接使用slot特性，适用于只有一个元素的情况 -->
+		<div id="demo2">
+			<my-component>
+				<h1 slot="header">我是header的内容</h1>
+				<p>我是main的内容</p>
+				<h1 slot="footer">我是footer的内容</h1>
+			</my-component>
+		</div>
+		
+		<script>
+			// slot有一个特殊的name特性, 用于定义默认插槽以外的插槽
+			Vue.component("my-component", {
+				template: `
+					<div class="container">
+						<header>
+							<slot name="header">
+						</header>
+						<main>
+							<slot></slot>
+						</main>
+						<footer>
+							<slot name="footer"></slot>
+						</footer>
+					</div>
+				`
+			});
+			
+			new Vue({
+				el: "#demo1"
+			});
+		</script>
+	</body>
+</html>
