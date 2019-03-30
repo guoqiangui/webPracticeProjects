@@ -1,0 +1,38 @@
+/* css初始化 */
+h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd {
+	margin: 0;
+	padding: 0;
+}
+ul {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+/* 消除图片的缝隙 */
+/* img {
+	display: block;
+} */
+
+/* 清除浮动 */
+.clearfix::before, 
+.clearfix::after {
+	content: "";
+	display: block;
+	visibility: hidden;
+	height: 0;
+	line-height: 0;
+	clear: both;
+}
+/* 兼容IE */
+.clearfix {
+	zoom: 1;
+}
+
+/* 版心 */
+.w {
+	width: 980px;
+	margin: 0 auto;
+}
+
+

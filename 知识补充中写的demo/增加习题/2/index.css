@@ -1,0 +1,195 @@
+/* css初始化 */
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd {
+	margin: 0;
+	padding: 0;
+}
+ul {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+/* 消除图片的缝隙 */
+img {
+	vertical-align: top;
+}
+
+/* 清除浮动 */
+.clearfix::before, 
+.clearfix::after {
+	content: "";
+	display: block;
+	visibility: hidden;
+	height: 0;
+	line-height: 0;
+	clear: both;
+}
+/* 兼容IE */
+.clearfix {
+	zoom: 1;
+}
+
+/* 版心 */
+.w {
+	width: 950px;
+	margin: 0 auto;
+}
+
+
+header {
+	height: 86px;
+	background: url(images/logo.png) no-repeat 29px bottom;
+	background-color: #F4F4F4;
+}
+header .header-left {
+	width: 650px;
+	height: 86px;
+	line-height: 86px;
+	padding-left: 100px;
+	font-size: 23px;
+	float: left;
+}
+header .header-right {
+	width: 200px;
+	height: 86px;
+	float: right;
+}
+header .header-right ul {
+	font-size: 12px;
+	margin-bottom: 19px;
+	margin-top: 13px;
+}
+header .header-right ul li {
+	float: left;
+	margin-right: 13px;
+}
+
+nav {
+	height: 36px;
+	background: url(images/b01.png);
+}
+nav ul {
+	padding-left: 88px;
+}
+nav ul li {
+	float: left;
+	margin-right: 37px;
+	line-height: 36px;
+}
+
+.main {}
+.main .banner {
+	height: 378px;
+}
+.main .banner img {
+	/* 按照指定尺寸缩放 */
+	width: 950px;
+	height: 378px;
+}
+.main .light {}
+.main .product {}
+.main .product .latest-product {
+	width: 202px;
+	height: 204px;
+	position: relative;
+	float: left;
+}
+.main .product .latest-product h2 {
+	font-size: 13px;
+	height: 27px;
+	background: url(images/b03.png);
+	color: #fff;
+	line-height: 27px;
+	padding-left: 19px;
+}
+.main .product .latest-product span {
+	font-size: 5px;
+	color: #fff;
+	position: absolute;
+	right: 14px;
+	top: 6px;
+}
+.main .product .latest-product img {
+	margin-left: 4px;
+	margin-top: 6px;
+}
+.main .product .welcome {
+	width: 539px;
+	float: left;
+}
+.main .product .welcome h2 {
+	font-weight: 400;
+	font-size: 16px;
+	padding-left: 44px;
+	padding-top: 14px;
+}
+.main .product .welcome p {
+	font-size: 12px;
+	color: #848484;
+	padding-left: 42px;
+	padding-right: 41px;
+	line-height: 24px;
+}
+.main .product .contact {
+	width: 202px;
+	height: 204px;
+	position: relative;
+	float: right;
+}
+.main .product .contact h2 {
+	font-size: 13px;
+	height: 27px;
+	background: url(images/b03.png);
+	color: #fff;
+	line-height: 27px;
+	padding-left: 19px;
+}
+.main .product .contact span {
+	font-size: 5px;
+	color: #fff;
+	position: absolute;
+	right: 14px;
+	top: 6px;
+}
+.main .product .contact img {
+	width: 202px;
+	margin-top: 6px;
+}
+/* 分割线 */
+.main .line {
+	height: 2px;
+	border-top: 1px dotted #000;
+	border-bottom: 1px dotted #000;
+}
+
+footer {
+	height: 73px;
+	background-color: pink;
+	background: url(images/logo2.png) no-repeat 16px 16px;
+}
+footer .footer-left {
+	color: #BEBEBE;
+	padding-left: 80px;
+	padding-top: 48px;
+	float: left;
+}
+footer .footer-right {
+	float: right;
+}
+footer .footer-right ul {
+	margin-top: 24px;
+}
+footer .footer-right ul li {
+	float: left;
+	padding: 0 10px;
+	border-right: 1px solid #999;
+	color: #999;
+}
+footer .footer-right ul li:last-child {
+	border-right: none;
+	padding-right: 0;
+}
+footer .footer-right p {
+	color: #999;
+	text-align: right;
+}
